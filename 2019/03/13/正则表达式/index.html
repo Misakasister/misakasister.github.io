@@ -87,13 +87,14 @@
 <meta property="og:site_name" content="misakasister的博客">
 <meta property="og:description" content="12345var str=/abc/i; i==ignoreCase//忽略大小写 没引号 //就代表正则匹配字符串中是否有abc 忽略大小写g global 全局匹配m  多行匹配^abc ^代表必须开头，匹配开头有abc的字符 方括号方括号用于查找某个范围内的字符，  一个[]代表一个字符，[]里的内容代表这个字符可以有的内容 []里的^代表非    表达式 描述     [abc] 查找方括">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="d:/blog/img/reg/区别.png">
-<meta property="og:image" content="d:/blog/img/reg/元字符n.png">
-<meta property="og:updated_time" content="2019-03-13T09:40:51.751Z">
+<meta property="og:image" content="http://m.qpic.cn/psb?/V13oJHnV4UEUs2/02hJ2Jam69BliEGJZhs.C.pytXEg*kx.I4z90TbM1Gc!/b/dLkAAAAAAAAA&bo=9gFvAfYBbwEDGTw!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psb?/V13oJHnV4UEUs2/LEtmPgahTGjywGwhRTQ8v866dEM9io3*51le7XSojO8!/b/dL4AAAAAAAAA&bo=.QGUAPkBlAADGTw!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psb?/V13oJHnV4UEUs2/B.3Ak9WmE62u8RrBzXbiA4UkelY5pgOGP5*6Qv4ooVs!/b/dL8AAAAAAAAA&bo=GAGVABgBlQADGTw!&rf=viewer_4">
+<meta property="og:updated_time" content="2019-03-13T09:57:11.308Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="正则表达式">
 <meta name="twitter:description" content="12345var str=/abc/i; i==ignoreCase//忽略大小写 没引号 //就代表正则匹配字符串中是否有abc 忽略大小写g global 全局匹配m  多行匹配^abc ^代表必须开头，匹配开头有abc的字符 方括号方括号用于查找某个范围内的字符，  一个[]代表一个字符，[]里的内容代表这个字符可以有的内容 []里的^代表非    表达式 描述     [abc] 查找方括">
-<meta name="twitter:image" content="d:/blog/img/reg/区别.png">
+<meta name="twitter:image" content="http://m.qpic.cn/psb?/V13oJHnV4UEUs2/02hJ2Jam69BliEGJZhs.C.pytXEg*kx.I4z90TbM1Gc!/b/dLkAAAAAAAAA&bo=9gFvAfYBbwEDGTw!&rf=viewer_4">
 
 
 
@@ -579,11 +580,11 @@
 </tbody>
 </table>
 <p>带不带量词的区别， 匹配1 至 多个：</p>
-<p><img src="D:\blog\img\reg\区别.png" alt="区别"></p>
+<p><img src="http://m.qpic.cn/psb?/V13oJHnV4UEUs2/02hJ2Jam69BliEGJZhs.C.pytXEg*kx.I4z90TbM1Gc!/b/dLkAAAAAAAAA&amp;bo=9gFvAfYBbwEDGTw!&amp;rf=viewer_4" alt="区别"></p>
 <p>匹配 0 至 多个</p>
-<pre><code>![0n](D:\blog\img\reg\0n.png)
-</code></pre><p>匹配的n{X}里的数字是指n*X，即连续匹配X个n, 如果是区间，先匹配多的，n{3，5}，优先得到连续5个符合n的字符串，例如：</p>
-<p><img src="D:\blog\img\reg\元字符n.png" alt="元字符n"></p>
+<p><img src="http://m.qpic.cn/psb?/V13oJHnV4UEUs2/LEtmPgahTGjywGwhRTQ8v866dEM9io3*51le7XSojO8!/b/dL4AAAAAAAAA&amp;bo=.QGUAPkBlAADGTw!&amp;rf=viewer_4" alt="0n"></p>
+<p>匹配的n{X}里的数字是指n*X，即连续匹配X个n, 如果是区间，先匹配多的，n{3，5}，优先得到连续5个符合n的字符串，例如：</p>
+<p><img src="http://m.qpic.cn/psb?/V13oJHnV4UEUs2/B.3Ak9WmE62u8RrBzXbiA4UkelY5pgOGP5*6Qv4ooVs!/b/dL8AAAAAAAAA&amp;bo=GAGVABgBlQADGTw!&amp;rf=viewer_4" alt="元字符n"></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = \^abc$\; <span class="comment">//匹配以abc开头，以abc结尾的字符串</span></span><br><span class="line"><span class="keyword">var</span> st1 = <span class="string">"abcabc"</span>; <span class="comment">//false</span></span><br><span class="line"><span class="keyword">var</span> str2 = <span class="string">"abc"</span>;<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
 <p><a href="http://www.w3school.com.cn/jsref/jsref_obj_regexp.asp" target="_blank" rel="noopener">http://www.w3school.com.cn/jsref/jsref_obj_regexp.asp</a></p>
 
