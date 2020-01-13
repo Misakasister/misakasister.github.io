@@ -87,13 +87,13 @@
 <meta property="og:site_name" content="misakasister的博客">
 <meta property="og:description" content="-&amp;gt; 源代码的文件名必须与公共类的名字相同。 数据类型在Java中共有8种基本类型，其中有4种整型，2种浮点类型，1种表示Unicode编码字符类型的char，1种表示真值的boolean类型。 整型整型用于表示没有小数部分的数值， 它允许是负数。Java 提供了 4 种整型。    类型 存储需求 取值范围     int 4字节 -2 147 483 648 - 2 147483647">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="d:/blog/source/images/java_core_technonlgy_1/base_program/type_casting.png">
-<meta property="og:image" content="d:/blog/source/images/java_core_technonlgy_1/base_program/print_format.png">
-<meta property="og:updated_time" content="2020-01-13T07:53:01.975Z">
+<meta property="og:image" content="https://github.com/Misakasister/misakasister.github.io/blob/master/images/java_core_technonlgy_1/base_program/type_casting.png?raw=true">
+<meta property="og:image" content="https://github.com/Misakasister/misakasister.github.io/blob/master/images/java_core_technonlgy_1/base_program/print_format.png?raw=true">
+<meta property="og:updated_time" content="2020-01-13T08:09:06.179Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java的基本程序设计结构">
 <meta name="twitter:description" content="-&amp;gt; 源代码的文件名必须与公共类的名字相同。 数据类型在Java中共有8种基本类型，其中有4种整型，2种浮点类型，1种表示Unicode编码字符类型的char，1种表示真值的boolean类型。 整型整型用于表示没有小数部分的数值， 它允许是负数。Java 提供了 4 种整型。    类型 存储需求 取值范围     int 4字节 -2 147 483 648 - 2 147483647">
-<meta name="twitter:image" content="d:/blog/source/images/java_core_technonlgy_1/base_program/type_casting.png">
+<meta name="twitter:image" content="https://github.com/Misakasister/misakasister.github.io/blob/master/images/java_core_technonlgy_1/base_program/type_casting.png?raw=true">
 
 
 
@@ -484,7 +484,7 @@
 <p>实际的计算方式将取决于 Intel 处理器的行为。在默认情况下，中间结果允许使用扩展 的指数， 但不允许使用扩展的尾数（Intel 芯片在截断尾数时并不损失性能） 。<strong>因此，这两种 方式的区别仅仅在于采用默认的方式不会产生溢出， 而采用严格的计算有可能产生溢出。</strong> </p>
 <p>如果没有仔细阅读这个注释， 也没有什么关系。对大多数程序来说， 浮点溢出不属 于大向题。</p>
 <h3 id="数值类型之间的转换"><a href="#数值类型之间的转换" class="headerlink" title="数值类型之间的转换"></a>数值类型之间的转换</h3><p>在下图中有 6 个实心箭头，表示无信息丢失的转换；有 3 个虚箭头， 表示可能有精度损失的转换。 </p>
-<p><img src="D:\blog\source\images\java_core_technonlgy_1\base_program\type_casting.png" alt="type_casting"></p>
+<p><img src="https://github.com/Misakasister/misakasister.github.io/blob/master/images/java_core_technonlgy_1/base_program/type_casting.png?raw=true" alt="type_casting"></p>
 <p>例如，123 456 789 是一个大整数， 它所包含的位数比 float 类型所能够表达的位数多。 当将这个整型数值转换为 float 类型时，将会得到同样大小的结果，但却失去了一定 的精度。 </p>
 <p>int n = 123456789;</p>
 <p> float f= n;//f is 1.23456792E8 </p>
@@ -527,7 +527,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">i-- ； </span><br><span class="line"><span class="keyword">if</span> (CharacterssSurrogate(sentence.charAt(i))) i-- ; </span><br><span class="line"><span class="keyword">int</span> cp = sentence.codePointAt(i);</span><br></pre></td></tr></table></figure>
 <p>显然， 这很麻烦。更容易的办法是使用 codePoints 方法， 它会生成一个 int 值的“ 流”， 每个 int 值对应一个码点。（流将在卷 II 的第 2 章中讨论〉 可以将它转换为一个数组，再完成遍历。<br><code>intD codePoints = str.codePoints（）.toArray（）;</code><br>反之，要把一个码点数组转换为一个字符串， 可以使用构造函数。<br><code>String str = new String(codePoints, 0, codePoints.length);</code></p>
 <h2 id="输入与输出"><a href="#输入与输出" class="headerlink" title="输入与输出"></a>输入与输出</h2><h3 id="格式化输出"><a href="#格式化输出" class="headerlink" title="格式化输出"></a>格式化输出</h3><p>可以使用静态的 String.format 方法创建一个格式化的字符串， 而不打印输出： String message = String.format(“Hello, %s. Next year, you’ll be %d”, name, age);</p>
-<p> <img src="D:\blog\source\images\java_core_technonlgy_1\base_program\print_format.png" alt=""></p>
+<p> <img src="https://github.com/Misakasister/misakasister.github.io/blob/master/images/java_core_technonlgy_1/base_program/print_format.png?raw=true" alt="format"></p>
 <h3 id="文件输入输出"><a href="#文件输入输出" class="headerlink" title="文件输入输出"></a>文件输入输出</h3><p>要想对文件进行读取，就需要一个用 File 对象构造一个 Scanner 对象，如下所示： </p>
 <p><code>Scanner in = new Scanner(Paths.get(&quot;niyflle.txt&quot;), &quot;UTF-8&quot;);</code></p>
 <p>如果文件名中包含反斜杠符号，就要记住在每个反斜杠之前再加一个额外的反斜杠： <code>“ c:\\mydirectory\\myfile.txt”</code> </p>
