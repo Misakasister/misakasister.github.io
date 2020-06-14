@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Java,踩坑记录," />
 
 
 
@@ -79,13 +79,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="misakasister的博客">
-<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+<meta name="description" content="问题描述： 前端环境：vue-cli 本机8080端口 后端环境： tomcat 本机8079端口 前端ajax请求无法传达后端，浏览器关闭同源策略后，后端的sessionid在不同的控制器变化，提示无法建立会话，并且前端浏览器没有cookie存储， 原理:略。 解决方案： 前端配置 在main.js里设置 1axios.defaults.withCredentials=true, 后端配置： 控">
+<meta name="keywords" content="Java,踩坑记录">
+<meta property="og:type" content="article">
+<meta property="og:title" content="解决跨域请求session值变化的问题">
+<meta property="og:url" content="http://yoursite.com/2020/06/14/跨域请求session变化/index.html">
 <meta property="og:site_name" content="misakasister的博客">
+<meta property="og:description" content="问题描述： 前端环境：vue-cli 本机8080端口 后端环境： tomcat 本机8079端口 前端ajax请求无法传达后端，浏览器关闭同源策略后，后端的sessionid在不同的控制器变化，提示无法建立会话，并且前端浏览器没有cookie存储， 原理:略。 解决方案： 前端配置 在main.js里设置 1axios.defaults.withCredentials=true, 后端配置： 控">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-06-14T04:39:11.808Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="misakasister的博客">
+<meta name="twitter:title" content="解决跨域请求session值变化的问题">
+<meta name="twitter:description" content="问题描述： 前端环境：vue-cli 本机8080端口 后端环境： tomcat 本机8079端口 前端ajax请求无法传达后端，浏览器关闭同源策略后，后端的sessionid在不同的控制器变化，提示无法建立会话，并且前端浏览器没有cookie存储， 原理:略。 解决方案： 前端配置 在main.js里设置 1axios.defaults.withCredentials=true, 后端配置： 控">
 
 
 
@@ -115,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/page/2/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/06/14/跨域请求session变化/"/>
 
 
 
 
 
-  <title>misakasister的博客</title>
+  <title>解决跨域请求session值变化的问题 | misakasister的博客</title>
   
 
 
@@ -140,8 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -278,9 +282,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -293,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/24/JavaScript DOM/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/14/跨域请求session变化/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="misakasisiter">
@@ -310,9 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/24/JavaScript DOM/" itemprop="url">JavaScript DOM</a></h1>
+          <h1 class="post-title" itemprop="name headline">解决跨域请求session值变化的问题</h1>
         
 
         <div class="post-meta">
@@ -324,8 +326,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-24T17:20:26+08:00">
-                2018-08-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-14T12:35:06+08:00">
+                2020-06-14
               </time>
             
 
@@ -384,22 +386,23 @@
       
 
       
-        
-          
-          概念DOM：文档对象模型
+        <p>问题描述：</p>
+<p>前端环境：vue-cli 本机8080端口</p>
+<p>后端环境： tomcat 本机8079端口</p>
+<p>前端ajax请求无法传达后端，浏览器关闭同源策略后，后端的sessionid在不同的控制器变化，提示无法建立会话，并且前端浏览器没有cookie存储，</p>
+<p>原理:略。</p>
+<p>解决方案：</p>
+<p>前端配置</p>
+<p>在main.js里设置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">axios.defaults.withCredentials=true,</span><br></pre></td></tr></table></figure>
+<p>后端配置：</p>
+<p>控制器类加：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@CrossOrigin(origins = &quot;*&quot;, maxAge = 3600)</span><br></pre></td></tr></table></figure>
+<p>maven下下载插件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.ebaysf.web&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;cors-filter&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.0.1&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<p>在web.xml配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- CORS--&gt;</span><br><span class="line">  &lt;filter&gt;   </span><br><span class="line">  &lt;filter-name&gt;CORS&lt;/filter-name&gt;   </span><br><span class="line">  &lt;!--类位置一般要改--&gt;</span><br><span class="line">  &lt;filter-class&gt;org.ebaysf.web.cors.CORSFilter&lt;/filter-class&gt;</span><br><span class="line">     &lt;init-param&gt;    </span><br><span class="line">       &lt;param-name&gt;cors.allowOrigin&lt;/param-name&gt;   </span><br><span class="line">          &lt;param-value&gt;*&lt;/param-value&gt;   </span><br><span class="line">          &lt;/init-param&gt;   </span><br><span class="line">          &lt;init-param&gt;      </span><br><span class="line">          &lt;param-name&gt;cors.supportedMethods&lt;/param-name&gt;     </span><br><span class="line">           &lt;param-value&gt;GET, POST, HEAD, PUT, DELETE&lt;/param-value&gt; </span><br><span class="line">             &lt;/init-param&gt;   </span><br><span class="line">             &lt;init-param&gt;     </span><br><span class="line">              &lt;param-name&gt;cors.supportedHeaders&lt;/param-name&gt;    </span><br><span class="line">                &lt;param-value&gt;Accept, Origin, X-Requested-With, Content-Type, Last-Modified, Access-Control-Allow-Origin&lt;/param-value&gt;   </span><br><span class="line">                &lt;/init-param&gt;   </span><br><span class="line">                &lt;init-param&gt;     </span><br><span class="line">                 &lt;param-name&gt;cors.exposedHeaders&lt;/param-name&gt;  </span><br><span class="line">                     &lt;param-value&gt;Set-Cookie&lt;/param-value&gt;  </span><br><span class="line">                      &lt;/init-param&gt;   &lt;init-param&gt;     </span><br><span class="line">                       &lt;param-name&gt;cors.supportsCredentials&lt;/param-name&gt;    </span><br><span class="line">                         &lt;param-value&gt;true&lt;/param-value&gt;  </span><br><span class="line">                          &lt;/init-param&gt;&lt;/filter&gt;</span><br><span class="line">                          &lt;filter-mapping&gt;   </span><br><span class="line">                          &lt;filter-name&gt;CORS</span><br><span class="line">                          &lt;/filter-name&gt;   </span><br><span class="line">                          &lt;url-pattern&gt;/*&lt;/url-pattern&gt;</span><br><span class="line">                          &lt;/filter-mapping&gt;</span><br></pre></td></tr></table></figure>
 
-DOM–&gt; Document Object Model
-DOM定义了表示和修改文档所需的方法。DOM对象即为宿主对象，由浏览器厂商定义，用来操作html和xml（没有CSS样式表）功能的一类对象的集合。
-获取元素注意：节点与元素节点不一样，节点包含元素节点，注释节点
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/08/24/JavaScript DOM/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
       
     </div>
     
@@ -414,314 +417,38 @@ DOM定义了表示和修改文档所需的方法。DOM对象即为宿主对象�
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/21/JavaScript 对象/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="misakasisiter">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1532079443968&di=f2c4e4274bb6cc892c92d2da3cb7ef6a&imgtype=0&src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201510%2F06%2F20151006110918_kTvcr.thumb.700_0.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="misakasister的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/21/JavaScript 对象/" itemprop="url">JavaScript 对象</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-21T09:39:59+08:00">
-                2018-08-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/编程/" itemprop="url" rel="index">
-                    <span itemprop="name">编程</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/Java/" rel="tag"># Java</a>
           
-
+            <a href="/tags/踩坑记录/" rel="tag"># 踩坑记录</a>
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
+      
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+      
       
       
 
       
-        
-          
-          概念对象是JavaScript的一个基本数据类型，是一种复合值，它将很多值（原始值或者其他对象）聚合在一起，可通过名字访问这些值。即属性的无序集合。
-创建方法1 对象字面量/对象直接量
-（字面量就是指这个量本身，比如字面量3。也就是指3. 再比如 string类型的字面量”ABC”, 这个”ABC”
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/08/21/JavaScript 对象/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/02/10/Java 继承/" rel="next" title="Java 继承">
+                <i class="fa fa-chevron-left"></i> Java 继承
+              </a>
+            
           </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
 
-    
+          <span class="post-nav-divider"></span>
 
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/18/JavaScript 闭包/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="misakasisiter">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1532079443968&di=f2c4e4274bb6cc892c92d2da3cb7ef6a&imgtype=0&src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201510%2F06%2F20151006110918_kTvcr.thumb.700_0.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="misakasister的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/18/JavaScript 闭包/" itemprop="url">JavaScript 闭包</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+          <div class="post-nav-prev post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-18T10:11:46+08:00">
-                2018-08-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/编程/" itemprop="url" rel="index">
-                    <span itemprop="name">编程</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-          我研究了两天，终于把闭包啃下来了…
-函数 声明 表达式首先我们要区分下函数的声明与函数表达式
-1234567声明：function test ()&#123;&#125;表达式：var test = function() abc()&#123;&#125; //test.name=abcvar de
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/08/18/JavaScript 闭包/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -731,295 +458,27 @@ DOM定义了表示和修改文档所需的方法。DOM对象即为宿主对象�
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/19/css笔记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="misakasisiter">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1532079443968&di=f2c4e4274bb6cc892c92d2da3cb7ef6a&imgtype=0&src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201510%2F06%2F20151006110918_kTvcr.thumb.700_0.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="misakasister的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/19/css笔记/" itemprop="url">css笔记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-19T15:26:11+08:00">
-                2018-07-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/编程/" itemprop="url" rel="index">
-                    <span itemprop="name">编程</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          CSS是用来干什么的？CSS全名叫Cascading Style Sheets，中文翻译为“层叠样式表”，简称样式表，它是一种制作网页的新技术。HTML文件就只包括资料，而CSS则是告诉浏览器这些资料应该要如何显现出来。打个比方，HTML是房子的框架，而CSS就是室内室外的装潢。css让网页变得好看
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/07/19/css笔记/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+    <div class="post-spread">
       
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
 
 
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/19/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="misakasisiter">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1532079443968&di=f2c4e4274bb6cc892c92d2da3cb7ef6a&imgtype=0&src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201510%2F06%2F20151006110918_kTvcr.thumb.700_0.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="misakasister的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/19/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-19T13:53:22+08:00">
-                2018-07-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in 
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/07/19/hello-world/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
           </div>
-          <!--/noindex-->
-        
-      
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zODE4MS8xNDcwOQ=="></div>
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
 
   
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-  </nav>
 
 
-
-          </div>
-          
-
-
-          
 
         </div>
         
@@ -1245,6 +704,10 @@ DOM定义了表示和修改文档所需的方法。DOM对象即为宿主对象�
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -1273,6 +736,17 @@ DOM定义了表示和修改文档所需的方法。DOM对象即为宿主对象�
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
