@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Java,Java核心技术卷1读书笔记," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="类、超类和子类定义子类在java中所有继承都是共有继承。 12public class Manager extends Employee｛｝ 关键字 extends 表明正在构造的新类派生于一个已存在的类。   已存在的类称为超类 ( superclass)、 基类（base class) 或父类（parent class);  新类称为子类（subclass)、 派生类 (derived cla">
+<meta name="keywords" content="Java,Java核心技术卷1读书笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 继承">
+<meta property="og:url" content="http://yoursite.com/2021/06/29/Java 继承/index.html">
+<meta property="og:site_name" content="rcos97的博客">
+<meta property="og:description" content="类、超类和子类定义子类在java中所有继承都是共有继承。 12public class Manager extends Employee｛｝ 关键字 extends 表明正在构造的新类派生于一个已存在的类。   已存在的类称为超类 ( superclass)、 基类（base class) 或父类（parent class);  新类称为子类（subclass)、 派生类 (derived cla">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-02-10T12:35:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java 继承">
+<meta name="twitter:description" content="类、超类和子类定义子类在java中所有继承都是共有继承。 12public class Manager extends Employee｛｝ 关键字 extends 表明正在构造的新类派生于一个已存在的类。   已存在的类称为超类 ( superclass)、 基类（base class) 或父类（parent class);  新类称为子类（subclass)、 派生类 (derived cla">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2021/06/29/Java 继承/"/>
+
+
+
+
+
+  <title>Java 继承 | rcos97的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">rcos97的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/06/29/Java 继承/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="rcos97">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1532079443968&di=f2c4e4274bb6cc892c92d2da3cb7ef6a&imgtype=0&src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201510%2F06%2F20151006110918_kTvcr.thumb.700_0.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="rcos97的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java 继承</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-06-29T23:45:10+08:00">
+                2021-06-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="类、超类和子类"><a href="#类、超类和子类" class="headerlink" title="类、超类和子类"></a>类、超类和子类</h2><h3 id="定义子类"><a href="#定义子类" class="headerlink" title="定义子类"></a>定义子类</h3><p>在java中所有继承都是共有继承。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Manager</span> <span class="keyword">extends</span> <span class="title">Employee</span>｛</span></span><br><span class="line"><span class="class">｝</span></span><br></pre></td></tr></table></figure>
+<p>关键字 extends 表明正在构造的新类派生于一个已存在的类。 </p>
+<p> 已存在的类称为超类 ( superclass)、 基类（base class) 或父类（parent class); </p>
+<p>新类称为子类（subclass)、 派生类 (derived class) 或孩子（child class)。</p>
+<p>前缀“ 超” 和“ 子” 来源于计算机科学和数学理论中的集合语言的术语。所有雇 员组成的集合包含所有经理组成的集合。可以这样说， 雇员集合是经理集合的超集， 也 可以说，经理集合是雇员集合的子集。 </p>
+<h3 id="覆盖方法"><a href="#覆盖方法" class="headerlink" title="覆盖方法"></a>覆盖方法</h3><p>超类Employee的有一个私有域salary，子类Manager有一个私有域bonus，超类和子类都有一个同名方法getSalary()。Employee的薪水只有薪水，Manager的薪水是薪水+奖金。那么子类Manager的薪水为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getSalary</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> salary+bouns;<span class="comment">//错误</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>因为 Manager 类的 getSalary() 方法不能够直接地访问超类的私有域。</p>
+<p>只有 Employee 类的方法才能够访问私有部 分。如果 Manager 类的方法一定要访问私有域， 就必须借助于公有的接口， Employee类中的 公有方法 getSalary 正是这样一个接口。</p>
+<p> 现在，再试一下。将对 salary 域的访问替换成调用超类的getSalary方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getSalary</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">super</span>.getSalaty()+bouns;<span class="comment">//正确</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>有些人认为 super 与 this 引用是类似的概念， 实际上，这样比较并不太恰当。这是 因为 super 不是一个对象的引用， 不能将 super 赋给另一个对象变量， 它只是一个指示编 译器调用超类方法的特殊关键字。</p>
+<p>在子类中可以增加域、 增加方法或覆盖超类的方法，然而绝对 不能删除继承的任何域和方法。 </p>
+<h3 id="子类构造器"><a href="#子类构造器" class="headerlink" title="子类构造器"></a>子类构造器</h3><p>给Manager提供一个构造器:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Manager</span><span class="params">(String name, <span class="keyword">double</span> salary, <span class="keyword">int</span> year, <span class="keyword">int</span> month, <span class="keyword">int</span> day)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>(name, salary, year, month, day); </span><br><span class="line">    bonus = <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里的关键字 super 具有不同的含义。语句 </p>
+<p><code>super(n, s, year, month, day);</code></p>
+<p>是“ 调用超类 Employee 中含有 n、s、year month 和 day 参数的构造器” 的简写形式。 </p>
+<p>由于 Manager 类的构造器不能访问 Employee 类的私有域， 所以必须利用 Employee 类 的构造器对这部分私有域进行初始化，我们可以通过 super 实现对超类构造器的调用。<strong>使用 super 调用构造器的语句必须是子类构造器的第一条语句</strong>。 </p>
+<p>如果子类的构造器没有显式地调用超类的构造器， 则将自动地调用超类默认（没有参数) 的构造器。 如果超类没有不带参数的构造器， 并且在子类的构造器中又没有显式地调用超类 的其他构造器 ，则 Java 编译器将报告错误。 </p>
+<hr>
+<p> 回忆一下， 关键字 this 有两个用途： 一是引用隐式参数，二是调用该类其他的构造器 ， 同样，super 关键字也有两个用途：一是调用超类的方法，二是调用超类的构造器。 在调用构造器的时候， 这两个关键字的使用方式很相似。调用构造器的语句只能作为另一个构造器的第一条语句出现。构造参数既可以传递给本类（this) 的其他构造器，也可以传递给超类（super) 的构造器。 </p>
+<hr>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Manager boss = <span class="keyword">new</span> Manager(<span class="string">"Carl Cracker"</span>, <span class="number">80000</span>，<span class="number">1987</span>, <span class="number">12</span>, <span class="number">15</span>);</span><br><span class="line">Emplyee e = boss;<span class="comment">//父类指向子类对象</span></span><br><span class="line">e.getSalary();<span class="comment">//调用子类的方法</span></span><br></pre></td></tr></table></figure>
+<p>当e引用 Employee 对象时，e.getSalary( ) 调用的是 Employee 类中的 getSalary 方法；当 e 引用 Manager 对象时，e.getSalary( ) 调用的是 Manager类中的 getSalary 方法。虚拟机知道 e 实际引用的对象类型，因此能够正确地调用相应的方法。</p>
+<p> 一个对象变量（例如， 变量 e) 可以指示多种实际类型的现象被称为<strong>多态</strong>（polymorphism)。 在运行时能够自动地选择调用哪个方法的现象称为动态绑定（dynamic binding)。</p>
+<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><p>有一个用来判断是否应该设计为继承关系的简单规则， 这就是“ is-a” 规则，它表明子类的每个对象也是超类的对象。例如，每个经理都是雇员。 因此，将 Manager 类设计为 Employee 类的子类是显而易见的，反之不然，并不是每一名雇员都是经理。</p>
+<p>“is-a” 规则的另一种表述法是置换法则。它表明程序中<strong>出现超类对象的任何地方都可以 用子类对象置换</strong>。 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Employee e; </span><br><span class="line">e = <span class="keyword">new</span> Employee(. . .); <span class="comment">// Employee object expected </span></span><br><span class="line">e =<span class="keyword">new</span> Manager(. . .); <span class="comment">// OK, Manager can be used as well</span></span><br></pre></td></tr></table></figure>
+<p>在 Java程序设计语言中，对象变量是多态的。 一个 Employee 变量既可以引用一个 Employee 类对象， 也可以引用一个 Employee 类的任何一个子类的对象。</p>
+<p>然而，不能将一个超类的引用赋给子类变量。例如，下面的赋值是非法的 </p>
+<p><code>Manager m = new Employee(); // Error</code></p>
+<p>原因很清楚：不是所有的雇员都是经理。 如果赋值成功，m 有可能引用了一个不是经理的 Employee 对象， 当在后面调用 m.setBonus(…) 时就有可能发生运行时错误。 </p>
+<h3 id="理解方法调用"><a href="#理解方法调用" class="headerlink" title="理解方法调用"></a>理解方法调用</h3><p>弄清楚如何在对象上应用方法调用非常重要。下面假设要调用 x.f(args)，隐式参数 x声 明为类 C 的一个对象。下面是调用过程的详细描述： </p>
+<p>1 ) 编译器査看对象的<strong>声明类型和方法名</strong>。假设调用 x.f(param)，且隐式参数 x声明为 C 类的对象。需要注意的是有可能存在多个名字为 f, 但参数类型不一样的方法。。编译器将会一一列举所有 C 类中名为 f 的方法和其超类中 访问属性为 public 且名为 f 的方法（超类的私有方法不可访问） 。 </p>
+<p>至此， 编译器已获得所有可能被调用的候选方法。 </p>
+<p>2 ) 接下来，编译器将査看调用方法时<strong>提供的参数类型</strong>。如果在所有名为 f 的方法中存在 一个与提供的参数类型完全匹配，就选择这个方法。这个过程被称为重载解析（overloading resolution)。</p>
+<p>由于允许类型转换（int 可以转换成double, Manager 可以转换成 Employee, 等等)， 所以这 个过程可能很复杂。如果编译器没有找到与参数类型匹配的方法， 或者发现经过类型转换后 有多个方法与之匹配， 就会报告一个错误。 </p>
+<p>至此， 编译器已获得需要调用的方法名字和参数类型。</p>
+<hr>
+<p>前面曾经说过，方法的名字和参数列表称为<strong>方法的签名</strong>。例如，f(int) 和 f(String) 是两个具有相同名字， 不同签名的方法。如果在子类中定义了一个与超类签名相同的方法， 那么子类中的这个方法就覆盖了超类中的这个相同签名的方法。</p>
+<p>不过，返回类型不是签名的一部分， 因此，在覆盖方法时， 一定要保证返回类型 的兼容性。 <strong>允许子类将覆盖方法的返回类型定义为原返回类型的子类型或者相同。</strong></p>
+<hr>
+<p>3 ) 如果是 private 方法、 static 方法、final 方法或者构造器， 那么编译器将可以准确地知道应该调用哪个方法， 我们将这种调用方式称为<strong>静态绑定（static binding)</strong>。与此对应的是，调用的方法依赖于隐式参数的实际类型， 并且在运行时实现动态绑定。在我们列举的示例中， 编译器采用动态绑定的方式生成一条调用 f (String) 的指令。 </p>
+<p>4 ) 当程序运行，并且采用<strong>动态绑定</strong>调用方法时， 虚拟机一定调用与 x 所引用对象的实际类型最合适的那个类的方法。<strong>假设 x 的实际类型是 D，它是C类的子类。如果 D类定义了 方法 f(String)，就直接调用它；否则，将在 D类的超类中寻找 f(String)， 以此类推。</strong> </p>
+<p>每次调用方法都要进行搜索，时间开销相当大。因此，虚拟机预先为每个类创建了一个 <strong>方法表</strong>（method table), 其中列出了所有方法的签名和实际调用的方法。这样一来，在真正 调用方法的时候， 虚拟机仅查找这个表就行了。</p>
+<hr>
+<p><strong>在覆盖一个方法的时候，子类方法不能低于超类方法的可见性。特别是， 如果超类方法是 public, 子类方法一定要声明为 public。</strong>经常会发生这类错误：在声明子类方法的时 候， 遗漏了 public 修饰符。此时，编译器将会把它解释为试图提供更严格的访问权限。 </p>
+<hr>
+<h3 id="阻止继承：final-类和方法"><a href="#阻止继承：final-类和方法" class="headerlink" title="阻止继承：final 类和方法"></a>阻止继承：final 类和方法</h3><p>有时候，可能希望阻止人们利用某个类定义子类。不允许扩展的类被称为 final 类。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Executive</span> <span class="keyword">extends</span> <span class="title">Manager</span></span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>类中的特定方法也可以被声明为 final。如果这样做，子类就不能覆盖这个方法（final 类中的所有方法自动成为final 方法，但不包括域，final域是构造后不可改变值）。</p>
+<h3 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h3><p>正像有时候需要将浮点型数值转换成整型数值一样，有时候也可能需要将某个类的对象 引用转换成另外一个类的对象引用。对象引用的转换语法与数值表达式的类型转换类似， 仅 需要用一对圆括号将目标类名括起来，并放置在需要转换的对象引用之前就可以了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Employee e = <span class="keyword">new</span> Manager();<span class="comment">//子类对象声明为父类类型后，可强制转型</span></span><br><span class="line">Manager boss = (Manager) e;<span class="comment">//下转型</span></span><br></pre></td></tr></table></figure>
+<p>进行类型转换的唯一原因是：在暂时忽视对象的实际类型之后，使用对象的全部功能。 比如我们让boss访问Manager新增的变量和方法。(<strong>e 是不能访问 Manager 新增的方法和变量的</strong>)</p>
+<p>将一个值存入变量时， 编译器将检查是否允许该操作。将一个子类的引用赋给一个超类变量，编译器是允许的。但将一个超类的引用赋给一个子类变量， 必须进行类型转换， 这样 才能够通过运行时的检査。 </p>
+<p>如果试图在继承链上进行向下的类型转换，并且“ 谎报” 有关对象包含的内容， Java运行时系统将报告这个错误，并产生一个 ClassCastException 异常。 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Emplyee e = <span class="keyword">new</span> Employee();<span class="comment">//根本没有子类的事情</span></span><br><span class="line">Manager boss = (Manager) e;<span class="comment">//错误</span></span><br></pre></td></tr></table></figure>
+<p>应该养成这样一个良好的程序设计习惯： 在进行类型转换之前，先查看一下是否能够成功地转换。这个过程简单地使用 instanceof操作符(A instanceof B A是B的实例或子类？)就可以实现。 例如： </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(e <span class="keyword">instanceof</span> Manager)&#123;</span><br><span class="line">    boss = (Manager) e;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>实际上，通过类型转换调整对象的类型并不是一种好的做法。在我们列举的示例中， 大 多数情况并不需要将 Employee 对象转换成 Manager 对象， 两个类的对象都能够正确地调用 getSalary方法，这是因为实现多态性的动态绑定机制能够自动地找到相应的方法。 </p>
+<p>只有在使用 Manager 中特有的方法时才需要进行类型转换， 例如， setBonus 方法 如果 鉴于某种原因，发现需要通过 Employee 对象调用 setBonus方法， 那么就应该检查一下超类 的设计是否合理。重新设计一下超类，并添加 setBonus法才是正确的选择。请记住，只要 没有捕获 ClassCastException异常，程序就会终止执行。 在一般情况下，应该尽量少用类型转换和 instanceof 运算符。</p>
+<h3 id="多态与继承及instanceof的一个例子"><a href="#多态与继承及instanceof的一个例子" class="headerlink" title="多态与继承及instanceof的一个例子"></a>多态与继承及instanceof的一个例子</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span></span>&#123;<span class="comment">//父类</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"animal eat"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eatAnimal</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"animal eatAnimal"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">extends</span> <span class="title">Animal</span></span>&#123;<span class="comment">//子类</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"cat eat"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eatFish</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"cat eatFish"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DT</span> </span>&#123;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">	Ainmal a = <span class="keyword">new</span> Cat();</span><br><span class="line">	Cat b = <span class="keyword">new</span> Cat();</span><br><span class="line">	a.eat();<span class="comment">//cat eat Cat子类重写了eat方法，调用子类的方法,是多态</span></span><br><span class="line">	((Cat)a).eatFish();<span class="comment">//cat eatFish 直接a.eatFish会报错，需要强制类型转换，Animal类没有eatFish方法</span></span><br><span class="line">	a.eatAnimal();<span class="comment">//animal eatAnimal Animal类里的eatAnimal方法被调用</span></span><br><span class="line">	b.eatFish();<span class="comment">//cat Fish Cat类的eatFish方法被调用</span></span><br><span class="line">	b.eatAnimal();<span class="comment">//animal eatAnimal Cat类继承的eatAnimal方法被调用</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//instanceof</span></span><br><span class="line">    Animal c = <span class="keyword">new</span> Animal();  </span><br><span class="line">    System.out.println(a <span class="keyword">instanceof</span> Animal);<span class="comment">//true</span></span><br><span class="line">	System.out.println(a <span class="keyword">instanceof</span> Cat);<span class="comment">//true</span></span><br><span class="line">	System.out.println(b <span class="keyword">instanceof</span> Animal);<span class="comment">//true</span></span><br><span class="line">	System.out.println(c <span class="keyword">instanceof</span> Cat); <span class="comment">//false</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h3><p>使用 abstract 关键字，这样就完全不需要实现这个方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> String <span class="title">getDescription</span><span class="params">()</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>为了提高程序的清晰度， 包含一个或多个抽象方法的类本身必须被声明为抽象的。</strong> </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>抽象类可以包含普通方法。</p>
+<p>抽象方法充当着占位的角色， 它们的具体实现在子类中。扩展抽象类可以有两种选择。 一种是在抽象类中定义部分抽象类方法或不定义抽象类方法，这样就必须将子类也标记为抽 象类；另一种是定义全部的抽象方法，这样一来，子类就不是抽象的了。 </p>
+<p>类即使不含抽象方法，也可以将类声明为抽象类。 </p>
+<p>抽象类不能被实例化。</p>
+<h3 id="受保护访问"><a href="#受保护访问" class="headerlink" title="受保护访问"></a>受保护访问</h3><p>然而，在有些时候，人们希望超类中的某些方法允许被子类访问， 或允许子类的方法访 问超类的某个域。为此， 需要将这些方法或域声明为 protected。</p>
+<p>下面归纳一下 Java 用于控制可见性的 4 个访问修饰符： </p>
+<p>1 ) 仅对本类可见 private。</p>
+<p>2 ) 对所有类可见 public。</p>
+<p>3 ) 对本包和所有子类可见 protected。 </p>
+<p>4 ) 对本包可见 默认， 不需要修饰符。</p>
+<h2 id="Object：-所有类的超类"><a href="#Object：-所有类的超类" class="headerlink" title="Object： 所有类的超类"></a>Object： 所有类的超类</h2><p>Object 类是 Java 中<strong>所有类</strong>的始祖。 在 Java 中每个类都是由它扩展而来的。但是并不需 要这样写： </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> <span class="keyword">extends</span> <span class="title">Object</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>如果没有明确地指出超类，Object 就被认为是这个类的超类。</p>
+<p>在 Java 中，只有基本类型（primitive types) 不是对象， 例如，数值、 字符和布尔类型的 值都不是对象。 </p>
+<p>所有的数组类塱，不管是对象数组还是基本类型的数组都扩展了 Object 类。 </p>
+<h3 id="equals-方法"><a href="#equals-方法" class="headerlink" title="equals 方法"></a>equals 方法</h3><p>Object 类中的 equals方法用于检测一个对象是否等于另外一个对象。在 Object 类中，这个方法将判断两个对象<strong>是否具有相同的引用</strong>。如果两个对象具有相同的引用， 它们一定是相等的。不过我们一般比较值是否相同，所以一般需要重写该方法。</p>
+<p>下面给出编写一个完美的 equals方法的建议： </p>
+<p>1 ) 显式参数命名为 otherObject, 稍后需要将它转换成另一个叫做 other 的变量。</p>
+<p> 2 ) 检测 this 与 otherObject 是否引用同一个对象： </p>
+<p>if (this = otherObject) return true;</p>
+<p> 这条语句只是一个优化。实际上，这是一种经常采用的形式。因为计算这个等式要比一 个一个地比较类中的域所付出的代价小得多。 </p>
+<p>3 ) 检测 otherObject 是否为 null, 如果为 null, 返 回 false。这项检测是很必要的。 </p>
+<p>if (otherObject = null) return false; </p>
+<p>4 ) 比较 this 与 otherObject 是否属于同一个类。如果 equals 的语义在每个子类中有所改变（父类与子类比较），就使用 getClass 检测： </p>
+<p>if (getClass() != otherObject.getCIassO) return false;</p>
+<p> 如果所有的子类都拥有统一的语义（对象统一），就使用 instanceof检测： </p>
+<p>if (!(otherObject instanceof ClassName)) return false; </p>
+<p>5 ) 将 otherObject 转换为相应的类类型变量： </p>
+<p>ClassName other = (ClassName) otherObject </p>
+<p>6 ) 现在开始对所有需要比较的域进行比较了。使用 == 比较基本类型域，使用 equals 比 较对象域。如果所有的域都匹配， 就返回 true; 否则返 回 false。 </p>
+<p>如果在子类中重新定义 equals, 就要在其中包含调用super.equals(other)。 </p>
+<h3 id="hashCode-方法"><a href="#hashCode-方法" class="headerlink" title="hashCode 方法"></a>hashCode 方法</h3><p>散列码（ hash code) 是由对象导出的一个整型值。散列码是没有规律的。如果 x 和 y 是 两个不同的对象， x.hashCode( ) 与 y.hashCode( ) <strong>基本上</strong>不会相同。 </p>
+<p>如果重新定义 equals方法，就必须重新定义 hashCode方法， 以便用户可以将对象插人到散列表中（第一行比较this==otherObject）。</p>
+<p>需要组合多个散列值时，可以调用 ObjeCtS.hash 并提供多个参数。这 个方法会对各个参数调用 Objects.hashCode， 并组合这些散列值。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Object.hash(name,salary,hireDay);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Equals 与 hashCode 的定义必须一致：如果 x.equals(y) 返回 true, 那么 x.hashCode( ) 就必 须与 y.hashCode( ) 具有相同的值。</p>
+<h3 id="toString-方法"><a href="#toString-方法" class="headerlink" title="toString 方法"></a>toString 方法</h3><p>在 Object 中还有一个重要的方法， 就是 toString方法， 它用于返回表示对象值的字符 串。</p>
+<p>绝大多数（但不是全部）的 toString方法都遵循这样的格式：类的名字，随后是一对方括号括起来的域值。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> getClass().getName()+<span class="string">"[name="</span>+name+<span class="string">",salary"</span>=salary+<span class="string">"]"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最好通过调用getClass( ).getName( ) 获得类名的字符串,而不要将类名硬加到toString()方法中。</p>
+<p>Object 类定义了 toString方法， 用来打印输出对象所属的类名和散列码。</p>
+<h2 id="泛型数组列表"><a href="#泛型数组列表" class="headerlink" title="泛型数组列表"></a>泛型数组列表</h2><p>ArrayList 是一个采用类型参数（type parameter) 的泛型类（generic class)。为了指定数 组列表保存的元素对象类型，需要用一对尖括号将类名括起来加在后面， 例如，ArrayList \<employee>。</employee></p>
+<p>下面声明和构造一个保存 Employee 对象的数组列表： <code>ArrayList&lt;Employee&gt; staff = new ArrayList&lt;Employee&gt;;</code></p>
+<p>两边都使用类型参数 Employee， 这有些繁琐。Java SE 7中， 可以省去右边的类型参数： </p>
+<p><code>ArrayList&lt;Employee&gt; staff = new ArrayList&lt;&gt;；</code></p>
+<p>使用add 方法可以将元素添加到数组列表中。</p>
+<p>如果已经清楚或能够估计出数组可能存储的元素数量， 就可以在填充数组之前调用 ensureCapacity方法： </p>
+<p><code>staff.ensureCapacity(lOO);</code></p>
+<p>另外，还可以把初始容量传递给 ArrayList 构造器： </p>
+<p><code>ArrayList&lt;Employee&gt; staff = new ArrayList(100);</code></p>
+<p>size方法将返回数组列表中包含的实际元素数目。</p>
+<p>一旦能够确认数组列表的大小不再发生变化，就可以调用 trimToSize方法。这个方法将 存储区域的大小调整为当前元素数量所需要的存储空间数目。垃圾回收器将回收多余的存储 空间。</p>
+<p>一旦整理了数组列表的大小，添加新元素就需要花时间再次移动存储块，所以应该在确 认不会添加任何元素时， 再调用 trimToSize。</p>
+<h3 id="访问数组列表元素"><a href="#访问数组列表元素" class="headerlink" title="访问数组列表元素"></a>访问数组列表元素</h3><p> 使用 get 和 set 方法实现访问或改变数组元素的操作，而不使用人们喜爱的 [ ]语法格式。 </p>
+<p>只有 i 小于或等于数组列表的大小时， 才能够调用 list.set(i, x)。</p>
+<p>使用 add 方法为数组添加新元素， 而不要使用 set 方法， 它只能替换数组中已经存在 的元素内容。 </p>
+<p>使用下列格式获得数组列表的元素: </p>
+<p><code>Employee e = staff.get(i);</code></p>
+<h2 id="对象包装器与自动装箱"><a href="#对象包装器与自动装箱" class="headerlink" title="对象包装器与自动装箱"></a>对象包装器与自动装箱</h2><p>有时， 需要将 int 这样的基本类型转换为对象。所有的基本类型都冇一个与之对应的类。 例如Integer 类对应基本类型 int。通常， 这些类称为包装器 （ wrapper) 这些对象包装器类 拥有很明显的名字：Integer、Long、Float、Double、Short、Byte、Character、Void 和 Boolean (前 6 个类派生于公共的超类 Number)。对象包装器类是不可变的，即一旦构造了包装器，就不 允许更改包装在其中的值。同时， 对象包装器类还是 final, 因此不能定义它们的子类。 </p>
+<p>假设想定义一个整型数组列表。而尖括号中的类型参数不允许是基本类型，也就是说， 不允许写成 ArrayList\<int>。这里就用到了 Integer 对象包装器类。我们可以声明一个 Integer 对象的数组列表。 </int></p>
+<p><code>ArrayList&lt;Integer&gt; list = new ArrayList&lt;Integer&gt;()</code></p>
+<p>由于每个值分别包装在对象中， 所以 ArrayList\<lnteger> 的效率远远低于 int[ ] 数组。 因此， 应该用它构造小型集合，其原因是此时程序员操作的方便性要比执行效率更加重要。</lnteger></p>
+<p> 幸运的是， 有一个很有用的特性，从而更加便于添加 int类型的元素到 ArrayLisKlntegeP 中。下面这个调用 </p>
+<p><code>list.add(3)</code></p>
+<p>将会自动转变为：</p>
+<p><code>list.add(Integer.Valueof(3))</code></p>
+<p>这种变换被称为<strong>自动装箱</strong>（autoboxing)。</p>
+<p>相反地， 当将一个 Integer 对象赋给一个 int 值时， 将会自动地拆箱。也就是说， 编译器将下列语句：</p>
+<p><code>int n = list. get(i);</code></p>
+<p>翻译成</p>
+<p><code>int n = list.get(i).intValue();</code></p>
+<p>大多数情况下，容易有一种假象， 即基本类型与它们的对象包装器是一样的，只是它们 的相等性不同。大家知道， == 运算符也可以应用于对象包装器对象， 只不过检测的是对象是 否指向同一个存储区域， 因此，下面的比较通常不会成立： </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Integer a = <span class="number">1000</span>; </span><br><span class="line">Integer b = <span class="number">1000</span>; </span><br><span class="line"><span class="keyword">if</span> (a = b) ...</span><br></pre></td></tr></table></figure>
+<p>然而，Java 实现却有可能（may) 让它成立。如果将经常出现的值包装到同一个对象中， 这种比较就有可能成立。这种不确定的结果并不是我们所希望的。解决这个问题的办法是在 两个包装器对象比较时调用 equals方法。 </p>
+<p>自动装箱规范要求 boolean、byte、char&lt;=127， 介于 -128 ~ 127 之间的 short 和 int 被包装到固定的对象中。例如，如果在前面的例子中将 a 和 b 初始化为 100，对它们进行比较的结果一定成立。 </p>
+<hr>
+<p>有些人认为包装器类可以用来实现修改数值参数的方法， 然而这是错误的。由于 Java 方法都是值传递， 所以不可能编写一个下面这样的能够增加 整型参数值的 Java 方法: </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">triple</span><span class="params">(<span class="keyword">int</span> x)</span> <span class="comment">// won't work </span></span></span><br><span class="line"><span class="function"></span>&#123; x = <span class="number">3</span> * x; <span class="comment">// modifies local variable </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将 int 替换成 Integer :</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">triple</span><span class="params">(Integer x)</span> <span class="comment">// won't work</span></span></span><br><span class="line"><span class="function"></span>&#123; x = <span class="number">3</span> *x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>问题是 Integer 对象是不可变的： 包含在包装器中的内容不会改变: 不能使用这些包 装器类创建修改数值参数的方法。 </p>
+<p>如果想编写一个修改数值参数值的方法， 就需要使用在 org.omg.CORBA 包中定义的 <strong>持有者（ holder) 类型</strong>， 包括 IntHolder、BooleanHolder 等。每个持有者类型都包含’一个 公有（！）域值，通过它可以访问存储在其中的值。 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">triple</span><span class="params">(IntHolder x)</span> </span></span><br><span class="line"><span class="function"></span>&#123; x.value = <span class="number">3</span> * x.value; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="参数数量可变的方法"><a href="#参数数量可变的方法" class="headerlink" title="参数数量可变的方法"></a>参数数量可变的方法</h2><p>在 Java SE 5.0 以前的版本中，每个 Java方法都有固定数量的参数。然而，现在的版本 提供了可以用可变的参数数量调用的方（有时称为“ 变参” 方法)。 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">double</span> <span class="title">max</span><span class="params">(<span class="keyword">double</span>... values)</span> </span>&#123; </span><br><span class="line">    <span class="keyword">double</span> largest = Double.NECATIVEJNFINITY; </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">double</span> v : values) </span><br><span class="line">        <span class="keyword">if</span> (v &gt; largest) </span><br><span class="line">            largest = v; <span class="keyword">return</span> largest; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里的省略号 . . . 是 Java 代码的一部分，它表明这个方法可以接收任意数量的double 类型，存放在values[]数组中。</p>
+<p>可以像下面这样调用这个方法： </p>
+<p>double m = max(3.1 , 40.4, -5); </p>
+<p>编译器将 new double[ ] {3.1, 40.4,-5} 传递给 max方法。 </p>
+<h2 id="枚举类"><a href="#枚举类" class="headerlink" title="枚举类"></a>枚举类</h2><p>在定义枚举类型时我们使用的关键字是enum，与class关键字类似，：</p>
+<p><code>public enum Size { SMALL, MEDIUM, LARGE, EXTRAJARGE };</code></p>
+<p>实际上， 这个声明定义的类型是一个类， 它刚好有 4 个实例， 在此尽量不要构造新对象。 </p>
+<p>因此， 在比较两个枚举类型的值时， 永远不需要调用 equals, 而直接使用“ = =” 就 可以了。 </p>
+<p>定义一个枚举类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> Size&#123;</span><br><span class="line">	SMAll(<span class="string">"s"</span>,<span class="number">1</span>),MEDIUM(<span class="string">"M"</span>,<span class="number">2</span>);<span class="comment">//会调用第5行的构造函数，补充信息</span></span><br><span class="line">	<span class="keyword">private</span> String desc;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="title">Size</span><span class="params">(String desc,<span class="keyword">int</span> id)</span> </span>&#123;<span class="comment">//构造函数</span></span><br><span class="line">		<span class="keyword">this</span>.desc=desc;</span><br><span class="line">		<span class="keyword">this</span>.id = id;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getDesc</span><span class="params">()</span> </span>&#123;<span class="comment">//通过Size.SMAll.getDesc()调用，获得信息</span></span><br><span class="line">		<span class="keyword">return</span> desc+<span class="string">" "</span>+id;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>所有的枚举类型都是 Enum 类的子类。它们继承了这个类的许多方法。其中最有用的一 个是 toString， 这个方法能够返回枚举常量名。例如， Size.SMALL.toString( ) 将返回字符串 “ SMALL”。 </p>
+<h2 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h2><p>能够分析类能力的程序称为反射（reflective)。 反射机制可以用来： </p>
+<p>•在运行时分析类的能力。 </p>
+<p>•在运行时查看对象， 例如， 编写一个 toString方法供所有类使用。</p>
+<p> •实现通用的数组操作代码。 </p>
+<p>•利用 Method 对象， 这个对象很像中的函数指针。</p>
+<h3 id="Class-类"><a href="#Class-类" class="headerlink" title="Class 类"></a>Class 类</h3><p>在程序运行期间，Java运行时系统始终为所有的对象维护一个被称为运行时的类型标识。 这个信息跟踪着每个对象所属的类。虚拟机利用运行时类型信息选择相应的方法执行。 </p>
+<hr>
+<p>在java语言中，万事万物皆对象，但是静态成员不是对象（静态成员属于类），普通数据类型不是对象。</p>
+<p><strong>类也是对象，类是java.lang.Class 类的实例对象。</strong> 这个对象称为类类型（class type）</p>
+<hr>
+<h3 id="三种实例化Class的实例对象的方法"><a href="#三种实例化Class的实例对象的方法" class="headerlink" title="三种实例化Class的实例对象的方法"></a>三种实例化Class的实例对象的方法</h3><p>1、可以通过专门的 Java 类访问这些信息。保存这些信息的类被称为 Class, 这个名 字很容易让人混淆。Object 类中的 getClass( ) 方法将会返回一个 Class 类型的实例。 </p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Manage m = <span class="keyword">new</span> Manager();</span><br><span class="line">Class c = m.getClass();</span><br><span class="line">syso(c.getName());<span class="comment">//输出 class 包名.Manager;</span></span><br></pre></td></tr></table></figure>
+<p>2、还可以调用静态方法 forName(String classname) 获得类名对应的 Class 对象。 classname 要带上包名。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Class c1 = Class.forName(c.getName());</span><br></pre></td></tr></table></figure>
+<p>如果类名保存在字符串中，并可在运行中改变， 就可以使用这个方法。当然， 这个方法 只有在 classname 是类名或接口名时才能够执行。否则，forName 方法将抛出一个 checked exception (已检查异常） 。无论何时使用这个方法， 都应该提供一个异常处理器（exception handler)。</p>
+<p>3、第三种方法时通过T.class 获得Class类型，例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Class cl1 = Random.class;<span class="comment">//引入Random包-》class 是隐形的静态成员变量</span></span><br><span class="line">Class cl2 = <span class="keyword">int</span>.class;</span><br><span class="line">Class cl3 = Double[].class;</span><br></pre></td></tr></table></figure>
+<p>请注意，一个 Class 对象实际上<strong>表示的是一个类型</strong>，而这个类型未必一定是一种类。例如， int 不是类，但 int.class 是一个 Class 类型的对象。 </p>
+<p>虚拟机为每个类型管理一个 Class 对象。因此， 可以利用==运算符实现两个类对象比较的操作。 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(m.getClass()==Manager.class)</span><br></pre></td></tr></table></figure>
+<p><strong>一个类只可能是Class 类的一个实例对象。</strong></p>
+<h3 id="通过类类型创建对象"><a href="#通过类类型创建对象" class="headerlink" title="通过类类型创建对象"></a>通过类类型创建对象</h3><p>有一个很有用的方法 newlnstance( )， 可以用来动态地创建一个类的实例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">m.getClass0.newlnstance();</span><br></pre></td></tr></table></figure>
+<p>创建了一个与 e具有相同类类型的实例。newlnstance方法调用默认的构造器（没有参数的构造器）初始化新创建的对象。如果这个类没有默认的构造器， 就会抛出一个异常。</p>
+<p>将 forName 与 newlnstance 配合起来使用， 可以根据存储在字符串中的类名创建一个对象 。</p>
+<h3 id="利用反射分析类的能力"><a href="#利用反射分析类的能力" class="headerlink" title="利用反射分析类的能力"></a>利用反射分析类的能力</h3><p>在java.lang.reflect 包中有三个类 Field、Method 和 Constructor 分别用于描述类的域、 方法和构造器。（域是Field类的对象，方法是Method的对象，构造器是Constructor的对象）。</p>
+<p>例子，Method类获得类的方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Class e = Manager.class;</span><br><span class="line">Method m = e.getMethods();</span><br><span class="line">syso(m[<span class="number">0</span>]);<span class="comment">//获得Manager类的一个方法名字</span></span><br></pre></td></tr></table></figure>
+<p> 想获得类的其它信息同理，查阅API手册。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+            <a href="/tags/Java核心技术卷1读书笔记/" rel="tag"># Java核心技术卷1读书笔记</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/06/29/Java 对象 与 类/" rel="next" title="Java 对象 与 类">
+                <i class="fa fa-chevron-left"></i> Java 对象 与 类
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/06/29/JavaScript DOM/" rel="prev" title="JavaScript DOM">
+                JavaScript DOM <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zODE4MS8xNDcwOQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1532079443968&di=f2c4e4274bb6cc892c92d2da3cb7ef6a&imgtype=0&src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201510%2F06%2F20151006110918_kTvcr.thumb.700_0.png"
+                alt="rcos97" />
+            
+              <p class="site-author-name" itemprop="name">rcos97</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#类、超类和子类"><span class="nav-number">1.</span> <span class="nav-text">类、超类和子类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义子类"><span class="nav-number">1.1.</span> <span class="nav-text">定义子类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#覆盖方法"><span class="nav-number">1.2.</span> <span class="nav-text">覆盖方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#子类构造器"><span class="nav-number">1.3.</span> <span class="nav-text">子类构造器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多态"><span class="nav-number">1.4.</span> <span class="nav-text">多态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#理解方法调用"><span class="nav-number">1.5.</span> <span class="nav-text">理解方法调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#阻止继承：final-类和方法"><span class="nav-number">1.6.</span> <span class="nav-text">阻止继承：final 类和方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#强制类型转换"><span class="nav-number">1.7.</span> <span class="nav-text">强制类型转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多态与继承及instanceof的一个例子"><span class="nav-number">1.8.</span> <span class="nav-text">多态与继承及instanceof的一个例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#抽象类"><span class="nav-number">1.9.</span> <span class="nav-text">抽象类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#受保护访问"><span class="nav-number">1.10.</span> <span class="nav-text">受保护访问</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object：-所有类的超类"><span class="nav-number">2.</span> <span class="nav-text">Object： 所有类的超类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#equals-方法"><span class="nav-number">2.1.</span> <span class="nav-text">equals 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hashCode-方法"><span class="nav-number">2.2.</span> <span class="nav-text">hashCode 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#toString-方法"><span class="nav-number">2.3.</span> <span class="nav-text">toString 方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#泛型数组列表"><span class="nav-number">3.</span> <span class="nav-text">泛型数组列表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#访问数组列表元素"><span class="nav-number">3.1.</span> <span class="nav-text">访问数组列表元素</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象包装器与自动装箱"><span class="nav-number">4.</span> <span class="nav-text">对象包装器与自动装箱</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参数数量可变的方法"><span class="nav-number">5.</span> <span class="nav-text">参数数量可变的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#枚举类"><span class="nav-number">6.</span> <span class="nav-text">枚举类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反射"><span class="nav-number">7.</span> <span class="nav-text">反射</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Class-类"><span class="nav-number">7.1.</span> <span class="nav-text">Class 类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三种实例化Class的实例对象的方法"><span class="nav-number">7.2.</span> <span class="nav-text">三种实例化Class的实例对象的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过类类型创建对象"><span class="nav-number">7.3.</span> <span class="nav-text">通过类类型创建对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#利用反射分析类的能力"><span class="nav-number">7.4.</span> <span class="nav-text">利用反射分析类的能力</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rcos97</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
