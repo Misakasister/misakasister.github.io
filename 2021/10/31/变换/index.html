@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="计算机图形学," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="2D变换（2D transformation）缩放（Scale） 坐标(x,y)缩放至(x’,y’)，x轴缩放 $$s_x=0.5$$ ，y轴缩放$$s_y=1$$： $$x’=s_xx+0y\y’=0x+s_yy$$矩阵形式：$$\left[\begin{matrix}s_x&amp;amp;0\0&amp;amp;s_y\\end{matrix}\right]*\left[\begin{matrix}x\y\">
+<meta name="keywords" content="计算机图形学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="变换">
+<meta property="og:url" content="http://yoursite.com/2021/10/31/变换/index.html">
+<meta property="og:site_name" content="rcos97的博客">
+<meta property="og:description" content="2D变换（2D transformation）缩放（Scale） 坐标(x,y)缩放至(x’,y’)，x轴缩放 $$s_x=0.5$$ ，y轴缩放$$s_y=1$$： $$x’=s_xx+0y\y’=0x+s_yy$$矩阵形式：$$\left[\begin{matrix}s_x&amp;amp;0\0&amp;amp;s_y\\end{matrix}\right]*\left[\begin{matrix}x\y\">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2021/10/31/变换/image-20211029172151877.png">
+<meta property="og:image" content="http://yoursite.com/2021/10/31/变换/image-20211029172342274.png">
+<meta property="og:image" content="http://yoursite.com/2021/10/31/变换/image-20211029173005341.png">
+<meta property="og:image" content="http://yoursite.com/2021/10/31/变换/image-20211029190438112.png">
+<meta property="og:image" content="http://yoursite.com/2021/10/31/变换/image-20211029191432719.png">
+<meta property="og:image" content="http://yoursite.com/2021/10/31/变换/v2-ff605e1490c88ee973f68dd1357cf228_r.jpg">
+<meta property="og:image" content="http://yoursite.com/2021/10/31/变换/v2-7996e53eb81649ba2961e05064cf89ca_720w.jpg">
+<meta property="og:image" content="http://yoursite.com/2021/10/31/变换/v2-9ed3053ad36750bb18ec4026dc42c57b_720w.jpg">
+<meta property="og:image" content="http://yoursite.com/2021/10/31/变换/v2-8d71b77077dce5e8d310e34c67536c62_720w.png">
+<meta property="og:image" content="http://yoursite.com/2021/10/31/变换/image-20211031165538497.png">
+<meta property="og:image" content="http://yoursite.com/2021/10/31/变换/image-20211031163546374.png">
+<meta property="og:image" content="http://yoursite.com/2021/10/31/变换/image-20211031163726579.png">
+<meta property="og:image" content="http://yoursite.com/2021/10/31/变换/image-20211029203812161.png">
+<meta property="og:image" content="http://yoursite.com/2021/10/31/变换/image-20211029203824427.png">
+<meta property="og:image" content="http://yoursite.com/2021/10/31/变换/v2-c1c5f206700a09a6b76cc8b2640a797b_720w.png">
+<meta property="og:image" content="http://yoursite.com/2021/10/31/变换/image-20211031165747220.png">
+<meta property="og:image" content="http://yoursite.com/2021/10/31/变换/image-20211030170423431.png">
+<meta property="og:image" content="http://yoursite.com/2021/10/31/变换/image-20211030170433650.png">
+<meta property="og:image" content="http://yoursite.com/2021/10/31/变换/image-20211030182023593.png">
+<meta property="og:image" content="http://yoursite.com/2021/10/31/变换/image-20211031101342611.png">
+<meta property="og:image" content="http://yoursite.com/2021/10/31/变换/image-20211031102447559.png">
+<meta property="og:image" content="http://yoursite.com/2021/10/31/变换/image-20211031115142942.png">
+<meta property="og:image" content="http://yoursite.com/2021/10/31/变换/image-20211031125358565.png">
+<meta property="og:image" content="http://yoursite.com/2021/10/31/变换/image-20211031130923296.png">
+<meta property="og:image" content="http://yoursite.com/2021/10/31/变换/image-20211031132805806.png">
+<meta property="og:updated_time" content="2021-10-31T10:39:38.627Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="变换">
+<meta name="twitter:description" content="2D变换（2D transformation）缩放（Scale） 坐标(x,y)缩放至(x’,y’)，x轴缩放 $$s_x=0.5$$ ，y轴缩放$$s_y=1$$： $$x’=s_xx+0y\y’=0x+s_yy$$矩阵形式：$$\left[\begin{matrix}s_x&amp;amp;0\0&amp;amp;s_y\\end{matrix}\right]*\left[\begin{matrix}x\y\">
+<meta name="twitter:image" content="http://yoursite.com/2021/10/31/变换/image-20211029172151877.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2021/10/31/变换/"/>
+
+
+
+
+
+  <title>变换 | rcos97的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">rcos97的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/10/31/变换/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="rcos97">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1532079443968&di=f2c4e4274bb6cc892c92d2da3cb7ef6a&imgtype=0&src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201510%2F06%2F20151006110918_kTvcr.thumb.700_0.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="rcos97的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">变换</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-10-31T18:31:07+08:00">
+                2021-10-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="2D变换（2D-transformation）"><a href="#2D变换（2D-transformation）" class="headerlink" title="2D变换（2D transformation）"></a>2D变换（2D transformation）</h2><h3 id="缩放（Scale）"><a href="#缩放（Scale）" class="headerlink" title="缩放（Scale）"></a>缩放（Scale）</h3><p><img src="image-20211029172151877.png" alt="image-20211029172151877" style="zoom: 80%;"></p>
+<p>坐标(x,y)缩放至(x’,y’)，x轴缩放 $$s_x=0.5$$ ，y轴缩放$$s_y=1$$：</p>
+<p>$$<br>x’=s_x<em>x+0</em>y\<br>y’=0<em>x+s_y</em>y<br>$$<br>矩阵形式：<br>$$<br>\left[\begin{matrix}<br>s_x&amp;0\<br>0&amp;s_y\<br>\end{matrix}\right]<br>*<br>\left[\begin{matrix}<br>x\<br>y\<br>\end{matrix}\right]<br>=<br>\left[\begin{matrix}<br>x’\<br>y’\<br>\end{matrix}\right]<br>$$</p>
+<h3 id="错切（shear）"><a href="#错切（shear）" class="headerlink" title="错切（shear）"></a>错切（shear）</h3><p><img src="image-20211029172342274.png" alt="image-20211029172342274" style="zoom: 80%;"></p>
+<p>首先能观察到点的y坐标不会发生变化，只有x坐标进行变换：<br>$$<br>y’=y<br>$$<br>x轴的坐标变换会根据高度（即y值）进行变换。具体而言：</p>
+<p><img src="image-20211029173005341.png" alt="image-20211029173005341" style="zoom:80%;"></p>
+<p>对于点A(x,y)变换到点B(x’,y’)有：<br>$$<br>\triangle OAB \sim \triangle ODC\<br>\frac{AB}{DC}=\frac{OA}{OD}\<br>\frac{AB}{DC} = \frac{AB}{a} = \frac{x’-x}{a}\<br>\frac{OA}{OD} = \frac{y}{1}\<br>$$<br>综上有：<br>$$<br>\frac{x’-x}{a} = \frac{y}{1}\<br>$$<br>得：<br>$$<br>x’=x+a<em>y<br>$$<br>综上有：<br>$$<br>x’=x+ay\<br>y’=0x+y<br>$$<br>矩阵形式：<br>$$<br>\left[\begin{matrix}<br>1&amp;a\<br>0&amp;1\<br>\end{matrix}\right]
+</em><br>\left[\begin{matrix}<br>x\<br>y\<br>\end{matrix}\right]<br>=<br>\left[\begin{matrix}<br>x’\<br>y’\<br>\end{matrix}\right]<br>$$</p>
+<h3 id="旋转（Rotation）"><a href="#旋转（Rotation）" class="headerlink" title="旋转（Rotation）"></a>旋转（Rotation）</h3><p>规定绕原点（0,0）逆时针进行旋转。</p>
+<p><img src="image-20211029190438112.png" alt="image-20211029190438112" style="zoom:80%;"></p>
+<p>对于图上一点$(x_a,y_a)$ 有<br>$$<br>x_a = r\cos\theta\tag{1}\<br>$$</p>
+<p>$$<br>y_a = r\sin\theta\tag{2}<br>$$</p>
+<p>经旋转$\phi$角度至$(x_a’,y_a’)$有<br>$$<br>x_a’=rcos(\theta+\phi)\<br>y_a’=rsin(\theta+\phi)\<br>$$<br>根据和角公式：<br>$$<br>\sin(\alpha+\beta)=\sin\alpha\cdot\cos\beta+\cos\alpha\cdot\sin\beta\<br>\cos(\alpha+\beta)=\cos\alpha\cdot\cos\beta-\sin\alpha\cdot\sin\beta\<br>$$<br>有：<br>$$<br>x_a’=rcos(\theta+\phi)=r\cos\theta\cdot\cos\phi-r\sin\theta\cdot\sin\phi\<br>y_a’=rsin(\theta+\phi)=r\sin\theta\cdot\cos\phi+r\cos\theta\cdot\sin\phi\<br>$$<br>将公式(1)(2)带入有<br>$$<br>x_a’= x_a\cos\phi-y_a\sin\phi\<br>y_a’= y_a\cos\phi+x_a\sin\phi<br>$$<br>写成矩阵形式有：<br>$$<br>\left[\begin{matrix}<br>\cos\phi &amp; -\sin\phi \<br>\sin\phi &amp; \cos\phi \<br>\end{matrix}\right]<br>*<br>\left[\begin{matrix}<br>x_a\<br>y_a\<br>\end{matrix}\right]<br>=<br>\left[\begin{matrix}<br>x_a’\<br>y_a’\<br>\end{matrix}\right]<br>$$</p>
+<h4 id="旋转矩阵是正交矩阵"><a href="#旋转矩阵是正交矩阵" class="headerlink" title="旋转矩阵是正交矩阵"></a>旋转矩阵是正交矩阵</h4><p>考虑一个点旋转 $-\phi$  角度。</p>
+<p>有：<br>$$<br>R(-\phi)=<br>\left[\begin{matrix}<br>\cos-\phi &amp; -\sin-\phi \<br>\sin-\phi &amp; \cos-\phi \<br>\end{matrix}\right]<br>=<br>\left[\begin{matrix}<br>\cos\phi &amp; \sin\phi \<br>-\sin\phi &amp; \cos\phi \<br>\end{matrix}\right]<br>$$<br>与旋转$\phi$ 角度互逆：<br>$$<br>R(\phi)=<br>\left[\begin{matrix}<br>\cos\phi &amp; -\sin\phi \<br>\sin\phi &amp; \cos\phi \<br>\end{matrix}\right]<br>\<br>R(\phi)^{-1}=R(-\phi)<br>$$<br>并且可以观察到这两个矩阵互为转置矩阵<br>$$<br>R(\phi)^{T}=R(-\phi)<br>$$<br>因此有：<br>$$<br>R(\phi)^{-1}=R(\phi)^{T}<br>$$<br>综上，旋转矩阵为正交矩阵。</p>
+<h3 id="位移（Translation）"><a href="#位移（Translation）" class="headerlink" title="位移（Translation）"></a>位移（Translation）</h3><p><img src="image-20211029191432719.png" alt="image-20211029191432719" style="zoom:80%;"></p>
+<p>将点(x,y)平移$T_{tx}、T_{ty}$个单位得到$(x+T_{tx},y+T_{ty})$</p>
+<p>有变换：<br>$$<br>x’=x+t_x\<br>y’=y+t_y<br>$$<br>矩阵形式：<br>$$<br>\left[\begin{matrix}<br>1&amp;0\<br>0&amp;1\<br>\end{matrix}\right]<br>*<br>\left[\begin{matrix}<br>x\<br>y\<br>\end{matrix}\right]<br>+<br>\left[\begin{matrix}<br>t_x\<br>t_y\<br>\end{matrix}\right]<br>=<br>\left[\begin{matrix}<br>x’\<br>y’\<br>\end{matrix}\right]<br>$$<br>但该变换不是线性变换，而是<strong>仿射变换</strong>。</p>
+<blockquote>
+<p><strong>仿射变换</strong>，又称<strong>仿射映射</strong>，是指在几何进行一次线性变换并接上一个平移，变换为另一个向量空间。</p>
+<p>“仿射变换”就是：“线性变换”+“平移”</p>
+</blockquote>
+<p>我们现在要通过<strong>高纬度</strong>的线性变换完成<strong>低纬度</strong>的仿射变换。将点进行生维到z=1的平面上、也就是(x,y)至(x,y,1)：</p>
+<p>记$\overrightarrow{x}$为二维平面上的点坐标<br>$$<br>\overrightarrow{x}=(x,y)^T<br>$$</p>
+<p>A为在二维空间上的线性变换矩阵。</p>
+<p>$\overrightarrow{b}$ 为位移尺度:<br>$$<br>\overrightarrow{b}=(T_x,T_y)^T<br>$$<br><img src="v2-ff605e1490c88ee973f68dd1357cf228_r.jpg" alt="v2-ff605e1490c88ee973f68dd1357cf228_r" style="zoom: 67%;"></p>
+<p>这样我就可以在三维空间下通过$\left[\begin{matrix}A&amp;\overrightarrow{b}\0&amp;1\end{matrix}\right]$这个线性变换变换柱子来操作z=1平面上的二维正方形，完成仿射变换：</p>
+<p><img src="v2-7996e53eb81649ba2961e05064cf89ca_720w.jpg" alt="v2-7996e53eb81649ba2961e05064cf89ca_720w" style="zoom:67%;"></p>
+<p>记$\overrightarrow{y}$为二维平面上的位移后得到的点坐标(x’,y’)<br>$$<br>\overrightarrow{y}=(x’,y’)^T<br>$$<br><img src="v2-9ed3053ad36750bb18ec4026dc42c57b_720w.jpg" alt="v2-9ed3053ad36750bb18ec4026dc42c57b_720w" style="zoom:67%;"></p>
+<p><img src="v2-8d71b77077dce5e8d310e34c67536c62_720w.png" alt="v2-8d71b77077dce5e8d310e34c67536c62_720w" style="zoom:67%;"></p>
+<p>新加入的维度记为w，也称为<strong>齐次坐标</strong>。</p>
+<p>矩阵形式：<br>$$<br>\left[\begin{matrix}<br>1&amp;0&amp;t_x\<br>0&amp;1&amp;t_y\<br>0&amp;0&amp;1\<br>\end{matrix}\right]<br><em><br>\left[\begin{matrix}<br>x\<br>y\<br>1\<br>\end{matrix}\right]<br>=<br>\left[\begin{matrix}<br>x+t_x\<br>y+t_y\<br>1\<br>\end{matrix}\right]<br>=<br>\left[\begin{matrix}<br>x’\<br>y’\<br>w’\<br>\end{matrix}\right]<br>$$<br>把矩阵分解为向量更好理解：<br>$$<br>\left[\begin{matrix}<br>1\<br>0\<br>0\<br>\end{matrix}\right]
+</em>x<br>+<br>\left[\begin{matrix}<br>0\<br>1\<br>0\<br>\end{matrix}\right]<br><em>y<br>+<br>\left[\begin{matrix}<br>t_x\<br>t_y\<br>1\<br>\end{matrix}\right]
+</em>1<br>=<br>\left[\begin{matrix}<br>x+t_x\<br>y+t_y\<br>1\<br>\end{matrix}\right]<br>=<br>\left[\begin{matrix}<br>x’\<br>y’\<br>w’\<br>\end{matrix}\right]<br>$$</p>
+<h3 id="齐次坐标（Homogenous-Coordinates）"><a href="#齐次坐标（Homogenous-Coordinates）" class="headerlink" title="齐次坐标（Homogenous Coordinates）"></a>齐次坐标（Homogenous Coordinates）</h3><blockquote>
+<p>齐次坐标：就是将一个原本是n维的向量用一个n+1维向量来表示，是指一个用于投影几何里的坐标系统，如同用于欧氏几何里的笛卡儿坐标一般。”</p>
+<p>齐次坐标可以看作一种记号，w为1记为点，为0记为向量。</p>
+</blockquote>
+<p>在欧氏空间中，两条平行线永不相交，但是在投影几何中，两条平行线是可以相交的。我们用齐次坐标描述投影几何。</p>
+<p><img src="image-20211031165538497.png" alt="image-20211031165538497" style="zoom:67%;"></p>
+<p><img src="image-20211031163546374.png" alt="image-20211031163546374" style="zoom: 80%;"></p>
+<p>可以看到，虽然齐次坐标的表现形式不同，但都对应同一个欧氏空间中的点$(\frac{1}{3},\frac{2}{3})$。</p>
+<p><img src="image-20211031163726579.png" alt="image-20211031163726579" style="zoom:50%;"></p>
+<h4 id="两条平行线可以相交"><a href="#两条平行线可以相交" class="headerlink" title="两条平行线可以相交"></a>两条平行线可以相交</h4><p>考虑：<br>$$<br>\begin{cases}<br>Ax+By+C=0\<br>Ax+By+D=0<br>\end{cases}<br>$$<br>由于C不等于D，所以上述两条直线平行，没有解。</p>
+<p>在齐次坐标中：<br>$$<br>\begin{cases}<br>A\frac{x}{w}+B\frac{y}{w}+C=0\<br>A\frac{x}{w}+B\frac{y}{w}+D=0<br>\end{cases}<br>\rightarrow<br>\begin{cases}<br>Ax+By+Cw=0\<br>Ax+By+Dw=0<br>\end{cases}<br>$$<br>我们可以得到一个解（x,y,0）,这表示两条直线会在无穷远处相交。</p>
+<h4 id="齐次坐标下的点与向量"><a href="#齐次坐标下的点与向量" class="headerlink" title="齐次坐标下的点与向量"></a>齐次坐标下的点与向量</h4><p>齐次坐标系下的(x,y,w)就是2D坐标下的(x/w,y/w,1)</p>
+<p>点表示：$(x,y,1)^T$</p>
+<p>向量表示：$(x,y,0)^T$</p>
+<p>向量的齐次坐标w为0是为了保护向量不会进行位移变换，向量的位移没有意义。</p>
+<p>在齐次坐标下（着重注意w的值为0还是1）：</p>
+<ul>
+<li>向量+向量=向量；</li>
+<li>点-点=向量（点的两个w相减为0了）；</li>
+<li>点+向量=点（相当于点按照向量进行了移动）；</li>
+<li>点+点=中点；</li>
+</ul>
+<p>比如有点A(1,2,1)、点B(1,6,1)</p>
+<p>两个点相加有(2,8,2)，之后我们要把w化为1，所以所有坐标分量同时除2（w值），就得到</p>
+<p>（1,4,1）就是点A与点B的中点。</p>
+<h3 id="组合变换（Composing-Transforms）"><a href="#组合变换（Composing-Transforms）" class="headerlink" title="组合变换（Composing Transforms）"></a>组合变换（Composing Transforms）</h3><p><img src="image-20211029203812161.png" alt="image-20211029203812161" style="zoom:80%;"></p>
+<p>从A变换至B的方案</p>
+<p><img src="image-20211029203824427.png" alt="image-20211029203824427" style="zoom:80%;"></p>
+<p>显然不对，位移变换对旋转变换产生了影响。</p>
+<p>先位移再缩放，位移的向量也会同样被缩放。</p>
+<p>综上，变换顺序(右乘优先)：<br>$$<br>Matrix_{组合}=Matrix_{位移}<em>Matrix_{旋转}</em>Matrix_{缩放}*点<br>$$<br>比方说，通过变换希望获得的结果可能是：</p>
+<blockquote>
+<p>将一个放在原点的物体（比方说可乐罐）移动到（30，50），让它自身倾斜 45 度，再放大 2 倍。</p>
+</blockquote>
+<p>而不希望的结果是：</p>
+<ol>
+<li><p>和本地坐标轴成角度的缩放（会导致扭曲，像踩扁的可乐罐）。</p>
+<p>下图为旋转30度，x轴放大2倍，y轴缩小至0.5倍。</p>
+<p><img src="v2-c1c5f206700a09a6b76cc8b2640a797b_720w.png" alt="v2-c1c5f206700a09a6b76cc8b2640a797b_720w" style="zoom:50%;"></p>
+</li>
+<li><p>绕自己几何中心以外位置的原点的旋转 （地球公转式） 和缩放。</p>
+</li>
+</ol>
+<p>而颠倒了上述变换顺序就会得到这样不自然的结果。<br>具体的说：</p>
+<ul>
+<li><p>当缩放在旋转之后进行时，会发生现象1。</p>
+</li>
+<li><p>当缩放和旋转在平移之后进行时会发生现象2。</p>
+</li>
+</ul>
+<p>这时因为：</p>
+<ul>
+<li><p>在物体刚刚放入世界坐标系的时候使用的是本地坐标，也就是本地和全局坐标系的原点和坐标轴都是重合的（当然两者分别使用了左右手坐标系时除外 - 那是BUG），此时所有物体都“把世界坐标系当做自己的本地坐标系”。</p>
+</li>
+<li><p>而经过了坐标变换之后：</p>
+</li>
+</ul>
+<blockquote>
+<ol>
+<li>缩放变换不改变坐标轴的走向，也不改变原点的位置，所以两个坐标系仍然重合。</li>
+<li>旋转变换改变坐标轴的走向，但不改变原点的位置，所以两个坐标系坐标轴不再处于相同走向。</li>
+<li>平移变换不改变坐标轴走向，但改变原点位置，两个坐标系原点不再重合。</li>
+</ol>
+</blockquote>
+<p>这样就可以解释问什么缩放不能在旋转之后，而缩放和旋转都不能在平移之后了。 于是没有问题的顺序只能是 缩放 -&gt; 旋转 -&gt; 平移 。</p>
+<h2 id="3D变换（3D-Transformations）"><a href="#3D变换（3D-Transformations）" class="headerlink" title="3D变换（3D Transformations）"></a>3D变换（3D Transformations）</h2><h3 id="缩放-位移-旋转"><a href="#缩放-位移-旋转" class="headerlink" title="缩放 位移 旋转"></a>缩放 位移 旋转</h3><p>缩放 Scale:<br>$$<br>\left[<br>\begin{matrix}<br>S1&amp;0&amp;0&amp;0\<br>0&amp;S2&amp;0&amp;0\<br>0&amp;0&amp;S3&amp;0\<br>0&amp;0&amp;0&amp;1\<br>\end{matrix}<br>\right]<br>·<br>\left(<br>\begin{matrix}<br>x\<br>y\<br>z\<br>1\<br>\end{matrix}<br>\right)<br>=<br>\left(<br>\begin{matrix}<br>S1<em>x\<br>S2</em>y\<br>S3*z\<br>1\<br>\end{matrix}<br>\right)<br>$$</p>
+<p>位移 Translation:<br>$$<br>\left[<br>\begin{matrix}<br>1&amp;0&amp;0&amp;Tx\<br>0&amp;1&amp;0&amp;Ty\<br>0&amp;0&amp;1&amp;Tz\<br>0&amp;0&amp;0&amp;1\<br>\end{matrix}<br>\right]<br>·<br>\left(<br>\begin{matrix}<br>x\<br>y\<br>z\<br>1\<br>\end{matrix}<br>\right)<br>=<br>\left(<br>\begin{matrix}<br>x+Tx\<br>y+Ty\<br>z+Tz\<br>1\<br>\end{matrix}<br>\right)<br>$$</p>
+<p>旋转 Rotation:</p>
+<p>沿x轴：<br>$$<br>\left[<br>\begin{matrix}<br>1&amp;0&amp;0&amp;0\<br>0&amp;\cos\theta&amp;-\sin\theta&amp;0\<br>0&amp;\sin\theta&amp;\cos\theta&amp;0\<br>0&amp;0&amp;0&amp;1\<br>\end{matrix}<br>\right]<br>·<br>\left(<br>\begin{matrix}<br>x\<br>y\<br>z\<br>1\<br>\end{matrix}<br>\right)<br>=<br>\left(<br>\begin{matrix}<br>x\<br>\cos\theta·y-\sin\theta·z\<br>\sin\theta·y +\cos\theta·z\<br>1\<br>\end{matrix}<br>\right)<br>$$<br>沿y轴：<br>$$<br>\left[<br>\begin{matrix}<br>\cos\theta&amp;0&amp;\sin\theta&amp;0\<br>0&amp;1&amp;0&amp;0\<br>-\sin\theta&amp;0&amp;\cos\theta&amp;0\<br>0&amp;0&amp;0&amp;1\<br>\end{matrix}<br>\right]<br>·<br>\left(<br>\begin{matrix}<br>x\<br>y\<br>z\<br>1\<br>\end{matrix}<br>\right)<br>=<br>\left(<br>\begin{matrix}<br>\cos\theta·x+\sin\theta·z\<br>y\<br>-\sin\theta·x +\cos\theta·z\<br>1\<br>\end{matrix}<br>\right)<br>$$<br>注意到沿y轴的旋转是其x,z轴的反方向的旋转（在2D旋转中，推导了旋转矩阵是正交矩阵）</p>
+<p>沿z轴：<br>$$<br>\left[<br>\begin{matrix}<br>\cos\theta&amp;-\sin\theta&amp;0&amp;0\<br>\sin\theta&amp;\cos\theta&amp;0&amp;0\<br>0&amp;0&amp;1&amp;0\<br>0&amp;0&amp;0&amp;1\<br>\end{matrix}<br>\right]<br>·<br>\left(<br>\begin{matrix}<br>x\<br>y\<br>z\<br>1\<br>\end{matrix}<br>\right)<br>=<br>\left(<br>\begin{matrix}<br>\cos\theta·x-\sin\theta·y\<br>\sin\theta·x +\cos\theta·y\<br>z\<br>1\<br>\end{matrix}<br>\right)<br>$$</p>
+<h2 id="视图变换（Viewing-transformation）"><a href="#视图变换（Viewing-transformation）" class="headerlink" title="视图变换（Viewing transformation）"></a>视图变换（Viewing transformation）</h2><p>上述所讲述的缩放、位移、旋转是Model变换，目的是将物体从局部空间（Local Space）变换至世界空间（World Space）中去。</p>
+<h3 id="摄像机变换（Camera-Transformation）"><a href="#摄像机变换（Camera-Transformation）" class="headerlink" title="摄像机变换（Camera Transformation）"></a>摄像机变换（Camera Transformation）</h3><p><img src="image-20211031165747220.png" alt="image-20211031165747220" style="zoom:50%;"></p>
+<p>确定一个摄像机我们需要定义好：</p>
+<ul>
+<li>位置（position）: $\overrightarrow{e}$  </li>
+<li>注视方向（Look-at/gaze direction）:  $\overrightarrow{g}$  </li>
+<li>上向量（Up direction）：$\overrightarrow{t}$  </li>
+</ul>
+<p>摄像机变换的目的是得到所有可视物体与摄像机的相对位置，我们需要做的是将摄像机的位置$\overrightarrow{e}$变换至原点，注视方向  $\overrightarrow{g}$ 变换至-z方向，上向量$\overrightarrow{t}$变换至y方向。所有物体要与摄像机做相同的变换。</p>
+<p>第一步：将摄像机的位置移动到原点，只需要将现在摄像机的位置$(x_e,y_e,z_e)$做$T_x(-x_e)、T_y(-y_e)、T_z(-z_e)、$的位移变换即可:<br>$$<br>T_{camera}=<br>\left[<br>\begin{matrix}<br>1&amp;0&amp;0&amp;-x_e\<br>0&amp;1&amp;0&amp;-y_e\<br>0&amp;0&amp;1&amp;-z_e\<br>0&amp;0&amp;0&amp;1\<br>\end{matrix}<br>\right]<br>$$<br>第二步：将注视方向  $\overrightarrow{g}$ 旋转至-z方向，上向量$\overrightarrow{t}$旋转至y方向, $\overrightarrow{g}\cross\overrightarrow{t}$ 旋转至x方向。</p>
+<p>这个变换并不好做，但是我们注意到将x,y,z基向量旋转至$\overrightarrow{g}\cross\overrightarrow{t}、\overrightarrow{t}、-\overrightarrow{g}、$ 是好做的。我们将基向量变换至摄像机向量的矩阵取逆，就是我们所求的矩阵。</p>
+<p>x,y,z的向量矩阵：<br>$$<br>M_{xyz}=<br>\left[<br>\begin{matrix}<br>1&amp;0&amp;0&amp;0\<br>0&amp;1&amp;0&amp;0\<br>0&amp;0&amp;1&amp;0\<br>0&amp;0&amp;0&amp;1\<br>\end{matrix}<br>\right]<br>$$<br>很容易的可以得到旋转矩阵：<br>$$<br>R^{-1}<em>{camera}=<br>\left[<br>\begin{matrix}<br>x</em>{\hat{g}\cross\hat{t}}&amp;x_t&amp;x_{-g}&amp;0\<br>y_{\hat{g}\cross\hat{t}}&amp;y_t&amp;y_{-g}&amp;0\<br>z_{\hat{g}\cross\hat{t}}&amp;z_t&amp;z_{-g}&amp;0\<br>0&amp;0&amp;0&amp;1\<br>\end{matrix}<br>\right]<br>$$<br>将旋转矩阵$R^{-1}<em>{camera}$乘x,y,z的向量矩阵$M</em>{xyz}$是可以得到摄像机向量矩阵的！</p>
+<p>因此将$R^{-1}<em>{camera}$ 取逆即可，我们又知道旋转矩阵是正交矩阵，其逆等于其转置，因此就有：<br>$$<br>R</em>{camera}=<br>\left[<br>\begin{matrix}<br>x_{\hat{g}\cross\hat{t}}&amp;y_{\hat{g}\cross\hat{t}}&amp;z_{\hat{g}\cross\hat{t}}&amp;0\<br>x_t&amp;y_t&amp;z_t&amp;0\<br>x_{-g}&amp;y_{-g}&amp;z_{-g}&amp;0\<br>0&amp;0&amp;0&amp;1\<br>\end{matrix}<br>\right]<br>$$<br>将上述两步结合，我们就得到了摄像机变换：<br>$$<br>M_{camera}=<br>\left[<br>\begin{matrix}<br>x_{\hat{g}\cross\hat{t}}&amp;y_{\hat{g}\cross\hat{t}}&amp;z_{\hat{g}\cross\hat{t}}&amp;0\<br>x_t&amp;y_t&amp;z_t&amp;0\<br>x_{-g}&amp;y_{-g}&amp;z_{-g}&amp;0\<br>0&amp;0&amp;0&amp;1\<br>\end{matrix}<br>\right]<br>*<br>\left[<br>\begin{matrix}<br>1&amp;0&amp;0&amp;-x_e\<br>0&amp;1&amp;0&amp;-y_e\<br>0&amp;0&amp;1&amp;-z_e\<br>0&amp;0&amp;0&amp;1\<br>\end{matrix}<br>\right]<br>$$</p>
+<h3 id="投影变换（Projection-transformation）"><a href="#投影变换（Projection-transformation）" class="headerlink" title="投影变换（Projection transformation）"></a>投影变换（Projection transformation）</h3><p>我们要获取摄像机所看到的内容，这就需要投影变换。将摄像机所看到的内容投影变换到$[-1,1]^3$ 正方体空间中，方便最后显示到屏幕上。</p>
+<p>投影变换有两种，不带透视的正交投影，与带透视的透视投影。</p>
+<p><img src="image-20211030170423431.png" alt="image-20211030170423431"></p>
+<p><img src="image-20211030170433650.png" alt="image-20211030170433650"></p>
+<h4 id="正交投影（Orthographic-Projection）"><a href="#正交投影（Orthographic-Projection）" class="headerlink" title="正交投影（Orthographic Projection）"></a>正交投影（Orthographic Projection）</h4><p>假设一个摄像机所看到的内容被一个<strong>长方体</strong>所包含，做投影变换的目的是将这个长方体变换至<strong>标准正方体</strong>（“canonical” cube）（正方体为$[-1,1]^3$）。</p>
+<p><img src="image-20211030182023593.png" alt="image-20211030182023593"></p>
+<p>定义这个长方体的</p>
+<ul>
+<li>左平面l，右平面r，[l,r]</li>
+<li>下平面b，上平面t，[b,t]</li>
+<li>远平面f，近平面n，[f,n]</li>
+</ul>
+<p>接下来将<code>[l,r]、[f,n]、[b,t]</code> 三个区间变换至<code>[-1,1]</code>上</p>
+<p>第一步：将长方体的中心$(\frac{l+r}{2},\frac{b+t}{2},\frac{f+n}{2})$平移到坐标原点处。<br>$$<br>T_{ortho}=<br>\left[<br>\begin{matrix}<br>1&amp;0&amp;0&amp;-\frac{l+r}{2}\<br>0&amp;1&amp;0&amp;-\frac{b+t}{2}\<br>0&amp;0&amp;1&amp;-\frac{f+n}{2}\<br>0&amp;0&amp;0&amp;1\<br>\end{matrix}<br>\right]<br>$$<br>第二步：将长方体缩放为$[-1,1]^3$的标准正方体，会对长方体内的物体产生非等比缩放从而产生物体的变形，不过不用担心，我们会在视口变换中处理这个问题。</p>
+<p>左右平面的距离为：$r-l$ 。想要变换至$[-1,1]$上，所需的操作为$(r-l)*\frac{2}{r-l}$。上下，前后面同理，因此缩放矩阵为：<br>$$<br>S_{ortho}=<br>\left[<br>\begin{matrix}<br>\frac{2}{r-l}&amp;0&amp;0&amp;0\<br>0&amp;\frac{2}{t-b}&amp;0&amp;0\<br>0&amp;0&amp;\frac{2}{n-f}&amp;0\<br>0&amp;0&amp;0&amp;1\<br>\end{matrix}<br>\right]<br>$$</p>
+<p>综上，这个正交投影变换矩阵为：<br>$$<br>M_{ortho}=<br>\left[<br>\begin{matrix}<br>\frac{2}{r-l}&amp;0&amp;0&amp;0\<br>0&amp;\frac{2}{t-b}&amp;0&amp;0\<br>0&amp;0&amp;\frac{2}{n-f}&amp;0\<br>0&amp;0&amp;0&amp;1\<br>\end{matrix}<br>\right]<br>*<br>\left[<br>\begin{matrix}<br>1&amp;0&amp;0&amp;-\frac{l+r}{2}\<br>0&amp;1&amp;0&amp;-\frac{b+t}{2}\<br>0&amp;0&amp;1&amp;-\frac{f+n}{2}\<br>0&amp;0&amp;0&amp;1\<br>\end{matrix}<br>\right]<br>$$</p>
+<h4 id="透视投影（Perspective-Projection）"><a href="#透视投影（Perspective-Projection）" class="headerlink" title="透视投影（Perspective Projection）"></a>透视投影（Perspective Projection）</h4><p>我们将平截头体远平面向里挤压，使其变成长方体，然后再对长方体使用正交投影变换。</p>
+<p><img src="image-20211031101342611.png" alt="image-20211031101342611"></p>
+<p>我们规定“挤压”的规则：</p>
+<ul>
+<li>近平面上的点坐标不会发生改变</li>
+<li>远平面上的点z坐标不会发生改变。</li>
+<li>远平面的中心坐标不会发生改变。</li>
+</ul>
+<p>平截头体的侧视图（只展示了上半部分）如下：</p>
+<p>近平面上的点为(x’,y’,z’)，远平面上的点为(x,y,z),最左边的点为摄像机的点，也是坐标原点。</p>
+<p><img src="image-20211031102447559.png" alt="image-20211031102447559"></p>
+<p>根据相似三角形，很容易得到：<br>$$<br>\frac{n}{z}=\frac{y’}{y}\<br>y’=\frac{n}{z}*y<br>$$<br>y’的对应规则并不特指在远平面上的点，在平截头体里的y坐标都符合这个规则。</p>
+<p>同理，可以从上视图里推出x’与x的关系。性质与y’与y的关系一样。<br>$$<br>x’=\frac{n}{z}<em>x<br>$$<br>因此对任意一点(x,y,z,1)，我们“挤压”后有如下变换（只关注上下如何变换，先不关注前后的变换）：<br>$$<br>\left[<br>\begin{matrix}<br>x\<br>y\<br>z\<br>1\<br>\end{matrix}<br>\right]<br>\rightarrow<br>\left[<br>\begin{matrix}<br>x’\<br>y’\<br>z’\<br>1\<br>\end{matrix}<br>\right]<br>\rightarrow<br>\left[<br>\begin{matrix}<br>\frac{n</em>x}{z}\<br>\frac{n<em>y}{z}\<br>unknow\<br>1\<br>\end{matrix}<br>\right]<br>=<br>\left[<br>\begin{matrix}<br>n</em>x\<br>n*y\<br>unknow\<br>z\<br>\end{matrix}<br>\right]<br>\tag{3}<br>$$<br>最后一个等号的成立，是根据齐次坐标的性质。两者表示3维空间中同一个点。</p>
+<p>我们可以推算出从透视投影到正交投影变换的一部分：<br>$$<br>M_{persp\rightarrow ortho}=<br>\left[<br>\begin{matrix}<br>n&amp;0&amp;0&amp;0\<br>0&amp;n&amp;0&amp;0\<br>?&amp;?&amp;?&amp;?\<br>0&amp;0&amp;1&amp;0\<br>\end{matrix}<br>\right]<br>$$<br>接下来，开始推导z坐标的变换。我们不清楚平截头体内的点z坐标的变换（根据最后的结论会发现内部点的z坐标会发生改变），但是我们规定了近平面(x,y,n,1)与远平面(x,y,f,1)的z坐标不会发生改变。</p>
+<p>对于近平面上的点(x,y,n,1),经过$M_{persp\rightarrow ortho}$变换后点坐标不会发生改变，仍然是(x,y,n,1)，有：<br>$$<br>M_{persp\rightarrow ortho}*<br>\left[<br>\begin{matrix}<br>x\<br>y\<br>n\<br>1\<br>\end{matrix}<br>\right]<br>=<br>\left[<br>\begin{matrix}<br>x\<br>y\<br>unknow\<br>1\<br>\end{matrix}<br>\right]<br>=<br>\left[<br>\begin{matrix}<br>x\<br>y\<br>n\<br>1\<br>\end{matrix}</p>
+<h1 id="right"><a href="#right" class="headerlink" title="\right]"></a>\right]</h1><p>\left[<br>\begin{matrix}<br>n<em>x\<br>n</em>y\<br>n^2\<br>n\<br>\end{matrix}<br>\right]<br>\tag{4}<br>$$<br>==号的成立是因为齐次坐标的性质，两边仍然表示同一个点。同时乘以n是为了与（3）式表现形式一样，(3)式的x,y坐标与(4)式的x,y坐标的值都为n<em>x,n</em>y。w值都为点的z坐标。</p>
+<p>我们现在可以推导$M_{persp\rightarrow ortho}$的第三行值满足：<br>$$<br>\left[<br>\begin{matrix}<br>0&amp;0&amp;A&amp;B<br>\end{matrix}<br>\right]<br><em><br>\left[<br>\begin{matrix}<br>x\<br>y\<br>n\<br>1\<br>\end{matrix}<br>\right]<br>=n^2<br>$$<br>可以得到：<br>$$<br>A</em>n+B=n^2<br>$$</p>
+<p>别忘了，我们还有规定远平面上的点z坐标变换前后不发生改变，我们取远平面上的中心点(0,0,f,1)进行变换。<br>$$<br>M_{persp\rightarrow ortho}*<br>\left[<br>\begin{matrix}<br>0\<br>0\<br>f\<br>1\<br>\end{matrix}<br>\right]<br>=<br>\left[<br>\begin{matrix}<br>0\<br>0\<br>unknow\<br>1\<br>\end{matrix}<br>\right]<br>=<br>\left[<br>\begin{matrix}<br>0\<br>0\<br>f\<br>1\<br>\end{matrix}</p>
+<h1 id="right-1"><a href="#right-1" class="headerlink" title="\right]"></a>\right]</h1><p>\left[<br>\begin{matrix}<br>0\<br>0\<br>f^2\<br>f\<br>\end{matrix}<br>\right]<br>$$<br>道理与近平面上的点变换一样。<br>$$<br>\left[<br>\begin{matrix}<br>0&amp;0&amp;A&amp;B<br>\end{matrix}<br>\right]<br><em><br>\left[<br>\begin{matrix}<br>0\<br>0\<br>f\<br>1\<br>\end{matrix}<br>\right]<br>=f^2<br>$$<br>可以得到：<br>$$<br>A</em>f+B=f^2<br>$$</p>
+<p>联立：<br>$$<br>\begin{cases}<br>A<em>n+B=n^2\<br>A</em>f+B=f^2<br>\end{cases}<br>$$<br>解得：<br>$$<br>\begin{cases}<br>A=n+f\<br>B=-n<em>f<br>\end{cases}<br>$$<br>综上$M_{persp\rightarrow ortho}$为：<br>$$<br>M_{persp\rightarrow ortho}=<br>\left[<br>\begin{matrix}<br>n&amp;0&amp;0&amp;0\<br>0&amp;n&amp;0&amp;0\<br>0&amp;0&amp;n+f&amp;-n</em>f\<br>0&amp;0&amp;1&amp;0\<br>\end{matrix}<br>\right]<br>$$<br>之后，在将”挤压”后的平截头体做正交投影即可。</p>
+<p>因此，透视投影变换为：<br>$$<br>M_{persp}=M_{ortho}<em>M_{persp\rightarrow ortho}=<br>\left[<br>\begin{matrix}<br>\frac{2}{r-l}&amp;0&amp;0&amp;0\<br>0&amp;\frac{2}{t-b}&amp;0&amp;0\<br>0&amp;0&amp;\frac{2}{n-f}&amp;0\<br>0&amp;0&amp;0&amp;1\<br>\end{matrix}<br>\right]
+</em><br>\left[<br>\begin{matrix}<br>1&amp;0&amp;0&amp;-\frac{l+r}{2}\<br>0&amp;1&amp;0&amp;-\frac{b+t}{2}\<br>0&amp;0&amp;1&amp;-\frac{f+n}{2}\<br>0&amp;0&amp;0&amp;1\<br>\end{matrix}<br>\right]<br><em><br>\left[<br>\begin{matrix}<br>n&amp;0&amp;0&amp;0\<br>0&amp;n&amp;0&amp;0\<br>0&amp;0&amp;n+f&amp;-n</em>f\<br>0&amp;0&amp;1&amp;0\<br>\end{matrix}<br>\right]<br>$$<br> 可以发现内部点的z坐标会发生改变，近远面上的点z坐标不会发生改变。</p>
+<h5 id="对平截头体进行描述"><a href="#对平截头体进行描述" class="headerlink" title="对平截头体进行描述"></a>对平截头体进行描述</h5><p>平截头体的前后面，near与far直接定义。</p>
+<p>而左右与上下面通过宽高比(aspect)与竖直的可视角度(fovY)定义。</p>
+<p><img src="image-20211031115142942.png" alt="image-20211031115142942"></p>
+<p>侧视图：</p>
+<p><img src="image-20211031125358565.png" alt="image-20211031125358565"></p>
+<p>很显然：<br>$$<br>\tan{\frac{fovY}{2}}=\frac{t}{\left| n \right|}\<br>t=\tan{\frac{fovY}{2}}*\left| n \right|<br>$$<br>这样就定义了上下面。</p>
+<p>再根据宽高比定义左右面。有：<br>$$<br>aspect = \frac{r}{t}\<br>r=t<em>aspect=\tan{\frac{fovY}{2}}</em>\left| n \right|*aspect<br>$$</p>
+<h3 id="视口变换（Viewport-Transform）"><a href="#视口变换（Viewport-Transform）" class="headerlink" title="视口变换（Viewport Transform）"></a>视口变换（Viewport Transform）</h3><p>将投影变换得到标准正方体<code>[-1,1]^3</code> 变换到屏幕（screen）上。</p>
+<h4 id="屏幕（screen）"><a href="#屏幕（screen）" class="headerlink" title="屏幕（screen）"></a>屏幕（screen）</h4><p>图形学中定义屏幕是一个二维数组，元素为像素。像素的表示为rgb。</p>
+<p>屏幕空间：</p>
+<p><img src="image-20211031130923296.png" alt="image-20211031130923296"></p>
+<p>规定（可以有多种规定）：</p>
+<ul>
+<li>屏幕的左下角为原点。</li>
+<li>像素的坐标为（x,y）,为像素的左下角，比如蓝色的像素坐标为（2,1）。</li>
+<li>像素<strong>坐标</strong>的范围为(0,0)到(width-1,height-1)。</li>
+<li>像素的中心为（x+0.5,y+0.5）。</li>
+<li>像素的<strong>覆盖</strong>范围(0,0)到(width,height)。</li>
+</ul>
+<h4 id="视口变化"><a href="#视口变化" class="headerlink" title="视口变化"></a>视口变化</h4><p>接下来就要把投影变换得到标准正方体<code>[-1,1]^3</code> 变换到屏幕上去了。</p>
+<p><img src="image-20211031132805806.png" alt="image-20211031132805806"></p>
+<p>我们暂时忽略标准正方体的z坐标。</p>
+<p>现在我们要把标准正方体（型）$[-1,1]^2$的坐标映射到屏幕上<code>[0,width]*[0,hight]</code>的空间中。</p>
+<p>首先把标准正方型缩放到与屏幕一样大小：<br>$$<br>M_{view_scale}<br>=<br>\left[<br>\begin{matrix}<br>\frac{width}{2}&amp;0&amp;0&amp;0\<br>0&amp;\frac{height}{2}&amp;0&amp;0\<br>0&amp;0&amp;1&amp;0\<br>0&amp;0&amp;0&amp;1\<br>\end{matrix}<br>\right]<br>$$<br>再把正方形的左下角位移到屏幕原点(0,0)处:<br>$$<br>M_{view_translation}<br>\left[<br>\begin{matrix}<br>1&amp;0&amp;0&amp;\frac{width}{2}\<br>0&amp;1&amp;0&amp;\frac{height}{2}\<br>0&amp;0&amp;1&amp;0\<br>0&amp;0&amp;0&amp;1\<br>\end{matrix}<br>\right]<br>$$</p>
+<p>综上，视口变换矩阵为：<br>$$<br>M_{view}<br>=<br>M_{view_translation}*M_{view_scale}<br>=<br>\left[<br>\begin{matrix}<br>\frac{width}{2}&amp;0&amp;0&amp;\frac{width}{2}\<br>0&amp;\frac{height}{2}&amp;0&amp;\frac{height}{2}\<br>0&amp;0&amp;1&amp;0\<br>0&amp;0&amp;0&amp;1\<br>\end{matrix}<br>\right]<br>$$</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>将一个在局部空间定义好的物体，最终显示到屏幕上。</p>
+<p>需要经过：</p>
+<ul>
+<li><strong>模型矩阵</strong>变换至世界空间。</li>
+<li>将物体连同定义好的摄像机经过<strong>观察（摄像机）矩阵</strong>变换到观察空间，也就是摄像机所看到的内容。</li>
+<li>摄像机所看到的内容经过<strong>投影矩阵</strong>变换将其变换至标准正方体中。</li>
+<li>将标准正方体经过<strong>视口矩阵</strong>变换到屏幕上。</li>
+</ul>
+<p>$$<br>V_{screen}=M_{viewport}<em>M_{projection}</em>M_{view}<em>M_{model}</em>V_{local}<br>$$</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/计算机图形学/" rel="tag"># 计算机图形学</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/10/29/爬虫/" rel="next" title="爬虫">
+                <i class="fa fa-chevron-left"></i> 爬虫
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zODE4MS8xNDcwOQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1532079443968&di=f2c4e4274bb6cc892c92d2da3cb7ef6a&imgtype=0&src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201510%2F06%2F20151006110918_kTvcr.thumb.700_0.png"
+                alt="rcos97" />
+            
+              <p class="site-author-name" itemprop="name">rcos97</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#2D变换（2D-transformation）"><span class="nav-number">1.</span> <span class="nav-text">2D变换（2D transformation）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#缩放（Scale）"><span class="nav-number">1.1.</span> <span class="nav-text">缩放（Scale）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#错切（shear）"><span class="nav-number">1.2.</span> <span class="nav-text">错切（shear）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#旋转（Rotation）"><span class="nav-number">1.3.</span> <span class="nav-text">旋转（Rotation）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#旋转矩阵是正交矩阵"><span class="nav-number">1.3.1.</span> <span class="nav-text">旋转矩阵是正交矩阵</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#位移（Translation）"><span class="nav-number">1.4.</span> <span class="nav-text">位移（Translation）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#齐次坐标（Homogenous-Coordinates）"><span class="nav-number">1.5.</span> <span class="nav-text">齐次坐标（Homogenous Coordinates）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#两条平行线可以相交"><span class="nav-number">1.5.1.</span> <span class="nav-text">两条平行线可以相交</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#齐次坐标下的点与向量"><span class="nav-number">1.5.2.</span> <span class="nav-text">齐次坐标下的点与向量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组合变换（Composing-Transforms）"><span class="nav-number">1.6.</span> <span class="nav-text">组合变换（Composing Transforms）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3D变换（3D-Transformations）"><span class="nav-number">2.</span> <span class="nav-text">3D变换（3D Transformations）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#缩放-位移-旋转"><span class="nav-number">2.1.</span> <span class="nav-text">缩放 位移 旋转</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#视图变换（Viewing-transformation）"><span class="nav-number">3.</span> <span class="nav-text">视图变换（Viewing transformation）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#摄像机变换（Camera-Transformation）"><span class="nav-number">3.1.</span> <span class="nav-text">摄像机变换（Camera Transformation）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#投影变换（Projection-transformation）"><span class="nav-number">3.2.</span> <span class="nav-text">投影变换（Projection transformation）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#正交投影（Orthographic-Projection）"><span class="nav-number">3.2.1.</span> <span class="nav-text">正交投影（Orthographic Projection）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#透视投影（Perspective-Projection）"><span class="nav-number">3.2.2.</span> <span class="nav-text">透视投影（Perspective Projection）</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#right"><span class="nav-number"></span> <span class="nav-text">\right]</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#right-1"><span class="nav-number"></span> <span class="nav-text">\right]</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#对平截头体进行描述"><span class="nav-number">0.0.0.1.</span> <span class="nav-text">对平截头体进行描述</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#视口变换（Viewport-Transform）"><span class="nav-number">0.1.</span> <span class="nav-text">视口变换（Viewport Transform）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#屏幕（screen）"><span class="nav-number">0.1.1.</span> <span class="nav-text">屏幕（screen）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#视口变化"><span class="nav-number">0.1.2.</span> <span class="nav-text">视口变化</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">1.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rcos97</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
