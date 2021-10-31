@@ -364,15 +364,16 @@
       
         
           
-          2D变换（2D transformation）
-缩放（Scale）
+          2D变换（2D transformation）缩放（Scale）
+坐标(x,y)缩放至(x’,y’)，x轴缩放 s_x=0.5 ，y轴缩放s_y=1：
 
-坐标(x,y)缩放至(x',y')，x轴缩放 \[s_x=0.5\] ，y轴缩放\[s_y=1\]：
-\[
-x&#39;=s_x*x+0*y\\
-y&#39;=0*x+s_y*y
-\] 矩阵形式： \[
-\left
+x'=s_x*x+0*y\\
+y'=0*x+s_y*y矩阵形式：
+
+\left[\begin{matrix}
+s_x&0\\
+0&s_y\\
+\e
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -498,10 +499,9 @@ y&#39;=0*x+s_y*y
       
         
           
-          获取单个页面信息
-获取HTML
-123from urllib.request import urlopenhtml = urlopen("http://pythonscraping.com/pages/page1.html")print(html.read())
+          获取单个页面信息获取HTML123from urllib.request import urlopenhtml = urlopen("http://pythonscraping.com/pages/page1.html")print(html.read())
 urllib是自带库，不用安装
+抓取HT
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -656,7 +656,7 @@ urllib是自带库，不用安装
 原理:略。
 解决方案：
 前端配置
-
+在main.j
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -805,8 +805,7 @@ urllib是自带库，不用安装
         
           
           线性表（sequence list）是最基本、最简单、也是最常用的一种数据结构。
-定义
-123456789101112131415161718192021222324252627ADT List&#123;    数据对象：D=&#123;$a_i$|ai∈ElemSet,i=1,2,3...n
+定义123456789101112131415161718192021222324252627ADT List&#123;    数据对象：D=&#123;$a_i$|ai∈ElemSet,i=1,2,3...n&gt
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -955,9 +954,8 @@ urllib是自带库，不用安装
         
           
           12345var str=/abc/i; i==ignoreCase//忽略大小写 没引号 //就代表正则匹配字符串中是否有abc 忽略大小写g global 全局匹配m  多行匹配^abc ^代表必须开头，匹配开头有abc的字符
-方括号
-方括号用于查找某个范围内的字符，
-一个[]代表一个字符
+方括号方括号用于查找某个范围内的字符，
+ 一个[]代表一个字符，[]
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1105,12 +1103,11 @@ urllib是自带库，不用安装
       
         
           
-          基础起步
-上传文件要用到input标签
-&lt;input type="file" /&gt;
+          基础起步上传文件要用到input标签
+&lt;input type=&quot;file&quot; /&gt; 
 文件选择是只读的,不能使用v-model 数据双向绑定,只能用change监控值的变化。
 所以就用change来代替v-model来处理文件。
-&lt;input type="file" v-o
+&lt;input type=&quot
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1258,14 +1255,11 @@ urllib是自带库，不用安装
       
         
           
-          表单传值
-表单传值即浏览器通过表单元素将用户的选择或者输入的数据交给后台服务器
-传值的方式
-GET传值
-1 from 表单
-&lt;form method="GET"  action="url"&gt; 表单元素&lt;/form&gt;
+          表单传值表单传值即浏览器通过表单元素将用户的选择或者输入的数据交给后台服务器
+传值的方式GET传值1 from 表单
+&lt;form method=&quot;GET&quot;  action=&quot;url&quot;&gt; 表单元素&lt;/form&gt;
 2 a标签
-&lt;a href="../in
+&lt;a h
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1414,10 +1408,13 @@ GET传值
         
           
           -&gt; 源代码的文件名必须与公共类的名字相同。
-数据类型
-在Java中共有8种基本类型，其中有4种整型，2种浮点类型，1种表示Unicode编码字符类型的char，1种表示真值的boolean类型。
-整型
-整型用于表示没有小数部分的数值， 它允许是负数。Java 提供了 4 种整型。
+数据类型在Java中共有8种基本类型，其中有4种整型，2种浮点类型，1种表示Unicode编码字符类型的char，1种表示真值的boolean类型。
+整型整型用于表示没有小数部分的数值， 它允许是负数。Java 提供了 4 种整型。
+
+
+
+
+类型
 
           ...
           <!--noindex-->
@@ -1566,10 +1563,9 @@ GET传值
       
         
           
-          我研究了两天，终于把闭包啃下来了...
-函数 声明 表达式
-首先我们要区分下函数的声明与函数表达式
-1234567声明：function test ()&#123;&#125;表达式：var test = function() abc()&#123;&#125; //test.name=abc
+          我研究了两天，终于把闭包啃下来了…
+函数 声明 表达式首先我们要区分下函数的声明与函数表达式
+1234567声明：function test ()&#123;&#125;表达式：var test = function() abc()&#123;&#125; //test.name=abcvar de
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1717,11 +1713,9 @@ GET传值
       
         
           
-          概念
-对象是JavaScript的一个基本数据类型，是一种复合值，它将很多值（原始值或者其他对象）聚合在一起，可通过名字访问这些值。即属性的无序集合。
-创建方法
-1 对象字面量/对象直接量
-（字面量就是指这个量本身，比如字面量3。也就是指3. 再比如 string类型的字面量"ABC", 这
+          概念对象是JavaScript的一个基本数据类型，是一种复合值，它将很多值（原始值或者其他对象）聚合在一起，可通过名字访问这些值。即属性的无序集合。
+创建方法1 对象字面量/对象直接量
+（字面量就是指这个量本身，比如字面量3。也就是指3. 再比如 string类型的字面量”ABC”, 这个”ABC”
           ...
           <!--noindex-->
           <div class="post-button text-center">

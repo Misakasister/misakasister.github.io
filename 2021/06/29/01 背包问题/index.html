@@ -79,19 +79,19 @@
 
 
 
-<meta name="description" content="问题    序号 重量 价值     1 2 3   2 3 4   3 4 5   4 5 8   5 9 10    有5件物品和一个容量为20的背包。求解可以装入背包的最大价值是多少。 状态转移方程 定义一个数B(k,w)代表当前背包装载的最大价值,其中 k:前k件物品（不一定把前k件物品都拿进背包） w:背包">
+<meta name="description" content="问题    序号 重量 价值     1 2 3   2 3 4   3 4 5   4 5 8   5 9 10     有5件物品和一个容量为20的背包。求解可以装入背包的最大价值是多少。 状态转移方程定义一个数B(k,w)代表当前背包装载的最大价值,其中 k:前k件物品（不一定把前k件物品都拿进背包） w:背包剩下的空间 比如B(5,20)代表背包里装了前5件物品，且背包空间为20的情况下所">
 <meta name="keywords" content="算法设计">
 <meta property="og:type" content="article">
 <meta property="og:title" content="01 背包问题">
 <meta property="og:url" content="http://yoursite.com/2021/06/29/01 背包问题/index.html">
 <meta property="og:site_name" content="rcos97的博客">
-<meta property="og:description" content="问题    序号 重量 价值     1 2 3   2 3 4   3 4 5   4 5 8   5 9 10    有5件物品和一个容量为20的背包。求解可以装入背包的最大价值是多少。 状态转移方程 定义一个数B(k,w)代表当前背包装载的最大价值,其中 k:前k件物品（不一定把前k件物品都拿进背包） w:背包">
+<meta property="og:description" content="问题    序号 重量 价值     1 2 3   2 3 4   3 4 5   4 5 8   5 9 10     有5件物品和一个容量为20的背包。求解可以装入背包的最大价值是多少。 状态转移方程定义一个数B(k,w)代表当前背包装载的最大价值,其中 k:前k件物品（不一定把前k件物品都拿进背包） w:背包剩下的空间 比如B(5,20)代表背包里装了前5件物品，且背包空间为20的情况下所">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://github.com/Misakasister/misakasister.github.io/blob/master/images/karr/karr.png?raw=true">
 <meta property="og:updated_time" content="2020-01-13T08:00:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="01 背包问题">
-<meta name="twitter:description" content="问题    序号 重量 价值     1 2 3   2 3 4   3 4 5   4 5 8   5 9 10    有5件物品和一个容量为20的背包。求解可以装入背包的最大价值是多少。 状态转移方程 定义一个数B(k,w)代表当前背包装载的最大价值,其中 k:前k件物品（不一定把前k件物品都拿进背包） w:背包">
+<meta name="twitter:description" content="问题    序号 重量 价值     1 2 3   2 3 4   3 4 5   4 5 8   5 9 10     有5件物品和一个容量为20的背包。求解可以装入背包的最大价值是多少。 状态转移方程定义一个数B(k,w)代表当前背包装载的最大价值,其中 k:前k件物品（不一定把前k件物品都拿进背包） w:背包剩下的空间 比如B(5,20)代表背包里装了前5件物品，且背包空间为20的情况下所">
 <meta name="twitter:image" content="https://github.com/Misakasister/misakasister.github.io/blob/master/images/karr/karr.png?raw=true">
 
 
@@ -388,69 +388,67 @@
       
 
       
-        <h2 id="问题">问题</h2>
+        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><div class="table-container">
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th>序号</th>
 <th>重量</th>
 <th>价值</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>1</td>
 <td>2</td>
 <td>3</td>
 </tr>
-<tr class="even">
+<tr>
 <td>2</td>
 <td>3</td>
 <td>4</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>3</td>
 <td>4</td>
 <td>5</td>
 </tr>
-<tr class="even">
+<tr>
 <td>4</td>
 <td>5</td>
 <td>8</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>5</td>
 <td>9</td>
 <td>10</td>
 </tr>
 </tbody>
 </table>
+</div>
 <p>有5件物品和一个容量为20的背包。求解可以装入背包的最大价值是多少。</p>
-<h2 id="状态转移方程">状态转移方程</h2>
-<p>定义一个数B(k,w)代表当前背包装载的最大价值,其中</p>
+<h2 id="状态转移方程"><a href="#状态转移方程" class="headerlink" title="状态转移方程"></a>状态转移方程</h2><p>定义一个数B(k,w)代表当前背包装载的最大价值,其中</p>
 <p>k:前k件物品（不一定把前k件物品都拿进背包）</p>
 <p>w:背包剩下的空间</p>
 <p>比如B(5,20)代表背包里装了前5件物品，且背包空间为20的情况下所得到背包里物品的最大值，也就是<strong>问题</strong>所需要求的数。</p>
 <p>需要说明的是，B(0,x) x可以代表任意的背包空间，0代表拿了0件物品，所以不管背包空间有多大，B(0,x)恒等于0</p>
 <p>由于该问题是个动态规划的问题，我们要想知道拿k件物品的情况，就必须知道拿k-1件物品时的情况。</p>
-<p>我现在了拿了前k-1件物品（背包价值B(k-1,w)），在拿第k件物品时（想要求B(k,w')会出现下列2种情况</p>
-<ol type="1">
-<li><p>第k件物品太重了，超过了当前背包剩余空间w(wk&gt;w)，那么这第k件物品不能拿，所以此时的B(k,w‘)=B(k-1,w)，相当于什么都没做就过渡到了B(k,w’)。</p></li>
+<p>我现在了拿了前k-1件物品（背包价值B(k-1,w)），在拿第k件物品时（想要求B(k,w’)会出现下列2种情况</p>
+<ol>
+<li><p>第k件物品太重了，超过了当前背包剩余空间w(wk&gt;w)，那么这第k件物品不能拿，所以此时的B(k,w‘)=B(k-1,w)，相当于什么都没做就过渡到了B(k,w’)。</p>
+</li>
 <li><p>第k件物品可以装入背包，问题又出现了，我们是装入还是不装呢？装入占空间，有可能就把当前背包的某些物品给挤出去了，所以此时就要比较装入和不装入后背包价值的大小了。</p>
-<ol type="1">
-<li>如果装入第k件物品，B(k,w‘)=B(k-1,w-wk)+value(k)，也就是说我在拿了第前k-1件物品时，背包价值为B(k-1,w),我把第k件物品装入了背包，那么此时的背包剩余的空间要减去第k件物品的重量，也就是w'=w-wk,同时价值要增加第k件物品的价值，即最后+value(k)。</li>
-<li>如果不装入第k件物品，那么情况就相当于超重的情况（反正都是不装），此时B(k,w')=B(k-1,w)</li>
+<ol>
+<li>如果装入第k件物品，B(k,w‘)=B(k-1,w-wk)+value(k)，也就是说我在拿了第前k-1件物品时，背包价值为B(k-1,w),我把第k件物品装入了背包，那么此时的背包剩余的空间要减去第k件物品的重量，也就是w’=w-wk,同时价值要增加第k件物品的价值，即最后+value(k)。</li>
+<li>如果不装入第k件物品，那么情况就相当于超重的情况（反正都是不装），此时B(k,w’)=B(k-1,w)</li>
 </ol>
 <p>我们要求出max(装入第k件物品的背包价值，不装入第k件物品的价值)，使其等于B(k,w),即：</p>
 <p><code>B(k,w)=max(B(k-1,w-wk)+value(k),B(k-1,w))</code></p>
-<p>这就是该问题的状态转移方程</p></li>
+<p>这就是该问题的状态转移方程</p>
+</li>
 </ol>
-<h2 id="二维数组表示计算过程">二维数组表示计算过程</h2>
-<figure>
-<img src="https://github.com/Misakasister/misakasister.github.io/blob/master/images/karr/karr.png?raw=true" alt="karr"><figcaption aria-hidden="true">karr</figcaption>
-</figure>
-<h2 id="代码表示">代码表示</h2>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> dp[<span class="number">6</span>][<span class="number">21</span>];</span><br><span class="line">    <span class="keyword">int</span> w[<span class="number">6</span>]=&#123;<span class="number">0</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">9</span>&#125;;<span class="comment">//重量</span></span><br><span class="line">    <span class="keyword">int</span> v[<span class="number">6</span>]=&#123;<span class="number">0</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">10</span>&#125;;<span class="comment">//价值</span></span><br><span class="line">    <span class="built_in">memset</span>(dp,<span class="number">0</span>,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">    <span class="keyword">int</span> k,c;</span><br><span class="line">    <span class="keyword">for</span>(k=<span class="number">1</span>;k&lt;<span class="number">6</span>;k++)&#123;<span class="comment">//遍历物品</span></span><br><span class="line">        <span class="keyword">for</span>(c=<span class="number">1</span>;c&lt;<span class="number">21</span>;c++)&#123;<span class="comment">//遍历重量</span></span><br><span class="line">            <span class="keyword">if</span>(w[k]&gt;c)&#123;<span class="comment">//如果物品重量太大，装不下</span></span><br><span class="line">                dp[k][c]=dp[k<span class="number">-1</span>][c];<span class="comment">//等于没装之前的重量</span></span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;<span class="comment">//能装下--&gt; 判断装下去合不合适（装下去可能会拿出一些东西</span></span><br><span class="line">                <span class="keyword">int</span> value1=dp[k<span class="number">-1</span>][c-w[k]]+v[k];</span><br><span class="line">                <span class="keyword">int</span> value2=dp[k<span class="number">-1</span>][c];</span><br><span class="line">                <span class="keyword">if</span>(value1&gt;value2)&#123;</span><br><span class="line">                    dp[k][c]=value1;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    dp[k][c]=value2;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;dp[<span class="number">5</span>][<span class="number">20</span>];</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="二维数组表示计算过程"><a href="#二维数组表示计算过程" class="headerlink" title="二维数组表示计算过程"></a>二维数组表示计算过程</h2><p><img src="https://github.com/Misakasister/misakasister.github.io/blob/master/images/karr/karr.png?raw=true" alt="karr"></p>
+<h2 id="代码表示"><a href="#代码表示" class="headerlink" title="代码表示"></a>代码表示</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> dp[<span class="number">6</span>][<span class="number">21</span>];</span><br><span class="line">    <span class="keyword">int</span> w[<span class="number">6</span>]=&#123;<span class="number">0</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">9</span>&#125;;<span class="comment">//重量</span></span><br><span class="line">    <span class="keyword">int</span> v[<span class="number">6</span>]=&#123;<span class="number">0</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">10</span>&#125;;<span class="comment">//价值</span></span><br><span class="line">    <span class="built_in">memset</span>(dp,<span class="number">0</span>,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">    <span class="keyword">int</span> k,c;</span><br><span class="line">    <span class="keyword">for</span>(k=<span class="number">1</span>;k&lt;<span class="number">6</span>;k++)&#123;<span class="comment">//遍历物品</span></span><br><span class="line">        <span class="keyword">for</span>(c=<span class="number">1</span>;c&lt;<span class="number">21</span>;c++)&#123;<span class="comment">//遍历重量</span></span><br><span class="line">            <span class="keyword">if</span>(w[k]&gt;c)&#123;<span class="comment">//如果物品重量太大，装不下</span></span><br><span class="line">                dp[k][c]=dp[k<span class="number">-1</span>][c];<span class="comment">//等于没装之前的重量</span></span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;<span class="comment">//能装下--&gt; 判断装下去合不合适（装下去可能会拿出一些东西</span></span><br><span class="line">                <span class="keyword">int</span> value1=dp[k<span class="number">-1</span>][c-w[k]]+v[k];</span><br><span class="line">                <span class="keyword">int</span> value2=dp[k<span class="number">-1</span>][c];</span><br><span class="line">                <span class="keyword">if</span>(value1&gt;value2)&#123;</span><br><span class="line">                    dp[k][c]=value1;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    dp[k][c]=value2;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;dp[<span class="number">5</span>][<span class="number">20</span>];</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>

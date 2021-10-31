@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="基础起步 上传文件要用到input标签 &amp;lt;input type=&quot;file&quot; /&amp;gt; 文件选择是只读的,不能使用v-model 数据双向绑定,只能用change监控值的变化。 所以就用change来代替v-model来处理文件。 &amp;lt;input type=&quot;file&quot; v-on:change=&quot;upFile&quot; /&amp;gt; 在methods里处理文件 12345metho">
+<meta name="description" content="基础起步上传文件要用到input标签 &amp;lt;input type=&amp;quot;file&amp;quot; /&amp;gt;  文件选择是只读的,不能使用v-model 数据双向绑定,只能用change监控值的变化。 所以就用change来代替v-model来处理文件。 &amp;lt;input type=&amp;quot;file&amp;quot; v-on:change=&amp;quot;upFile&amp;quot; /&amp;gt; 在">
 <meta name="keywords" content="前端,JavaScript,Vue">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vue 配合 axios 上传文件（图片）">
 <meta property="og:url" content="http://yoursite.com/2021/06/29/Vue上传文件（图片）/index.html">
 <meta property="og:site_name" content="rcos97的博客">
-<meta property="og:description" content="基础起步 上传文件要用到input标签 &amp;lt;input type=&quot;file&quot; /&amp;gt; 文件选择是只读的,不能使用v-model 数据双向绑定,只能用change监控值的变化。 所以就用change来代替v-model来处理文件。 &amp;lt;input type=&quot;file&quot; v-on:change=&quot;upFile&quot; /&amp;gt; 在methods里处理文件 12345metho">
+<meta property="og:description" content="基础起步上传文件要用到input标签 &amp;lt;input type=&amp;quot;file&amp;quot; /&amp;gt;  文件选择是只读的,不能使用v-model 数据双向绑定,只能用change监控值的变化。 所以就用change来代替v-model来处理文件。 &amp;lt;input type=&amp;quot;file&amp;quot; v-on:change=&amp;quot;upFile&amp;quot; /&amp;gt; 在">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://m.qpic.cn/psb?/V13oJHnV4UEUs2/Yl10JcRV4GivKwMDxNVZZnnlYPJH.qUDp*DLm3jJ8Ns!/b/dLgAAAAAAAAA&bo=yQLeAAAAAAADBzc!&rf=viewer_4">
 <meta property="og:image" content="http://m.qpic.cn/psb?/V13oJHnV4UEUs2/g*4Pq7V6YKMVKNcST3pcgCieRxsTq6W0egueNeZzfPw!/b/dMUAAAAAAAAA&bo=agJ6AAAAAAADFyA!&rf=viewer_4">
@@ -94,7 +94,7 @@
 <meta property="og:updated_time" content="2019-07-31T13:09:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue 配合 axios 上传文件（图片）">
-<meta name="twitter:description" content="基础起步 上传文件要用到input标签 &amp;lt;input type=&quot;file&quot; /&amp;gt; 文件选择是只读的,不能使用v-model 数据双向绑定,只能用change监控值的变化。 所以就用change来代替v-model来处理文件。 &amp;lt;input type=&quot;file&quot; v-on:change=&quot;upFile&quot; /&amp;gt; 在methods里处理文件 12345metho">
+<meta name="twitter:description" content="基础起步上传文件要用到input标签 &amp;lt;input type=&amp;quot;file&amp;quot; /&amp;gt;  文件选择是只读的,不能使用v-model 数据双向绑定,只能用change监控值的变化。 所以就用change来代替v-model来处理文件。 &amp;lt;input type=&amp;quot;file&amp;quot; v-on:change=&amp;quot;upFile&amp;quot; /&amp;gt; 在">
 <meta name="twitter:image" content="http://m.qpic.cn/psb?/V13oJHnV4UEUs2/Yl10JcRV4GivKwMDxNVZZnnlYPJH.qUDp*DLm3jJ8Ns!/b/dLgAAAAAAAAA&bo=yQLeAAAAAAADBzc!&rf=viewer_4">
 
 
@@ -391,49 +391,37 @@
       
 
       
-        <h2 id="基础起步">基础起步</h2>
-<p>上传文件要用到input标签</p>
-<p><code>&lt;input type="file" /&gt;</code></p>
+        <h2 id="基础起步"><a href="#基础起步" class="headerlink" title="基础起步"></a>基础起步</h2><p>上传文件要用到input标签</p>
+<p><code>&lt;input type=&quot;file&quot; /&gt;</code> </p>
 <p>文件选择是只读的,不能使用v-model 数据双向绑定,只能用change监控值的变化。</p>
 <p>所以就用change来代替v-model来处理文件。</p>
-<p><code>&lt;input type="file" v-on:change="upFile" /&gt;</code></p>
+<p><code>&lt;input type=&quot;file&quot; v-on:change=&quot;upFile&quot; /&gt;</code></p>
 <p>在methods里处理文件</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">methods: &#123;</span><br><span class="line">    upFile(e)&#123;</span><br><span class="line">        console.log(e.target.files);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>e.target.files就是点击上传的文件对象了</p>
-<figure>
-<img src="http://m.qpic.cn/psb?/V13oJHnV4UEUs2/Yl10JcRV4GivKwMDxNVZZnnlYPJH.qUDp*DLm3jJ8Ns!/b/dLgAAAAAAAAA&amp;bo=yQLeAAAAAAADBzc!&amp;rf=viewer_4" alt="QQ截图20190731190836"><figcaption aria-hidden="true">QQ截图20190731190836</figcaption>
-</figure>
+<p><img src="http://m.qpic.cn/psb?/V13oJHnV4UEUs2/Yl10JcRV4GivKwMDxNVZZnnlYPJH.qUDp*DLm3jJ8Ns!/b/dLgAAAAAAAAA&amp;bo=yQLeAAAAAAADBzc!&amp;rf=viewer_4" alt="QQ截图20190731190836"></p>
 <p>如果在input标签中加入 multiple 属性，可以在一个输入框中选择多个文件进行上传，此时e.target.files就是一个数组，用下标去寻找文件。</p>
-<figure>
-<img src="http://m.qpic.cn/psb?/V13oJHnV4UEUs2/g*4Pq7V6YKMVKNcST3pcgCieRxsTq6W0egueNeZzfPw!/b/dMUAAAAAAAAA&amp;bo=agJ6AAAAAAADFyA!&amp;rf=viewer_4" alt="QQ截图20190731191300"><figcaption aria-hidden="true">QQ截图20190731191300</figcaption>
-</figure>
-<h2 id="如何在前端预览">如何在前端预览</h2>
-<p>我搜索到的方法是将图片转换成base64的编码，之后用<code>img</code>的<code>src</code>等与图片的base64编码即可展示。</p>
+<p><img src="http://m.qpic.cn/psb?/V13oJHnV4UEUs2/g*4Pq7V6YKMVKNcST3pcgCieRxsTq6W0egueNeZzfPw!/b/dMUAAAAAAAAA&amp;bo=agJ6AAAAAAADFyA!&amp;rf=viewer_4" alt="QQ截图20190731191300"></p>
+<h2 id="如何在前端预览"><a href="#如何在前端预览" class="headerlink" title="如何在前端预览"></a>如何在前端预览</h2><p>我搜索到的方法是将图片转换成base64的编码，之后用<code>img</code>的<code>src</code>等与图片的base64编码即可展示。</p>
 <p><code>img</code> 的 <code>src</code> 等于图片的URL可以展示，等于base64也可以展示。</p>
 <p>将图片转换成base64需要用到内置对象<a href="<https://developer.mozilla.org/zh-CN/docs/Web/API/FileReader>"><strong>FileReader</strong></a></p>
-<p>当 <strong>FileReader</strong> 读取文件的方式为 <a href="https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsArrayBuffer" target="_blank" rel="noopener">readAsArrayBuffer</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsBinaryString" target="_blank" rel="noopener">readAsBinaryString</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsDataURL" target="_blank" rel="noopener">readAsDataURL</a> 或者 <a href="https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsText" target="_blank" rel="noopener">readAsText</a> 的时候，会触发一个 <code>load</code> 事件。从而可以使用 <strong>FileReader.onload</strong> 属性对该事件进行处理。</p>
+<p>当 <strong>FileReader</strong> 读取文件的方式为  <a href="https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsArrayBuffer" target="_blank" rel="noopener">readAsArrayBuffer</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsBinaryString" target="_blank" rel="noopener">readAsBinaryString</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsDataURL" target="_blank" rel="noopener">readAsDataURL</a> 或者 <a href="https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsText" target="_blank" rel="noopener">readAsText</a> 的时候，会触发一个 <code>load</code> 事件。从而可以使用  <strong>FileReader.onload</strong> 属性对该事件进行处理。</p>
 <p>读取图片的base64需要用到<code>readAsDataURL</code>这个方法是异步的，也就是说，只有当执行完成后才能够查看到结果，如果直接查看是无结果的，并返回undefined，也就是说必须要挂载 实例下的 onload 或 onloadend 的方法处理转化后的结果。</p>
 <p>代码如下：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">v-on:change</span>=<span class="string">"upFile"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span> <span class="attr">ref</span>=<span class="string">"showImg"</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">methods: &#123;</span><br><span class="line">    upFile(e)&#123;</span><br><span class="line">        let reader=new FileReader();</span><br><span class="line">        reader.onload= (evt)=&gt;&#123;</span><br><span class="line">            this.$refs.showImg.src=evt.target.result;</span><br><span class="line">        &#125;</span><br><span class="line">        reader.readAsDataURL(e.target.files[0]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><code>evt.target.result</code> 就是<code>reader.readAsDataURL(e.target.files[0])</code> 的结果。</p>
 <p>效果如下：</p>
-<figure>
-<img src="http://m.qpic.cn/psb?/V13oJHnV4UEUs2/edpOSrz*fw.IMR*XOf4rn41OyCnkLTpxtSObW9SfR8M!/b/dFQBAAAAAAAA&amp;bo=9QMkAgAAAAACR7M!&amp;rf=viewer_4" alt="Animation"><figcaption aria-hidden="true">Animation</figcaption>
-</figure>
-<h2 id="配合axios-上传至后台">配合axios 上传至后台</h2>
-<p>如果直接传base64编码的话，可以按照普通的字符传值处理，存入数据库时可以在后台将base64转换成图片存放在某处，数据库直接存放生成的图片的URL即可。再往前端传图片时可以传base64也可以传URL。</p>
+<p><img src="http://m.qpic.cn/psb?/V13oJHnV4UEUs2/edpOSrz*fw.IMR*XOf4rn41OyCnkLTpxtSObW9SfR8M!/b/dFQBAAAAAAAA&amp;bo=9QMkAgAAAAACR7M!&amp;rf=viewer_4" alt="Animation"></p>
+<h2 id="配合axios-上传至后台"><a href="#配合axios-上传至后台" class="headerlink" title="配合axios 上传至后台"></a>配合axios 上传至后台</h2><p>如果直接传base64编码的话，可以按照普通的字符传值处理，存入数据库时可以在后台将base64转换成图片存放在某处，数据库直接存放生成的图片的URL即可。再往前端传图片时可以传base64也可以传URL。</p>
 <p>现在说明的是如何将文件直接传到后台（PHP用$_FILES接受）。</p>
-<p><a href="<https://developer.mozilla.org/zh-CN/docs/Web/API/FormData>"><strong>FormData</strong></a> 接口提供了一种表示表单数据的键值对的构造方式，经过它的数据可以使用 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest/send" target="_blank" rel="noopener"><code>XMLHttpRequest.send()</code></a> 方法送出，本接口和此方法都相当简单直接。如果送出时的编码类型被设为 <code>"multipart/form-data"</code>，它会使用和表单一样的格式。</p>
+<p><a href="<https://developer.mozilla.org/zh-CN/docs/Web/API/FormData>"><strong>FormData</strong></a> 接口提供了一种表示表单数据的键值对的构造方式，经过它的数据可以使用 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest/send" target="_blank" rel="noopener"><code>XMLHttpRequest.send()</code></a> 方法送出，本接口和此方法都相当简单直接。如果送出时的编码类型被设为 <code>&quot;multipart/form-data&quot;</code>，它会使用和表单一样的格式。</p>
 <p>代码解释如下</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">upFile(e) &#123;</span><br><span class="line">      let file = e.target.files[0];</span><br><span class="line">      let param = new FormData(); // 创建form对象</span><br><span class="line">      param.append(&quot;file&quot;, file, file.name); // 通过append向form对象添加数据</span><br><span class="line">      param.append(&quot;chunk&quot;, &quot;0&quot;); // 添加form表单中其他数据</span><br><span class="line">      console.log(param.get(&quot;file&quot;)); // FormData私有类对象，访问不到，可以通过get判断值是否传进去</span><br><span class="line">      let config = &#123;</span><br><span class="line">        headers: &#123; &quot;Content-Type&quot;: &quot;multipart/form-data&quot; &#125;</span><br><span class="line">      &#125;;</span><br><span class="line">      this.axios</span><br><span class="line">        .post(apiURL, param, config)</span><br><span class="line">        .then(function(response) &#123;</span><br><span class="line">          console.log(response);</span><br><span class="line">        &#125;);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 <p>后台即可用$_FILES接受。其它值用$_POST 接受。</p>
-<figure>
-<img src="http://m.qpic.cn/psb?/V13oJHnV4UEUs2/icrnc*PzoB3Mt2fQD*OjeQRNsygViM6Za50P*YRhnoQ!/b/dLgAAAAAAAAA&amp;bo=KQL*AAAAAAADF.Y!&amp;rf=viewer_4" alt="QQ截图20190731200544"><figcaption aria-hidden="true">QQ截图20190731200544</figcaption>
-</figure>
-<p>后台如何处理文件，参考 https://misakasister.github.io/2018/09/30/PHP%20%E5%BA%94%E7%94%A8/ 中的文件上传部分。</p>
-<h2 id="全部代码">全部代码</h2>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">v-on:change</span>=<span class="string">"upFile"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span> <span class="attr">ref</span>=<span class="string">"showImg"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://m.qpic.cn/psb?/V13oJHnV4UEUs2/icrnc*PzoB3Mt2fQD*OjeQRNsygViM6Za50P*YRhnoQ!/b/dLgAAAAAAAAA&amp;bo=KQL*AAAAAAADF.Y!&amp;rf=viewer_4" alt="QQ截图20190731200544"></p>
+<p>后台如何处理文件，参考 <a href="https://misakasister.github.io/2018/09/30/PHP%20%E5%BA%94%E7%94%A8/" target="_blank" rel="noopener">https://misakasister.github.io/2018/09/30/PHP%20%E5%BA%94%E7%94%A8/</a> 中的文件上传部分。</p>
+<h2 id="全部代码"><a href="#全部代码" class="headerlink" title="全部代码"></a>全部代码</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">v-on:change</span>=<span class="string">"upFile"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span> <span class="attr">ref</span>=<span class="string">"showImg"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">upFile(e) &#123;</span><br><span class="line">       //图片预览部分</span><br><span class="line">       let reader = new FileReader();</span><br><span class="line">       let file = e.target.files[0];</span><br><span class="line">       reader.onload = evt =&gt; &#123;</span><br><span class="line">         this.$refs.showImg.src = evt.target.result;</span><br><span class="line">       &#125;;</span><br><span class="line">       reader.readAsDataURL(file);</span><br><span class="line">       //图片上传部分，可以用公共变量保存param，在别的事件里上传。</span><br><span class="line">       let param = new FormData();</span><br><span class="line">       param.append(&quot;file&quot;, file, file.name);</span><br><span class="line">       param.append(&quot;chunk&quot;, &quot;0&quot;);</span><br><span class="line">       let config = &#123;</span><br><span class="line">         headers: &#123; &quot;Content-Type&quot;: &quot;multipart/form-data&quot; &#125;</span><br><span class="line">       &#125;;</span><br><span class="line">       axios</span><br><span class="line">         .post(</span><br><span class="line">           &quot; http://localhost:8088/sql/CodeIgniter-3.1.10/index.php/file/upload&quot;,</span><br><span class="line">           param,</span><br><span class="line">           config</span><br><span class="line">         )</span><br><span class="line">         .then(function(response) &#123;</span><br><span class="line">           console.log(response);</span><br><span class="line">         &#125;);</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 
       
