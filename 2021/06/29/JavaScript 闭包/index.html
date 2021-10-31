@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="我研究了两天，终于把闭包啃下来了… 函数 声明 表达式首先我们要区分下函数的声明与函数表达式 1234567声明：function test ()&amp;#123;&amp;#125;表达式：var test = function() abc()&amp;#123;&amp;#125; //test.name=abcvar demo = function() &amp;#123;&amp;#125;//匿名函数 demo.name=demo">
+<meta name="description" content="我研究了两天，终于把闭包啃下来了... 函数 声明 表达式 首先我们要区分下函数的声明与函数表达式 1234567声明：function test ()&amp;#123;&amp;#125;表达式：var test = function() abc()&amp;#123;&amp;#125; //test.name=abcvar demo = function() &amp;#123;&amp;#125;//匿名函数 demo.name">
 <meta name="keywords" content="前端,JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript 闭包">
 <meta property="og:url" content="http://yoursite.com/2021/06/29/JavaScript 闭包/index.html">
 <meta property="og:site_name" content="rcos97的博客">
-<meta property="og:description" content="我研究了两天，终于把闭包啃下来了… 函数 声明 表达式首先我们要区分下函数的声明与函数表达式 1234567声明：function test ()&amp;#123;&amp;#125;表达式：var test = function() abc()&amp;#123;&amp;#125; //test.name=abcvar demo = function() &amp;#123;&amp;#125;//匿名函数 demo.name=demo">
+<meta property="og:description" content="我研究了两天，终于把闭包啃下来了... 函数 声明 表达式 首先我们要区分下函数的声明与函数表达式 1234567声明：function test ()&amp;#123;&amp;#125;表达式：var test = function() abc()&amp;#123;&amp;#125; //test.name=abcvar demo = function() &amp;#123;&amp;#125;//匿名函数 demo.name">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://m.qpic.cn/psb?/V13oJHnV2YpCgI/LuMK6SWgdlmyRMZWa.dC1YCJvnkDodTIt5VUkSeCtnY!/b/dFkAAAAAAAAA&bo=uwBsAAAAAAARB.c!&rf=viewer_4">
 <meta property="og:image" content="http://m.qpic.cn/psb?/V13oJHnV2YpCgI/DKTWSlYvnoEYqaBjN2wtsq1FUe8Jmv9pmT8EGyZpOR0!/b/dIMAAAAAAAAA&bo=eQBBAAAAAAARFxg!&rf=viewer_4">
@@ -96,7 +96,7 @@
 <meta property="og:updated_time" content="2018-08-18T10:37:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript 闭包">
-<meta name="twitter:description" content="我研究了两天，终于把闭包啃下来了… 函数 声明 表达式首先我们要区分下函数的声明与函数表达式 1234567声明：function test ()&amp;#123;&amp;#125;表达式：var test = function() abc()&amp;#123;&amp;#125; //test.name=abcvar demo = function() &amp;#123;&amp;#125;//匿名函数 demo.name=demo">
+<meta name="twitter:description" content="我研究了两天，终于把闭包啃下来了... 函数 声明 表达式 首先我们要区分下函数的声明与函数表达式 1234567声明：function test ()&amp;#123;&amp;#125;表达式：var test = function() abc()&amp;#123;&amp;#125; //test.name=abcvar demo = function() &amp;#123;&amp;#125;//匿名函数 demo.name">
 <meta name="twitter:image" content="http://m.qpic.cn/psb?/V13oJHnV2YpCgI/LuMK6SWgdlmyRMZWa.dC1YCJvnkDodTIt5VUkSeCtnY!/b/dFkAAAAAAAAA&bo=uwBsAAAAAAARB.c!&rf=viewer_4">
 
 
@@ -393,13 +393,16 @@
       
 
       
-        <p>我研究了两天，终于把闭包啃下来了…</p>
-<h2 id="函数-声明-表达式"><a href="#函数-声明-表达式" class="headerlink" title="函数 声明 表达式"></a>函数 声明 表达式</h2><p>首先我们要区分下函数的声明与函数表达式</p>
+        <p>我研究了两天，终于把闭包啃下来了...</p>
+<h2 id="函数-声明-表达式">函数 声明 表达式</h2>
+<p>首先我们要区分下函数的声明与函数表达式</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">声明：</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span> (<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">表达式：</span><br><span class="line"><span class="keyword">var</span> test = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) <span class="title">abc</span>(<span class="params"></span>)</span>&#123;&#125; <span class="comment">//test.name=abc</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> demo = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;<span class="comment">//匿名函数 demo.name=demo</span></span><br></pre></td></tr></table></figure>
 <p>这两个概念理解清楚会在后面经常出现，注意进行区分，函数声明与函数表达式不一样。</p>
-<h2 id="预编译"><a href="#预编译" class="headerlink" title="预编译"></a>预编译</h2><p>理解JS代码的执行顺序：首先会扫一遍代码有没有语法错误，有错误的话就报错就不执行了，没错误就会进行预编译。</p>
+<h2 id="预编译">预编译</h2>
+<p>理解JS代码的执行顺序：首先会扫一遍代码有没有语法错误，有错误的话就报错就不执行了，没错误就会进行预编译。</p>
 <p>首先说明函数的预编译，然后再说明全局的预编译。说明的顺序与执行的顺序是相反的，两者很相似。</p>
-<h3 id="函数-预编译"><a href="#函数-预编译" class="headerlink" title="函数 预编译"></a>函数 预编译</h3><p>首先需要区分的是变量声明与赋值</p>
+<h3 id="函数-预编译">函数 预编译</h3>
+<p>首先需要区分的是变量声明与赋值</p>
 <p><code>var a=100</code></p>
 <p><code>var a</code> 是声明 <code>a=100</code> 是赋值，注意区分</p>
 <p><strong>预编译发生在函数执行的前一刻</strong></p>
@@ -409,11 +412,11 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(a);</span><br><span class="line">            <span class="keyword">var</span> a = <span class="number">123</span>;</span><br><span class="line">            <span class="built_in">console</span>.log(a);</span><br><span class="line">            <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123; &#125;</span><br><span class="line">            <span class="built_in">console</span>.log(a);</span><br><span class="line">            <span class="keyword">var</span> b = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; &#125;</span><br><span class="line">            <span class="built_in">console</span>.log(b);</span><br><span class="line">            <span class="function"><span class="keyword">function</span> <span class="title">d</span>(<span class="params"></span>) </span>&#123; &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        fn(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
 <p>试问控制台的输出。我们按着预编译的步骤进行分析</p>
 <p>在系统刚要执行fn(1)时</p>
-<p>1  创建AO对象（Activation Object)</p>
+<p>1 创建AO对象（Activation Object)</p>
 <p>系统内部创建了一个AO对象</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">AO&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>2 找形参和变量声明，将变量和形参名作为AO属性名，值为undefined</p>
-<p>函数的形参为a 变量声明有 a b, 因此 </p>
+<p>函数的形参为a 变量声明有 a b, 因此</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">AO&#123;</span><br><span class="line">    a:undefined,</span><br><span class="line">    b:undefined</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>3 将实参值和形参值统一</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">AO&#123;</span><br><span class="line">    a:1,</span><br><span class="line">    b:undefined</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -426,8 +429,11 @@
 <p>第二个控制台输出时a被赋值为123，因此输出123</p>
 <p>第三个同上</p>
 <p>第四个b被赋值了一个函数，因此输出函数。</p>
-<p><img src="http://m.qpic.cn/psb?/V13oJHnV2YpCgI/LuMK6SWgdlmyRMZWa.dC1YCJvnkDodTIt5VUkSeCtnY!/b/dFkAAAAAAAAA&amp;bo=uwBsAAAAAAARB.c!&amp;rf=viewer_4" alt="console"></p>
-<h3 id="全局-预编译"><a href="#全局-预编译" class="headerlink" title="全局 预编译"></a>全局 预编译</h3><p>全局预编译与函数预编译的主要不同是<strong>全局预编译没有形参，产生GO对象</strong></p>
+<figure>
+<img src="http://m.qpic.cn/psb?/V13oJHnV2YpCgI/LuMK6SWgdlmyRMZWa.dC1YCJvnkDodTIt5VUkSeCtnY!/b/dFkAAAAAAAAA&amp;bo=uwBsAAAAAAARB.c!&amp;rf=viewer_4" alt="console"><figcaption aria-hidden="true">console</figcaption>
+</figure>
+<h3 id="全局-预编译">全局 预编译</h3>
+<p>全局预编译与函数预编译的主要不同是<strong>全局预编译没有形参，产生GO对象</strong></p>
 <p>因此只有三步：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1 创建GO对象（Global Object) GO对象就是window对象</span><br><span class="line"></span><br><span class="line">2 找变量声明，将变量和形参名作为GO属性名，值为undefined</span><br><span class="line"></span><br><span class="line">3 在全局里面找函数声明 ，值赋予函数体</span><br></pre></td></tr></table></figure>
 <p>系统的全局预编译要比函数预编译先，可以看下面的例子：</p>
@@ -440,8 +446,11 @@
 <p>fn开始执行。</p>
 <p>因此第一个输出undefined，</p>
 <p>第二个输出200.</p>
-<p><img src="http://m.qpic.cn/psb?/V13oJHnV2YpCgI/DKTWSlYvnoEYqaBjN2wtsq1FUe8Jmv9pmT8EGyZpOR0!/b/dIMAAAAAAAAA&amp;bo=eQBBAAAAAAARFxg!&amp;rf=viewer_4" alt="console"></p>
-<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><p>上述操作可以简单的理解为</p>
+<figure>
+<img src="http://m.qpic.cn/psb?/V13oJHnV2YpCgI/DKTWSlYvnoEYqaBjN2wtsq1FUe8Jmv9pmT8EGyZpOR0!/b/dIMAAAAAAAAA&amp;bo=eQBBAAAAAAARFxg!&amp;rf=viewer_4" alt="console"><figcaption aria-hidden="true">console</figcaption>
+</figure>
+<h3 id="补充">补充</h3>
+<p>上述操作可以简单的理解为</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">函数声明整体提升</span><br><span class="line"></span><br><span class="line">变量 声明提升</span><br></pre></td></tr></table></figure>
 <p>这也是函数体写在函数调用下面可以运行的原因</p>
 <p>另外</p>
@@ -449,7 +458,8 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">a=<span class="number">10</span>;--&gt;<span class="built_in">window</span>.a</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> b=c=<span class="number">123</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//AO识别不了c变量，因为c没有进行声明，直接进行赋值</span></span><br><span class="line"><span class="comment">//c被GO识别</span></span><br><span class="line"><span class="built_in">console</span>.log(c);<span class="comment">//window.c-&gt;123</span></span><br><span class="line"><span class="built_in">console</span>.log(b);<span class="comment">//undefined</span></span><br></pre></td></tr></table></figure>
 <p>2 一切声明的<strong>全局</strong>变量，都是window的属性</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> b=<span class="number">11</span>;--&gt;<span class="built_in">window</span>.b</span><br></pre></td></tr></table></figure>
-<h2 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h2><p>根据我们以前的经验，函数是可以访问外部变量的，这就与作用域有关</p>
+<h2 id="作用域链">作用域链</h2>
+<p>根据我们以前的经验，函数是可以访问外部变量的，这就与作用域有关</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[[scope]]:每个JS函数都是一个对象，对象中有些属性我们可以访问，但是有些不可以，这些属性仅供JS引擎存取，[[scope]]就是其中一个。[[scope]]指的就是我们所说的作用域，其中存取了运行期上下文的集合。</span><br><span class="line"></span><br><span class="line">作用域链：[[scope]]中所存储的执行期上下文对象的集合，这个集合呈链式链接，我们把这种链式链接叫做作用域链。</span><br></pre></td></tr></table></figure>
 <p>接下来我们进行解释：</p>
 <p>前面我们知道了JS文件运行前系统创建GO对象，函数运行前创建AO对象。</p>
@@ -457,11 +467,15 @@
 <p>比如：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    b();</span><br><span class="line">&#125;</span><br><span class="line">a();</span><br></pre></td></tr></table></figure>
 <p>a<strong>执行时</strong>，会产生作用域链，如图：</p>
-<p><img src="http://m.qpic.cn/psb?/V13oJHnV2YpCgI/.pim.4uywE1bIutKDeH.P9ve2f.5i4vnlONAIPFZzZI!/b/dDQBAAAAAAAA&amp;bo=IQN*AQAAAAARF3w!&amp;rf=viewer_4" alt="console"></p>
+<figure>
+<img src="http://m.qpic.cn/psb?/V13oJHnV2YpCgI/.pim.4uywE1bIutKDeH.P9ve2f.5i4vnlONAIPFZzZI!/b/dDQBAAAAAAAA&amp;bo=IQN*AQAAAAARF3w!&amp;rf=viewer_4" alt="console"><figcaption aria-hidden="true">console</figcaption>
+</figure>
 <p>作用域链的第一位是a的AO，第二位是GO</p>
 <p>当b函数执行时，<strong>会在a的基础上增加自己的AO</strong></p>
-<p><img src="http://m.qpic.cn/psb?/V13oJHnV2YpCgI/671eCRv6RhZqLIL9mykdP6K1s5nhs2sTOytpg*TQ1bY!/b/dDYBAAAAAAAA&amp;bo=UQPhAQAAAAARF5I!&amp;rf=viewer_4" alt="console"></p>
-<p>b作用域链的第一位是自己产生的AO，后两位与a的作用域链一样。（类似于站在巨人的肩膀上那样…)</p>
+<figure>
+<img src="http://m.qpic.cn/psb?/V13oJHnV2YpCgI/671eCRv6RhZqLIL9mykdP6K1s5nhs2sTOytpg*TQ1bY!/b/dDYBAAAAAAAA&amp;bo=UQPhAQAAAAARF5I!&amp;rf=viewer_4" alt="console"><figcaption aria-hidden="true">console</figcaption>
+</figure>
+<p>b作用域链的第一位是自己产生的AO，后两位与a的作用域链一样。（类似于站在巨人的肩膀上那样...)</p>
 <p>两个链指向的a AO是同一个，如果b将某一变量值改变，在a里面调用时，变量值也会变。</p>
 <p>scope chain 就是作用域链，js执行时会在链的首端找变量，如果AO里没有该变量的话就会依次往后寻找。</p>
 <p>当a的函数执行完毕后，会剪断作用域链与a AO的联系。但是a AO里存着b函数，现在，a AO失去了联系，也就是可以说b函数可以说是”消失“了。</p>
@@ -474,24 +488,30 @@
 <p>答案是 1 2</p>
 <p>其也可以作用域链解释</p>
 <p>在var t=a()执行后，a函数已经执行完毕，剪断了a AO，然后t()开始执行。如图</p>
-<p><img src="http://m.qpic.cn/psb?/V13oJHnV2YpCgI/EYm1EU7IcGBH0cjSw8zzdULR.C08vU6520TWE*2NuqE!/b/dFYBAAAAAAAA&amp;bo=SgPcAQAAAAARF7Q!&amp;rf=viewer_4" alt="console"></p>
+<figure>
+<img src="http://m.qpic.cn/psb?/V13oJHnV2YpCgI/EYm1EU7IcGBH0cjSw8zzdULR.C08vU6520TWE*2NuqE!/b/dFYBAAAAAAAA&amp;bo=SgPcAQAAAAARF7Q!&amp;rf=viewer_4" alt="console"><figcaption aria-hidden="true">console</figcaption>
+</figure>
 <p>输出1</p>
 <p>虽然a函数a AO失去了联系，但是<strong>b函数还连着a AO</strong>,b执行完毕后，剪断与b AO的联系。这样的话，a的AO与b函数就绑定了。</p>
 <p>第二次调用时，会在上图的基础上num=1时加1，因此输出2。</p>
 <p>这两个例子的不同就是第二个例子在b函数被销毁前（也就是a函数与a AO剪断关系前）将b函数当作返回值返回到了全局中。</p>
-<p>这就涉及到了本篇文章的主角–闭包</p>
-<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><p>当内部函数被保存到外部时，将会生产闭包。闭包会导致原有作用域链不释放，造成内存泄漏。</p>
+<p>这就涉及到了本篇文章的主角--闭包</p>
+<h2 id="闭包">闭包</h2>
+<p>当内部函数被保存到外部时，将会生产闭包。闭包会导致原有作用域链不释放，造成内存泄漏。</p>
 <p>先说明一下内存泄漏，上面那个例子，本来a函数执行完，应该剪断与a AO的联系，但是b函数却保存下来，如果函数嵌套的比较深，就会造成函数的作用域链很长，被电脑保存起来，这就时内存泄漏（反向理解）。</p>
 <p>闭包可以简单理解为内部函数保存了外部函数的劳动。</p>
 <p>接下来是最常遇见的闭包情况：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> arr = [];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i &lt; <span class="number">10</span>;i++)&#123;</span><br><span class="line">        arr[i]=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> t=test();</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> j =<span class="number">0</span>; j&lt; <span class="number">10</span>;j++)&#123;</span><br><span class="line">    t[j]();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>控制台会输出10个10,而并不是0，1，2，….9。</p>
-<p><strong>需要注意的是，arr[i]=function(){}，赋值时，函数体并不执行。</strong>只有当调用时，函数才会执行（函数名后面跟着个小括号），如果改成这样<code>arr[i]=function(){}()</code> 这是函数就会立即执行了，输出的也是0 ，1，2，….9了，当然，返回值数组里放的就不是函数体了。（会报错，但是会输出）</p>
-<p><img src="http://m.qpic.cn/psb?/V13oJHnV2YpCgI/kVKtYmvbkEjlx.krlhtKB9jPnaSLhmEF7Fdos2qLXmk!/b/dFYBAAAAAAAA&amp;bo=aAE1AQAAAAARF30!&amp;rf=viewer_4" alt="console"></p>
+<p>控制台会输出10个10,而并不是0，1，2，....9。</p>
+<p><strong>需要注意的是，arr[i]=function(){}，赋值时，函数体并不执行。</strong>只有当调用时，函数才会执行（函数名后面跟着个小括号），如果改成这样<code>arr[i]=function(){}()</code> 这是函数就会立即执行了，输出的也是0 ，1，2，....9了，当然，返回值数组里放的就不是函数体了。（会报错，但是会输出）</p>
+<figure>
+<img src="http://m.qpic.cn/psb?/V13oJHnV2YpCgI/kVKtYmvbkEjlx.krlhtKB9jPnaSLhmEF7Fdos2qLXmk!/b/dFYBAAAAAAAA&amp;bo=aAE1AQAAAAARF30!&amp;rf=viewer_4" alt="console"><figcaption aria-hidden="true">console</figcaption>
+</figure>
 <p>在t=test()时，test()运行完毕，将10个函数存在arr里面</p>
 <p>也就是说t[j]执行时，arr[j]里保存的函数作用域链有一个位置保存了test AO，此时test AO里面的i=10。arr[j] AO里没有i变量，因此在test AO里那了 i 值，所以输出了10。（10个arr[j]的作用域共同连着一个test AO）</p>
-<p>这不是我们想要的结果，我们想让控制台输出0 1 2 3…9,因此就有解决方案。</p>
-<h2 id="立即执行函数"><a href="#立即执行函数" class="headerlink" title="立即执行函数"></a>立即执行函数</h2><p>一般函数被声明后,会一直等待函数被执行。直到js文件运行完毕，才会被销毁。</p>
+<p>这不是我们想要的结果，我们想让控制台输出0 1 2 3...9,因此就有解决方案。</p>
+<h2 id="立即执行函数">立即执行函数</h2>
+<p>一般函数被声明后,会一直等待函数被执行。直到js文件运行完毕，才会被销毁。</p>
 <p>立即执行函数，顾名思义，就是该函数被读到时会立即执行，执行完毕后被销毁。</p>
 <p>形式为:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(function ()&#123;&#125;())；W3C 建议</span><br><span class="line">（function ()&#123;&#125;)();</span><br></pre></td></tr></table></figure>
@@ -501,7 +521,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;&#125;();<span class="comment">//不行，这是声明</span></span><br><span class="line">+<span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;&#125;();<span class="comment">//可以，这是表达式</span></span><br></pre></td></tr></table></figure>
 <p>知道了立即执行函数可以解决这个问题，因此我们可以把代码改成：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">       <span class="keyword">var</span> arr = [];</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">var</span> i =<span class="number">0</span>; i&lt; <span class="number">10</span>; i++)&#123;</span><br><span class="line">          (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span>&#123;</span><br><span class="line">              arr[i]=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                  <span class="built_in">console</span>.log(i);</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;(i))</span><br><span class="line">      &#125;</span><br><span class="line">       <span class="keyword">return</span> arr;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">var</span> t = test();</span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; <span class="number">10</span>; j++) &#123;</span><br><span class="line">       t[j]();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<p>这样控制台就输出0，1， 2，…9了。</p>
+<p>这样控制台就输出0，1， 2，...9了。</p>
 
       
     </div>

@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="2D变换（2D transformation）缩放（Scale） 坐标(x,y)缩放至(x’,y’)，x轴缩放 $$s_x=0.5$$ ，y轴缩放$$s_y=1$$： $$x’=s_xx+0y\y’=0x+s_yy$$矩阵形式：$$\left[\begin{matrix}s_x&amp;amp;0\0&amp;amp;s_y\\end{matrix}\right]*\left[\begin{matrix}x\y\">
+<meta name="description" content="2D变换（2D transformation） 缩放（Scale）  坐标(x,y)缩放至(x&apos;,y&apos;)，x轴缩放 \[s_x=0.5\] ，y轴缩放\[s_y=1\]： \[ x&amp;#39;=s_x*x+0*y\\ y&amp;#39;=0*x+s_y*y \] 矩阵形式： \[ \left[\begin{matrix} s_x&amp;amp;0\\ 0&amp;amp;s_y\\ \end{ma">
 <meta name="keywords" content="计算机图形学">
 <meta property="og:type" content="article">
 <meta property="og:title" content="变换">
 <meta property="og:url" content="http://yoursite.com/2021/10/31/变换/index.html">
 <meta property="og:site_name" content="rcos97的博客">
-<meta property="og:description" content="2D变换（2D transformation）缩放（Scale） 坐标(x,y)缩放至(x’,y’)，x轴缩放 $$s_x=0.5$$ ，y轴缩放$$s_y=1$$： $$x’=s_xx+0y\y’=0x+s_yy$$矩阵形式：$$\left[\begin{matrix}s_x&amp;amp;0\0&amp;amp;s_y\\end{matrix}\right]*\left[\begin{matrix}x\y\">
+<meta property="og:description" content="2D变换（2D transformation） 缩放（Scale）  坐标(x,y)缩放至(x&apos;,y&apos;)，x轴缩放 \[s_x=0.5\] ，y轴缩放\[s_y=1\]： \[ x&amp;#39;=s_x*x+0*y\\ y&amp;#39;=0*x+s_y*y \] 矩阵形式： \[ \left[\begin{matrix} s_x&amp;amp;0\\ 0&amp;amp;s_y\\ \end{ma">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2021/10/31/变换/image-20211029172151877.png">
 <meta property="og:image" content="http://yoursite.com/2021/10/31/变换/image-20211029172342274.png">
@@ -112,10 +112,10 @@
 <meta property="og:image" content="http://yoursite.com/2021/10/31/变换/image-20211031125358565.png">
 <meta property="og:image" content="http://yoursite.com/2021/10/31/变换/image-20211031130923296.png">
 <meta property="og:image" content="http://yoursite.com/2021/10/31/变换/image-20211031132805806.png">
-<meta property="og:updated_time" content="2021-10-31T10:39:38.627Z">
+<meta property="og:updated_time" content="2021-10-31T10:46:40.651Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="变换">
-<meta name="twitter:description" content="2D变换（2D transformation）缩放（Scale） 坐标(x,y)缩放至(x’,y’)，x轴缩放 $$s_x=0.5$$ ，y轴缩放$$s_y=1$$： $$x’=s_xx+0y\y’=0x+s_yy$$矩阵形式：$$\left[\begin{matrix}s_x&amp;amp;0\0&amp;amp;s_y\\end{matrix}\right]*\left[\begin{matrix}x\y\">
+<meta name="twitter:description" content="2D变换（2D transformation） 缩放（Scale）  坐标(x,y)缩放至(x&apos;,y&apos;)，x轴缩放 \[s_x=0.5\] ，y轴缩放\[s_y=1\]： \[ x&amp;#39;=s_x*x+0*y\\ y&amp;#39;=0*x+s_y*y \] 矩阵形式： \[ \left[\begin{matrix} s_x&amp;amp;0\\ 0&amp;amp;s_y\\ \end{ma">
 <meta name="twitter:image" content="http://yoursite.com/2021/10/31/变换/image-20211029172151877.png">
 
 
@@ -390,54 +390,261 @@
       
 
       
-        <h2 id="2D变换（2D-transformation）"><a href="#2D变换（2D-transformation）" class="headerlink" title="2D变换（2D transformation）"></a>2D变换（2D transformation）</h2><h3 id="缩放（Scale）"><a href="#缩放（Scale）" class="headerlink" title="缩放（Scale）"></a>缩放（Scale）</h3><p><img src="image-20211029172151877.png" alt="image-20211029172151877" style="zoom: 80%;"></p>
-<p>坐标(x,y)缩放至(x’,y’)，x轴缩放 $$s_x=0.5$$ ，y轴缩放$$s_y=1$$：</p>
-<p>$$<br>x’=s_x<em>x+0</em>y\<br>y’=0<em>x+s_y</em>y<br>$$<br>矩阵形式：<br>$$<br>\left[\begin{matrix}<br>s_x&amp;0\<br>0&amp;s_y\<br>\end{matrix}\right]<br>*<br>\left[\begin{matrix}<br>x\<br>y\<br>\end{matrix}\right]<br>=<br>\left[\begin{matrix}<br>x’\<br>y’\<br>\end{matrix}\right]<br>$$</p>
-<h3 id="错切（shear）"><a href="#错切（shear）" class="headerlink" title="错切（shear）"></a>错切（shear）</h3><p><img src="image-20211029172342274.png" alt="image-20211029172342274" style="zoom: 80%;"></p>
-<p>首先能观察到点的y坐标不会发生变化，只有x坐标进行变换：<br>$$<br>y’=y<br>$$<br>x轴的坐标变换会根据高度（即y值）进行变换。具体而言：</p>
+        <h2 id="d变换2d-transformation">2D变换（2D transformation）</h2>
+<h3 id="缩放scale">缩放（Scale）</h3>
+<p><img src="image-20211029172151877.png" alt="image-20211029172151877" style="zoom: 80%;"></p>
+<p>坐标(x,y)缩放至(x',y')，x轴缩放 <span class="math display">\[s_x=0.5\]</span> ，y轴缩放<span class="math display">\[s_y=1\]</span>：</p>
+<p><span class="math display">\[
+x&#39;=s_x*x+0*y\\
+y&#39;=0*x+s_y*y
+\]</span> 矩阵形式： <span class="math display">\[
+\left[\begin{matrix}
+s_x&amp;0\\
+0&amp;s_y\\
+\end{matrix}\right]
+*
+\left[\begin{matrix}
+x\\
+y\\
+\end{matrix}\right]
+=
+\left[\begin{matrix}
+x&#39;\\
+y&#39;\\
+\end{matrix}\right]
+\]</span></p>
+<h3 id="错切shear">错切（shear）</h3>
+<p><img src="image-20211029172342274.png" alt="image-20211029172342274" style="zoom: 80%;"></p>
+<p>首先能观察到点的y坐标不会发生变化，只有x坐标进行变换： <span class="math display">\[
+y&#39;=y
+\]</span> x轴的坐标变换会根据高度（即y值）进行变换。具体而言：</p>
 <p><img src="image-20211029173005341.png" alt="image-20211029173005341" style="zoom:80%;"></p>
-<p>对于点A(x,y)变换到点B(x’,y’)有：<br>$$<br>\triangle OAB \sim \triangle ODC\<br>\frac{AB}{DC}=\frac{OA}{OD}\<br>\frac{AB}{DC} = \frac{AB}{a} = \frac{x’-x}{a}\<br>\frac{OA}{OD} = \frac{y}{1}\<br>$$<br>综上有：<br>$$<br>\frac{x’-x}{a} = \frac{y}{1}\<br>$$<br>得：<br>$$<br>x’=x+a<em>y<br>$$<br>综上有：<br>$$<br>x’=x+ay\<br>y’=0x+y<br>$$<br>矩阵形式：<br>$$<br>\left[\begin{matrix}<br>1&amp;a\<br>0&amp;1\<br>\end{matrix}\right]
-</em><br>\left[\begin{matrix}<br>x\<br>y\<br>\end{matrix}\right]<br>=<br>\left[\begin{matrix}<br>x’\<br>y’\<br>\end{matrix}\right]<br>$$</p>
-<h3 id="旋转（Rotation）"><a href="#旋转（Rotation）" class="headerlink" title="旋转（Rotation）"></a>旋转（Rotation）</h3><p>规定绕原点（0,0）逆时针进行旋转。</p>
+<p>对于点A(x,y)变换到点B(x',y')有： <span class="math display">\[
+\triangle OAB \sim \triangle ODC\\
+\frac{AB}{DC}=\frac{OA}{OD}\\
+\frac{AB}{DC} = \frac{AB}{a} = \frac{x&#39;-x}{a}\\
+\frac{OA}{OD} = \frac{y}{1}\\
+\]</span> 综上有： <span class="math display">\[
+\frac{x&#39;-x}{a} = \frac{y}{1}\\
+\]</span> 得： <span class="math display">\[
+x&#39;=x+a*y
+\]</span> 综上有： <span class="math display">\[
+x&#39;=x+ay\\
+y&#39;=0x+y
+\]</span> 矩阵形式： <span class="math display">\[
+\left[\begin{matrix}
+1&amp;a\\
+0&amp;1\\
+\end{matrix}\right]
+*
+\left[\begin{matrix}
+x\\
+y\\
+\end{matrix}\right]
+=
+\left[\begin{matrix}
+x&#39;\\
+y&#39;\\
+\end{matrix}\right]
+\]</span> ### 旋转（Rotation）</p>
+<p>规定绕原点（0,0）逆时针进行旋转。</p>
 <p><img src="image-20211029190438112.png" alt="image-20211029190438112" style="zoom:80%;"></p>
-<p>对于图上一点$(x_a,y_a)$ 有<br>$$<br>x_a = r\cos\theta\tag{1}\<br>$$</p>
-<p>$$<br>y_a = r\sin\theta\tag{2}<br>$$</p>
-<p>经旋转$\phi$角度至$(x_a’,y_a’)$有<br>$$<br>x_a’=rcos(\theta+\phi)\<br>y_a’=rsin(\theta+\phi)\<br>$$<br>根据和角公式：<br>$$<br>\sin(\alpha+\beta)=\sin\alpha\cdot\cos\beta+\cos\alpha\cdot\sin\beta\<br>\cos(\alpha+\beta)=\cos\alpha\cdot\cos\beta-\sin\alpha\cdot\sin\beta\<br>$$<br>有：<br>$$<br>x_a’=rcos(\theta+\phi)=r\cos\theta\cdot\cos\phi-r\sin\theta\cdot\sin\phi\<br>y_a’=rsin(\theta+\phi)=r\sin\theta\cdot\cos\phi+r\cos\theta\cdot\sin\phi\<br>$$<br>将公式(1)(2)带入有<br>$$<br>x_a’= x_a\cos\phi-y_a\sin\phi\<br>y_a’= y_a\cos\phi+x_a\sin\phi<br>$$<br>写成矩阵形式有：<br>$$<br>\left[\begin{matrix}<br>\cos\phi &amp; -\sin\phi \<br>\sin\phi &amp; \cos\phi \<br>\end{matrix}\right]<br>*<br>\left[\begin{matrix}<br>x_a\<br>y_a\<br>\end{matrix}\right]<br>=<br>\left[\begin{matrix}<br>x_a’\<br>y_a’\<br>\end{matrix}\right]<br>$$</p>
-<h4 id="旋转矩阵是正交矩阵"><a href="#旋转矩阵是正交矩阵" class="headerlink" title="旋转矩阵是正交矩阵"></a>旋转矩阵是正交矩阵</h4><p>考虑一个点旋转 $-\phi$  角度。</p>
-<p>有：<br>$$<br>R(-\phi)=<br>\left[\begin{matrix}<br>\cos-\phi &amp; -\sin-\phi \<br>\sin-\phi &amp; \cos-\phi \<br>\end{matrix}\right]<br>=<br>\left[\begin{matrix}<br>\cos\phi &amp; \sin\phi \<br>-\sin\phi &amp; \cos\phi \<br>\end{matrix}\right]<br>$$<br>与旋转$\phi$ 角度互逆：<br>$$<br>R(\phi)=<br>\left[\begin{matrix}<br>\cos\phi &amp; -\sin\phi \<br>\sin\phi &amp; \cos\phi \<br>\end{matrix}\right]<br>\<br>R(\phi)^{-1}=R(-\phi)<br>$$<br>并且可以观察到这两个矩阵互为转置矩阵<br>$$<br>R(\phi)^{T}=R(-\phi)<br>$$<br>因此有：<br>$$<br>R(\phi)^{-1}=R(\phi)^{T}<br>$$<br>综上，旋转矩阵为正交矩阵。</p>
-<h3 id="位移（Translation）"><a href="#位移（Translation）" class="headerlink" title="位移（Translation）"></a>位移（Translation）</h3><p><img src="image-20211029191432719.png" alt="image-20211029191432719" style="zoom:80%;"></p>
-<p>将点(x,y)平移$T_{tx}、T_{ty}$个单位得到$(x+T_{tx},y+T_{ty})$</p>
-<p>有变换：<br>$$<br>x’=x+t_x\<br>y’=y+t_y<br>$$<br>矩阵形式：<br>$$<br>\left[\begin{matrix}<br>1&amp;0\<br>0&amp;1\<br>\end{matrix}\right]<br>*<br>\left[\begin{matrix}<br>x\<br>y\<br>\end{matrix}\right]<br>+<br>\left[\begin{matrix}<br>t_x\<br>t_y\<br>\end{matrix}\right]<br>=<br>\left[\begin{matrix}<br>x’\<br>y’\<br>\end{matrix}\right]<br>$$<br>但该变换不是线性变换，而是<strong>仿射变换</strong>。</p>
+<p>对于图上一点<span class="math inline">\((x_a,y_a)\)</span> 有 <span class="math display">\[
+x_a = r\cos\theta\tag{1}\\
+\]</span></p>
+<p><span class="math display">\[
+y_a = r\sin\theta\tag{2}
+\]</span></p>
+<p>经旋转<span class="math inline">\(\phi\)</span>角度至<span class="math inline">\((x_a&#39;,y_a&#39;)\)</span>有 <span class="math display">\[
+x_a&#39;=rcos(\theta+\phi)\\
+y_a&#39;=rsin(\theta+\phi)\\
+\]</span> 根据和角公式： <span class="math display">\[
+\sin(\alpha+\beta)=\sin\alpha\cdot\cos\beta+\cos\alpha\cdot\sin\beta\\
+\cos(\alpha+\beta)=\cos\alpha\cdot\cos\beta-\sin\alpha\cdot\sin\beta\\
+\]</span> 有： <span class="math display">\[
+x_a&#39;=rcos(\theta+\phi)=r\cos\theta\cdot\cos\phi-r\sin\theta\cdot\sin\phi\\
+y_a&#39;=rsin(\theta+\phi)=r\sin\theta\cdot\cos\phi+r\cos\theta\cdot\sin\phi\\
+\]</span> 将公式(1)(2)带入有 <span class="math display">\[
+x_a&#39;= x_a\cos\phi-y_a\sin\phi\\
+y_a&#39;= y_a\cos\phi+x_a\sin\phi
+\]</span> 写成矩阵形式有： <span class="math display">\[
+\left[\begin{matrix}
+\cos\phi &amp; -\sin\phi \\
+\sin\phi &amp; \cos\phi \\
+\end{matrix}\right]
+*
+\left[\begin{matrix}
+x_a\\
+y_a\\
+\end{matrix}\right]
+=
+\left[\begin{matrix}
+x_a&#39;\\
+y_a&#39;\\
+\end{matrix}\right]
+\]</span></p>
+<h4 id="旋转矩阵是正交矩阵">旋转矩阵是正交矩阵</h4>
+<p>考虑一个点旋转 <span class="math inline">\(-\phi\)</span> 角度。</p>
+<p>有： <span class="math display">\[
+R(-\phi)=
+\left[\begin{matrix}
+\cos-\phi &amp; -\sin-\phi \\
+\sin-\phi &amp; \cos-\phi \\
+\end{matrix}\right]
+=
+\left[\begin{matrix}
+\cos\phi &amp; \sin\phi \\
+-\sin\phi &amp; \cos\phi \\
+\end{matrix}\right]
+\]</span> 与旋转<span class="math inline">\(\phi\)</span> 角度互逆： <span class="math display">\[
+R(\phi)=
+\left[\begin{matrix}
+\cos\phi &amp; -\sin\phi \\
+\sin\phi &amp; \cos\phi \\
+\end{matrix}\right]
+\\
+R(\phi)^{-1}=R(-\phi)
+\]</span> 并且可以观察到这两个矩阵互为转置矩阵 <span class="math display">\[
+R(\phi)^{T}=R(-\phi)
+\]</span> 因此有： <span class="math display">\[
+R(\phi)^{-1}=R(\phi)^{T}
+\]</span> 综上，旋转矩阵为正交矩阵。</p>
+<h3 id="位移translation">位移（Translation）</h3>
+<p><img src="image-20211029191432719.png" alt="image-20211029191432719" style="zoom:80%;"></p>
+<p>将点(x,y)平移<span class="math inline">\(T_{tx}、T_{ty}\)</span>个单位得到<span class="math inline">\((x+T_{tx},y+T_{ty})\)</span></p>
+<p>有变换： <span class="math display">\[
+x&#39;=x+t_x\\
+y&#39;=y+t_y
+\]</span> 矩阵形式： <span class="math display">\[
+\left[\begin{matrix}
+1&amp;0\\
+0&amp;1\\
+\end{matrix}\right]
+*
+\left[\begin{matrix}
+x\\
+y\\
+\end{matrix}\right]
++
+\left[\begin{matrix}
+t_x\\
+t_y\\
+\end{matrix}\right]
+=
+\left[\begin{matrix}
+x&#39;\\
+y&#39;\\
+\end{matrix}\right]
+\]</span> 但该变换不是线性变换，而是<strong>仿射变换</strong>。</p>
 <blockquote>
 <p><strong>仿射变换</strong>，又称<strong>仿射映射</strong>，是指在几何进行一次线性变换并接上一个平移，变换为另一个向量空间。</p>
 <p>“仿射变换”就是：“线性变换”+“平移”</p>
 </blockquote>
 <p>我们现在要通过<strong>高纬度</strong>的线性变换完成<strong>低纬度</strong>的仿射变换。将点进行生维到z=1的平面上、也就是(x,y)至(x,y,1)：</p>
-<p>记$\overrightarrow{x}$为二维平面上的点坐标<br>$$<br>\overrightarrow{x}=(x,y)^T<br>$$</p>
+<p>记<span class="math inline">\(\overrightarrow{x}\)</span>为二维平面上的点坐标 <span class="math display">\[
+\overrightarrow{x}=(x,y)^T
+\]</span></p>
 <p>A为在二维空间上的线性变换矩阵。</p>
-<p>$\overrightarrow{b}$ 为位移尺度:<br>$$<br>\overrightarrow{b}=(T_x,T_y)^T<br>$$<br><img src="v2-ff605e1490c88ee973f68dd1357cf228_r.jpg" alt="v2-ff605e1490c88ee973f68dd1357cf228_r" style="zoom: 67%;"></p>
-<p>这样我就可以在三维空间下通过$\left[\begin{matrix}A&amp;\overrightarrow{b}\0&amp;1\end{matrix}\right]$这个线性变换变换柱子来操作z=1平面上的二维正方形，完成仿射变换：</p>
+<p><span class="math inline">\(\overrightarrow{b}\)</span> 为位移尺度: <span class="math display">\[
+\overrightarrow{b}=(T_x,T_y)^T
+\]</span> <img src="v2-ff605e1490c88ee973f68dd1357cf228_r.jpg" alt="v2-ff605e1490c88ee973f68dd1357cf228_r" style="zoom: 67%;"></p>
+<p>这样我就可以在三维空间下通过<span class="math inline">\(\left[\begin{matrix}A&amp;\overrightarrow{b}\\0&amp;1\end{matrix}\right]\)</span>这个线性变换变换柱子来操作z=1平面上的二维正方形，完成仿射变换：</p>
 <p><img src="v2-7996e53eb81649ba2961e05064cf89ca_720w.jpg" alt="v2-7996e53eb81649ba2961e05064cf89ca_720w" style="zoom:67%;"></p>
-<p>记$\overrightarrow{y}$为二维平面上的位移后得到的点坐标(x’,y’)<br>$$<br>\overrightarrow{y}=(x’,y’)^T<br>$$<br><img src="v2-9ed3053ad36750bb18ec4026dc42c57b_720w.jpg" alt="v2-9ed3053ad36750bb18ec4026dc42c57b_720w" style="zoom:67%;"></p>
+<p>记<span class="math inline">\(\overrightarrow{y}\)</span>为二维平面上的位移后得到的点坐标(x',y') <span class="math display">\[
+\overrightarrow{y}=(x&#39;,y&#39;)^T
+\]</span> <img src="v2-9ed3053ad36750bb18ec4026dc42c57b_720w.jpg" alt="v2-9ed3053ad36750bb18ec4026dc42c57b_720w" style="zoom:67%;"></p>
 <p><img src="v2-8d71b77077dce5e8d310e34c67536c62_720w.png" alt="v2-8d71b77077dce5e8d310e34c67536c62_720w" style="zoom:67%;"></p>
 <p>新加入的维度记为w，也称为<strong>齐次坐标</strong>。</p>
-<p>矩阵形式：<br>$$<br>\left[\begin{matrix}<br>1&amp;0&amp;t_x\<br>0&amp;1&amp;t_y\<br>0&amp;0&amp;1\<br>\end{matrix}\right]<br><em><br>\left[\begin{matrix}<br>x\<br>y\<br>1\<br>\end{matrix}\right]<br>=<br>\left[\begin{matrix}<br>x+t_x\<br>y+t_y\<br>1\<br>\end{matrix}\right]<br>=<br>\left[\begin{matrix}<br>x’\<br>y’\<br>w’\<br>\end{matrix}\right]<br>$$<br>把矩阵分解为向量更好理解：<br>$$<br>\left[\begin{matrix}<br>1\<br>0\<br>0\<br>\end{matrix}\right]
-</em>x<br>+<br>\left[\begin{matrix}<br>0\<br>1\<br>0\<br>\end{matrix}\right]<br><em>y<br>+<br>\left[\begin{matrix}<br>t_x\<br>t_y\<br>1\<br>\end{matrix}\right]
-</em>1<br>=<br>\left[\begin{matrix}<br>x+t_x\<br>y+t_y\<br>1\<br>\end{matrix}\right]<br>=<br>\left[\begin{matrix}<br>x’\<br>y’\<br>w’\<br>\end{matrix}\right]<br>$$</p>
-<h3 id="齐次坐标（Homogenous-Coordinates）"><a href="#齐次坐标（Homogenous-Coordinates）" class="headerlink" title="齐次坐标（Homogenous Coordinates）"></a>齐次坐标（Homogenous Coordinates）</h3><blockquote>
+<p>矩阵形式： <span class="math display">\[
+\left[\begin{matrix}
+1&amp;0&amp;t_x\\
+0&amp;1&amp;t_y\\
+0&amp;0&amp;1\\
+\end{matrix}\right]
+*
+\left[\begin{matrix}
+x\\
+y\\
+1\\
+\end{matrix}\right]
+=
+\left[\begin{matrix}
+x+t_x\\
+y+t_y\\
+1\\
+\end{matrix}\right]
+=
+\left[\begin{matrix}
+x&#39;\\
+y&#39;\\
+w&#39;\\
+\end{matrix}\right]
+\]</span> 把矩阵分解为向量更好理解： <span class="math display">\[
+\left[\begin{matrix}
+1\\
+0\\
+0\\
+\end{matrix}\right]
+*x
++
+\left[\begin{matrix}
+0\\
+1\\
+0\\
+\end{matrix}\right]
+*y
++
+\left[\begin{matrix}
+t_x\\
+t_y\\
+1\\
+\end{matrix}\right]
+*1
+=
+\left[\begin{matrix}
+x+t_x\\
+y+t_y\\
+1\\
+\end{matrix}\right]
+=
+\left[\begin{matrix}
+x&#39;\\
+y&#39;\\
+w&#39;\\
+\end{matrix}\right]
+\]</span></p>
+<h3 id="齐次坐标homogenous-coordinates">齐次坐标（Homogenous Coordinates）</h3>
+<blockquote>
 <p>齐次坐标：就是将一个原本是n维的向量用一个n+1维向量来表示，是指一个用于投影几何里的坐标系统，如同用于欧氏几何里的笛卡儿坐标一般。”</p>
 <p>齐次坐标可以看作一种记号，w为1记为点，为0记为向量。</p>
 </blockquote>
 <p>在欧氏空间中，两条平行线永不相交，但是在投影几何中，两条平行线是可以相交的。我们用齐次坐标描述投影几何。</p>
 <p><img src="image-20211031165538497.png" alt="image-20211031165538497" style="zoom:67%;"></p>
 <p><img src="image-20211031163546374.png" alt="image-20211031163546374" style="zoom: 80%;"></p>
-<p>可以看到，虽然齐次坐标的表现形式不同，但都对应同一个欧氏空间中的点$(\frac{1}{3},\frac{2}{3})$。</p>
+<p>可以看到，虽然齐次坐标的表现形式不同，但都对应同一个欧氏空间中的点<span class="math inline">\((\frac{1}{3},\frac{2}{3})\)</span>。</p>
 <p><img src="image-20211031163726579.png" alt="image-20211031163726579" style="zoom:50%;"></p>
-<h4 id="两条平行线可以相交"><a href="#两条平行线可以相交" class="headerlink" title="两条平行线可以相交"></a>两条平行线可以相交</h4><p>考虑：<br>$$<br>\begin{cases}<br>Ax+By+C=0\<br>Ax+By+D=0<br>\end{cases}<br>$$<br>由于C不等于D，所以上述两条直线平行，没有解。</p>
-<p>在齐次坐标中：<br>$$<br>\begin{cases}<br>A\frac{x}{w}+B\frac{y}{w}+C=0\<br>A\frac{x}{w}+B\frac{y}{w}+D=0<br>\end{cases}<br>\rightarrow<br>\begin{cases}<br>Ax+By+Cw=0\<br>Ax+By+Dw=0<br>\end{cases}<br>$$<br>我们可以得到一个解（x,y,0）,这表示两条直线会在无穷远处相交。</p>
-<h4 id="齐次坐标下的点与向量"><a href="#齐次坐标下的点与向量" class="headerlink" title="齐次坐标下的点与向量"></a>齐次坐标下的点与向量</h4><p>齐次坐标系下的(x,y,w)就是2D坐标下的(x/w,y/w,1)</p>
-<p>点表示：$(x,y,1)^T$</p>
-<p>向量表示：$(x,y,0)^T$</p>
+<h4 id="两条平行线可以相交">两条平行线可以相交</h4>
+<p>考虑： <span class="math display">\[
+\begin{cases}
+Ax+By+C=0\\
+Ax+By+D=0
+\end{cases}
+\]</span> 由于C不等于D，所以上述两条直线平行，没有解。</p>
+<p>在齐次坐标中： <span class="math display">\[
+\begin{cases}
+A\frac{x}{w}+B\frac{y}{w}+C=0\\
+A\frac{x}{w}+B\frac{y}{w}+D=0
+\end{cases}
+\rightarrow
+\begin{cases}
+Ax+By+Cw=0\\
+Ax+By+Dw=0
+\end{cases}
+\]</span> 我们可以得到一个解（x,y,0）,这表示两条直线会在无穷远处相交。</p>
+<h4 id="齐次坐标下的点与向量">齐次坐标下的点与向量</h4>
+<p>齐次坐标系下的(x,y,w)就是2D坐标下的(x/w,y/w,1)</p>
+<p>点表示：<span class="math inline">\((x,y,1)^T\)</span></p>
+<p>向量表示：<span class="math inline">\((x,y,0)^T\)</span></p>
 <p>向量的齐次坐标w为0是为了保护向量不会进行位移变换，向量的位移没有意义。</p>
 <p>在齐次坐标下（着重注意w的值为0还是1）：</p>
 <ul>
@@ -449,70 +656,275 @@
 <p>比如有点A(1,2,1)、点B(1,6,1)</p>
 <p>两个点相加有(2,8,2)，之后我们要把w化为1，所以所有坐标分量同时除2（w值），就得到</p>
 <p>（1,4,1）就是点A与点B的中点。</p>
-<h3 id="组合变换（Composing-Transforms）"><a href="#组合变换（Composing-Transforms）" class="headerlink" title="组合变换（Composing Transforms）"></a>组合变换（Composing Transforms）</h3><p><img src="image-20211029203812161.png" alt="image-20211029203812161" style="zoom:80%;"></p>
+<h3 id="组合变换composing-transforms">组合变换（Composing Transforms）</h3>
+<p><img src="image-20211029203812161.png" alt="image-20211029203812161" style="zoom:80%;"></p>
 <p>从A变换至B的方案</p>
 <p><img src="image-20211029203824427.png" alt="image-20211029203824427" style="zoom:80%;"></p>
 <p>显然不对，位移变换对旋转变换产生了影响。</p>
 <p>先位移再缩放，位移的向量也会同样被缩放。</p>
-<p>综上，变换顺序(右乘优先)：<br>$$<br>Matrix_{组合}=Matrix_{位移}<em>Matrix_{旋转}</em>Matrix_{缩放}*点<br>$$<br>比方说，通过变换希望获得的结果可能是：</p>
+<p>综上，变换顺序(右乘优先)： <span class="math display">\[
+Matrix_{组合}=Matrix_{位移}*Matrix_{旋转}*Matrix_{缩放}*点
+\]</span> 比方说，通过变换希望获得的结果可能是：</p>
 <blockquote>
 <p>将一个放在原点的物体（比方说可乐罐）移动到（30，50），让它自身倾斜 45 度，再放大 2 倍。</p>
 </blockquote>
 <p>而不希望的结果是：</p>
-<ol>
+<ol type="1">
 <li><p>和本地坐标轴成角度的缩放（会导致扭曲，像踩扁的可乐罐）。</p>
 <p>下图为旋转30度，x轴放大2倍，y轴缩小至0.5倍。</p>
-<p><img src="v2-c1c5f206700a09a6b76cc8b2640a797b_720w.png" alt="v2-c1c5f206700a09a6b76cc8b2640a797b_720w" style="zoom:50%;"></p>
-</li>
-<li><p>绕自己几何中心以外位置的原点的旋转 （地球公转式） 和缩放。</p>
-</li>
+<p><img src="v2-c1c5f206700a09a6b76cc8b2640a797b_720w.png" alt="v2-c1c5f206700a09a6b76cc8b2640a797b_720w" style="zoom:50%;"></p></li>
+<li><p>绕自己几何中心以外位置的原点的旋转 （地球公转式） 和缩放。</p></li>
 </ol>
-<p>而颠倒了上述变换顺序就会得到这样不自然的结果。<br>具体的说：</p>
+<p>而颠倒了上述变换顺序就会得到这样不自然的结果。 具体的说：</p>
 <ul>
-<li><p>当缩放在旋转之后进行时，会发生现象1。</p>
-</li>
-<li><p>当缩放和旋转在平移之后进行时会发生现象2。</p>
-</li>
+<li><p>当缩放在旋转之后进行时，会发生现象1。</p></li>
+<li><p>当缩放和旋转在平移之后进行时会发生现象2。</p></li>
 </ul>
 <p>这时因为：</p>
 <ul>
-<li><p>在物体刚刚放入世界坐标系的时候使用的是本地坐标，也就是本地和全局坐标系的原点和坐标轴都是重合的（当然两者分别使用了左右手坐标系时除外 - 那是BUG），此时所有物体都“把世界坐标系当做自己的本地坐标系”。</p>
-</li>
-<li><p>而经过了坐标变换之后：</p>
-</li>
+<li><p>在物体刚刚放入世界坐标系的时候使用的是本地坐标，也就是本地和全局坐标系的原点和坐标轴都是重合的（当然两者分别使用了左右手坐标系时除外 - 那是BUG），此时所有物体都“把世界坐标系当做自己的本地坐标系”。</p></li>
+<li><p>而经过了坐标变换之后：</p></li>
 </ul>
 <blockquote>
-<ol>
+<ol type="1">
 <li>缩放变换不改变坐标轴的走向，也不改变原点的位置，所以两个坐标系仍然重合。</li>
 <li>旋转变换改变坐标轴的走向，但不改变原点的位置，所以两个坐标系坐标轴不再处于相同走向。</li>
 <li>平移变换不改变坐标轴走向，但改变原点位置，两个坐标系原点不再重合。</li>
 </ol>
 </blockquote>
 <p>这样就可以解释问什么缩放不能在旋转之后，而缩放和旋转都不能在平移之后了。 于是没有问题的顺序只能是 缩放 -&gt; 旋转 -&gt; 平移 。</p>
-<h2 id="3D变换（3D-Transformations）"><a href="#3D变换（3D-Transformations）" class="headerlink" title="3D变换（3D Transformations）"></a>3D变换（3D Transformations）</h2><h3 id="缩放-位移-旋转"><a href="#缩放-位移-旋转" class="headerlink" title="缩放 位移 旋转"></a>缩放 位移 旋转</h3><p>缩放 Scale:<br>$$<br>\left[<br>\begin{matrix}<br>S1&amp;0&amp;0&amp;0\<br>0&amp;S2&amp;0&amp;0\<br>0&amp;0&amp;S3&amp;0\<br>0&amp;0&amp;0&amp;1\<br>\end{matrix}<br>\right]<br>·<br>\left(<br>\begin{matrix}<br>x\<br>y\<br>z\<br>1\<br>\end{matrix}<br>\right)<br>=<br>\left(<br>\begin{matrix}<br>S1<em>x\<br>S2</em>y\<br>S3*z\<br>1\<br>\end{matrix}<br>\right)<br>$$</p>
-<p>位移 Translation:<br>$$<br>\left[<br>\begin{matrix}<br>1&amp;0&amp;0&amp;Tx\<br>0&amp;1&amp;0&amp;Ty\<br>0&amp;0&amp;1&amp;Tz\<br>0&amp;0&amp;0&amp;1\<br>\end{matrix}<br>\right]<br>·<br>\left(<br>\begin{matrix}<br>x\<br>y\<br>z\<br>1\<br>\end{matrix}<br>\right)<br>=<br>\left(<br>\begin{matrix}<br>x+Tx\<br>y+Ty\<br>z+Tz\<br>1\<br>\end{matrix}<br>\right)<br>$$</p>
+<h2 id="d变换3d-transformations">3D变换（3D Transformations）</h2>
+<h3 id="缩放-位移-旋转">缩放 位移 旋转</h3>
+<p>缩放 Scale: <span class="math display">\[
+\left[
+\begin{matrix}
+S1&amp;0&amp;0&amp;0\\
+0&amp;S2&amp;0&amp;0\\
+0&amp;0&amp;S3&amp;0\\
+0&amp;0&amp;0&amp;1\\
+\end{matrix}
+\right]
+·
+\left(
+\begin{matrix}
+x\\
+y\\
+z\\
+1\\
+\end{matrix}
+\right)
+=
+\left(
+\begin{matrix}
+S1*x\\
+S2*y\\
+S3*z\\
+1\\
+\end{matrix}
+\right)
+\]</span></p>
+<p>位移 Translation: <span class="math display">\[
+\left[
+\begin{matrix}
+1&amp;0&amp;0&amp;Tx\\
+0&amp;1&amp;0&amp;Ty\\
+0&amp;0&amp;1&amp;Tz\\
+0&amp;0&amp;0&amp;1\\
+\end{matrix}
+\right]
+·
+\left(
+\begin{matrix}
+x\\
+y\\
+z\\
+1\\
+\end{matrix}
+\right)
+=
+\left(
+\begin{matrix}
+x+Tx\\
+y+Ty\\
+z+Tz\\
+1\\
+\end{matrix}
+\right)
+\]</span></p>
 <p>旋转 Rotation:</p>
-<p>沿x轴：<br>$$<br>\left[<br>\begin{matrix}<br>1&amp;0&amp;0&amp;0\<br>0&amp;\cos\theta&amp;-\sin\theta&amp;0\<br>0&amp;\sin\theta&amp;\cos\theta&amp;0\<br>0&amp;0&amp;0&amp;1\<br>\end{matrix}<br>\right]<br>·<br>\left(<br>\begin{matrix}<br>x\<br>y\<br>z\<br>1\<br>\end{matrix}<br>\right)<br>=<br>\left(<br>\begin{matrix}<br>x\<br>\cos\theta·y-\sin\theta·z\<br>\sin\theta·y +\cos\theta·z\<br>1\<br>\end{matrix}<br>\right)<br>$$<br>沿y轴：<br>$$<br>\left[<br>\begin{matrix}<br>\cos\theta&amp;0&amp;\sin\theta&amp;0\<br>0&amp;1&amp;0&amp;0\<br>-\sin\theta&amp;0&amp;\cos\theta&amp;0\<br>0&amp;0&amp;0&amp;1\<br>\end{matrix}<br>\right]<br>·<br>\left(<br>\begin{matrix}<br>x\<br>y\<br>z\<br>1\<br>\end{matrix}<br>\right)<br>=<br>\left(<br>\begin{matrix}<br>\cos\theta·x+\sin\theta·z\<br>y\<br>-\sin\theta·x +\cos\theta·z\<br>1\<br>\end{matrix}<br>\right)<br>$$<br>注意到沿y轴的旋转是其x,z轴的反方向的旋转（在2D旋转中，推导了旋转矩阵是正交矩阵）</p>
-<p>沿z轴：<br>$$<br>\left[<br>\begin{matrix}<br>\cos\theta&amp;-\sin\theta&amp;0&amp;0\<br>\sin\theta&amp;\cos\theta&amp;0&amp;0\<br>0&amp;0&amp;1&amp;0\<br>0&amp;0&amp;0&amp;1\<br>\end{matrix}<br>\right]<br>·<br>\left(<br>\begin{matrix}<br>x\<br>y\<br>z\<br>1\<br>\end{matrix}<br>\right)<br>=<br>\left(<br>\begin{matrix}<br>\cos\theta·x-\sin\theta·y\<br>\sin\theta·x +\cos\theta·y\<br>z\<br>1\<br>\end{matrix}<br>\right)<br>$$</p>
-<h2 id="视图变换（Viewing-transformation）"><a href="#视图变换（Viewing-transformation）" class="headerlink" title="视图变换（Viewing transformation）"></a>视图变换（Viewing transformation）</h2><p>上述所讲述的缩放、位移、旋转是Model变换，目的是将物体从局部空间（Local Space）变换至世界空间（World Space）中去。</p>
-<h3 id="摄像机变换（Camera-Transformation）"><a href="#摄像机变换（Camera-Transformation）" class="headerlink" title="摄像机变换（Camera Transformation）"></a>摄像机变换（Camera Transformation）</h3><p><img src="image-20211031165747220.png" alt="image-20211031165747220" style="zoom:50%;"></p>
+<p>沿x轴： <span class="math display">\[
+\left[
+\begin{matrix}
+1&amp;0&amp;0&amp;0\\
+0&amp;\cos\theta&amp;-\sin\theta&amp;0\\
+0&amp;\sin\theta&amp;\cos\theta&amp;0\\
+0&amp;0&amp;0&amp;1\\
+\end{matrix}
+\right]
+·
+\left(
+\begin{matrix}
+x\\
+y\\
+z\\
+1\\
+\end{matrix}
+\right)
+=
+\left(
+\begin{matrix}
+x\\
+\cos\theta·y-\sin\theta·z\\
+\sin\theta·y +\cos\theta·z\\
+1\\
+\end{matrix}
+\right)
+\]</span> 沿y轴： <span class="math display">\[
+\left[
+\begin{matrix}
+\cos\theta&amp;0&amp;\sin\theta&amp;0\\
+0&amp;1&amp;0&amp;0\\
+-\sin\theta&amp;0&amp;\cos\theta&amp;0\\
+0&amp;0&amp;0&amp;1\\
+\end{matrix}
+\right]
+·
+\left(
+\begin{matrix}
+x\\
+y\\
+z\\
+1\\
+\end{matrix}
+\right)
+=
+\left(
+\begin{matrix}
+\cos\theta·x+\sin\theta·z\\
+y\\
+-\sin\theta·x +\cos\theta·z\\
+1\\
+\end{matrix}
+\right)
+\]</span> 注意到沿y轴的旋转是其x,z轴的反方向的旋转（在2D旋转中，推导了旋转矩阵是正交矩阵）</p>
+<p>沿z轴： <span class="math display">\[
+\left[
+\begin{matrix}
+\cos\theta&amp;-\sin\theta&amp;0&amp;0\\
+\sin\theta&amp;\cos\theta&amp;0&amp;0\\
+0&amp;0&amp;1&amp;0\\
+0&amp;0&amp;0&amp;1\\
+\end{matrix}
+\right]
+·
+\left(
+\begin{matrix}
+x\\
+y\\
+z\\
+1\\
+\end{matrix}
+\right)
+=
+\left(
+\begin{matrix}
+\cos\theta·x-\sin\theta·y\\
+\sin\theta·x +\cos\theta·y\\
+z\\
+1\\
+\end{matrix}
+\right)
+\]</span></p>
+<h2 id="视图变换viewing-transformation">视图变换（Viewing transformation）</h2>
+<p>上述所讲述的缩放、位移、旋转是Model变换，目的是将物体从局部空间（Local Space）变换至世界空间（World Space）中去。</p>
+<h3 id="摄像机变换camera-transformation">摄像机变换（Camera Transformation）</h3>
+<p><img src="image-20211031165747220.png" alt="image-20211031165747220" style="zoom:50%;"></p>
 <p>确定一个摄像机我们需要定义好：</p>
 <ul>
-<li>位置（position）: $\overrightarrow{e}$  </li>
-<li>注视方向（Look-at/gaze direction）:  $\overrightarrow{g}$  </li>
-<li>上向量（Up direction）：$\overrightarrow{t}$  </li>
+<li>位置（position）: <span class="math inline">\(\overrightarrow{e}\)</span><br>
+</li>
+<li>注视方向（Look-at/gaze direction）: <span class="math inline">\(\overrightarrow{g}\)</span><br>
+</li>
+<li>上向量（Up direction）：<span class="math inline">\(\overrightarrow{t}\)</span></li>
 </ul>
-<p>摄像机变换的目的是得到所有可视物体与摄像机的相对位置，我们需要做的是将摄像机的位置$\overrightarrow{e}$变换至原点，注视方向  $\overrightarrow{g}$ 变换至-z方向，上向量$\overrightarrow{t}$变换至y方向。所有物体要与摄像机做相同的变换。</p>
-<p>第一步：将摄像机的位置移动到原点，只需要将现在摄像机的位置$(x_e,y_e,z_e)$做$T_x(-x_e)、T_y(-y_e)、T_z(-z_e)、$的位移变换即可:<br>$$<br>T_{camera}=<br>\left[<br>\begin{matrix}<br>1&amp;0&amp;0&amp;-x_e\<br>0&amp;1&amp;0&amp;-y_e\<br>0&amp;0&amp;1&amp;-z_e\<br>0&amp;0&amp;0&amp;1\<br>\end{matrix}<br>\right]<br>$$<br>第二步：将注视方向  $\overrightarrow{g}$ 旋转至-z方向，上向量$\overrightarrow{t}$旋转至y方向, $\overrightarrow{g}\cross\overrightarrow{t}$ 旋转至x方向。</p>
-<p>这个变换并不好做，但是我们注意到将x,y,z基向量旋转至$\overrightarrow{g}\cross\overrightarrow{t}、\overrightarrow{t}、-\overrightarrow{g}、$ 是好做的。我们将基向量变换至摄像机向量的矩阵取逆，就是我们所求的矩阵。</p>
-<p>x,y,z的向量矩阵：<br>$$<br>M_{xyz}=<br>\left[<br>\begin{matrix}<br>1&amp;0&amp;0&amp;0\<br>0&amp;1&amp;0&amp;0\<br>0&amp;0&amp;1&amp;0\<br>0&amp;0&amp;0&amp;1\<br>\end{matrix}<br>\right]<br>$$<br>很容易的可以得到旋转矩阵：<br>$$<br>R^{-1}<em>{camera}=<br>\left[<br>\begin{matrix}<br>x</em>{\hat{g}\cross\hat{t}}&amp;x_t&amp;x_{-g}&amp;0\<br>y_{\hat{g}\cross\hat{t}}&amp;y_t&amp;y_{-g}&amp;0\<br>z_{\hat{g}\cross\hat{t}}&amp;z_t&amp;z_{-g}&amp;0\<br>0&amp;0&amp;0&amp;1\<br>\end{matrix}<br>\right]<br>$$<br>将旋转矩阵$R^{-1}<em>{camera}$乘x,y,z的向量矩阵$M</em>{xyz}$是可以得到摄像机向量矩阵的！</p>
-<p>因此将$R^{-1}<em>{camera}$ 取逆即可，我们又知道旋转矩阵是正交矩阵，其逆等于其转置，因此就有：<br>$$<br>R</em>{camera}=<br>\left[<br>\begin{matrix}<br>x_{\hat{g}\cross\hat{t}}&amp;y_{\hat{g}\cross\hat{t}}&amp;z_{\hat{g}\cross\hat{t}}&amp;0\<br>x_t&amp;y_t&amp;z_t&amp;0\<br>x_{-g}&amp;y_{-g}&amp;z_{-g}&amp;0\<br>0&amp;0&amp;0&amp;1\<br>\end{matrix}<br>\right]<br>$$<br>将上述两步结合，我们就得到了摄像机变换：<br>$$<br>M_{camera}=<br>\left[<br>\begin{matrix}<br>x_{\hat{g}\cross\hat{t}}&amp;y_{\hat{g}\cross\hat{t}}&amp;z_{\hat{g}\cross\hat{t}}&amp;0\<br>x_t&amp;y_t&amp;z_t&amp;0\<br>x_{-g}&amp;y_{-g}&amp;z_{-g}&amp;0\<br>0&amp;0&amp;0&amp;1\<br>\end{matrix}<br>\right]<br>*<br>\left[<br>\begin{matrix}<br>1&amp;0&amp;0&amp;-x_e\<br>0&amp;1&amp;0&amp;-y_e\<br>0&amp;0&amp;1&amp;-z_e\<br>0&amp;0&amp;0&amp;1\<br>\end{matrix}<br>\right]<br>$$</p>
-<h3 id="投影变换（Projection-transformation）"><a href="#投影变换（Projection-transformation）" class="headerlink" title="投影变换（Projection transformation）"></a>投影变换（Projection transformation）</h3><p>我们要获取摄像机所看到的内容，这就需要投影变换。将摄像机所看到的内容投影变换到$[-1,1]^3$ 正方体空间中，方便最后显示到屏幕上。</p>
+<p>摄像机变换的目的是得到所有可视物体与摄像机的相对位置，我们需要做的是将摄像机的位置<span class="math inline">\(\overrightarrow{e}\)</span>变换至原点，注视方向 <span class="math inline">\(\overrightarrow{g}\)</span> 变换至-z方向，上向量<span class="math inline">\(\overrightarrow{t}\)</span>变换至y方向。所有物体要与摄像机做相同的变换。</p>
+<p>第一步：将摄像机的位置移动到原点，只需要将现在摄像机的位置<span class="math inline">\((x_e,y_e,z_e)\)</span>做<span class="math inline">\(T_x(-x_e)、T_y(-y_e)、T_z(-z_e)、\)</span>的位移变换即可: <span class="math display">\[
+T_{camera}=
+\left[
+\begin{matrix}
+1&amp;0&amp;0&amp;-x_e\\
+0&amp;1&amp;0&amp;-y_e\\
+0&amp;0&amp;1&amp;-z_e\\
+0&amp;0&amp;0&amp;1\\
+\end{matrix}
+\right]
+\]</span> 第二步：将注视方向 <span class="math inline">\(\overrightarrow{g}\)</span> 旋转至-z方向，上向量<span class="math inline">\(\overrightarrow{t}\)</span>旋转至y方向, <span class="math inline">\(\overrightarrow{g}\cross\overrightarrow{t}\)</span> 旋转至x方向。</p>
+<p>这个变换并不好做，但是我们注意到将x,y,z基向量旋转至<span class="math inline">\(\overrightarrow{g}\cross\overrightarrow{t}、\overrightarrow{t}、-\overrightarrow{g}、\)</span> 是好做的。我们将基向量变换至摄像机向量的矩阵取逆，就是我们所求的矩阵。</p>
+<p>x,y,z的向量矩阵： <span class="math display">\[
+M_{xyz}=
+\left[
+\begin{matrix}
+1&amp;0&amp;0&amp;0\\
+0&amp;1&amp;0&amp;0\\
+0&amp;0&amp;1&amp;0\\
+0&amp;0&amp;0&amp;1\\
+\end{matrix}
+\right]
+\]</span> 很容易的可以得到旋转矩阵： <span class="math display">\[
+R^{-1}_{camera}=
+\left[
+\begin{matrix}
+x_{\hat{g}\cross\hat{t}}&amp;x_t&amp;x_{-g}&amp;0\\
+y_{\hat{g}\cross\hat{t}}&amp;y_t&amp;y_{-g}&amp;0\\
+z_{\hat{g}\cross\hat{t}}&amp;z_t&amp;z_{-g}&amp;0\\
+0&amp;0&amp;0&amp;1\\
+\end{matrix}
+\right]
+\]</span> 将旋转矩阵<span class="math inline">\(R^{-1}_{camera}\)</span>乘x,y,z的向量矩阵<span class="math inline">\(M_{xyz}\)</span>是可以得到摄像机向量矩阵的！</p>
+<p>因此将<span class="math inline">\(R^{-1}_{camera}\)</span> 取逆即可，我们又知道旋转矩阵是正交矩阵，其逆等于其转置，因此就有： <span class="math display">\[
+R_{camera}=
+\left[
+\begin{matrix}
+x_{\hat{g}\cross\hat{t}}&amp;y_{\hat{g}\cross\hat{t}}&amp;z_{\hat{g}\cross\hat{t}}&amp;0\\
+x_t&amp;y_t&amp;z_t&amp;0\\
+x_{-g}&amp;y_{-g}&amp;z_{-g}&amp;0\\
+0&amp;0&amp;0&amp;1\\
+\end{matrix}
+\right]
+\]</span> 将上述两步结合，我们就得到了摄像机变换： <span class="math display">\[
+M_{camera}=
+\left[
+\begin{matrix}
+x_{\hat{g}\cross\hat{t}}&amp;y_{\hat{g}\cross\hat{t}}&amp;z_{\hat{g}\cross\hat{t}}&amp;0\\
+x_t&amp;y_t&amp;z_t&amp;0\\
+x_{-g}&amp;y_{-g}&amp;z_{-g}&amp;0\\
+0&amp;0&amp;0&amp;1\\
+\end{matrix}
+\right]
+*
+\left[
+\begin{matrix}
+1&amp;0&amp;0&amp;-x_e\\
+0&amp;1&amp;0&amp;-y_e\\
+0&amp;0&amp;1&amp;-z_e\\
+0&amp;0&amp;0&amp;1\\
+\end{matrix}
+\right]
+\]</span></p>
+<h3 id="投影变换projection-transformation">投影变换（Projection transformation）</h3>
+<p>我们要获取摄像机所看到的内容，这就需要投影变换。将摄像机所看到的内容投影变换到<span class="math inline">\([-1,1]^3\)</span> 正方体空间中，方便最后显示到屏幕上。</p>
 <p>投影变换有两种，不带透视的正交投影，与带透视的透视投影。</p>
-<p><img src="image-20211030170423431.png" alt="image-20211030170423431"></p>
-<p><img src="image-20211030170433650.png" alt="image-20211030170433650"></p>
-<h4 id="正交投影（Orthographic-Projection）"><a href="#正交投影（Orthographic-Projection）" class="headerlink" title="正交投影（Orthographic Projection）"></a>正交投影（Orthographic Projection）</h4><p>假设一个摄像机所看到的内容被一个<strong>长方体</strong>所包含，做投影变换的目的是将这个长方体变换至<strong>标准正方体</strong>（“canonical” cube）（正方体为$[-1,1]^3$）。</p>
-<p><img src="image-20211030182023593.png" alt="image-20211030182023593"></p>
+<figure>
+<img src="image-20211030170423431.png" alt="image-20211030170423431"><figcaption aria-hidden="true">image-20211030170423431</figcaption>
+</figure>
+<figure>
+<img src="image-20211030170433650.png" alt="image-20211030170433650"><figcaption aria-hidden="true">image-20211030170433650</figcaption>
+</figure>
+<p>#### 正交投影（Orthographic Projection）</p>
+<p>假设一个摄像机所看到的内容被一个<strong>长方体</strong>所包含，做投影变换的目的是将这个长方体变换至<strong>标准正方体</strong>（“canonical” cube）（正方体为<span class="math inline">\([-1,1]^3\)</span>）。</p>
+<figure>
+<img src="image-20211030182023593.png" alt="image-20211030182023593"><figcaption aria-hidden="true">image-20211030182023593</figcaption>
+</figure>
 <p>定义这个长方体的</p>
 <ul>
 <li>左平面l，右平面r，[l,r]</li>
@@ -520,11 +932,53 @@
 <li>远平面f，近平面n，[f,n]</li>
 </ul>
 <p>接下来将<code>[l,r]、[f,n]、[b,t]</code> 三个区间变换至<code>[-1,1]</code>上</p>
-<p>第一步：将长方体的中心$(\frac{l+r}{2},\frac{b+t}{2},\frac{f+n}{2})$平移到坐标原点处。<br>$$<br>T_{ortho}=<br>\left[<br>\begin{matrix}<br>1&amp;0&amp;0&amp;-\frac{l+r}{2}\<br>0&amp;1&amp;0&amp;-\frac{b+t}{2}\<br>0&amp;0&amp;1&amp;-\frac{f+n}{2}\<br>0&amp;0&amp;0&amp;1\<br>\end{matrix}<br>\right]<br>$$<br>第二步：将长方体缩放为$[-1,1]^3$的标准正方体，会对长方体内的物体产生非等比缩放从而产生物体的变形，不过不用担心，我们会在视口变换中处理这个问题。</p>
-<p>左右平面的距离为：$r-l$ 。想要变换至$[-1,1]$上，所需的操作为$(r-l)*\frac{2}{r-l}$。上下，前后面同理，因此缩放矩阵为：<br>$$<br>S_{ortho}=<br>\left[<br>\begin{matrix}<br>\frac{2}{r-l}&amp;0&amp;0&amp;0\<br>0&amp;\frac{2}{t-b}&amp;0&amp;0\<br>0&amp;0&amp;\frac{2}{n-f}&amp;0\<br>0&amp;0&amp;0&amp;1\<br>\end{matrix}<br>\right]<br>$$</p>
-<p>综上，这个正交投影变换矩阵为：<br>$$<br>M_{ortho}=<br>\left[<br>\begin{matrix}<br>\frac{2}{r-l}&amp;0&amp;0&amp;0\<br>0&amp;\frac{2}{t-b}&amp;0&amp;0\<br>0&amp;0&amp;\frac{2}{n-f}&amp;0\<br>0&amp;0&amp;0&amp;1\<br>\end{matrix}<br>\right]<br>*<br>\left[<br>\begin{matrix}<br>1&amp;0&amp;0&amp;-\frac{l+r}{2}\<br>0&amp;1&amp;0&amp;-\frac{b+t}{2}\<br>0&amp;0&amp;1&amp;-\frac{f+n}{2}\<br>0&amp;0&amp;0&amp;1\<br>\end{matrix}<br>\right]<br>$$</p>
-<h4 id="透视投影（Perspective-Projection）"><a href="#透视投影（Perspective-Projection）" class="headerlink" title="透视投影（Perspective Projection）"></a>透视投影（Perspective Projection）</h4><p>我们将平截头体远平面向里挤压，使其变成长方体，然后再对长方体使用正交投影变换。</p>
-<p><img src="image-20211031101342611.png" alt="image-20211031101342611"></p>
+<p>第一步：将长方体的中心<span class="math inline">\((\frac{l+r}{2},\frac{b+t}{2},\frac{f+n}{2})\)</span>平移到坐标原点处。 <span class="math display">\[
+T_{ortho}=
+\left[
+\begin{matrix}
+1&amp;0&amp;0&amp;-\frac{l+r}{2}\\
+0&amp;1&amp;0&amp;-\frac{b+t}{2}\\
+0&amp;0&amp;1&amp;-\frac{f+n}{2}\\
+0&amp;0&amp;0&amp;1\\
+\end{matrix}
+\right]
+\]</span> 第二步：将长方体缩放为<span class="math inline">\([-1,1]^3\)</span>的标准正方体，会对长方体内的物体产生非等比缩放从而产生物体的变形，不过不用担心，我们会在视口变换中处理这个问题。</p>
+<p>左右平面的距离为：<span class="math inline">\(r-l\)</span> 。想要变换至<span class="math inline">\([-1,1]\)</span>上，所需的操作为<span class="math inline">\((r-l)*\frac{2}{r-l}\)</span>。上下，前后面同理，因此缩放矩阵为： <span class="math display">\[
+S_{ortho}=
+\left[
+\begin{matrix}
+\frac{2}{r-l}&amp;0&amp;0&amp;0\\
+0&amp;\frac{2}{t-b}&amp;0&amp;0\\
+0&amp;0&amp;\frac{2}{n-f}&amp;0\\
+0&amp;0&amp;0&amp;1\\
+\end{matrix}
+\right]
+\]</span></p>
+<p>综上，这个正交投影变换矩阵为： <span class="math display">\[
+M_{ortho}=
+\left[
+\begin{matrix}
+\frac{2}{r-l}&amp;0&amp;0&amp;0\\
+0&amp;\frac{2}{t-b}&amp;0&amp;0\\
+0&amp;0&amp;\frac{2}{n-f}&amp;0\\
+0&amp;0&amp;0&amp;1\\
+\end{matrix}
+\right]
+*
+\left[
+\begin{matrix}
+1&amp;0&amp;0&amp;-\frac{l+r}{2}\\
+0&amp;1&amp;0&amp;-\frac{b+t}{2}\\
+0&amp;0&amp;1&amp;-\frac{f+n}{2}\\
+0&amp;0&amp;0&amp;1\\
+\end{matrix}
+\right]
+\]</span></p>
+<h4 id="透视投影perspective-projection">透视投影（Perspective Projection）</h4>
+<p>我们将平截头体远平面向里挤压，使其变成长方体，然后再对长方体使用正交投影变换。</p>
+<figure>
+<img src="image-20211031101342611.png" alt="image-20211031101342611"><figcaption aria-hidden="true">image-20211031101342611</figcaption>
+</figure>
 <p>我们规定“挤压”的规则：</p>
 <ul>
 <li>近平面上的点坐标不会发生改变</li>
@@ -532,30 +986,255 @@
 <li>远平面的中心坐标不会发生改变。</li>
 </ul>
 <p>平截头体的侧视图（只展示了上半部分）如下：</p>
-<p>近平面上的点为(x’,y’,z’)，远平面上的点为(x,y,z),最左边的点为摄像机的点，也是坐标原点。</p>
-<p><img src="image-20211031102447559.png" alt="image-20211031102447559"></p>
-<p>根据相似三角形，很容易得到：<br>$$<br>\frac{n}{z}=\frac{y’}{y}\<br>y’=\frac{n}{z}*y<br>$$<br>y’的对应规则并不特指在远平面上的点，在平截头体里的y坐标都符合这个规则。</p>
-<p>同理，可以从上视图里推出x’与x的关系。性质与y’与y的关系一样。<br>$$<br>x’=\frac{n}{z}<em>x<br>$$<br>因此对任意一点(x,y,z,1)，我们“挤压”后有如下变换（只关注上下如何变换，先不关注前后的变换）：<br>$$<br>\left[<br>\begin{matrix}<br>x\<br>y\<br>z\<br>1\<br>\end{matrix}<br>\right]<br>\rightarrow<br>\left[<br>\begin{matrix}<br>x’\<br>y’\<br>z’\<br>1\<br>\end{matrix}<br>\right]<br>\rightarrow<br>\left[<br>\begin{matrix}<br>\frac{n</em>x}{z}\<br>\frac{n<em>y}{z}\<br>unknow\<br>1\<br>\end{matrix}<br>\right]<br>=<br>\left[<br>\begin{matrix}<br>n</em>x\<br>n*y\<br>unknow\<br>z\<br>\end{matrix}<br>\right]<br>\tag{3}<br>$$<br>最后一个等号的成立，是根据齐次坐标的性质。两者表示3维空间中同一个点。</p>
-<p>我们可以推算出从透视投影到正交投影变换的一部分：<br>$$<br>M_{persp\rightarrow ortho}=<br>\left[<br>\begin{matrix}<br>n&amp;0&amp;0&amp;0\<br>0&amp;n&amp;0&amp;0\<br>?&amp;?&amp;?&amp;?\<br>0&amp;0&amp;1&amp;0\<br>\end{matrix}<br>\right]<br>$$<br>接下来，开始推导z坐标的变换。我们不清楚平截头体内的点z坐标的变换（根据最后的结论会发现内部点的z坐标会发生改变），但是我们规定了近平面(x,y,n,1)与远平面(x,y,f,1)的z坐标不会发生改变。</p>
-<p>对于近平面上的点(x,y,n,1),经过$M_{persp\rightarrow ortho}$变换后点坐标不会发生改变，仍然是(x,y,n,1)，有：<br>$$<br>M_{persp\rightarrow ortho}*<br>\left[<br>\begin{matrix}<br>x\<br>y\<br>n\<br>1\<br>\end{matrix}<br>\right]<br>=<br>\left[<br>\begin{matrix}<br>x\<br>y\<br>unknow\<br>1\<br>\end{matrix}<br>\right]<br>=<br>\left[<br>\begin{matrix}<br>x\<br>y\<br>n\<br>1\<br>\end{matrix}</p>
-<h1 id="right"><a href="#right" class="headerlink" title="\right]"></a>\right]</h1><p>\left[<br>\begin{matrix}<br>n<em>x\<br>n</em>y\<br>n^2\<br>n\<br>\end{matrix}<br>\right]<br>\tag{4}<br>$$<br>==号的成立是因为齐次坐标的性质，两边仍然表示同一个点。同时乘以n是为了与（3）式表现形式一样，(3)式的x,y坐标与(4)式的x,y坐标的值都为n<em>x,n</em>y。w值都为点的z坐标。</p>
-<p>我们现在可以推导$M_{persp\rightarrow ortho}$的第三行值满足：<br>$$<br>\left[<br>\begin{matrix}<br>0&amp;0&amp;A&amp;B<br>\end{matrix}<br>\right]<br><em><br>\left[<br>\begin{matrix}<br>x\<br>y\<br>n\<br>1\<br>\end{matrix}<br>\right]<br>=n^2<br>$$<br>可以得到：<br>$$<br>A</em>n+B=n^2<br>$$</p>
-<p>别忘了，我们还有规定远平面上的点z坐标变换前后不发生改变，我们取远平面上的中心点(0,0,f,1)进行变换。<br>$$<br>M_{persp\rightarrow ortho}*<br>\left[<br>\begin{matrix}<br>0\<br>0\<br>f\<br>1\<br>\end{matrix}<br>\right]<br>=<br>\left[<br>\begin{matrix}<br>0\<br>0\<br>unknow\<br>1\<br>\end{matrix}<br>\right]<br>=<br>\left[<br>\begin{matrix}<br>0\<br>0\<br>f\<br>1\<br>\end{matrix}</p>
-<h1 id="right-1"><a href="#right-1" class="headerlink" title="\right]"></a>\right]</h1><p>\left[<br>\begin{matrix}<br>0\<br>0\<br>f^2\<br>f\<br>\end{matrix}<br>\right]<br>$$<br>道理与近平面上的点变换一样。<br>$$<br>\left[<br>\begin{matrix}<br>0&amp;0&amp;A&amp;B<br>\end{matrix}<br>\right]<br><em><br>\left[<br>\begin{matrix}<br>0\<br>0\<br>f\<br>1\<br>\end{matrix}<br>\right]<br>=f^2<br>$$<br>可以得到：<br>$$<br>A</em>f+B=f^2<br>$$</p>
-<p>联立：<br>$$<br>\begin{cases}<br>A<em>n+B=n^2\<br>A</em>f+B=f^2<br>\end{cases}<br>$$<br>解得：<br>$$<br>\begin{cases}<br>A=n+f\<br>B=-n<em>f<br>\end{cases}<br>$$<br>综上$M_{persp\rightarrow ortho}$为：<br>$$<br>M_{persp\rightarrow ortho}=<br>\left[<br>\begin{matrix}<br>n&amp;0&amp;0&amp;0\<br>0&amp;n&amp;0&amp;0\<br>0&amp;0&amp;n+f&amp;-n</em>f\<br>0&amp;0&amp;1&amp;0\<br>\end{matrix}<br>\right]<br>$$<br>之后，在将”挤压”后的平截头体做正交投影即可。</p>
-<p>因此，透视投影变换为：<br>$$<br>M_{persp}=M_{ortho}<em>M_{persp\rightarrow ortho}=<br>\left[<br>\begin{matrix}<br>\frac{2}{r-l}&amp;0&amp;0&amp;0\<br>0&amp;\frac{2}{t-b}&amp;0&amp;0\<br>0&amp;0&amp;\frac{2}{n-f}&amp;0\<br>0&amp;0&amp;0&amp;1\<br>\end{matrix}<br>\right]
-</em><br>\left[<br>\begin{matrix}<br>1&amp;0&amp;0&amp;-\frac{l+r}{2}\<br>0&amp;1&amp;0&amp;-\frac{b+t}{2}\<br>0&amp;0&amp;1&amp;-\frac{f+n}{2}\<br>0&amp;0&amp;0&amp;1\<br>\end{matrix}<br>\right]<br><em><br>\left[<br>\begin{matrix}<br>n&amp;0&amp;0&amp;0\<br>0&amp;n&amp;0&amp;0\<br>0&amp;0&amp;n+f&amp;-n</em>f\<br>0&amp;0&amp;1&amp;0\<br>\end{matrix}<br>\right]<br>$$<br> 可以发现内部点的z坐标会发生改变，近远面上的点z坐标不会发生改变。</p>
-<h5 id="对平截头体进行描述"><a href="#对平截头体进行描述" class="headerlink" title="对平截头体进行描述"></a>对平截头体进行描述</h5><p>平截头体的前后面，near与far直接定义。</p>
+<p>近平面上的点为(x',y',z')，远平面上的点为(x,y,z),最左边的点为摄像机的点，也是坐标原点。</p>
+<figure>
+<img src="image-20211031102447559.png" alt="image-20211031102447559"><figcaption aria-hidden="true">image-20211031102447559</figcaption>
+</figure>
+<p>根据相似三角形，很容易得到： <span class="math display">\[
+\frac{n}{z}=\frac{y&#39;}{y}\\
+y&#39;=\frac{n}{z}*y
+\]</span> y'的对应规则并不特指在远平面上的点，在平截头体里的y坐标都符合这个规则。</p>
+<p>同理，可以从上视图里推出x'与x的关系。性质与y'与y的关系一样。 <span class="math display">\[
+x&#39;=\frac{n}{z}*x
+\]</span> 因此对任意一点(x,y,z,1)，我们“挤压”后有如下变换（只关注上下如何变换，先不关注前后的变换）： <span class="math display">\[
+\left[
+\begin{matrix}
+x\\
+y\\
+z\\
+1\\
+\end{matrix}
+\right]
+\rightarrow
+\left[
+\begin{matrix}
+x&#39;\\
+y&#39;\\
+z&#39;\\
+1\\
+\end{matrix}
+\right]
+\rightarrow
+\left[
+\begin{matrix}
+\frac{n*x}{z}\\
+\frac{n*y}{z}\\
+unknow\\
+1\\
+\end{matrix}
+\right]
+=
+\left[
+\begin{matrix}
+n*x\\
+n*y\\
+unknow\\
+z\\
+\end{matrix}
+\right]
+\tag{3}
+\]</span> 最后一个等号的成立，是根据齐次坐标的性质。两者表示3维空间中同一个点。</p>
+<p>我们可以推算出从透视投影到正交投影变换的一部分： <span class="math display">\[
+M_{persp\rightarrow ortho}=
+\left[
+\begin{matrix}
+n&amp;0&amp;0&amp;0\\
+0&amp;n&amp;0&amp;0\\
+?&amp;?&amp;?&amp;?\\
+0&amp;0&amp;1&amp;0\\
+\end{matrix}
+\right]
+\]</span> 接下来，开始推导z坐标的变换。我们不清楚平截头体内的点z坐标的变换（根据最后的结论会发现内部点的z坐标会发生改变），但是我们规定了近平面(x,y,n,1)与远平面(x,y,f,1)的z坐标不会发生改变。</p>
+<p>对于近平面上的点(x,y,n,1),经过<span class="math inline">\(M_{persp\rightarrow ortho}\)</span>变换后点坐标不会发生改变，仍然是(x,y,n,1)，有： <span class="math display">\[
+M_{persp\rightarrow ortho}*
+\left[
+\begin{matrix}
+x\\
+y\\
+n\\
+1\\
+\end{matrix}
+\right]
+=
+\left[
+\begin{matrix}
+x\\
+y\\
+unknow\\
+1\\
+\end{matrix}
+\right]
+=
+\left[
+\begin{matrix}
+x\\
+y\\
+n\\
+1\\
+\end{matrix}
+\right]
+==
+\left[
+\begin{matrix}
+n*x\\
+n*y\\
+n^2\\
+n\\
+\end{matrix}
+\right]
+\tag{4}
+\]</span> ==号的成立是因为齐次坐标的性质，两边仍然表示同一个点。同时乘以n是为了与（3）式表现形式一样，(3)式的x,y坐标与(4)式的x,y坐标的值都为n<em>x,n</em>y。w值都为点的z坐标。</p>
+<p>我们现在可以推导<span class="math inline">\(M_{persp\rightarrow ortho}\)</span>的第三行值满足： <span class="math display">\[
+\left[
+\begin{matrix}
+0&amp;0&amp;A&amp;B
+\end{matrix}
+\right]
+*
+\left[
+\begin{matrix}
+x\\
+y\\
+n\\
+1\\
+\end{matrix}
+\right]
+=n^2
+\]</span> 可以得到： <span class="math display">\[
+A*n+B=n^2
+\]</span></p>
+<p>别忘了，我们还有规定远平面上的点z坐标变换前后不发生改变，我们取远平面上的中心点(0,0,f,1)进行变换。 <span class="math display">\[
+M_{persp\rightarrow ortho}*
+\left[
+\begin{matrix}
+0\\
+0\\
+f\\
+1\\
+\end{matrix}
+\right]
+=
+\left[
+\begin{matrix}
+0\\
+0\\
+unknow\\
+1\\
+\end{matrix}
+\right]
+=
+\left[
+\begin{matrix}
+0\\
+0\\
+f\\
+1\\
+\end{matrix}
+\right]
+==
+\left[
+\begin{matrix}
+0\\
+0\\
+f^2\\
+f\\
+\end{matrix}
+\right]
+\]</span> 道理与近平面上的点变换一样。 <span class="math display">\[
+\left[
+\begin{matrix}
+0&amp;0&amp;A&amp;B
+\end{matrix}
+\right]
+*
+\left[
+\begin{matrix}
+0\\
+0\\
+f\\
+1\\
+\end{matrix}
+\right]
+=f^2
+\]</span> 可以得到： <span class="math display">\[
+A*f+B=f^2
+\]</span></p>
+<p>联立： <span class="math display">\[
+\begin{cases}
+A*n+B=n^2\\
+A*f+B=f^2
+\end{cases}
+\]</span> 解得： <span class="math display">\[
+\begin{cases}
+A=n+f\\
+B=-n*f
+\end{cases}
+\]</span> 综上<span class="math inline">\(M_{persp\rightarrow ortho}\)</span>为： <span class="math display">\[
+M_{persp\rightarrow ortho}=
+\left[
+\begin{matrix}
+n&amp;0&amp;0&amp;0\\
+0&amp;n&amp;0&amp;0\\
+0&amp;0&amp;n+f&amp;-n*f\\
+0&amp;0&amp;1&amp;0\\
+\end{matrix}
+\right]
+\]</span> 之后，在将"挤压"后的平截头体做正交投影即可。</p>
+<p>因此，透视投影变换为： <span class="math display">\[
+M_{persp}=M_{ortho}*M_{persp\rightarrow ortho}=
+\left[
+\begin{matrix}
+\frac{2}{r-l}&amp;0&amp;0&amp;0\\
+0&amp;\frac{2}{t-b}&amp;0&amp;0\\
+0&amp;0&amp;\frac{2}{n-f}&amp;0\\
+0&amp;0&amp;0&amp;1\\
+\end{matrix}
+\right]
+*
+\left[
+\begin{matrix}
+1&amp;0&amp;0&amp;-\frac{l+r}{2}\\
+0&amp;1&amp;0&amp;-\frac{b+t}{2}\\
+0&amp;0&amp;1&amp;-\frac{f+n}{2}\\
+0&amp;0&amp;0&amp;1\\
+\end{matrix}
+\right]
+*
+\left[
+\begin{matrix}
+n&amp;0&amp;0&amp;0\\
+0&amp;n&amp;0&amp;0\\
+0&amp;0&amp;n+f&amp;-n*f\\
+0&amp;0&amp;1&amp;0\\
+\end{matrix}
+\right]
+\]</span> 可以发现内部点的z坐标会发生改变，近远面上的点z坐标不会发生改变。</p>
+<h5 id="对平截头体进行描述">对平截头体进行描述</h5>
+<p>平截头体的前后面，near与far直接定义。</p>
 <p>而左右与上下面通过宽高比(aspect)与竖直的可视角度(fovY)定义。</p>
-<p><img src="image-20211031115142942.png" alt="image-20211031115142942"></p>
+<figure>
+<img src="image-20211031115142942.png" alt="image-20211031115142942"><figcaption aria-hidden="true">image-20211031115142942</figcaption>
+</figure>
 <p>侧视图：</p>
-<p><img src="image-20211031125358565.png" alt="image-20211031125358565"></p>
-<p>很显然：<br>$$<br>\tan{\frac{fovY}{2}}=\frac{t}{\left| n \right|}\<br>t=\tan{\frac{fovY}{2}}*\left| n \right|<br>$$<br>这样就定义了上下面。</p>
-<p>再根据宽高比定义左右面。有：<br>$$<br>aspect = \frac{r}{t}\<br>r=t<em>aspect=\tan{\frac{fovY}{2}}</em>\left| n \right|*aspect<br>$$</p>
-<h3 id="视口变换（Viewport-Transform）"><a href="#视口变换（Viewport-Transform）" class="headerlink" title="视口变换（Viewport Transform）"></a>视口变换（Viewport Transform）</h3><p>将投影变换得到标准正方体<code>[-1,1]^3</code> 变换到屏幕（screen）上。</p>
-<h4 id="屏幕（screen）"><a href="#屏幕（screen）" class="headerlink" title="屏幕（screen）"></a>屏幕（screen）</h4><p>图形学中定义屏幕是一个二维数组，元素为像素。像素的表示为rgb。</p>
+<figure>
+<img src="image-20211031125358565.png" alt="image-20211031125358565"><figcaption aria-hidden="true">image-20211031125358565</figcaption>
+</figure>
+<p>很显然： <span class="math display">\[
+\tan{\frac{fovY}{2}}=\frac{t}{\left| n \right|}\\
+t=\tan{\frac{fovY}{2}}*\left| n \right|
+\]</span> 这样就定义了上下面。</p>
+<p>再根据宽高比定义左右面。有： <span class="math display">\[
+aspect = \frac{r}{t}\\
+r=t*aspect=\tan{\frac{fovY}{2}}*\left| n \right|*aspect
+\]</span></p>
+<h3 id="视口变换viewport-transform">视口变换（Viewport Transform）</h3>
+<p>将投影变换得到标准正方体<code>[-1,1]^3</code> 变换到屏幕（screen）上。</p>
+<h4 id="屏幕screen">屏幕（screen）</h4>
+<p>图形学中定义屏幕是一个二维数组，元素为像素。像素的表示为rgb。</p>
 <p>屏幕空间：</p>
-<p><img src="image-20211031130923296.png" alt="image-20211031130923296"></p>
+<figure>
+<img src="image-20211031130923296.png" alt="image-20211031130923296"><figcaption aria-hidden="true">image-20211031130923296</figcaption>
+</figure>
 <p>规定（可以有多种规定）：</p>
 <ul>
 <li>屏幕的左下角为原点。</li>
@@ -564,13 +1243,51 @@
 <li>像素的中心为（x+0.5,y+0.5）。</li>
 <li>像素的<strong>覆盖</strong>范围(0,0)到(width,height)。</li>
 </ul>
-<h4 id="视口变化"><a href="#视口变化" class="headerlink" title="视口变化"></a>视口变化</h4><p>接下来就要把投影变换得到标准正方体<code>[-1,1]^3</code> 变换到屏幕上去了。</p>
-<p><img src="image-20211031132805806.png" alt="image-20211031132805806"></p>
+<h4 id="视口变化">视口变化</h4>
+<p>接下来就要把投影变换得到标准正方体<code>[-1,1]^3</code> 变换到屏幕上去了。</p>
+<figure>
+<img src="image-20211031132805806.png" alt="image-20211031132805806"><figcaption aria-hidden="true">image-20211031132805806</figcaption>
+</figure>
 <p>我们暂时忽略标准正方体的z坐标。</p>
-<p>现在我们要把标准正方体（型）$[-1,1]^2$的坐标映射到屏幕上<code>[0,width]*[0,hight]</code>的空间中。</p>
-<p>首先把标准正方型缩放到与屏幕一样大小：<br>$$<br>M_{view_scale}<br>=<br>\left[<br>\begin{matrix}<br>\frac{width}{2}&amp;0&amp;0&amp;0\<br>0&amp;\frac{height}{2}&amp;0&amp;0\<br>0&amp;0&amp;1&amp;0\<br>0&amp;0&amp;0&amp;1\<br>\end{matrix}<br>\right]<br>$$<br>再把正方形的左下角位移到屏幕原点(0,0)处:<br>$$<br>M_{view_translation}<br>\left[<br>\begin{matrix}<br>1&amp;0&amp;0&amp;\frac{width}{2}\<br>0&amp;1&amp;0&amp;\frac{height}{2}\<br>0&amp;0&amp;1&amp;0\<br>0&amp;0&amp;0&amp;1\<br>\end{matrix}<br>\right]<br>$$</p>
-<p>综上，视口变换矩阵为：<br>$$<br>M_{view}<br>=<br>M_{view_translation}*M_{view_scale}<br>=<br>\left[<br>\begin{matrix}<br>\frac{width}{2}&amp;0&amp;0&amp;\frac{width}{2}\<br>0&amp;\frac{height}{2}&amp;0&amp;\frac{height}{2}\<br>0&amp;0&amp;1&amp;0\<br>0&amp;0&amp;0&amp;1\<br>\end{matrix}<br>\right]<br>$$</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>将一个在局部空间定义好的物体，最终显示到屏幕上。</p>
+<p>现在我们要把标准正方体（型）<span class="math inline">\([-1,1]^2\)</span>的坐标映射到屏幕上<code>[0,width]*[0,hight]</code>的空间中。</p>
+<p>首先把标准正方型缩放到与屏幕一样大小： <span class="math display">\[
+M_{view\_scale}
+=
+\left[
+\begin{matrix}
+\frac{width}{2}&amp;0&amp;0&amp;0\\
+0&amp;\frac{height}{2}&amp;0&amp;0\\
+0&amp;0&amp;1&amp;0\\
+0&amp;0&amp;0&amp;1\\
+\end{matrix}
+\right]
+\]</span> 再把正方形的左下角位移到屏幕原点(0,0)处: <span class="math display">\[
+M_{view\_translation}
+\left[
+\begin{matrix}
+1&amp;0&amp;0&amp;\frac{width}{2}\\
+0&amp;1&amp;0&amp;\frac{height}{2}\\
+0&amp;0&amp;1&amp;0\\
+0&amp;0&amp;0&amp;1\\
+\end{matrix}
+\right]
+\]</span></p>
+<p>综上，视口变换矩阵为： <span class="math display">\[
+M_{view}
+=
+M_{view\_translation}*M_{view\_scale}
+=
+\left[
+\begin{matrix}
+\frac{width}{2}&amp;0&amp;0&amp;\frac{width}{2}\\
+0&amp;\frac{height}{2}&amp;0&amp;\frac{height}{2}\\
+0&amp;0&amp;1&amp;0\\
+0&amp;0&amp;0&amp;1\\
+\end{matrix}
+\right]
+\]</span></p>
+<h2 id="总结">总结</h2>
+<p>将一个在局部空间定义好的物体，最终显示到屏幕上。</p>
 <p>需要经过：</p>
 <ul>
 <li><strong>模型矩阵</strong>变换至世界空间。</li>
@@ -578,7 +1295,9 @@
 <li>摄像机所看到的内容经过<strong>投影矩阵</strong>变换将其变换至标准正方体中。</li>
 <li>将标准正方体经过<strong>视口矩阵</strong>变换到屏幕上。</li>
 </ul>
-<p>$$<br>V_{screen}=M_{viewport}<em>M_{projection}</em>M_{view}<em>M_{model}</em>V_{local}<br>$$</p>
+<p><span class="math display">\[
+V_{screen}=M_{viewport}*M_{projection}*M_{view}*M_{model}*V_{local}
+\]</span></p>
 
       
     </div>
@@ -758,7 +1477,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#2D变换（2D-transformation）"><span class="nav-number">1.</span> <span class="nav-text">2D变换（2D transformation）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#缩放（Scale）"><span class="nav-number">1.1.</span> <span class="nav-text">缩放（Scale）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#错切（shear）"><span class="nav-number">1.2.</span> <span class="nav-text">错切（shear）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#旋转（Rotation）"><span class="nav-number">1.3.</span> <span class="nav-text">旋转（Rotation）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#旋转矩阵是正交矩阵"><span class="nav-number">1.3.1.</span> <span class="nav-text">旋转矩阵是正交矩阵</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#位移（Translation）"><span class="nav-number">1.4.</span> <span class="nav-text">位移（Translation）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#齐次坐标（Homogenous-Coordinates）"><span class="nav-number">1.5.</span> <span class="nav-text">齐次坐标（Homogenous Coordinates）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#两条平行线可以相交"><span class="nav-number">1.5.1.</span> <span class="nav-text">两条平行线可以相交</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#齐次坐标下的点与向量"><span class="nav-number">1.5.2.</span> <span class="nav-text">齐次坐标下的点与向量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组合变换（Composing-Transforms）"><span class="nav-number">1.6.</span> <span class="nav-text">组合变换（Composing Transforms）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3D变换（3D-Transformations）"><span class="nav-number">2.</span> <span class="nav-text">3D变换（3D Transformations）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#缩放-位移-旋转"><span class="nav-number">2.1.</span> <span class="nav-text">缩放 位移 旋转</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#视图变换（Viewing-transformation）"><span class="nav-number">3.</span> <span class="nav-text">视图变换（Viewing transformation）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#摄像机变换（Camera-Transformation）"><span class="nav-number">3.1.</span> <span class="nav-text">摄像机变换（Camera Transformation）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#投影变换（Projection-transformation）"><span class="nav-number">3.2.</span> <span class="nav-text">投影变换（Projection transformation）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#正交投影（Orthographic-Projection）"><span class="nav-number">3.2.1.</span> <span class="nav-text">正交投影（Orthographic Projection）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#透视投影（Perspective-Projection）"><span class="nav-number">3.2.2.</span> <span class="nav-text">透视投影（Perspective Projection）</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#right"><span class="nav-number"></span> <span class="nav-text">\right]</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#right-1"><span class="nav-number"></span> <span class="nav-text">\right]</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#对平截头体进行描述"><span class="nav-number">0.0.0.1.</span> <span class="nav-text">对平截头体进行描述</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#视口变换（Viewport-Transform）"><span class="nav-number">0.1.</span> <span class="nav-text">视口变换（Viewport Transform）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#屏幕（screen）"><span class="nav-number">0.1.1.</span> <span class="nav-text">屏幕（screen）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#视口变化"><span class="nav-number">0.1.2.</span> <span class="nav-text">视口变化</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">1.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#d变换2d-transformation"><span class="nav-number">1.</span> <span class="nav-text">2D变换（2D transformation）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#缩放scale"><span class="nav-number">1.1.</span> <span class="nav-text">缩放（Scale）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#错切shear"><span class="nav-number">1.2.</span> <span class="nav-text">错切（shear）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#旋转矩阵是正交矩阵"><span class="nav-number">1.2.1.</span> <span class="nav-text">旋转矩阵是正交矩阵</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#位移translation"><span class="nav-number">1.3.</span> <span class="nav-text">位移（Translation）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#齐次坐标homogenous-coordinates"><span class="nav-number">1.4.</span> <span class="nav-text">齐次坐标（Homogenous Coordinates）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#两条平行线可以相交"><span class="nav-number">1.4.1.</span> <span class="nav-text">两条平行线可以相交</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#齐次坐标下的点与向量"><span class="nav-number">1.4.2.</span> <span class="nav-text">齐次坐标下的点与向量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组合变换composing-transforms"><span class="nav-number">1.5.</span> <span class="nav-text">组合变换（Composing Transforms）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#d变换3d-transformations"><span class="nav-number">2.</span> <span class="nav-text">3D变换（3D Transformations）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#缩放-位移-旋转"><span class="nav-number">2.1.</span> <span class="nav-text">缩放 位移 旋转</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#视图变换viewing-transformation"><span class="nav-number">3.</span> <span class="nav-text">视图变换（Viewing transformation）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#摄像机变换camera-transformation"><span class="nav-number">3.1.</span> <span class="nav-text">摄像机变换（Camera Transformation）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#投影变换projection-transformation"><span class="nav-number">3.2.</span> <span class="nav-text">投影变换（Projection transformation）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#透视投影perspective-projection"><span class="nav-number">3.2.1.</span> <span class="nav-text">透视投影（Perspective Projection）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#对平截头体进行描述"><span class="nav-number">3.2.1.1.</span> <span class="nav-text">对平截头体进行描述</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#视口变换viewport-transform"><span class="nav-number">3.3.</span> <span class="nav-text">视口变换（Viewport Transform）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#屏幕screen"><span class="nav-number">3.3.1.</span> <span class="nav-text">屏幕（screen）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#视口变化"><span class="nav-number">3.3.2.</span> <span class="nav-text">视口变化</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>

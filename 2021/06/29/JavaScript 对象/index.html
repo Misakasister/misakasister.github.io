@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="概念对象是JavaScript的一个基本数据类型，是一种复合值，它将很多值（原始值或者其他对象）聚合在一起，可通过名字访问这些值。即属性的无序集合。 创建方法1 对象字面量/对象直接量 （字面量就是指这个量本身，比如字面量3。也就是指3. 再比如 string类型的字面量”ABC”, 这个”ABC” 通过字来描述。 所以就是字面量，虽然很难下定义。 你就理解成一眼就能知道的量。） 1234567v">
+<meta name="description" content="概念 对象是JavaScript的一个基本数据类型，是一种复合值，它将很多值（原始值或者其他对象）聚合在一起，可通过名字访问这些值。即属性的无序集合。 创建方法 1 对象字面量/对象直接量 （字面量就是指这个量本身，比如字面量3。也就是指3. 再比如 string类型的字面量&quot;ABC&quot;, 这个&quot;ABC&quot; 通过字来描述。 所以就是字面量，虽然很难下定义。 你就理解成一眼就能知道的量。） 1">
 <meta name="keywords" content="前端,JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript 对象">
 <meta property="og:url" content="http://yoursite.com/2021/06/29/JavaScript 对象/index.html">
 <meta property="og:site_name" content="rcos97的博客">
-<meta property="og:description" content="概念对象是JavaScript的一个基本数据类型，是一种复合值，它将很多值（原始值或者其他对象）聚合在一起，可通过名字访问这些值。即属性的无序集合。 创建方法1 对象字面量/对象直接量 （字面量就是指这个量本身，比如字面量3。也就是指3. 再比如 string类型的字面量”ABC”, 这个”ABC” 通过字来描述。 所以就是字面量，虽然很难下定义。 你就理解成一眼就能知道的量。） 1234567v">
+<meta property="og:description" content="概念 对象是JavaScript的一个基本数据类型，是一种复合值，它将很多值（原始值或者其他对象）聚合在一起，可通过名字访问这些值。即属性的无序集合。 创建方法 1 对象字面量/对象直接量 （字面量就是指这个量本身，比如字面量3。也就是指3. 再比如 string类型的字面量&quot;ABC&quot;, 这个&quot;ABC&quot; 通过字来描述。 所以就是字面量，虽然很难下定义。 你就理解成一眼就能知道的量。） 1">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-08-21T01:40:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript 对象">
-<meta name="twitter:description" content="概念对象是JavaScript的一个基本数据类型，是一种复合值，它将很多值（原始值或者其他对象）聚合在一起，可通过名字访问这些值。即属性的无序集合。 创建方法1 对象字面量/对象直接量 （字面量就是指这个量本身，比如字面量3。也就是指3. 再比如 string类型的字面量”ABC”, 这个”ABC” 通过字来描述。 所以就是字面量，虽然很难下定义。 你就理解成一眼就能知道的量。） 1234567v">
+<meta name="twitter:description" content="概念 对象是JavaScript的一个基本数据类型，是一种复合值，它将很多值（原始值或者其他对象）聚合在一起，可通过名字访问这些值。即属性的无序集合。 创建方法 1 对象字面量/对象直接量 （字面量就是指这个量本身，比如字面量3。也就是指3. 再比如 string类型的字面量&quot;ABC&quot;, 这个&quot;ABC&quot; 通过字来描述。 所以就是字面量，虽然很难下定义。 你就理解成一眼就能知道的量。） 1">
 
 
 
@@ -386,9 +386,11 @@
       
 
       
-        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>对象是JavaScript的一个基本数据类型，是一种复合值，它将很多值（原始值或者其他对象）聚合在一起，可通过名字访问这些值。即属性的无序集合。</p>
-<h2 id="创建方法"><a href="#创建方法" class="headerlink" title="创建方法"></a>创建方法</h2><p>1 对象字面量/对象直接量</p>
-<p>（字面量就是指这个量本身，比如字面量3。也就是指3. 再比如 string类型的字面量”ABC”, 这个”ABC” 通过字来描述。 所以就是字面量，虽然很难下定义。 你就理解成一眼就能知道的量。）</p>
+        <h2 id="概念">概念</h2>
+<p>对象是JavaScript的一个基本数据类型，是一种复合值，它将很多值（原始值或者其他对象）聚合在一起，可通过名字访问这些值。即属性的无序集合。</p>
+<h2 id="创建方法">创建方法</h2>
+<p>1 对象字面量/对象直接量</p>
+<p>（字面量就是指这个量本身，比如字面量3。也就是指3. 再比如 string类型的字面量"ABC", 这个"ABC" 通过字来描述。 所以就是字面量，虽然很难下定义。 你就理解成一眼就能知道的量。）</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj =&#123;</span><br><span class="line">    name:<span class="string">"xiaoming"</span>,</span><br><span class="line">    age: <span class="number">12</span>,</span><br><span class="line">    eat : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"food"</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>2 构造函数</p>
 <p>2.1 自定义构造函数</p>
@@ -399,11 +401,12 @@
 <p>2） 执行 this.xxx=xxx;</p>
 <p>3） 隐式的返回this</p>
 <p>2.2 系统自带的构造函数</p>
-<p>比如 new Object()  //不常用</p>
+<p>比如 new Object() //不常用</p>
 <p>new String() new Number() 等等，相当于系统把“工厂模板写好了”</p>
 <p>3 Object.create(原型)</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Person.prototype.name=<span class="string">"xiao"</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person=<span class="built_in">Object</span>.create(Person.prototype)</span><br></pre></td></tr></table></figure>
-<h2 id="包装对象"><a href="#包装对象" class="headerlink" title="包装对象"></a>包装对象</h2><p>js里有原始值和对象。</p>
+<h2 id="包装对象">包装对象</h2>
+<p>js里有原始值和对象。</p>
 <p>对象可以随便的增加属性和方法。或删除属性和方法 {用delelte(对象.属性) }。</p>
 <p>原始值应该是不能调用属性和方法的，但是js“可以调用”，这就是因为js在后台创建了包装对象。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s=<span class="string">"hello"</span>;</span><br><span class="line">s.index=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> t=s.index;</span><br><span class="line"><span class="built_in">console</span>.log(t)<span class="comment">//undefined</span></span><br></pre></td></tr></table></figure>
@@ -412,26 +415,30 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s=<span class="string">"hello"</span>;</span><br><span class="line">s.index=<span class="number">1</span>;<span class="comment">//此时会创建一个new String("hello"),</span></span><br><span class="line"><span class="comment">//并增加一个index属性=1，之后销毁</span></span><br><span class="line"><span class="keyword">var</span> t=s.index;<span class="comment">//该对象被销毁了，所以并不能访问</span></span><br><span class="line"><span class="built_in">console</span>.log(t)<span class="comment">//undefined</span></span><br></pre></td></tr></table></figure>
 <p>这就很好的解释了原始值调用属性的问题。比如：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"123456"</span>;</span><br><span class="line"><span class="comment">//创建new String("123456"),得到length返回后，销毁</span></span><br><span class="line"><span class="built_in">console</span>.log(str.length);<span class="comment">//6</span></span><br></pre></td></tr></table></figure>
-<h2 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h2><p>定义：原型是function对象的一个属性，它定义了构造函数制造出的对象的公共祖先。通过该构造函数产生的对象，可以继承该原型的属性和方法。<strong>原型也是对象。</strong></p>
+<h2 id="原型">原型</h2>
+<p>定义：原型是function对象的一个属性，它定义了构造函数制造出的对象的公共祖先。通过该构造函数产生的对象，可以继承该原型的属性和方法。<strong>原型也是对象。</strong></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//在函数"出生时"，Person.prototype(原型)就被定义好了</span></span><br><span class="line"><span class="comment">//Person.prototype是个对象，相当于Person生产出的对象的共同祖先</span></span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Person();</span><br></pre></td></tr></table></figure>
 <p>利用原型特点和概念，可以提取公用属性。</p>
-<p>比如，Person.prototype.LastName=”li” 那么。通过Person()函数构造出的函数都会有这个LastName属性。值为”li”,当然，个体也可以更改LastName的值。</p>
-<p>对象查看自己的构造函数 –&gt; constructor（构造器）</p>
+<p>比如，Person.prototype.LastName="li" 那么。通过Person()函数构造出的函数都会有这个LastName属性。值为”li",当然，个体也可以更改LastName的值。</p>
+<p>对象查看自己的构造函数 --&gt; constructor（构造器）</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Person();</span><br><span class="line">person.constructor<span class="comment">//functoion Person()&#123;&#125;</span></span><br></pre></td></tr></table></figure>
 <p>constructor可以改变。</p>
-<h3 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h3><p>对象查看原型：__proto__ （隐式属性）</p>
-<p>__proto__  属性里面放的是原型 （__proto__  前后有两个<code>_</code>） </p>
+<h3 id="原型链">原型链</h3>
+<p>对象查看原型：__proto__ （隐式属性）</p>
+<p>__proto__ 属性里面放的是原型 （__proto__ 前后有两个<code>_</code>）</p>
 <p>例子：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">//会有一个隐藏属性</span></span><br><span class="line">    <span class="comment">//this =&#123;__proto__: Person.prototype&#125;当new时创建。参考上面的构造函数原理</span></span><br><span class="line">    <span class="comment">//这里是一个钩子，当this里没有调用的属性是，会去__proto__指向的地址寻找</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><code>__proto__</code> 的值可以修改,也就是说明自己可以更改自己的祖先。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Grand</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.lastName=<span class="string">"xiao"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> grand = <span class="keyword">new</span> Grand();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Father</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> father =<span class="keyword">new</span> Father();</span><br><span class="line">father.__proto__=grand;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Son</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> son= <span class="keyword">new</span> Son();</span><br><span class="line">son.__proto__=father;</span><br><span class="line"><span class="built_in">console</span>.log(son.lastName);<span class="comment">//xiao</span></span><br></pre></td></tr></table></figure>
 <p>这就构成了一个原型链，son没有lastName会按着原型链往上寻找，直到找到输出。</p>
-<h3 id="区分prototype-和-proto"><a href="#区分prototype-和-proto" class="headerlink" title="区分prototype 和 __proto__"></a>区分prototype 和 __proto__</h3><p>prototype是<strong>函数属性</strong>，代表该构造函数所产生的对象的”爹“，也是函数创建对象的<code>__proto__</code> 所指</p>
+<h3 id="区分prototype-和-__proto__">区分prototype 和 __proto__</h3>
+<p>prototype是<strong>函数属性</strong>，代表该构造函数所产生的对象的”爹“，也是函数创建对象的<code>__proto__</code> 所指</p>
 <p><code>__proto__</code> 是一个<strong>对象的属性</strong>，它指向该对象的原型</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">JS中每个对象都会有__proto__属性，默认为Object，例如：</span><br><span class="line">var a=&#123;&#125;;//这里对象a的__proto__属性就是Object</span><br></pre></td></tr></table></figure>
 <p>原型链的终端是Object.prototype, 而Object有toString方法，所以大部分对象都能调用toString()方法。</p>
-<p>obj.toString()会输出[Object Object],输出的格式是[object 对象的类型] </p>
-<h2 id="call-apply"><a href="#call-apply" class="headerlink" title="call/apply"></a>call/apply</h2><p> call/apply作用的是改变this指向</p>
+<p>obj.toString()会输出[Object Object],输出的格式是[object 对象的类型]</p>
+<h2 id="callapply">call/apply</h2>
+<p>call/apply作用的是改变this指向</p>
 <p>方法.call(this的指向，参数)</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age, sex</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name=name;</span><br><span class="line">    <span class="keyword">this</span>.age=age;</span><br><span class="line">    <span class="keyword">this</span>.sex=sex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params">name, age, sex, tel, grade</span>)</span>&#123;</span><br><span class="line">    Person.call(<span class="keyword">this</span>,name,age,sex);</span><br><span class="line">    <span class="keyword">this</span>.tel=tel;</span><br><span class="line">    <span class="keyword">this</span>.grade=grade;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> student=New Student(...);</span><br></pre></td></tr></table></figure>
 <p>这样Student就包含了Person的属性</p>
@@ -439,31 +446,35 @@
 <p>apply的作用域call一样。</p>
 <p>不同的是，call 需要把实参按照形参个数传进去。</p>
 <p>apply 需要传一个argument，（就是在参数两边加[])</p>
-<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>传统方式： 原型链 过多的继承了没用的方法。</p>
+<h2 id="继承">继承</h2>
+<p>传统方式： 原型链 过多的继承了没用的方法。</p>
 <p>共享原型：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Father.prototyper=&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Father</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Son</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Son.prototype = Father.prototype</span><br></pre></td></tr></table></figure>
 <p>这样Father于Son就公用继承了一个原型。但是想要给Son单独增加原型属性，就会影响Father的属性，所以需要改进。</p>
 <p>圣杯模式：找一个中间层</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Father.prototyper=&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Father</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Son</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">F.prototype = Father.prototype</span><br><span class="line">Son.ptototype=New F()</span><br></pre></td></tr></table></figure>
 <p>这样只给F增加属性，不会影响到Father了。</p>
-<h2 id="对象枚举"><a href="#对象枚举" class="headerlink" title="对象枚举"></a>对象枚举</h2><p><strong>for…in</strong></p>
+<h2 id="对象枚举">对象枚举</h2>
+<p><strong>for...in</strong></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj =&#123;</span><br><span class="line">    name:<span class="string">"dfasdf"</span>,</span><br><span class="line">    sex:<span class="string">"male"</span>,</span><br><span class="line">    weight:<span class="number">123</span>,</span><br><span class="line">    eat: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"apple"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> prop <span class="keyword">in</span> obj)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(prop);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>会把对象的属性名和方法名赋给prop</p>
-<p><strong>obj.prop系统内部会转换成obj[“prop”],寻找prop属性</strong></p>
-<p><strong>所以用for…in输出对象，要用obj[prop]</strong> 属性就是字符串</p>
-<p><strong>hasOwnProperty()</strong> </p>
+<p><strong>obj.prop系统内部会转换成obj["prop"],寻找prop属性</strong></p>
+<p><strong>所以用for...in输出对象，要用obj[prop]</strong> 属性就是字符串</p>
+<p><strong>hasOwnProperty()</strong></p>
 <p>可以用来判断是否是自己的属性（是自己的返回真，原型链上的返回假）</p>
-<p> <strong>in</strong>  </p>
+<p><strong>in</strong></p>
 <p>”属性“ in obj 用来判断该属性是否是obj的属性，（包括原型链上的属性）</p>
 <p><strong>instranceof</strong></p>
 <p>用来判断 A对象 是否是B函数构造出来的</p>
 <p>A对象 instranceof B函数</p>
 <p>看A对象的原型链 有没有B的原型</p>
-<h2 id="this"><a href="#this" class="headerlink" title="this"></a>this</h2><p>函数预编译过程 this –&gt; window</p>
-<p>全局作用域里 this–&gt;window</p>
+<h2 id="this">this</h2>
+<p>函数预编译过程 this --&gt; window</p>
+<p>全局作用域里 this--&gt;window</p>
 <p>call//apply 改变函数运行时this的指向</p>
 <p>obj.func(),fun()里面的this指向obj</p>
-<h2 id="类数组"><a href="#类数组" class="headerlink" title="类数组"></a>类数组</h2><p>对于一个普通的对象来说，有相应的length属性，（最好加上push) 那么虽然该对象并不是由Array构造函数所创建的，它依然呈现出数组的行为，在这种情况下，这些对象被称为“类数组对象”。</p>
+<h2 id="类数组">类数组</h2>
+<p>对于一个普通的对象来说，有相应的length属性，（最好加上push) 那么虽然该对象并不是由Array构造函数所创建的，它依然呈现出数组的行为，在这种情况下，这些对象被称为“类数组对象”。</p>
 <p>比如</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj=&#123;</span><br><span class="line">    <span class="number">0</span>:<span class="string">"a"</span>,</span><br><span class="line">    <span class="number">1</span>:<span class="string">"b"</span>,</span><br><span class="line">    <span class="number">2</span>:<span class="string">"c"</span>,</span><br><span class="line">    length:<span class="number">3</span>,</span><br><span class="line">    push:<span class="built_in">Array</span>.prototype.push</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>特点：</p>
@@ -657,7 +668,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建方法"><span class="nav-number">2.</span> <span class="nav-text">创建方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#包装对象"><span class="nav-number">3.</span> <span class="nav-text">包装对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原型"><span class="nav-number">4.</span> <span class="nav-text">原型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原型链"><span class="nav-number">4.1.</span> <span class="nav-text">原型链</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#区分prototype-和-proto"><span class="nav-number">4.2.</span> <span class="nav-text">区分prototype 和 __proto__</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#call-apply"><span class="nav-number">5.</span> <span class="nav-text">call/apply</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#继承"><span class="nav-number">6.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象枚举"><span class="nav-number">7.</span> <span class="nav-text">对象枚举</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#this"><span class="nav-number">8.</span> <span class="nav-text">this</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类数组"><span class="nav-number">9.</span> <span class="nav-text">类数组</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建方法"><span class="nav-number">2.</span> <span class="nav-text">创建方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#包装对象"><span class="nav-number">3.</span> <span class="nav-text">包装对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原型"><span class="nav-number">4.</span> <span class="nav-text">原型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原型链"><span class="nav-number">4.1.</span> <span class="nav-text">原型链</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#区分prototype-和-__proto__"><span class="nav-number">4.2.</span> <span class="nav-text">区分prototype 和 __proto__</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#callapply"><span class="nav-number">5.</span> <span class="nav-text">call/apply</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#继承"><span class="nav-number">6.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象枚举"><span class="nav-number">7.</span> <span class="nav-text">对象枚举</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#this"><span class="nav-number">8.</span> <span class="nav-text">this</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类数组"><span class="nav-number">9.</span> <span class="nav-text">类数组</span></a></li></ol></div>
             
 
           </div>
