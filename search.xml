@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title></title>
+    <title><![CDATA[光栅化]]></title>
     <url>%2F2021%2F11%2F05%2F%E5%85%89%E6%A0%85%E5%8C%96%2F</url>
-    <content type="text"><![CDATA[光栅化——将图形显示在屏幕上。 在屏幕上画出三角形为什么是三角形进行划分 最基本的多边形，可以组成其它多边形。 三角形一定在一个平面内。 三角形的内外定义清楚（可以通过向量叉积判断一个点是否在三角形内）。 方便进行插值运算（重心坐标） 对三角形进行采样（Sampling）采样：对函数进行离散化。 123for(int x = 0; x &lt; xmax; x++)&#123; output[x] = f(x);&#125; 基本图形： 如果像素中心(x+0.5,y+0.5)在三角形内部就进行采样： 定义采样函数： inside(t,x,y)=\begin{cases}&1&点(x,y)在三角形t内\\&0&其它\end{cases}判断一个点是否在三角形内部 对于点Q与$\triangle P_0P_1P_2$,按照三角形顶点的顺序与Q进行叉乘有: \overrightarrow{P_0P_1}\cross\overrightarrow{P_0Q}=\overrightarrow{z}>0\\ \overrightarrow{P_1P_2}\cross\overrightarrow{P_1Q}=\overrightarrow{z}>0\\ \overrightarrow{P_2P_0}\cross\overrightarrow{P_2Q}=\overrightarrow{z}]]></content>
+    <content type="text"><![CDATA[——将图形显示在屏幕上。 在屏幕上画出三角形为什么是三角形进行划分 最基本的多边形，可以组成其它多边形。 三角形一定在一个平面内。 三角形的内外定义清楚（可以通过向量叉积判断一个点是否在三角形内）。 方便进行插值运算（重心坐标） 对三角形进行采样（Sampling）采样：对函数进行离散化。 123for(int x = 0; x &lt; xmax; x++)&#123; output[x] = f(x);&#125; 基本图形： 如果像素中心(x+0.5,y+0.5)在三角形内部就进行采样： 定义采样函数： inside(t,x,y)=\begin{cases}&1&点(x,y)在三角形t内\\&0&其它\end{cases}判断一个点是否在三角形内部 对于点Q与$\triangle P_0P_1P_2$,按照三角形顶点的顺序与Q进行叉乘有: \overrightarrow{P_0P_1}\cross\overrightarrow{P_0Q}=\overrightarrow{z}>0\\ \overrightarrow{P_1P_2}\cross\overrightarrow{P_1Q}=\overrightarrow{z}>0\\ \overrightarrow{P_2P_0}\cross\overrightarrow{P_2Q}=\overrightarrow{z}]]></content>
+      <tags>
+        <tag>计算机图形学</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[变换]]></title>
