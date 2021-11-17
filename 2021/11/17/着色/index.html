@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="计算机图形学," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="——在图片上引入明暗和颜色的不同。（一般定义） ——对不同的物体引入不同的材质。（图形学定义） Blinn- Phong Reflectance ModelBlinn- Phong Reflectance Model只是经验模型，并不代表的实际的物理效果。 我们只考虑一个点的着色，不考虑阴影和点之间的影响。 需要定义：  观察向量 $\overrightarrow{v}$ 表面法向量 $\over">
+<meta name="keywords" content="计算机图形学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="着色">
+<meta property="og:url" content="http://yoursite.com/2021/11/17/着色/index.html">
+<meta property="og:site_name" content="rcos97的博客">
+<meta property="og:description" content="——在图片上引入明暗和颜色的不同。（一般定义） ——对不同的物体引入不同的材质。（图形学定义） Blinn- Phong Reflectance ModelBlinn- Phong Reflectance Model只是经验模型，并不代表的实际的物理效果。 我们只考虑一个点的着色，不考虑阴影和点之间的影响。 需要定义：  观察向量 $\overrightarrow{v}$ 表面法向量 $\over">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2021/11/17/着色/image-20211106143011364.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/17/着色/image-20211106143302494.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/17/着色/image-20211106143956489.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/17/着色/image-20211106144104332.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/17/着色/image-20211106144525675.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/17/着色/image-20211106150227039.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/17/着色/image-20211111165151369.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/17/着色/image-20211111165530130.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/17/着色/image-20211111170940462.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/17/着色/image-20211111171108399.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/17/着色/image-20211111171616711.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/17/着色/image-20211111171846162.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/17/着色/image-20211111172451614.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/17/着色/image-20211111200702314.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/17/着色/image-20211111201351366.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/17/着色/image-20211111201633606.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/17/着色/image-20211111201950142.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/17/着色/image-20211113182446979.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/17/着色/image-20211113183556547.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/17/着色/image-20211113184306036.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/17/着色/image-20211115163348914.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/17/着色/image-20211115163818729.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/17/着色/2020050608353039.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/17/着色/image-20211115170453131.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/17/着色/filter_nearest.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/17/着色/着色/20210411115902469.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/17/着色/20200506084023345.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/17/着色/image-20211115171845230.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/17/着色/image-20211115172207365.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/17/着色/image-20211115180756188.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/17/着色/image-20211115180501753.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/17/着色/image-20211116151223402.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/17/着色/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dhbmdqaWFuZ3Jvbmc=,size_16,color_FFFFFF,t_70.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/17/着色/image-20211116151717090.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/17/着色/image-20211116161716098.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/17/着色/image-20211116162614896.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/17/着色/image-20211116163601395.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/17/着色/image-20211116164826280.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/17/着色/image-20211116165953479.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/17/着色/image-20211116170813046.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/17/着色/image-20211117153700895.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/17/着色/image-20211117154445825.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/17/着色/image-20211117154630441.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/17/着色/image-20211117154723701.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/17/着色/image-20211117161222468.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/17/着色/image-20211117161636247.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/17/着色/image-20211117162521935.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/17/着色/image-20211117162622234.png">
+<meta property="og:updated_time" content="2021-11-17T08:35:36.840Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="着色">
+<meta name="twitter:description" content="——在图片上引入明暗和颜色的不同。（一般定义） ——对不同的物体引入不同的材质。（图形学定义） Blinn- Phong Reflectance ModelBlinn- Phong Reflectance Model只是经验模型，并不代表的实际的物理效果。 我们只考虑一个点的着色，不考虑阴影和点之间的影响。 需要定义：  观察向量 $\overrightarrow{v}$ 表面法向量 $\over">
+<meta name="twitter:image" content="http://yoursite.com/2021/11/17/着色/image-20211106143011364.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2021/11/17/着色/"/>
+
+
+
+
+
+  <title>着色 | rcos97的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">rcos97的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/11/17/着色/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="rcos97">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/39228583?v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="rcos97的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">着色</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-11-17T16:31:32+08:00">
+                2021-11-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>——在图片上引入明暗和颜色的不同。（一般定义）</p>
+<p>——对不同的物体引入不同的材质。（图形学定义）</p>
+<h2 id="Blinn-Phong-Reflectance-Model"><a href="#Blinn-Phong-Reflectance-Model" class="headerlink" title="Blinn- Phong Reflectance Model"></a>Blinn- Phong Reflectance Model</h2><p>Blinn- Phong Reflectance Model只是<strong>经验模型</strong>，并不代表的实际的物理效果。</p>
+<p>我们只考虑一个点的着色，不考虑阴影和点之间的影响。</p>
+<p>需要定义：</p>
+<ul>
+<li>观察向量 $\overrightarrow{v}$</li>
+<li>表面法向量 $\overrightarrow{n}$</li>
+<li>光源方向 $\overrightarrow{l}$</li>
+<li>材料性质（颜色，材质 ）</li>
+</ul>
+<p><img src="image-20211106143011364.png" alt="image-20211106143011364" style="zoom: 67%;"></p>
+<h3 id="漫反射（diffuse-reflection）"><a href="#漫反射（diffuse-reflection）" class="headerlink" title="漫反射（diffuse reflection）"></a>漫反射（diffuse reflection）</h3><blockquote>
+<p>漫反射，是投射在粗糙表面上的光向各个方向反射的现象。当一束平行的入射光线射到粗糙的表面时，表面会把光线向着四面八方反射，所以入射线虽然互相平行，由于各点的法线方向不一致，造成反射光线向不同的方向无规则地反射，这种反射称之为“漫反射”或“漫射”。这种反射的光称为漫射光。</p>
+</blockquote>
+<p>光会向不同的方向均匀发射，与观察者无关。</p>
+<p><img src="image-20211106143302494.png" alt="image-20211106143302494" style="zoom:67%;"></p>
+<h4 id="兰伯特余弦定理（Lambert）"><a href="#兰伯特余弦定理（Lambert）" class="headerlink" title="兰伯特余弦定理（Lambert）"></a>兰伯特余弦定理（Lambert）</h4><p>物体完全接受了光照：</p>
+<p><img src="image-20211106143956489.png" alt="image-20211106143956489" style="zoom: 67%;"></p>
+<p>物体旋转60°后，只接受了一半的光：</p>
+<p><img src="image-20211106144104332.png" alt="image-20211106144104332" style="zoom:67%;"></p>
+<p>考虑一般情况，物体单位面积上接受光的比例为：</p>
+<script type="math/tex; mode=display">
+\cos\theta=\overrightarrow{l}\cdot\overrightarrow{n}</script><p><img src="image-20211106144525675.png" alt="image-20211106144525675" style="zoom:67%;"></p>
+<h4 id="光照强度"><a href="#光照强度" class="headerlink" title="光照强度"></a>光照强度</h4><p>考虑到一个点光源在空间中，向四周发射光。我们在空间中截取很多球面，不考虑能量衰减，那么每个球面的总能量是相同的。越往外球面单位面积上所能接受到的能量就越少。</p>
+<p>记半径为1的单位球的单位面积上接受到能量为I，根据球的面积公式可以得到，距离点光源直径为R上的点，接受到的能量为$I’=\frac{I}{R^2}$。</p>
+<p>推导如下：</p>
+<p>假设总光照强度为E，有：</p>
+<script type="math/tex; mode=display">
+I=\frac{E}{4\pi 1^2}\\
+I'=\frac{E}{4\pi R^2}\\
+I'=\frac{I}{R^2}</script><p><img src="image-20211106150227039.png" alt="image-20211106150227039" style="zoom:50%;"></p>
+<p>综上，我们可以得到漫反射能量公式：</p>
+<script type="math/tex; mode=display">
+L_d=k_d(I/r^2)max(0,\overrightarrow{n}\cdot\overrightarrow{l})</script><ul>
+<li>$k_d$ 漫反射率，有物体本身的性质决定，0代表黑色全吸收，1代表一点也不吸收能量。物体的颜色rgb三通道决定。</li>
+<li>$(I/r^2)$ 光照到达该点的能量。</li>
+<li>$max(0,\overrightarrow{n}\cdot\overrightarrow{l})$ 物体所接受的能量，由位置决定，取max是因为负的接受量没有实际意义。</li>
+</ul>
+<h3 id="高光（Specular-Term-）"><a href="#高光（Specular-Term-）" class="headerlink" title="高光（Specular Term ）"></a>高光（Specular Term ）</h3><p>强度取决于观察方向。</p>
+<p><img src="image-20211111165151369.png" alt="image-20211111165151369" style="zoom:67%;"></p>
+<p>如何判断镜面反射向量$\overrightarrow{R}$靠近观察向量$\overrightarrow{v}$？</p>
+<p>使用半程向量$\overrightarrow{h}$（也就是灯源方向$\overrightarrow{l}$与观察向量$\overrightarrow{v}$的角平分线）</p>
+<p><img src="image-20211111165530130.png" alt="image-20211111165530130" style="zoom:67%;"></p>
+<script type="math/tex; mode=display">
+\overrightarrow{h}=\frac{\overrightarrow{v}+\overrightarrow{l}}{||\overrightarrow{v}+\overrightarrow{l}||}</script><p>与漫反射类似，我们可以得到高光的强度公式：</p>
+<script type="math/tex; mode=display">
+L_s=k_s(I/r^2)max(0,\overrightarrow{n}\cdot\overrightarrow{h})^p</script><ul>
+<li>$k_s$ 一般是白色（高光一般就是白色）</li>
+<li>$(I/r^2)$ 光照到达该点的能量。</li>
+<li>$max(0,\overrightarrow{n}\cdot\overrightarrow{h})^p$ 高光强度，如果不取指数p，会发现高光太亮了（$\overrightarrow{n}\cdot\overrightarrow{h}$很小的情况下（夹角很大），就能看见很亮的高光，这样是不对的，$\overrightarrow{n}\cdot\overrightarrow{h}$很大（夹角很小）的情况下才应该看见高光）</li>
+</ul>
+<p><img src="image-20211111170940462.png" alt="image-20211111170940462" style="zoom:67%;"></p>
+<p><img src="image-20211111171108399.png" alt="image-20211111171108399"></p>
+<h3 id="环境光（Ambient-Term）"><a href="#环境光（Ambient-Term）" class="headerlink" title="环境光（Ambient Term）"></a>环境光（Ambient Term）</h3><p>没有光照射到的像素也不应该是黑色的，物体本身有自身的颜色。</p>
+<p><img src="image-20211111171616711.png" alt="image-20211111171616711" style="zoom: 67%;"></p>
+<script type="math/tex; mode=display">
+L_a=k_aI_a</script><ul>
+<li>$k_a$ 环境系数</li>
+<li>$I_a$ 环境光强度</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>将环境光、漫反射、高光加起来就是Blinn-Phong Reflection Model。</p>
+<p><img src="image-20211111171846162.png" alt="image-20211111171846162" style="zoom: 80%;"></p>
+<script type="math/tex; mode=display">
+L=L_a+L_d+L_s\\
+=k_aI_a+k_d(I/r^2)max(0,\overrightarrow{n}\cdot\overrightarrow{l})+k_s(I/r^2)max(0,\overrightarrow{n}\cdot\overrightarrow{h})^p</script><h2 id="着色频率"><a href="#着色频率" class="headerlink" title="着色频率"></a>着色频率</h2><p>着色应用在哪些点上？</p>
+<p><img src="image-20211111172451614.png" alt="image-20211111172451614" style="zoom: 80%;"></p>
+<h3 id="逐面着色（flat-shading）"><a href="#逐面着色（flat-shading）" class="headerlink" title="逐面着色（flat shading）"></a>逐面着色（flat shading）</h3><p>三角形是平面，法向量唯一。</p>
+<p>但对于光滑的面着色效果不好。</p>
+<h3 id="逐顶点着色（Gouraud-shading）"><a href="#逐顶点着色（Gouraud-shading）" class="headerlink" title="逐顶点着色（Gouraud shading）"></a>逐顶点着色（Gouraud shading）</h3><p>如何确定一个顶点的法向量。</p>
+<p>取顶点相邻面的法向量取平均。</p>
+<p>三角形内部进行插值运算。</p>
+<p><img src="image-20211111200702314.png" alt="image-20211111200702314" style="zoom:67%;"></p>
+<script type="math/tex; mode=display">
+N_v=\frac{\sum_{i}{N_i}}{||\sum_{i}{N_i}||}</script><p>也可以对相邻面进行加权求和。权值是三角形的面积。</p>
+<h3 id="逐像素着色（Phong-shading）"><a href="#逐像素着色（Phong-shading）" class="headerlink" title="逐像素着色（Phong shading）"></a>逐像素着色（Phong shading）</h3><p>算出顶点的法向量，之后对中间的像素点的法向量进行插值运算。</p>
+<p><img src="image-20211111201351366.png" alt="image-20211111201351366" style="zoom:50%;"></p>
+<h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3><p>着色频率的效果与面数有很大的关系：</p>
+<p><img src="image-20211111201633606.png" alt="image-20211111201633606" style="zoom: 80%;"></p>
+<h2 id="图形渲染管线（Real-time-Rendering）"><a href="#图形渲染管线（Real-time-Rendering）" class="headerlink" title="图形渲染管线（Real-time Rendering）"></a>图形渲染管线（Real-time Rendering）</h2><p><img src="image-20211111201950142.png" alt="image-20211111201950142"></p>
+<ul>
+<li>顶点处理（Vertex Processing），对输入的顶点数据进行model、view、projection变换。将三维顶点数据变换到二维屏幕坐标上。</li>
+<li>三角形处理（Triangle Processing），对变换得到的点连成三角形面。</li>
+<li>光栅化（Rasterization），确定三角形如何显示在像素上。</li>
+<li>片段着色器（Fragment Processing），着色、深度测试，纹理映射。其中着色、纹理映射也可以在顶点处理中做。</li>
+<li>Framebuffer，将所有的像素颜色信息整合在一起，输送给显示设备加以显示。</li>
+</ul>
+<h3 id="Shader-Programs"><a href="#Shader-Programs" class="headerlink" title="Shader Programs"></a>Shader Programs</h3><p>shader中每个像素都会执行相应的操作。</p>
+<p>顶点操作 =&gt; vertex processing</p>
+<p>像素操作 =&gt; fragment processing </p>
+<p>这也是图形渲染管线中可编程的两个部分。</p>
+<h2 id="纹理映射"><a href="#纹理映射" class="headerlink" title="纹理映射"></a>纹理映射</h2><p>3D图形的表面是2D图像。</p>
+<p><img src="image-20211113182446979.png" alt="image-20211113182446979" style="zoom:80%;"></p>
+<p>假设已知3D三角形到2D中三角形中顶点坐标的映射关系。</p>
+<p>3D三角形中每个顶点都对应纹理坐标中一个u,v。</p>
+<p><img src="image-20211113183556547.png" alt="image-20211113183556547" style="zoom: 67%;"></p>
+<h3 id="三角形的重心坐标（Barycentric-Coordinates）"><a href="#三角形的重心坐标（Barycentric-Coordinates）" class="headerlink" title="三角形的重心坐标（Barycentric Coordinates）"></a>三角形的重心坐标（Barycentric Coordinates）</h3><p>我们在顶点做运算（纹理坐标、颜色，法向量等…….），三角形内部的值就需要根据顶点的值做<strong>插值运算</strong>。</p>
+<p>做插值运算，比较方便的方式就是使用<strong>重心坐标</strong>。</p>
+<p>三角形内的任意一点（x,y）都能使用三个顶点的坐标线性表示。</p>
+<p><img src="image-20211113184306036.png" alt="image-20211113184306036" style="zoom:50%;"></p>
+<script type="math/tex; mode=display">
+(x,y) = \alpha A + \beta B + \gamma C\\
+\alpha + \beta + \gamma = 1</script><p>其中$(\alpha,\beta,\gamma)$就是点的重心坐标。</p>
+<p>比如顶点A,有：</p>
+<script type="math/tex; mode=display">
+(x_A,y_A) = \alpha A + \beta B + \gamma C\\
+=1*A+0*B+0*C\\</script><p>因此顶点A的重心坐标(1,0,0)。</p>
+<p>如果要保证顶点在三角形内部，$\alpha、\beta 、\gamma$都必须是<strong>非负的</strong>。否则只能保证点在三角形所在平面内。</p>
+<h4 id="推导"><a href="#推导" class="headerlink" title="推导"></a>推导</h4><p>通过面积进行推导：</p>
+<p>除了上面的定义，我们还有一种几何观点。</p>
+<p>对三角形内任意一点（x,y），我们可以把三角形分成三个小三角形。</p>
+<p>通过顶点对面的三角形面积比定义$\alpha、\beta 、\gamma$。</p>
+<p>何为一个顶点对面的三角形，就是点不相邻的三角形，比如顶点A对面的三角形就是$\triangle A_A$。</p>
+<p><img src="image-20211115163348914.png" alt="image-20211115163348914" style="zoom:50%;"></p>
+<p>综上，可以得到定义：</p>
+<script type="math/tex; mode=display">
+S=\triangle A_A + \triangle A_B + \triangle A_C\\
+\alpha = \frac{A_A}{S}\\
+\beta = \frac{A_B}{S}\\
+\gamma = \frac{A_C}{S}\\</script><p>接下来的问题是，知道三角形的三个顶点坐标，如何求三角形的面积。</p>
+<p>二维向量的叉乘公式：</p>
+<p>a点(x1,y1)，b点(x2,y2):</p>
+<script type="math/tex; mode=display">
+\overrightarrow{a}\cross\overrightarrow{b}= x_1y_2-x_2y_1</script><p>现在推导$\alpha$的表达式,记三角形内某点为D(x,y)：</p>
+<script type="math/tex; mode=display">
+\overrightarrow{BC}=(x_C-x_B,y_C-y_B)\\
+\overrightarrow{BD}=(x-x_B,y-y_B)\\
+S\triangle A_A =\frac{1}{2}|BC||BD|\sin{\angle CBD}\\
+=\frac{1}{2}\overrightarrow{BD}\cross\overrightarrow{BC}\\
+=\frac{1}{2}(x_C-x_B,y_C-y_B)\cross(x-x_B,y-y_B)\\
+=\frac{1}{2}((x_C-x_B)*(y-y_B)-(x-x_B)*(y_C-y_B))</script><script type="math/tex; mode=display">
+\overrightarrow{BC}=(x_C-x_B,y_C-y_B)\\
+\overrightarrow{BA}=(x_A-x_B,y_A-y_B)\\
+S =\frac{1}{2}|BC||BA|\sin{\angle ABC}\\
+=\frac{1}{2}\overrightarrow{BC}\cross\overrightarrow{BA}\\
+=\frac{1}{2}(x_C-x_B,y_C-y_B)\cross(x_A-x_B,y_A-y_B)\\
+=\frac{1}{2}((x_C-x_B)*(y_A-y_B)-(x_A-x_B)*(y_C-y_B))</script><script type="math/tex; mode=display">
+\alpha =\frac{-(x-x_B)*(y_C-y_B)+(x_C-x_B)*(y-y_B)}{-(x_A-x_B)*(y_C-y_B)+(x_C-x_B)*(y_A-y_B)}</script><p>同理可得$\beta$值，综上，三角形内任意一点D(x,y)的重心坐标为：</p>
+<script type="math/tex; mode=display">
+\alpha =\frac{-(x-x_B)*(y_C-y_B)+(x_C-x_B)*(y-y_B)}{-(x_A-x_B)*(y_C-y_B)+(x_C-x_B)*(y_A-y_B)}\\
+\beta=\frac{-(x-x_C)*(y_A-y_B)+(x_A-x_C)*(y-y_C)}{-(x_B-x_C)*(y_A-y_C)+(x_A-x_C)*(y_B-y_C)}\\
+\gamma = 1 - \alpha - \beta</script><h4 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a>总结</h4><p>重心坐标的应用是对三角形进行插值运算。</p>
+<p><img src="image-20211115163818729.png" alt="image-20211115163818729" style="zoom:50%;"></p>
+<p>$V_A、V_C、V_C$可以代表顶点的各种属性(纹理坐标、颜色，法向量等…….),那么三角形中任意一点V的属性值为：</p>
+<script type="math/tex; mode=display">
+V=\alpha V_A + \beta V_B + \gamma V_C</script><p>再利用重心坐标进行插值的时候，<strong>投影到屏幕</strong>前后所计算出的重心坐标不一样，因此我们需要在3D空间中进行重心坐标插值再投影。当然也可以在二维屏幕空间进行透视矫正的重心坐标插值。</p>
+<h3 id="应用纹理"><a href="#应用纹理" class="headerlink" title="应用纹理"></a>应用纹理</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">对屏幕中的每个像素(x,y)#(x,y)是像素中心坐标：</span><br><span class="line">	(u,v) = (x,y)映射到的纹理坐标#进行重心坐标插值</span><br><span class="line">	显示的颜色=纹理坐标下(u,v)的颜色</span><br></pre></td></tr></table></figure>
+<h4 id="纹理放大（Texture-Magnification-）"><a href="#纹理放大（Texture-Magnification-）" class="headerlink" title="纹理放大（Texture Magnification ）"></a>纹理放大（Texture Magnification ）</h4><h5 id="纹理过小"><a href="#纹理过小" class="headerlink" title="纹理过小"></a>纹理过小</h5><p>—— 纹理过小（纹理分辨率不够）</p>
+<blockquote>
+<p>想想我们把一张100x100的纹理贴图应用在一500x500的屏幕之上必然会导致走样失真，因为屏幕空间的几个像素点对应在纹理贴图的坐标上都是集中在一个像素大小之内。那么如果仅仅是使用对应(u,v)坐标在texture贴图下最近的那个像素点，往往会造成严重的走样。</p>
+</blockquote>
+<p><img src="2020050608353039.png" alt="img" style="zoom:33%;"></p>
+<p><img src="image-20211115170453131.png" alt="image-20211115170453131"></p>
+<h6 id="邻近过滤-Nearest"><a href="#邻近过滤-Nearest" class="headerlink" title="邻近过滤 (Nearest)"></a>邻近过滤 (Nearest)</h6><p>如果我们对屏幕坐标(x,y)映射到纹理坐标(u,v)不做处理，会发生多个屏幕坐标(x,y)映射到一个纹理坐标(u,v)的情况。</p>
+<p>Nearest就是用映射完坐标后最接近映射的纹理坐标的那个纹理颜色。</p>
+<p><img src="filter_nearest.png" alt="img"></p>
+<h6 id="双线性插值（Bilinear）"><a href="#双线性插值（Bilinear）" class="headerlink" title="双线性插值（Bilinear）"></a>双线性插值（Bilinear）</h6><p>黑色点为纹理坐标点，红点为屏幕像素采样纹理坐标点。</p>
+<p>一维线性插值：</p>
+<p><img src="着色/20210411115902469.png" alt="img"></p>
+<p>有ABC三个点，C点在AB之间，根据长度我们设$\frac{AC}{AB}=x$，x的范围为0~1，那么当我们知道AB的属性（例如颜色，法线等）时，C点对应的属性即为：</p>
+<script type="math/tex; mode=display">
+C=lerp(x,A,B) = A + x (B-A)</script><p>取出离红色点最近的4个黑色顶点，分别算出，该红色点在水平及竖直方向偏移的比率s,t，图示如下:</p>
+<p><img src="20200506084023345.png" alt="img" style="zoom:50%;"></p>
+<p>接着先利用s，可以线性插值出如下图所示的u0，u1点的颜色值</p>
+<p><img src="image-20211115171845230.png" alt="image-20211115171845230" style="zoom:50%;"></p>
+<script type="math/tex; mode=display">
+u_0 = lerp(s,u_{00},u_{10})\\
+u_1 = lerp(s,u_{01},u_{11})</script><p>采样点的颜色为：</p>
+<p><img src="image-20211115172207365.png" alt="image-20211115172207365" style="zoom:50%;"></p>
+<script type="math/tex; mode=display">
+f(x,y) = lerp(t,u_0,u_1)</script><h6 id="双三次插值算法（Bicubic）"><a href="#双三次插值算法（Bicubic）" class="headerlink" title="双三次插值算法（Bicubic）"></a>双三次插值算法（Bicubic）</h6><p>取周围16个像素，每次对4个像素进行三次插值。</p>
+<h5 id="纹理过大"><a href="#纹理过大" class="headerlink" title="纹理过大"></a>纹理过大</h5><p><img src="image-20211115180756188.png" alt="image-20211115180756188" style="zoom:67%;"></p>
+<p>近处锯齿！远处摩尔纹！非常严重的走样现象。</p>
+<p>地板上铺满了重复的方格贴图，根据近大远小，远处的一张完整的贴图可能在屏幕空间中仅仅是几个像素的大小，那么必然屏幕空间的一个像素对应了纹理贴图上的一片范围的点，这其实就是纹理过大所导致的，直观来说想用一个点采样的结果代替纹理空间一片范围的颜色信息，必然会导致严重失真！(从信号的角度来说就是，采样频率过低无法还原信号原貌)。</p>
+<p>从纹理图来看，我们的格子其实都是一样大小的，也就是说每个格子所占的纹理像素是一样多的。但是因为透视投影的近大远小效果，我们近处格子看起来会很大，也就是说会有很多的屏幕像素来显示一个格子，那不就导致多个屏幕像素会对应到一个纹理像素了么，也就是我们前面所说的模糊问题。而在远处就恰恰相反了，用极少的像素显示一个甚至多个格子，也就是说我们一个屏幕像素会对应到多个纹理像素，这就产生了摩尔纹（摩尔纹属于欠采样所造成的，即我们很多纹理像素缺只采样了其中一个像素的值，我们只需要利用<strong>MSAA</strong>的原理，即在一个像素内增加采样点，然后求个平均，来反走样）。</p>
+<p>因此我们可以说<strong>近处纹理过小</strong>，<strong>远处纹理过大</strong>。</p>
+<blockquote>
+<p>想象一下纹理贴图大小500x500，屏幕空间100x100，将屏幕空间的像素点均匀分布在纹理空间之中，那么1个屏幕空间像素点所占的平均大小就是5x5=25个纹理空间像素，因此这就是纹理过大所导致的结果)</p>
+</blockquote>
+<p><img src="image-20211115180501753.png" alt="image-20211115180501753" style="zoom: 67%;"></p>
+<h6 id="Mipmap"><a href="#Mipmap" class="headerlink" title="Mipmap"></a>Mipmap</h6><p>—— 一张图生成一些列图。</p>
+<p>通过超采样的方法效率太低，如果我们知道像素覆盖的纹理范围后能马上知道像素的颜色就好了，这就要引入Mipmap技术。</p>
+<p>Mipmap 是快速的、近似的、正方形的范围查询。</p>
+<p><img src="image-20211116151223402.png" alt="image-20211116151223402"></p>
+<p>每张图是上一张的一半大小（指的分辨率）。</p>
+<p>每组Mipmap多占用了$\frac{1}{3}$的存储空间：</p>
+<p>假设存储3倍的Mipmap,L0级的大小为x，最终会填充出一个x的大小的格子。</p>
+<p><img src="watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dhbmdqaWFuZ3Jvbmc=,size_16,color_FFFFFF,t_70.png" alt="img" style="zoom:50%;"></p>
+<p>Mipmap组成一个图像金字塔。</p>
+<p><img src="image-20211116151717090.png" alt="image-20211116151717090" style="zoom:67%;"></p>
+<p>如何确定一个像素对应的Mipmap等级？</p>
+<p>——求出该像素对应的纹理范围在第几层Mipmap会对应一个纹理像素。</p>
+<p>假设我们要求下面粉色像素$(u，v)_{00}$所对应的Mipmap等级。</p>
+<p><img src="image-20211116161716098.png" alt="image-20211116161716098" style="zoom: 80%;"></p>
+<p>取该粉色像素的上面$(u，v)_{01}$和右面$(u，v)_{10}$的像素，查看三个像素在纹理坐标下的距离，取较大的距离记为L。</p>
+<p>在$(u，v)_{00}$取边长为L的正方形，就是$(u，v)_{00}$所对应的纹理坐标范围。</p>
+<p><img src="image-20211116162614896.png" alt="image-20211116162614896" style="zoom: 80%;"></p>
+<p>假设L在L0的Mipmap对应2个像素，那么该像素就会在L1的Mipmap上对应1个像素。</p>
+<p>假设L在L0的Mipmap对应4个像素，那么该像素就会在L1的Mipmap上对应2个像素。在L2的Mipmap上对应1个像素。</p>
+<p>如果L对应的不是2的幂次方像素，那么就可能对应L1.6层的Mipmap这种情况，在这种情况下，我们需要在层之间进行插值。</p>
+<p><img src="image-20211116163601395.png" alt="image-20211116163601395" style="zoom: 80%;"></p>
+<p>在L(D)层进行双线性插值，在L(D+1)进行双线性插值，再在层之间进行一次线性插值，得到非整数层的Mipmap属性值。</p>
+<p>Mipmap的结果：</p>
+<p><img src="image-20211116164826280.png" alt="image-20211116164826280" style="zoom:67%;"></p>
+<p>会发现远处十分模糊，因为Mipmap只能近似正方形。</p>
+<h6 id="各向异性过滤（Anisotropic-Filtering）"><a href="#各向异性过滤（Anisotropic-Filtering）" class="headerlink" title="各向异性过滤（Anisotropic Filtering）"></a>各向异性过滤（Anisotropic Filtering）</h6><p><img src="image-20211116165953479.png" alt="image-20211116165953479"></p>
+<p>横行，固定高度，只对宽度取半。</p>
+<p>竖列，固定宽度，只对高度取半。</p>
+<p>Mipmap是对角线。</p>
+<p>开销是原图的3倍。</p>
+<p>各向异性对矩形区域处理的比较好，对于Mipmap只能处理正方形是一个进步。</p>
+<p><img src="image-20211116170813046.png" alt="image-20211116170813046" style="zoom:80%;"></p>
+<p>但对斜条形处理不好，可以用EWA filtering。</p>
+<h4 id="环境贴图（Environment-Map）"><a href="#环境贴图（Environment-Map）" class="headerlink" title="环境贴图（Environment Map）"></a>环境贴图（Environment Map）</h4><p>将环境光存贮在一个球体中（Spherical Map）：</p>
+<p><img src="image-20211117153700895.png" alt="image-20211117153700895" style="zoom:67%;"></p>
+<p>存储在球体中会产生一些问题</p>
+<p><img src="image-20211117154445825.png" alt="image-20211117154445825" style="zoom:67%;"></p>
+<p>会发现图像的上部和下部会产生扭曲。</p>
+<p>因此，会用正方体保存环境光（Cube Map）：</p>
+<p>假设用一个包围盒将球体包裹，延球心到球面像素点的方向，将球面的像素打在正方体上。</p>
+<p><img src="image-20211117154630441.png" alt="image-20211117154630441" style="zoom: 67%;"></p>
+<p><img src="image-20211117154723701.png" alt="image-20211117154723701" style="zoom: 67%;"></p>
+<h4 id="凹凸贴图（Bump-mapping）"><a href="#凹凸贴图（Bump-mapping）" class="headerlink" title="凹凸贴图（Bump mapping）"></a>凹凸贴图（Bump mapping）</h4><p>也叫法线贴图（Normal mapping）。</p>
+<p><img src="image-20211117161222468.png" alt="image-20211117161222468"></p>
+<p>用纹理存储法向量的相关信息。或者用纹理存储点的高度信息。并不是用纹理存储颜色。</p>
+<p>凹凸贴图只是虚拟的（从逻辑上）改变点的高度，从而改变了法向量。实际上物体的几何形体并没有发生变化。</p>
+<p><img src="image-20211117161636247.png" alt="image-20211117161636247"></p>
+<p>黑线是实际的物体几何表面，黄线是虚拟的，是凹凸贴图所认为的物体表面。</p>
+<p><strong>位移贴图（Displacement mapping）</strong>会真实地改变物体的几何表面。</p>
+<p><img src="image-20211117162521935.png" alt="image-20211117162521935"></p>
+<h4 id="3D纹理"><a href="#3D纹理" class="headerlink" title="3D纹理"></a>3D纹理</h4><p><img src="image-20211117162622234.png" alt="image-20211117162622234" style="zoom:67%;"></p>
+<p>球的内部也有纹理，表面的图案可以通过噪声函数生成，空间中的每一个点(x,y,z)都对应一个颜色。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/计算机图形学/" rel="tag"># 计算机图形学</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/11/05/光栅化/" rel="next" title="光栅化">
+                <i class="fa fa-chevron-left"></i> 光栅化
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zODE4MS8xNDcwOQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://avatars.githubusercontent.com/u/39228583?v=4"
+                alt="rcos97" />
+            
+              <p class="site-author-name" itemprop="name">rcos97</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Blinn-Phong-Reflectance-Model"><span class="nav-number">1.</span> <span class="nav-text">Blinn- Phong Reflectance Model</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#漫反射（diffuse-reflection）"><span class="nav-number">1.1.</span> <span class="nav-text">漫反射（diffuse reflection）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#兰伯特余弦定理（Lambert）"><span class="nav-number">1.1.1.</span> <span class="nav-text">兰伯特余弦定理（Lambert）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#光照强度"><span class="nav-number">1.1.2.</span> <span class="nav-text">光照强度</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高光（Specular-Term-）"><span class="nav-number">1.2.</span> <span class="nav-text">高光（Specular Term ）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#环境光（Ambient-Term）"><span class="nav-number">1.3.</span> <span class="nav-text">环境光（Ambient Term）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.4.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#着色频率"><span class="nav-number">2.</span> <span class="nav-text">着色频率</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#逐面着色（flat-shading）"><span class="nav-number">2.1.</span> <span class="nav-text">逐面着色（flat shading）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逐顶点着色（Gouraud-shading）"><span class="nav-number">2.2.</span> <span class="nav-text">逐顶点着色（Gouraud shading）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逐像素着色（Phong-shading）"><span class="nav-number">2.3.</span> <span class="nav-text">逐像素着色（Phong shading）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结-1"><span class="nav-number">2.4.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图形渲染管线（Real-time-Rendering）"><span class="nav-number">3.</span> <span class="nav-text">图形渲染管线（Real-time Rendering）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Shader-Programs"><span class="nav-number">3.1.</span> <span class="nav-text">Shader Programs</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#纹理映射"><span class="nav-number">4.</span> <span class="nav-text">纹理映射</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#三角形的重心坐标（Barycentric-Coordinates）"><span class="nav-number">4.1.</span> <span class="nav-text">三角形的重心坐标（Barycentric Coordinates）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#推导"><span class="nav-number">4.1.1.</span> <span class="nav-text">推导</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结-2"><span class="nav-number">4.1.2.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用纹理"><span class="nav-number">4.2.</span> <span class="nav-text">应用纹理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#纹理放大（Texture-Magnification-）"><span class="nav-number">4.2.1.</span> <span class="nav-text">纹理放大（Texture Magnification ）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#纹理过小"><span class="nav-number">4.2.1.1.</span> <span class="nav-text">纹理过小</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#邻近过滤-Nearest"><span class="nav-number">4.2.1.1.1.</span> <span class="nav-text">邻近过滤 (Nearest)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#双线性插值（Bilinear）"><span class="nav-number">4.2.1.1.2.</span> <span class="nav-text">双线性插值（Bilinear）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#双三次插值算法（Bicubic）"><span class="nav-number">4.2.1.1.3.</span> <span class="nav-text">双三次插值算法（Bicubic）</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#纹理过大"><span class="nav-number">4.2.1.2.</span> <span class="nav-text">纹理过大</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Mipmap"><span class="nav-number">4.2.1.2.1.</span> <span class="nav-text">Mipmap</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#各向异性过滤（Anisotropic-Filtering）"><span class="nav-number">4.2.1.2.2.</span> <span class="nav-text">各向异性过滤（Anisotropic Filtering）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#环境贴图（Environment-Map）"><span class="nav-number">4.2.2.</span> <span class="nav-text">环境贴图（Environment Map）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#凹凸贴图（Bump-mapping）"><span class="nav-number">4.2.3.</span> <span class="nav-text">凹凸贴图（Bump mapping）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3D纹理"><span class="nav-number">4.2.4.</span> <span class="nav-text">3D纹理</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rcos97</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
