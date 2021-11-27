@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="计算机图形学," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="——不是所有物体都用三角形的面来表示。 几何表示隐式几何点满足一定的关系。 比如要显示一个球，需要满足  x^2+y^2+z^2=1 隐式几何的优点是判断一个点在物体内外很容易。 缺点是只看方程很难判断图形形状。 Constructive Solid Geometry(CSG)CSG指的是可以对各种不同的几何做布尔运算，如并，交，差：  符号距离函数（Signed Distance Functio">
+<meta name="keywords" content="计算机图形学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="几何">
+<meta property="og:url" content="http://yoursite.com/2021/11/27/几何/index.html">
+<meta property="og:site_name" content="rcos97的博客">
+<meta property="og:description" content="——不是所有物体都用三角形的面来表示。 几何表示隐式几何点满足一定的关系。 比如要显示一个球，需要满足  x^2+y^2+z^2=1 隐式几何的优点是判断一个点在物体内外很容易。 缺点是只看方程很难判断图形形状。 Constructive Solid Geometry(CSG)CSG指的是可以对各种不同的几何做布尔运算，如并，交，差：  符号距离函数（Signed Distance Functio">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2021/11/27/几何/image-20211119083934366.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/27/几何/image-20211119085031857.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/27/几何/v2-27f87111aa2d47f75f42e15e072b4cf3_720w.jpg">
+<meta property="og:image" content="http://yoursite.com/2021/11/27/几何/image-20211119154456091.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/27/几何/image-20211119154917182.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/27/几何/image-20211119084155576.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/27/几何/20200513204935372.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/27/几何/image-20211120114311605.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/27/几何/image-20211120114556330.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/27/几何/image-20211120115617584.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/27/几何/image-20211120120059602.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/27/几何/image-20211120135100104.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/27/几何/image-20211120140119305.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/27/几何/20210420180903250.gif">
+<meta property="og:image" content="http://yoursite.com/2021/11/27/几何/image-20211120142545635.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/27/几何/image-20211120142628745.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/27/几何/2021042018091088.gif">
+<meta property="og:image" content="http://yoursite.com/2021/11/27/几何/image-20211121093326603.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/27/几何/3dbezar.gif">
+<meta property="og:image" content="http://yoursite.com/2021/11/27/几何/20210421111921940.gif">
+<meta property="og:image" content="http://yoursite.com/2021/11/27/几何/image-20211121094339604.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/27/几何/image-20211121094429190.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/27/几何/image-20211121110051508.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/27/几何/3dqumian.gif">
+<meta property="og:image" content="http://yoursite.com/2021/11/27/几何/image-20211121110445749.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/27/几何/image-20211121110800505.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/27/几何/image-20211127162818485.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/27/几何/image-20211127163108066.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/27/几何/image-20211127163620033.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/27/几何/image-20211127163853800.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/27/几何/image-20211127164912546.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/27/几何/image-20211127170040110.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/27/几何/image-20211127170838489.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/27/几何/image-20211127171224965.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/27/几何/image-20211127171436861.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/27/几何/image-20211127171528285.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/27/几何/image-20211127171625846.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/27/几何/image-20211127171920006.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/27/几何/image-20211127172142414.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/27/几何/image-20211127180133793.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/27/几何/image-20211127180902720.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/27/几何/image-20211127182619485.png">
+<meta property="og:updated_time" content="2021-11-27T10:34:54.177Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="几何">
+<meta name="twitter:description" content="——不是所有物体都用三角形的面来表示。 几何表示隐式几何点满足一定的关系。 比如要显示一个球，需要满足  x^2+y^2+z^2=1 隐式几何的优点是判断一个点在物体内外很容易。 缺点是只看方程很难判断图形形状。 Constructive Solid Geometry(CSG)CSG指的是可以对各种不同的几何做布尔运算，如并，交，差：  符号距离函数（Signed Distance Functio">
+<meta name="twitter:image" content="http://yoursite.com/2021/11/27/几何/image-20211119083934366.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2021/11/27/几何/"/>
+
+
+
+
+
+  <title>几何 | rcos97的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">rcos97的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/11/27/几何/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="rcos97">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/39228583?v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="rcos97的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">几何</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-11-27T18:30:57+08:00">
+                2021-11-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>——不是所有物体都用三角形的面来表示。</p>
+<h2 id="几何表示"><a href="#几何表示" class="headerlink" title="几何表示"></a>几何表示</h2><h3 id="隐式几何"><a href="#隐式几何" class="headerlink" title="隐式几何"></a>隐式几何</h3><p>点满足一定的关系。</p>
+<p>比如要显示一个球，需要满足</p>
+<script type="math/tex; mode=display">
+x^2+y^2+z^2=1</script><p><img src="image-20211119083934366.png" alt="image-20211119083934366" style="zoom:67%;"></p>
+<p>隐式几何的优点是判断一个点在物体内外很容易。</p>
+<p>缺点是只看方程很难判断图形形状。</p>
+<h4 id="Constructive-Solid-Geometry-CSG"><a href="#Constructive-Solid-Geometry-CSG" class="headerlink" title="Constructive Solid Geometry(CSG)"></a>Constructive Solid Geometry(CSG)</h4><p>CSG指的是可以对各种不同的几何做布尔运算，如并，交，差：</p>
+<p><img src="image-20211119085031857.png" alt="image-20211119085031857" style="zoom:80%;"></p>
+<h4 id="符号距离函数（Signed-Distance-Function）"><a href="#符号距离函数（Signed-Distance-Function）" class="headerlink" title="符号距离函数（Signed Distance Function）"></a>符号距离函数（Signed Distance Function）</h4><p>符号距离函数来说本质上就是一种定义距离的函数。</p>
+<p>给出任意点到物体的距离。这个距离是带符号的，有正有负。</p>
+<p><img src="v2-27f87111aa2d47f75f42e15e072b4cf3_720w.jpg" alt="img" style="zoom:67%;"></p>
+<p>可以观察到p点到圆边界的距离为：</p>
+<script type="math/tex; mode=display">
+||\overrightarrow{ap}|| - r</script><p>如有空间任意一点到各个几何物体表面的距离，对这些距离做各种各样的运算操作最后得到的一个函数就是最终的距离函数了。</p>
+<h4 id="水平集（Level-Set）"><a href="#水平集（Level-Set）" class="headerlink" title="水平集（Level Set）"></a>水平集（Level Set）</h4><p>用存储函数近似值的网格表示图形。</p>
+<p><img src="image-20211119154456091.png" alt="image-20211119154456091"></p>
+<p>对该面内的每一个点利用已经定义好的格子值进行双线性插值(在纹理映射一节已讲解)就可以得到任意一点的函数值，找出所有=0的点作为曲面。</p>
+<h4 id="分型（Fractals）"><a href="#分型（Fractals）" class="headerlink" title="分型（Fractals）"></a>分型（Fractals）</h4><p>分型几何是指许许多多自相似的形体最终所组成的几何形状。类似于递归。</p>
+<p><img src="image-20211119154917182.png" alt="image-20211119154917182" style="zoom:80%;"></p>
+<h3 id="显式几何"><a href="#显式几何" class="headerlink" title="显式几何"></a>显式几何</h3><p>在空间中直接定义了一些点。</p>
+<p>或者在空间中定义一组映射关系：</p>
+<script type="math/tex; mode=display">
+f：R^2\rightarrow R^3\\
+(u,v) \rightarrow (x,y,z)</script><p><img src="image-20211119084155576.png" alt="image-20211119084155576" style="zoom:67%;"></p>
+<p>显式几何的优点是判断物体的形状容易。</p>
+<p>缺点是判断一个点在物体内外困难。</p>
+<h4 id="点云（Point-Cloud）"><a href="#点云（Point-Cloud）" class="headerlink" title="点云（Point Cloud）"></a>点云（Point Cloud）</h4><p>使用很多空间中的点所构成的曲面。</p>
+<p><img src="20200513204935372.png" alt="在这里插入图片描述" style="zoom:50%;"></p>
+<p>可以看出图形上方的点密集，下方的点稀疏。</p>
+<h4 id="多边形网格（Polygon-Mesh）"><a href="#多边形网格（Polygon-Mesh）" class="headerlink" title="多边形网格（Polygon Mesh）"></a>多边形网格（Polygon Mesh）</h4><p>使用最广泛的显示几何表示。</p>
+<p>存储顶点和多边形（一般是三角形或者四边形）</p>
+<p><img src="image-20211120114311605.png" alt="image-20211120114311605" style="zoom:50%;"></p>
+<p>一般建模软件所使用的就是多边形网格表示，建模软件生成的obj文件如下：</p>
+<p><img src="image-20211120114556330.png" alt="image-20211120114556330"></p>
+<ul>
+<li>v 是顶点坐标</li>
+<li>vt 是纹理坐标</li>
+<li>vn 是点的法向量</li>
+<li>f 代表一个面由哪些顶点/纹理/法向量组成</li>
+</ul>
+<h2 id="曲线"><a href="#曲线" class="headerlink" title="曲线"></a>曲线</h2><h3 id="贝塞尔曲线（Bezier-Curves）"><a href="#贝塞尔曲线（Bezier-Curves）" class="headerlink" title="贝塞尔曲线（Bézier Curves）"></a>贝塞尔曲线（Bézier Curves）</h3><p>用控制点定义的曲线。</p>
+<p>曲线一定过起始点，进入方向为$\overrightarrow{P_0P_1}$，射出方向为$\overrightarrow{P_2P_3}$</p>
+<p>三次贝塞尔曲线如图：</p>
+<p><img src="image-20211120115617584.png" alt="image-20211120115617584" style="zoom:50%;"></p>
+<h4 id="生成"><a href="#生成" class="headerlink" title="生成"></a>生成</h4><p>考虑有三个顶点控制的曲线（二次贝塞尔曲线）：</p>
+<p><img src="image-20211120120059602.png" alt="image-20211120120059602"></p>
+<p>在线段上使用<strong>线性插值</strong>：</p>
+<p>考虑一点$b^1_0$在$b_0b_1$上运动，需要在1秒内从$b_0$移动到$b_1$。</p>
+<p>那么另一点$b^1_1$在$b_1b_2$上运动，需要在1秒内从$b_1$移动到$b_2$。</p>
+<p><img src="image-20211120135100104.png" alt="image-20211120135100104"></p>
+<p>那么在t时刻($t\epsilon[0,1]$),利用线性插值公式有：</p>
+<script type="math/tex; mode=display">
+b^1_0=b_0+t*(b_1-b_0)\\
+=(1-t)*b_0+t*b_1\tag{1}</script><p>同理：</p>
+<script type="math/tex; mode=display">
+b^1_1=(1-t)*b_1+t*b_2\tag{2}</script><p>链接$b^0_1$与$b^{1}_1$。</p>
+<p><img src="image-20211120140119305.png" alt="image-20211120140119305" style="zoom:150%;"></p>
+<p>在$b^2_0$点用插值公式有：</p>
+<script type="math/tex; mode=display">
+b^2_0=(1-t)b^1_0+tb^1_1\tag{3}</script><p>将公式（1）（2）带入（3）有：</p>
+<script type="math/tex; mode=display">
+b^2_0=(1-t)((1-t)*b_0+t*b_1)+t((1-t)*b_1+t*b_2)\\
+=(1-t)^2b_0+2t(1-t)b_1+t^2b_2\\</script><p>可以看出$b^{2}_0$的展开式的系数是$(1-t+t)^2$的完全平方展开。</p>
+<p><img src="20210420180903250.gif" alt="img"></p>
+<p>同理四个控制点的三次贝塞尔曲线有：</p>
+<p><img src="image-20211120142545635.png" alt="image-20211120142545635" style="zoom:67%;"></p>
+<p>逐层插值有：</p>
+<p><img src="image-20211120142628745.png" alt="image-20211120142628745" style="zoom:67%;"></p>
+<p>可得：</p>
+<script type="math/tex; mode=display">
+b^3_0=(1-t)^3b_0+3t(1-t)^2b_1+3t^2(1-t)b_2+t^3b_3</script><p><img src="2021042018091088.gif" alt="img"></p>
+<p>由此可以得到一般的n阶（n+1个顶点）贝塞尔曲线表达式：</p>
+<script type="math/tex; mode=display">
+b^n(t)=b^n_0(t)=\sum_{j=0}^n{b_jB^n_j(t)}</script><p>其中$B^n_j(t)$为：</p>
+<script type="math/tex; mode=display">
+B^n_i(t)=C^i_n(1-t)^{n-i}t^i</script><p>也称伯恩斯坦多项式（Bernstein polynomials）</p>
+<p>就是$(1-t+t)^n$的二项展开。相当于1的展开式，因此在各个时刻，伯恩斯坦多项式加起来为1。</p>
+<p><img src="image-20211121093326603.png" alt="image-20211121093326603" style="zoom:80%;"></p>
+<p>$b_i$点可以换成三维空间的点，可以在三维空间中画出贝塞尔曲线。</p>
+<p><img src="3dbezar.gif" alt="img"></p>
+<h4 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h4><ul>
+<li>仿射不变性（投影变换会改变曲线）</li>
+<li>凸包性质（曲线会被控制点围起来）</li>
+<li>对称性</li>
+</ul>
+<p><img src="20210421111921940.gif" alt="img" style="zoom:80%;"></p>
+<p>高阶贝塞尔曲线很难进行控制：</p>
+<p><img src="image-20211121094339604.png" alt="image-20211121094339604" style="zoom: 67%;"></p>
+<p>因此，我们常用3阶贝塞尔曲线分段进行控制。</p>
+<p><img src="image-20211121094429190.png" alt="image-20211121094429190" style="zoom: 67%;"></p>
+<h3 id="贝塞尔曲面（Bezier-Surfaces）"><a href="#贝塞尔曲面（Bezier-Surfaces）" class="headerlink" title="贝塞尔曲面（Bézier Surfaces）"></a>贝塞尔曲面（Bézier Surfaces）</h3><p>使用4x4共16个点描述贝塞尔曲面</p>
+<p><img src="image-20211121110051508.png" alt="image-20211121110051508" style="zoom:50%;"></p>
+<ol>
+<li>首先竖列取4个点生成贝塞尔曲线,一共4组，使用时间u。</li>
+<li>横向上，用1生成的4组点再描述贝塞尔曲线，使用时间v。</li>
+</ol>
+<p><img src="3dqumian.gif" alt="img"></p>
+<ol>
+<li>对于二维不同的u,v，在空间中都能对应一个点。</li>
+</ol>
+<p><img src="image-20211121110445749.png" alt="image-20211121110445749" style="zoom:80%;"></p>
+<p><img src="image-20211121110800505.png" alt="image-20211121110800505" style="zoom:80%;"></p>
+<h2 id="网格处理（Mesh-Operations）"><a href="#网格处理（Mesh-Operations）" class="headerlink" title="网格处理（Mesh Operations）"></a>网格处理（Mesh Operations）</h2><p><img src="image-20211127162818485.png" alt="image-20211127162818485"></p>
+<h3 id="网格细分（Mesh-Subdivision）"><a href="#网格细分（Mesh-Subdivision）" class="headerlink" title="网格细分（Mesh Subdivision）"></a>网格细分（Mesh Subdivision）</h3><p><img src="image-20211127163108066.png" alt="image-20211127163108066" style="zoom:50%;"></p>
+<p>曲面细分是指将一个模型的面合理的分成更多小的面，从而提升模型精度。</p>
+<h4 id="Loop细分（Loop-Subdivision）"><a href="#Loop细分（Loop-Subdivision）" class="headerlink" title="Loop细分（Loop Subdivision）"></a>Loop细分（Loop Subdivision）</h4><p>连结三角形的三边的中点，将一个三角形划分为4个三角形。</p>
+<p><img src="image-20211127163620033.png" alt="image-20211127163620033"></p>
+<p>将三角形的顶点划分为两类：细分前就存在的<strong>老顶点</strong>，细分后生成的顶点叫做<strong>新顶点</strong>。</p>
+<p>(暂且只考虑非边界的情况)</p>
+<p>对新顶点做以下处理：</p>
+<p><img src="image-20211127163853800.png" alt="image-20211127163853800" style="zoom:50%;"></p>
+<p>新顶点（白色的点）由老顶点（A 、B、C、D）的位置所决定，AB点在新顶点的共享边上，CD在新顶点的不共享边上。</p>
+<script type="math/tex; mode=display">
+V_{new} = \frac{3}{8}*(V_A+V_B)+\frac{1}{8}*(V_C+V_D)</script><p>对老顶点的处理如下：</p>
+<p><img src="image-20211127164912546.png" alt="image-20211127164912546" style="zoom:50%;"></p>
+<p>老顶点的位置由相邻的老顶点何其自身的位置决定。</p>
+<p>n为需要更新的老顶点的度。</p>
+<p>u为$\frac{1}{n}*[\frac{5}{8}-(\frac{3}{8}+\frac{1}{4}\cos{\frac{2\pi}{n}})^2]$。</p>
+<script type="math/tex; mode=display">
+V_{new}=(1-n*u)*原顶点的位置+u*临近顶点的位置之和</script><p>先细分曲面，再调整顶点。</p>
+<p>Loop细分更新效果：</p>
+<p><img src="image-20211127170040110.png" alt="image-20211127170040110"></p>
+<h4 id="Catmull-Clark-Subdivision"><a href="#Catmull-Clark-Subdivision" class="headerlink" title="Catmull-Clark Subdivision"></a>Catmull-Clark Subdivision</h4><p>Loop细分只是针对三角形构成的物体，Catmull-Clark Subdivision可以细分四边形与三角形的混合细分。</p>
+<p><img src="image-20211127170838489.png" alt="image-20211127170838489" style="zoom:67%;"></p>
+<ul>
+<li>对于所有不是四边形的面，称之为<strong>Non-quad face</strong></li>
+<li>所有度不为4的顶点称之为<strong>奇异点</strong></li>
+</ul>
+<p>将每个网格边上的中点与网格中线相连：</p>
+<p><img src="image-20211127171224965.png" alt="image-20211127171224965" style="zoom:67%;"></p>
+<p>经过一次细分，可以得到：</p>
+<p>会增加Non-quad face数量的奇异点，而且已经没有Non-quad face了。</p>
+<p>再次细分：</p>
+<p><img src="image-20211127171436861.png" alt="image-20211127171436861" style="zoom:67%;"></p>
+<p><img src="image-20211127171528285.png" alt="image-20211127171528285" style="zoom:67%;"></p>
+<p>因为已经没有Non-quad face了，所以再细分也不会增加奇异点数量。</p>
+<p>顶点的位置调整：</p>
+<p>对应网格重心点$f$，边上的中点$e$，网格的顶点$p$位置调整规则。</p>
+<p><img src="image-20211127171625846.png" alt="image-20211127171625846"></p>
+<p>Catmull-Clark Subdivision 效果</p>
+<p><img src="image-20211127171920006.png" alt="image-20211127171920006"></p>
+<h3 id="网格简化（Mesh-Simplification）"><a href="#网格简化（Mesh-Simplification）" class="headerlink" title="网格简化（Mesh Simplification）"></a>网格简化（Mesh Simplification）</h3><p><img src="image-20211127172142414.png" alt="image-20211127172142414" style="zoom:50%;"></p>
+<p>将一个模型的面合理的合成更少的面，从而降低模型精度。</p>
+<h4 id="边坍缩（Collapsing-An-Edge）"><a href="#边坍缩（Collapsing-An-Edge）" class="headerlink" title="边坍缩（Collapsing An Edge）"></a>边坍缩（Collapsing An Edge）</h4><p><img src="image-20211127180133793.png" alt="image-20211127180133793"></p>
+<p>如何保证坍缩后的几何形状不发生大变化？</p>
+<p>引入二次度量误差（Quadric Error Metrics）</p>
+<p><img src="image-20211127180902720.png" alt="image-20211127180902720"></p>
+<p>左图为五点距离取平均，显然坍缩后形状发生了很大的改变。</p>
+<p>右图为构造的新顶点距离原相关三角形面的距离平方（L2距离）之和最小。</p>
+<p>边坍缩流程：</p>
+<ol>
+<li>为模型每条边赋值，其值为坍缩这条边之后（会形成一个点），代替两个老顶点的新顶点所能得到的最小二次误差度量</li>
+<li>选取权值最小的边做坍缩，新顶点位置为原来计算得出使得二次误差最小的位置</li>
+<li>坍缩完之后，与之相连其他的边的位置会改动，更新这些边的权值</li>
+<li>重复上述步骤，直到到达终止条件</li>
+</ol>
+<p>边坍缩效果：</p>
+<p><img src="image-20211127182619485.png" alt="image-20211127182619485" style="zoom:67%;"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/计算机图形学/" rel="tag"># 计算机图形学</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/11/17/着色/" rel="next" title="着色">
+                <i class="fa fa-chevron-left"></i> 着色
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zODE4MS8xNDcwOQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://avatars.githubusercontent.com/u/39228583?v=4"
+                alt="rcos97" />
+            
+              <p class="site-author-name" itemprop="name">rcos97</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#几何表示"><span class="nav-number">1.</span> <span class="nav-text">几何表示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#隐式几何"><span class="nav-number">1.1.</span> <span class="nav-text">隐式几何</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Constructive-Solid-Geometry-CSG"><span class="nav-number">1.1.1.</span> <span class="nav-text">Constructive Solid Geometry(CSG)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#符号距离函数（Signed-Distance-Function）"><span class="nav-number">1.1.2.</span> <span class="nav-text">符号距离函数（Signed Distance Function）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#水平集（Level-Set）"><span class="nav-number">1.1.3.</span> <span class="nav-text">水平集（Level Set）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分型（Fractals）"><span class="nav-number">1.1.4.</span> <span class="nav-text">分型（Fractals）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#显式几何"><span class="nav-number">1.2.</span> <span class="nav-text">显式几何</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#点云（Point-Cloud）"><span class="nav-number">1.2.1.</span> <span class="nav-text">点云（Point Cloud）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多边形网格（Polygon-Mesh）"><span class="nav-number">1.2.2.</span> <span class="nav-text">多边形网格（Polygon Mesh）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#曲线"><span class="nav-number">2.</span> <span class="nav-text">曲线</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#贝塞尔曲线（Bezier-Curves）"><span class="nav-number">2.1.</span> <span class="nav-text">贝塞尔曲线（Bézier Curves）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#生成"><span class="nav-number">2.1.1.</span> <span class="nav-text">生成</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#性质"><span class="nav-number">2.1.2.</span> <span class="nav-text">性质</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#贝塞尔曲面（Bezier-Surfaces）"><span class="nav-number">2.2.</span> <span class="nav-text">贝塞尔曲面（Bézier Surfaces）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网格处理（Mesh-Operations）"><span class="nav-number">3.</span> <span class="nav-text">网格处理（Mesh Operations）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#网格细分（Mesh-Subdivision）"><span class="nav-number">3.1.</span> <span class="nav-text">网格细分（Mesh Subdivision）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Loop细分（Loop-Subdivision）"><span class="nav-number">3.1.1.</span> <span class="nav-text">Loop细分（Loop Subdivision）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Catmull-Clark-Subdivision"><span class="nav-number">3.1.2.</span> <span class="nav-text">Catmull-Clark Subdivision</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网格简化（Mesh-Simplification）"><span class="nav-number">3.2.</span> <span class="nav-text">网格简化（Mesh Simplification）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#边坍缩（Collapsing-An-Edge）"><span class="nav-number">3.2.1.</span> <span class="nav-text">边坍缩（Collapsing An Edge）</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rcos97</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
