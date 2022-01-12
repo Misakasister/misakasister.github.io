@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="机器学习," />
 
 
 
@@ -79,13 +79,26 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="rcos97的博客">
-<meta property="og:url" content="http://yoursite.com/tags/数据结构/index.html">
+<meta name="description" content="多元线性回归多维特征我们对房价模型增加更多的特征，例如房间数楼层等，构成一个含有多个变量的模型，模型中的特征为$\left( {x_1},{x_2},…,{x_n} \right)$。  引入一系列新的注释： $n$ 代表特征的数量 ${x^\left( i \right)}$代表第 $i$ 个训练实例，是特征矩阵中的第$i$行，是一个向量（vector）。 比方说，上图的  {x}^{(2)}\">
+<meta name="keywords" content="机器学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="多元线性回归">
+<meta property="og:url" content="http://yoursite.com/2022/01/12/多元线性回归/index.html">
 <meta property="og:site_name" content="rcos97的博客">
+<meta property="og:description" content="多元线性回归多维特征我们对房价模型增加更多的特征，例如房间数楼层等，构成一个含有多个变量的模型，模型中的特征为$\left( {x_1},{x_2},…,{x_n} \right)$。  引入一系列新的注释： $n$ 代表特征的数量 ${x^\left( i \right)}$代表第 $i$ 个训练实例，是特征矩阵中的第$i$行，是一个向量（vector）。 比方说，上图的  {x}^{(2)}\">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2022/01/12/多元线性回归/image-20220110155935704.png">
+<meta property="og:image" content="http://yoursite.com/2022/01/12/多元线性回归/image-20220110170012992.png">
+<meta property="og:image" content="http://yoursite.com/2022/01/12/多元线性回归/cd4e3df45c34f6a8e2bb7cd3a2849e6c.jpg">
+<meta property="og:image" content="http://yoursite.com/2022/01/12/多元线性回归/image-20220110205103369.png">
+<meta property="og:image" content="http://yoursite.com/2022/01/12/多元线性回归/261a11d6bce6690121f26ee369b9e9d1.png">
+<meta property="og:image" content="http://yoursite.com/2022/01/12/多元线性回归/c8eedc42ed9feb21fac64e4de8d39a06.png">
+<meta property="og:image" content="http://yoursite.com/2022/01/12/多元线性回归/b62d24a1f709496a6d7c65f87464e911.jpg">
+<meta property="og:updated_time" content="2022-01-12T01:30:44.694Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="rcos97的博客">
+<meta name="twitter:title" content="多元线性回归">
+<meta name="twitter:description" content="多元线性回归多维特征我们对房价模型增加更多的特征，例如房间数楼层等，构成一个含有多个变量的模型，模型中的特征为$\left( {x_1},{x_2},…,{x_n} \right)$。  引入一系列新的注释： $n$ 代表特征的数量 ${x^\left( i \right)}$代表第 $i$ 个训练实例，是特征矩阵中的第$i$行，是一个向量（vector）。 比方说，上图的  {x}^{(2)}\">
+<meta name="twitter:image" content="http://yoursite.com/2022/01/12/多元线性回归/image-20220110155935704.png">
 
 
 
@@ -115,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/数据结构/"/>
+  <link rel="canonical" href="http://yoursite.com/2022/01/12/多元线性回归/"/>
 
 
 
 
 
-  <title>标签: 数据结构 | rcos97的博客</title>
+  <title>多元线性回归 | rcos97的博客</title>
   
 
 
@@ -140,7 +153,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -278,54 +291,232 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>数据结构<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2022/01/12/多元线性回归/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="rcos97">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/39228583?v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="rcos97的博客">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2021/06/29/线性表/" itemprop="url">
-              
-                <span itemprop="name">线性表</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">多元线性回归</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2021-06-29T23:45:10+08:00"
-              content="2021-06-29" >
-          06-29
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-01-12T09:23:17+08:00">
+                2022-01-12
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="多元线性回归"><a href="#多元线性回归" class="headerlink" title="多元线性回归"></a>多元线性回归</h1><h2 id="多维特征"><a href="#多维特征" class="headerlink" title="多维特征"></a>多维特征</h2><p>我们对房价模型增加更多的特征，例如房间数楼层等，构成一个含有多个变量的模型，模型中的特征为$\left( {x_1},{x_2},…,{x_n} \right)$。</p>
+<p><img src="image-20220110155935704.png" alt="image-20220110155935704"></p>
+<p>引入一系列新的注释：</p>
+<p>$n$ 代表特征的数量</p>
+<p>${x^\left( i \right)}$代表第 $i$ 个训练实例，是特征矩阵中的第$i$行，是一个<strong>向量</strong>（<strong>vector</strong>）。</p>
+<p>比方说，上图的</p>
+<script type="math/tex; mode=display">
+{x}^{(2)}\text{=}\begin{bmatrix} 1416\\\ 3\\\ 2\\\ 40 \end{bmatrix}</script><p>${x}_{j}^{\left( i \right)}$代表特征矩阵中第 $i$ 行的第 $j$ 个特征，也就是第 $i$ 个训练实例的第 $j$ 个特征。</p>
+<p>如上图的$x_{2}^{\left( 2 \right)}=3,x_{3}^{\left( 2 \right)}=2$，</p>
+<p>支持多变量的假设 $h$ 表示为：$h_{\theta}\left( x \right)={\theta_0}+{\theta_1}{x_1}+{\theta_2}{x_2}+…+{\theta_n}{x_n}$，</p>
+<p>为了使得公式能够简化一些，引入$x_{0}=1$，则公式转化为：$h_{\theta}\left( x \right)={\theta_0}{x_0}+{\theta_1}{x_1}+{\theta_2}{x_2}+…+{\theta_n}{x_n}$</p>
+<p>最终公式可以简化为：$h_{\theta} \left( x \right)={\theta^T}X$</p>
+<p>其中：</p>
+<script type="math/tex; mode=display">
+\theta=\begin{bmatrix} \theta_0\\ \theta_1 \\ \theta_2 \\ ...\\ \theta_n \end{bmatrix}</script><script type="math/tex; mode=display">
+X=\begin{bmatrix} x_0\\ \ x_1 \\ x_2 \\ ...\\ x_n \end{bmatrix}</script><h2 id="梯度下降"><a href="#梯度下降" class="headerlink" title="梯度下降"></a>梯度下降</h2><p>与单变量线性回归类似，在多变量线性回归中，我们也构建一个代价函数，则这个代价函数是所有建模误差的平方和，即：</p>
+<script type="math/tex; mode=display">
+J(\theta_0,\theta_1...\theta_n)=\frac{1}{2m}\sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^2</script><p>我们的目标和单变量线性回归问题中一样，是要找出使得代价函数最小的一系列参数。<br>多变量线性回归的批量梯度下降算法为：</p>
+<script type="math/tex; mode=display">
+\theta_j:=\theta_j-\alpha\frac{\partial}{\partial\theta_j}J(\theta_0,\theta_1...\theta_n)</script><p>对各参数$\theta_n$进行梯度下降更新：</p>
+<script type="math/tex; mode=display">
+\theta_0:=\theta_0-\alpha\frac{1}{m}\sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})x_0^{(i)}\\
+\theta_1:=\theta_1-\alpha\frac{1}{m}\sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})x_1^{(i)}\\
+\theta_2:=\theta_2-\alpha\frac{1}{m}\sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})x_2^{(i)}\\
+....</script><p>我们开始随机选择一系列的参数值，计算所有的预测结果后，再给所有的参数一个新的值，如此循环直到收敛。</p>
+<h3 id="特征缩放"><a href="#特征缩放" class="headerlink" title="特征缩放"></a>特征缩放</h3><p>以房价问题为例，假设我们使用两个特征，房屋的尺寸和房间的数量，尺寸的值为 0-2000平方英尺，而房间数量的值则是0-5，以两个参数分别为横纵坐标，绘制代价函数的等高线图能，看出图像会显得很扁，梯度下降算法需要非常多次的迭代才能收敛。</p>
+<p>解决的方法是尝试将所有特征的尺度都尽量缩放到-1到1之间。</p>
+<p><img src="image-20220110170012992.png" alt="image-20220110170012992"></p>
+<p>最简单的方法是令：${x}_{n}=\frac{x_n-\mu_n}{s_n}$，其中 $\mu_{n}$是平均值，$s_{n}$是标准差。(标准化处理)</p>
+<h3 id="学习率"><a href="#学习率" class="headerlink" title="学习率"></a>学习率</h3><p>梯度下降算法收敛所需要的迭代次数根据模型的不同而不同，我们不能提前预知，我们可以绘制迭代次数和代价函数的图表来观测算法在何时趋于收敛。</p>
+<p><img src="cd4e3df45c34f6a8e2bb7cd3a2849e6c.jpg" alt=""></p>
+<p>也有一些自动测试是否收敛的方法，例如将代价函数的变化值与某个阀值（例如0.001）进行比较，但通常看上面这样的图表更好。</p>
+<p>梯度下降算法的每次迭代受到学习率的影响，如果学习率$a$过小，则达到收敛所需的迭代次数会非常高；如果学习率$a$过大，每次迭代可能不会减小代价函数，可能会越过局部最小值导致无法收敛。</p>
+<p>通常可以考虑尝试些学习率：</p>
+<p>$\alpha=0.01，0.03，0.1，0.3，1，3，10$</p>
+<h2 id="多项式回归"><a href="#多项式回归" class="headerlink" title="多项式回归"></a>多项式回归</h2><p>拟合房屋大小(size)与房价(price)之间的关系，我们可以猜测房价与房屋大小是三次函数的关系（二次函数关系的话，房屋大小增加，房价会下降不符合现实）：</p>
+<script type="math/tex; mode=display">
+h_{\theta}(x)=\theta_0+\theta_1x_1+\theta_2x_2+\theta_3x_3\\
+x_1=(size)\\
+x_2=(size)^2\\
+x_3=(size)^3\\</script><p><img src="image-20220110205103369.png" alt="image-20220110205103369"></p>
+<p>也可以猜测：</p>
+<script type="math/tex; mode=display">
+h_{\theta}(x)=\theta_0+\theta_1(size)+\theta_2\sqrt{size}</script><p>在后续的学习中，我们会让算法自动选择合适的函数进行拟合，目前想表达的是可以用不同的函数对数据进行拟合。</p>
+<p>注：如果我们采用多项式回归模型，在运行梯度下降算法前，特征缩放非常有必要。</p>
+<h2 id="正规方程"><a href="#正规方程" class="headerlink" title="正规方程"></a>正规方程</h2><p> 假设我们的训练集特征矩阵为 $X$（包含了 $x_0=1$）并且我们的训练集结果为向量 $y$，则利用正规方程解出向量</p>
+<script type="math/tex; mode=display">
+\theta =\left( {X^T}X \right)^{-1}X^Ty</script><p>以下表示数据为例：</p>
+<p><img src="261a11d6bce6690121f26ee369b9e9d1.png" alt=""></p>
+<p>即：</p>
+<p><img src="c8eedc42ed9feb21fac64e4de8d39a06.png" alt=""></p>
+<p>运用正规方程方法求解参数：</p>
+<p><img src="b62d24a1f709496a6d7c65f87464e911.jpg" alt=""></p>
+<p>梯度下降与正规方程的比较：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>梯度下降</th>
+<th>正规方程</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>需要选择学习率$\alpha$</td>
+<td>不需要</td>
+</tr>
+<tr>
+<td>需要多次迭代</td>
+<td>一次运算得出</td>
+</tr>
+<tr>
+<td>当特征数量$n$大时也能较好适用</td>
+<td>需要计算$\left( {X^T}X \right)^{-1}$ 如果特征数量n较大则运算代价大，因为矩阵逆的计算时间复杂度为$O\left( n^3 \right)$，通常来说当$n$小于10000 时还是可以接受的</td>
+</tr>
+<tr>
+<td>适用于各种类型的模型</td>
+<td>只适用于线性模型，不适合逻辑回归模型等其他模型</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="X’X-不可逆"><a href="#X’X-不可逆" class="headerlink" title="$X’X$不可逆"></a>$X’X$不可逆</h3><p>第一种情况：</p>
+<p>在预测住房价格时，如果$x_1$是以英尺为尺寸规格计算的房子，$x_2$是以平方米为尺寸规格计算的房子，同时，你也知道1米等于3.28英尺 ( 四舍五入到两位小数 )，这样，你的这两个特征值将始终满足约束：$x_1=x_2*\left( 3.28 \right)^2$。</p>
+<p>第二种情况：</p>
+<p>在$m$小于或等于n的时候，例如，有$m$等于10个的训练样本也有$n$等于100的特征数量。通常，我们会使用一种叫做正则化的线性代数方法，通过删除某些特征或者是使用某些技术，来解决当$m$比$n$小的时候的问题。</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/12/31/机器学习简介/" rel="next" title="机器学习简介">
+                <i class="fa fa-chevron-left"></i> 机器学习简介
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -333,6 +524,15 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zODE4MS8xNDcwOQ=="></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -353,8 +553,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -418,6 +627,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#多元线性回归"><span class="nav-number">1.</span> <span class="nav-text">多元线性回归</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#多维特征"><span class="nav-number">1.1.</span> <span class="nav-text">多维特征</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#梯度下降"><span class="nav-number">1.2.</span> <span class="nav-text">梯度下降</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#特征缩放"><span class="nav-number">1.2.1.</span> <span class="nav-text">特征缩放</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#学习率"><span class="nav-number">1.2.2.</span> <span class="nav-text">学习率</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多项式回归"><span class="nav-number">1.3.</span> <span class="nav-text">多项式回归</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正规方程"><span class="nav-number">1.4.</span> <span class="nav-text">正规方程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#X’X-不可逆"><span class="nav-number">1.4.1.</span> <span class="nav-text">$X’X$不可逆</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -558,6 +783,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -586,6 +815,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
