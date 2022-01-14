@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="机器学习," />
 
 
 
@@ -79,13 +79,31 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="rcos97的博客">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+<meta name="description" content="为什么不使用线性回归从二元的分类问题开始讨论。 我们将因变量(dependent variable)可能属于的两个类分别称为负向类（negative class）和正向类（positive class），则因变量$y\in { 0,1 \\}$ ，其中 0 表示负向类，1 表示正向类。   如果我们要用线性回归算法来解决一个分类问题，对于分类， $y$ 取值为 0 或者1，但如果你使用的是线性回归">
+<meta name="keywords" content="机器学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="分类">
+<meta property="og:url" content="http://yoursite.com/2022/01/14/分类/index.html">
 <meta property="og:site_name" content="rcos97的博客">
+<meta property="og:description" content="为什么不使用线性回归从二元的分类问题开始讨论。 我们将因变量(dependent variable)可能属于的两个类分别称为负向类（negative class）和正向类（positive class），则因变量$y\in { 0,1 \\}$ ，其中 0 表示负向类，1 表示正向类。   如果我们要用线性回归算法来解决一个分类问题，对于分类， $y$ 取值为 0 或者1，但如果你使用的是线性回归">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2022/01/14/分类/image-20220112101704797.png">
+<meta property="og:image" content="http://yoursite.com/2022/01/14/分类/e7f9a746894c4c7dfd10cfcd9c84b5f9.png">
+<meta property="og:image" content="http://yoursite.com/2022/01/14/分类/image-20220112160520903.png">
+<meta property="og:image" content="http://yoursite.com/2022/01/14/分类/image-20220112161354889.png">
+<meta property="og:image" content="http://yoursite.com/2022/01/14/分类/image-20220112161451027.png">
+<meta property="og:image" content="http://yoursite.com/2022/01/14/分类/image-20220112161644171.png">
+<meta property="og:image" content="http://yoursite.com/2022/01/14/分类/8b94e47b7630ac2b0bcb10d204513810.jpg">
+<meta property="og:image" content="http://yoursite.com/2022/01/14/分类/image-20220112171302479.png">
+<meta property="og:image" content="http://yoursite.com/2022/01/14/分类/image-20220113102908211.png">
+<meta property="og:image" content="http://yoursite.com/2022/01/14/分类/image-20220113145827308.png">
+<meta property="og:image" content="http://yoursite.com/2022/01/14/分类/image-20220113145852108.png">
+<meta property="og:image" content="http://yoursite.com/2022/01/14/分类/image-20220113150127736.png">
+<meta property="og:updated_time" content="2022-01-14T02:49:11.692Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="rcos97的博客">
+<meta name="twitter:title" content="分类">
+<meta name="twitter:description" content="为什么不使用线性回归从二元的分类问题开始讨论。 我们将因变量(dependent variable)可能属于的两个类分别称为负向类（negative class）和正向类（positive class），则因变量$y\in { 0,1 \\}$ ，其中 0 表示负向类，1 表示正向类。   如果我们要用线性回归算法来解决一个分类问题，对于分类， $y$ 取值为 0 或者1，但如果你使用的是线性回归">
+<meta name="twitter:image" content="http://yoursite.com/2022/01/14/分类/image-20220112101704797.png">
 
 
 
@@ -115,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/"/>
+  <link rel="canonical" href="http://yoursite.com/2022/01/14/分类/"/>
 
 
 
 
 
-  <title>归档 | rcos97的博客</title>
+  <title>分类 | rcos97的博客</title>
   
 
 
@@ -140,7 +158,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -278,416 +296,200 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
 
-      <span class="archive-page-counter">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2022/01/14/分类/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="rcos97">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/39228583?v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="rcos97的博客">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">分类</h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-01-14T10:36:26+08:00">
+                2022-01-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        嗯..! 目前共计 23 篇日志。 继续努力。
-      </span>
 
-      
-
-        
-        
-        
-
-        
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2022">2022</h1>
-          </div>
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2022/01/14/分类/" itemprop="url">
-              
-                <span itemprop="name">分类</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2022-01-14T10:36:26+08:00"
-              content="2022-01-14" >
-          01-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2022/01/12/多元线性回归/" itemprop="url">
-              
-                <span itemprop="name">多元线性回归</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2022-01-12T09:23:17+08:00"
-              content="2022-01-12" >
-          01-12
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
+            
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2021">2021</h1>
-          </div>
-        
-        
 
-        
+          
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2021/12/31/机器学习简介/" itemprop="url">
-              
-                <span itemprop="name">机器学习简介</span>
-              
-            </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2021-12-31T21:57:11+08:00"
-              content="2021-12-31" >
-          12-31
-        </time>
-      </div>
+          
 
-    </header>
-  </article>
+        </div>
+      </header>
+    
 
-
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2021/11/27/几何/" itemprop="url">
-              
-                <span itemprop="name">几何</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2021-11-27T18:30:57+08:00"
-              content="2021-11-27" >
-          11-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
+      
+        <h2 id="为什么不使用线性回归"><a href="#为什么不使用线性回归" class="headerlink" title="为什么不使用线性回归"></a>为什么不使用线性回归</h2><p>从二元的分类问题开始讨论。</p>
+<p>我们将因变量(<strong>dependent variable</strong>)可能属于的两个类分别称为负向类（<strong>negative class</strong>）和正向类（<strong>positive class</strong>），则因变量$y\in { 0,1 \\}$ ，其中 0 表示负向类，1 表示正向类。</p>
+<p><img src="image-20220112101704797.png" alt="image-20220112101704797"></p>
+<p><img src="e7f9a746894c4c7dfd10cfcd9c84b5f9.png" alt=""></p>
+<p>如果我们要用线性回归算法来解决一个分类问题，对于分类， $y$ 取值为 0 或者1，但如果你使用的是线性回归，那么假设函数的输出值可能远大于 1，或者远小于0，即使所有训练样本的标签  $y$ 都等于 0 或 1。尽管我们知道标签应该取值0 或者1，但是如果算法得到的值远大于1或者远小于0的话，就会感觉很奇怪。所以我们在接下来的要研究的算法就叫做<strong>逻辑回归算法</strong>，这个算法的性质是：它的输出值永远在0到 1 之间。</p>
+<h2 id="Logistic-回归"><a href="#Logistic-回归" class="headerlink" title="Logistic 回归"></a>Logistic 回归</h2><p>逻辑回归算法是分类算法，我们将它作为分类算法使用。有时候可能因为这个算法的名字中出现了“回归”使你感到困惑，但逻辑回归算法实际上是一种分类算法，它适用于标签  $y$ 取值离散的情况，如：1 0 0 1。</p>
+<h3 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h3><p>逻辑回归模型的假设是： $h_\theta \left( x \right)=g\left(\theta^{T}X \right)$<br>其中：<br>$X$ 代表特征向量<br>$g$ 代表逻辑函数（<strong>logistic function</strong>)是一个常用的逻辑函数为<strong>S</strong>形函数（<strong>Sigmoid function</strong>），公式为： $g\left( z \right)=\frac{1}{1+e^{-z}  }$。</p>
+<p><img src="image-20220112160520903.png" alt="image-20220112160520903"></p>
+<p>$h_\theta \left( x \right)$的作用是，对于给定的输入变量，根据选择的参数计算输出变量=1的可能性（<strong>estimated probablity</strong>）即$h_\theta \left( x \right)=P\left( y=1|x;\theta \right)$<br>例如，如果对于给定的$x$，通过已经确定的参数计算得出$h_\theta \left( x \right)=0.7$，则表示有70%的几率$y$为正向类，相应地$y$为负向类的几率为1-0.7=0.3。</p>
+<h3 id="决策界限"><a href="#决策界限" class="headerlink" title="决策界限"></a>决策界限</h3><p>在逻辑回归中，我们预测：</p>
+<p>当${h_\theta}\left( x \right)&gt;=0.5$时，预测 $y=1$。</p>
+<p>当${h_\theta}\left( x \right)&lt;0.5$时，预测 $y=0$ 。</p>
+<p>根据上面绘制出的 <strong>S</strong> 形函数图像，我们知道当</p>
+<script type="math/tex; mode=display">
+z=0 时 &&g(z)=0.5\\
 
-        
-        
+z>0 时 &&g(z)>0.5\\
 
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2021/11/17/着色/" itemprop="url">
-              
-                <span itemprop="name">着色</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2021-11-17T16:31:32+08:00"
-              content="2021-11-17" >
-          11-17
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+z<0 时 &&g(z)<0.5</script><p>又 $z={\theta^T}x$ ，即：</p>
+<script type="math/tex; mode=display">
+{\theta^T}x>=0  时，&&预测 y=1\\
+{\theta^T}x<0  时，&&预测 y=0</script><p>假设我们有一个模型：</p>
+<p><img src="image-20220112161354889.png" alt="image-20220112161354889"></p>
+<p>参数$\theta$ 是向量[-3 1 1]。 则当$-3+{x_1}+{x_2} \geq 0$，即${x_1}+{x_2} \geq 3$时，模型将预测 $y=1$。</p>
+<p>我们可以绘制直线${x_1}+{x_2} = 3$，这条线便是我们模型的分界线，将预测为1的区域和预测为 0的区域分隔开。</p>
+<p><img src="image-20220112161451027.png" alt="image-20220112161451027"></p>
+<p>$z={\theta^T}x$ 也可以使用复杂的模型来适应非常复杂形状的判定边界。</p>
+<p><img src="image-20220112161644171.png" alt="image-20220112161644171"></p>
+<p>需要用曲线才能分隔 $y=0$ 的区域和 $y=1$ 的区域，我们需要二次方特征：${h_\theta}\left( x \right)=g\left( {\theta_0}+{\theta_1}{x_1}+{\theta_2}{x_2}+{\theta_3}x_{1}^{2}+{\theta_4}x_{2}^{2} \right)$是[-1 0 0 1 1]，则我们得到的判定边界恰好是圆点在原点且半径为1的圆形。</p>
+<h3 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h3><p>对于线性回归模型，我们定义的代价函数是所有模型误差的平方和。理论上来说，我们也可以对逻辑回归模型沿用这个定义，但是问题在于，当我们将${h_\theta}\left( x \right)=\frac{1}{1+e^{-\theta^TX}  }$带入到这样定义了的代价函数中时，我们得到的代价函数将是一个非凸函数（<strong>non-convexfunction</strong>）。</p>
+<p><img src="8b94e47b7630ac2b0bcb10d204513810.jpg" alt=""></p>
+<p>线性回归的代价函数为：$J(\theta_0,\theta_1…\theta_n)=\frac{1}{2m}\sum\limits_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^2$</p>
+<p>我们重新定义逻辑回归的代价函数为：$J\left( \theta  \right)=\frac{1}{m}\sum\limits_{i=1}^{m}{Cost\left( {h_\theta}\left( {x}^{\left( i \right)} \right),{y}^{\left( i \right)} \right)}$</p>
+<script type="math/tex; mode=display">
+Cost(h_{\theta}(x),y)=\begin{cases} -log(h_{\theta}(x))&&if & y = 1\\-log(1-h_{\theta}(x))&&if & y = 0\end{cases}</script><p>${h_\theta}\left( x \right)$与 $Cost\left( {h_\theta}\left( x \right),y \right)$之间的关系如下图所示：</p>
+<p><img src="image-20220112171302479.png" alt="image-20220112171302479"></p>
+<p>这样构建的$Cost\left( {h_\theta}\left( x \right),y \right)$函数的特点是：当实际的  $y=1$ 且${h_\theta}\left( x \right)$也为 1 时误差为 0，当 $y=1$ 但${h_\theta}\left( x \right)$不为1时误差随着${h_\theta}\left( x \right)$变小而变大；当实际的 $y=0$ 且${h_\theta}\left( x \right)$也为 0 时代价为 0，当$y=0$ 但${h_\theta}\left( x \right)$不为 0时误差随着 ${h_\theta}\left( x \right)$的变大而变大。</p>
+<h3 id="梯度下降"><a href="#梯度下降" class="headerlink" title="梯度下降"></a>梯度下降</h3><p>上述的分段逻辑回归代价函数可以合并成：</p>
+<script type="math/tex; mode=display">
+Cost\left( {h_\theta}\left( x \right),y \right)=-y\times log\left( {h_\theta}\left( x \right) \right)-(1-y)\times log\left( 1-{h_\theta}\left( x \right) \right)</script><p>可以看出当y=0时，Cost为$-log(1-h_{\theta}(x))$ ，当y=1时，Cost为$ -log(h_{\theta}(x))$。</p>
+<p>综上，代价函数为：</p>
+<script type="math/tex; mode=display">
+J(\theta)=-\frac{1}{m}\sum\limits_{i=1}^{m}y^{(i)}\log \left( {h_\theta}\left( x^{(i)} \right) \right)+\left( 1-y^{(i)} \right)\log \left( 1-{h_\theta}\left( x^{(i)} \right) \right)</script><p>该代价函数也为凸函数，可以通过梯度下降寻找最小的一组$\theta$ 使得$J(\theta)$最小。</p>
+<p><img src="image-20220113102908211.png" alt="image-20220113102908211"></p>
+<h2 id="多类别分类"><a href="#多类别分类" class="headerlink" title="多类别分类"></a>多类别分类</h2><p>如何使用逻辑回归 (<strong>logistic regression</strong>)来解决多类别分类问题，具体来说，通过一个叫做”一对多” (<strong>one-vs-all</strong>) 的分类算法。</p>
+<p>对于二元分类问题，数据集长这个样子：</p>
+<p><img src="image-20220113145827308.png" alt="image-20220113145827308"></p>
+<p>对于一个多类分类问题，我们的数据集或许看起来像这样：</p>
+<p><img src="image-20220113145852108.png" alt="image-20220113145852108"></p>
+<p>上图表示的有3个类别，我们用三角形表示 $y=1$，方框表示$y=2$，叉叉表示 $y=3$。我们下面要做的就是使用一个训练集，将其分成3个二元分类问题。</p>
+<p><img src="image-20220113150127736.png" alt="image-20220113150127736"></p>
+<p>我们先从用三角形代表的类别1开始，实际上我们可以创建一个，新的”伪”训练集，类型2和类型3定为负类，类型1设定为正类，我们创建一个新的训练集，拟合出分类函数$h_\theta^{(1)}$。对于类别2和类别3都用这个方法，拟合出分类函数$h_\theta^{(2)}，h_\theta^{(3)}$。</p>
+<p>我们得到一系列的模型简记为： $h_\theta^{\left( i \right)}\left( x \right)=p\left( y=i|x;\theta  \right)$其中：$i=\left( 1,2,3….k \right)$ </p>
+<p>最后，在我们需要做预测时，我们将所有的分类机都运行一遍，然后对每一个输入变量，都选择最高可能性的输出变量。现在要做的就是训练这个逻辑回归分类器：$h_\theta^{\left( i \right)}\left( x \right)$， 其中 $i$ 对应每一个可能的 $y=i$，最后，为了做出预测，我们给出输入一个新的 $x$ 值，用这个做预测。我们要做的就是在我们三个分类器里面输入 $x$，然后我们选择一个让 $h_\theta^{\left( i \right)}\left( x \right)$ 最大的$ i$，即$\mathop{\max}\limits_i\,h_\theta^{\left( i \right)}\left( x \right)$ （因为$h_\theta^{\left( i \right)}\left( x \right)$计算结果是$y=i$的概率，当然要选择概率最大的结果）。</p>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2021/11/05/光栅化/" itemprop="url">
-              
-                <span itemprop="name">光栅化</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2021-11-05T15:33:41+08:00"
-              content="2021-11-05" >
-          11-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2021/10/31/变换/" itemprop="url">
-              
-                <span itemprop="name">变换</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2021-10-31T18:31:07+08:00"
-              content="2021-10-31" >
-          10-31
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2021/10/29/爬虫/" itemprop="url">
-              
-                <span itemprop="name">爬虫</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2021-10-29T16:20:36+08:00"
-              content="2021-10-29" >
-          10-29
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2021/06/29/跨域请求session变化/" itemprop="url">
-              
-                <span itemprop="name">解决跨域请求session值变化的问题</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2021-06-29T23:45:10+08:00"
-              content="2021-06-29" >
-          06-29
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2021/06/29/线性表/" itemprop="url">
-              
-                <span itemprop="name">线性表</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2021-06-29T23:45:10+08:00"
-              content="2021-06-29" >
-          06-29
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2022/01/12/多元线性回归/" rel="next" title="多元线性回归">
+                <i class="fa fa-chevron-left"></i> 多元线性回归
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -695,6 +497,15 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zODE4MS8xNDcwOQ=="></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -715,8 +526,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -780,6 +600,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么不使用线性回归"><span class="nav-number">1.</span> <span class="nav-text">为什么不使用线性回归</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Logistic-回归"><span class="nav-number">2.</span> <span class="nav-text">Logistic 回归</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#模型"><span class="nav-number">2.1.</span> <span class="nav-text">模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#决策界限"><span class="nav-number">2.2.</span> <span class="nav-text">决策界限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代价函数"><span class="nav-number">2.3.</span> <span class="nav-text">代价函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#梯度下降"><span class="nav-number">2.4.</span> <span class="nav-text">梯度下降</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多类别分类"><span class="nav-number">3.</span> <span class="nav-text">多类别分类</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -920,6 +756,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -948,6 +788,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
