@@ -88,76 +88,76 @@
 <meta property="og:description" content="阴影映射（Shadow Mapping）在冯氏光照模式中，我们只考虑光源与着色点的位置关系，并没有考虑光源与着色点之间是否有物体遮挡。因此无法绘制阴影。 阴影映射是使用光栅化（rasterization）技术绘制阴影的方法。 主要思想：确定一个点不在阴影中，那么该点既能被光源看到，也能被摄像机看到。 1 把光源当成摄像机，绘制一幅从光源出发的深度图。  2 从摄像机出发，判断摄像机到点的距离与第1">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20211129165733824.png">
-<meta property="og:image" content="http://yoursite.com/image-20211129165907416.png">
-<meta property="og:image" content="http://yoursite.com/image-20211129170232290.png">
-<meta property="og:image" content="http://yoursite.com/image-20211129170322430.png">
-<meta property="og:image" content="http://yoursite.com/image-20211129170456202.png">
-<meta property="og:image" content="http://yoursite.com/image-20211129170429554.png">
-<meta property="og:image" content="http://yoursite.com/image-20211129170601730.png">
-<meta property="og:image" content="http://yoursite.com/image-20211129170620248.png">
-<meta property="og:image" content="http://yoursite.com/image-20211129170920370.png">
-<meta property="og:image" content="http://yoursite.com/image-20211129171429990.png">
-<meta property="og:image" content="http://yoursite.com/image-20211129171558360.png">
-<meta property="og:image" content="http://yoursite.com/image-20211129172403648.png">
-<meta property="og:image" content="http://yoursite.com/image-20220111164327003.png">
-<meta property="og:image" content="http://yoursite.com/image-20220111174854926.png">
-<meta property="og:image" content="http://yoursite.com/image-20220111171531977.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20211129165907416.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20211129170232290.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20211129170322430.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20211129170456202.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20211129170429554.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20211129170601730.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20211129170620248.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20211129170920370.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20211129171429990.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20211129171558360.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20211129172403648.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20220111164327003.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20220111174854926.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20220111171531977.png">
 <meta property="og:image" content="http://yoursite.com/image-20220111175205274.png">
-<meta property="og:image" content="http://yoursite.com/image-20220112172817065.png">
-<meta property="og:image" content="http://yoursite.com/image-20220112174552130.png">
-<meta property="og:image" content="http://yoursite.com/image-20220112200529281-16419891329821.png">
-<meta property="og:image" content="http://yoursite.com/image-20220112202745985.png">
-<meta property="og:image" content="http://yoursite.com/image-20220112203915933.png">
-<meta property="og:image" content="http://yoursite.com/image-20220112212738197.png">
-<meta property="og:image" content="http://yoursite.com/image-20220112213107279.png">
-<meta property="og:image" content="http://yoursite.com/image-20220113151459074.png">
-<meta property="og:image" content="http://yoursite.com/image-20220115203027172.png">
-<meta property="og:image" content="http://yoursite.com/image-20220115203115539.png">
-<meta property="og:image" content="http://yoursite.com/image-20220115203156500.png">
-<meta property="og:image" content="http://yoursite.com/image-20220115203903093.png">
-<meta property="og:image" content="http://yoursite.com/image-20220115204503852.png">
-<meta property="og:image" content="http://yoursite.com/20200528115746152.png">
-<meta property="og:image" content="http://yoursite.com/20200528120022257.png">
-<meta property="og:image" content="http://yoursite.com/image-20220115205923690.png">
-<meta property="og:image" content="http://yoursite.com/20200528122738136-16422515023224.png">
-<meta property="og:image" content="http://yoursite.com/20200528122935962.png">
-<meta property="og:image" content="http://yoursite.com/image-20220115210502645.png">
-<meta property="og:image" content="http://yoursite.com/image-20220115210844099.png">
-<meta property="og:image" content="http://yoursite.com/image-20220115210915319.png">
-<meta property="og:image" content="http://yoursite.com/2020052812483411.png">
-<meta property="og:image" content="http://yoursite.com/image-20220115211207595.png">
-<meta property="og:image" content="http://yoursite.com/image-20220202175536590.png">
-<meta property="og:image" content="http://yoursite.com/image-20220202180410237.png">
-<meta property="og:image" content="http://yoursite.com/image-20220202180518491.png">
-<meta property="og:image" content="http://yoursite.com/image-20220202180719607.png">
-<meta property="og:image" content="http://yoursite.com/image-20220202181114583.png">
-<meta property="og:image" content="http://yoursite.com/image-20220203152037817.png">
-<meta property="og:image" content="http://yoursite.com/image-20220203152232348.png">
-<meta property="og:image" content="http://yoursite.com/image-20220204165620701.png">
-<meta property="og:image" content="http://yoursite.com/image-20220204170603545.png">
-<meta property="og:image" content="http://yoursite.com/image-20220204171623198.png">
-<meta property="og:image" content="http://yoursite.com/image-20220204172121924.png">
-<meta property="og:image" content="http://yoursite.com/image-20220205111645386.png">
-<meta property="og:image" content="http://yoursite.com/image-20220205112433844.png">
-<meta property="og:image" content="http://yoursite.com/image-20220206134022954.png">
-<meta property="og:image" content="http://yoursite.com/image-20220206152344543.png">
-<meta property="og:image" content="http://yoursite.com/image-20220206152648453.png">
-<meta property="og:image" content="http://yoursite.com/image-20220206153310854.png">
-<meta property="og:image" content="http://yoursite.com/image-20220206161857058.png">
-<meta property="og:image" content="http://yoursite.com/20200602200341414.png">
-<meta property="og:image" content="http://yoursite.com/20200602200239736.png">
-<meta property="og:image" content="http://yoursite.com/20200602200259364.png">
-<meta property="og:image" content="http://yoursite.com/image-20220208154156305.png">
-<meta property="og:image" content="http://yoursite.com/image-20220209172832420.png">
-<meta property="og:image" content="http://yoursite.com/image-20220209174955111.png">
-<meta property="og:image" content="http://yoursite.com/image-20220301174513450.png">
-<meta property="og:image" content="http://yoursite.com/image-20220302105006742.png">
-<meta property="og:image" content="http://yoursite.com/image-20220302161512786.png">
-<meta property="og:image" content="http://yoursite.com/image-20220302161625045.png">
-<meta property="og:image" content="http://yoursite.com/image-20220302162333653.png">
-<meta property="og:image" content="http://yoursite.com/image-20220302163856856.png">
-<meta property="og:image" content="http://yoursite.com/image-20220302164258949.png">
-<meta property="og:updated_time" content="2022-03-02T09:44:03.598Z">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20220112172817065.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20220112174552130.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20220112200529281-16419891329821.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20220112202745985.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20220112203915933.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20220112212738197.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20220112213107279.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20220113151459074.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20220115203027172.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20220115203115539.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20220115203156500.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20220115203903093.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20220115204503852.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/20200528115746152.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/20200528120022257.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20220115205923690.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/20200528122738136-16422515023224.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/20200528122935962.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20220115210502645.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20220115210844099.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20220115210915319.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/2020052812483411.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20220115211207595.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20220202175536590.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20220202180410237.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20220202180518491.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20220202180719607.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20220202181114583.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20220203152037817.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20220203152232348.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20220204165620701.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20220204170603545.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20220204171623198.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20220204172121924.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20220205111645386.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20220205112433844.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20220206134022954.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20220206152344543.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20220206152648453.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20220206153310854.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20220206161857058.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/20200602200341414.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/20200602200239736.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/20200602200259364.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20220208154156305.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20220209172832420.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20220209174955111.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20220301174513450.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20220302105006742.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20220302161512786.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20220302161625045.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20220302162333653.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20220302163856856.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/02/光线追踪/image-20220302164258949.png">
+<meta property="og:updated_time" content="2022-03-02T10:30:04.426Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="光线追踪">
 <meta name="twitter:description" content="阴影映射（Shadow Mapping）在冯氏光照模式中，我们只考虑光源与着色点的位置关系，并没有考虑光源与着色点之间是否有物体遮挡。因此无法绘制阴影。 阴影映射是使用光栅化（rasterization）技术绘制阴影的方法。 主要思想：确定一个点不在阴影中，那么该点既能被光源看到，也能被摄像机看到。 1 把光源当成摄像机，绘制一幅从光源出发的深度图。  2 从摄像机出发，判断摄像机到点的距离与第1">
@@ -441,20 +441,20 @@
 <p>1 把光源当成摄像机，绘制一幅从光源出发的深度图。</p>
 <p><img src="image-20211129165733824.png" alt="image-20211129165733824" style="zoom:50%;"></p>
 <p>2 从摄像机出发，判断摄像机到点的距离与第1步生成的深度图中距离进行比较。</p>
-<p><img src="/image-20211129165907416.png" alt="image-20211129165907416" style="zoom:50%;"></p>
+<p><img src="image-20211129165907416.png" alt="image-20211129165907416" style="zoom:50%;"></p>
 <p>如果摄像机到点的距离与第1步生成的深度图中距离相等，则该点不在阴影中，是可见点。如下图中橘黄色部分。</p>
-<p><img src="/image-20211129170232290.png" alt="image-20211129170232290" style="zoom:50%;"></p>
+<p><img src="image-20211129170232290.png" alt="image-20211129170232290" style="zoom:50%;"></p>
 <p>如果摄像机到点的距离与第1步生成的深度图中距离不相等，则该点在阴影中，是不可见点。如下图中红色部分。</p>
-<p><img src="/image-20211129170322430.png" alt="image-20211129170322430" style="zoom:50%;"></p>
+<p><img src="image-20211129170322430.png" alt="image-20211129170322430" style="zoom:50%;"></p>
 <p>效果：</p>
-<p><img src="/image-20211129170456202.png" alt="image-20211129170456202" style="zoom:50%;"></p>
-<p><img src="/image-20211129170429554.png" alt="image-20211129170429554" style="zoom:50%;"></p>
+<p><img src="image-20211129170456202.png" alt="image-20211129170456202" style="zoom:50%;"></p>
+<p><img src="image-20211129170429554.png" alt="image-20211129170429554" style="zoom:50%;"></p>
 <p>把光源当作摄像机所看到的图：</p>
-<p><img src="/image-20211129170601730.png" alt="image-20211129170601730" style="zoom:50%;"></p>
+<p><img src="image-20211129170601730.png" alt="image-20211129170601730" style="zoom:50%;"></p>
 <p>绘制深度图：</p>
-<p><img src="/image-20211129170620248.png" alt="image-20211129170620248" style="zoom:50%;"></p>
+<p><img src="image-20211129170620248.png" alt="image-20211129170620248" style="zoom:50%;"></p>
 <p>进行距离比较，绿色部分为摄像机到点的距离等于深度图中的部分。非绿色部分为阴影部分。</p>
-<p><img src="/image-20211129170920370.png" alt="image-20211129170920370" style="zoom:50%;"></p>
+<p><img src="image-20211129170920370.png" alt="image-20211129170920370" style="zoom:50%;"></p>
 <p>可以看出，非绿色部分比较脏。</p>
 <p>阴影映射的问题：</p>
 <ul>
@@ -463,31 +463,31 @@
 <li>难以判断浮点数的相等</li>
 </ul>
 <h3 id="硬阴影与软阴影"><a href="#硬阴影与软阴影" class="headerlink" title="硬阴影与软阴影"></a>硬阴影与软阴影</h3><p>硬阴影可以看出阴影的边缘比较锐利，只有不考虑光源大小的点光源产生。</p>
-<p><img src="/image-20211129171429990.png" alt="image-20211129171429990"></p>
+<p><img src="image-20211129171429990.png" alt="image-20211129171429990"></p>
 <p>软阴影更符合现实，主要是考虑了光源的大小。</p>
-<p><img src="/image-20211129171558360.png" alt="image-20211129171558360"></p>
+<p><img src="image-20211129171558360.png" alt="image-20211129171558360"></p>
 <p>产生的原因类似于日食的本影（光源被完全遮住）和半影（光源被部分遮住）。</p>
-<p><img src="/image-20211129172403648.png" alt="image-20211129172403648" style="zoom: 67%;"></p>
+<p><img src="image-20211129172403648.png" alt="image-20211129172403648" style="zoom: 67%;"></p>
 <h2 id="光线"><a href="#光线" class="headerlink" title="光线"></a>光线</h2><p>在图形学中对光线的三个规定：</p>
 <ul>
 <li>光线沿直线传播</li>
 <li>光线之间不会发生碰撞</li>
 <li>光路可逆（光线从光源出发到眼睛，也可看成光线从眼睛出发到光源）</li>
 </ul>
-<h2 id="Whitted-Style-光线追踪"><a href="#Whitted-Style-光线追踪" class="headerlink" title="Whitted-Style 光线追踪"></a>Whitted-Style 光线追踪</h2><p><img src="/image-20220111164327003.png" alt="image-20220111164327003" style="zoom: 67%;"></p>
+<h2 id="Whitted-Style-光线追踪"><a href="#Whitted-Style-光线追踪" class="headerlink" title="Whitted-Style 光线追踪"></a>Whitted-Style 光线追踪</h2><p><img src="image-20220111164327003.png" alt="image-20220111164327003" style="zoom: 67%;"></p>
 <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>为什么要有光线追踪？</p>
 <p>因为光栅化无法处理全局光照效果，指（软）阴影和光线的多次反射。</p>
 <p>局部光照：</p>
 <p>将眼睛当作针孔摄像头，光线从眼睛出发，穿过屏幕中的一个像素（本次渲染的也是这个像素点的颜色）。光线与物体产生多个交点（选择最近的交点）。</p>
-<p><img src="/image-20220111174854926.png" alt="image-20220111174854926"></p>
+<p><img src="image-20220111174854926.png" alt="image-20220111174854926"></p>
 <p>将光源与该交点连线，如果中途没有被别的物体阻挡，将按照，比如Blinn Phong模型对该像素进行着色；如果中途被阻挡说明该点是阴影。</p>
-<p><img src="/image-20220111171531977.png" alt="image-20220111171531977"></p>
+<p><img src="image-20220111171531977.png" alt="image-20220111171531977"></p>
 <p>但其实，光线在实际场景中不应该只与物体产生一个交点，由于光线的反射与折射，会与场景中的物体产生多个交点。</p>
 <p><strong>Whitted-Style 光线追踪 原理：</strong></p>
 <p>光线在与圆形物体产生了第一个交点，光线在圆形物体上反射与三角形物体产生了新交点，在圆形物体上产生折射与圆形物体有了第二个交点，并且与长方体物体也产生了交点。</p>
 <p>将这些交点与光源连线，判断中途有没有被阻挡，是否在阴影中。综合这些交点的信息，来确定最终像素点的颜色。</p>
 <p><img src="/image-20220111175205274.png" alt="image-20220111175205274"></p>
-<h3 id="判断光线与表面相交"><a href="#判断光线与表面相交" class="headerlink" title="判断光线与表面相交"></a>判断光线与表面相交</h3><h4 id="光线数学定义"><a href="#光线数学定义" class="headerlink" title="光线数学定义"></a>光线数学定义</h4><p><img src="/image-20220112172817065.png" alt="image-20220112172817065"></p>
+<h3 id="判断光线与表面相交"><a href="#判断光线与表面相交" class="headerlink" title="判断光线与表面相交"></a>判断光线与表面相交</h3><h4 id="光线数学定义"><a href="#光线数学定义" class="headerlink" title="光线数学定义"></a>光线数学定义</h4><p><img src="image-20220112172817065.png" alt="image-20220112172817065"></p>
 <script type="math/tex; mode=display">
 r(t)=o+td \quad 0\leq t < \infty</script><ul>
 <li>t：时间</li>
@@ -495,7 +495,7 @@ r(t)=o+td \quad 0\leq t < \infty</script><ul>
 <li>d：方向</li>
 </ul>
 <h4 id="隐式表面相交"><a href="#隐式表面相交" class="headerlink" title="隐式表面相交"></a>隐式表面相交</h4><p>光线与球相交的条件，交点p必须满足既要在球上也要在光线上。</p>
-<p><img src="/image-20220112174552130.png" alt="image-20220112174552130"></p>
+<p><img src="image-20220112174552130.png" alt="image-20220112174552130"></p>
 <p>光线：$r(t)=o+td \quad 0\leq t &lt; \infty$</p>
 <p>球：$p:(p-c)^2-R^2=0$</p>
 <p>联立得：</p>
@@ -512,7 +512,7 @@ t=\frac{-b\pm\sqrt{b^2-4ac} }{2a}</script><p>注意时间t应为正实数。</p>
 <p>将光线带入隐式表面方程：</p>
 <script type="math/tex; mode=display">
 f(o+td)=0</script><p>求解出t。</p>
-<h4 id="显式表面相交"><a href="#显式表面相交" class="headerlink" title="显式表面相交"></a>显式表面相交</h4><p><img src="/image-20220112200529281-16419891329821.png" alt="image-20220112200529281"></p>
+<h4 id="显式表面相交"><a href="#显式表面相交" class="headerlink" title="显式表面相交"></a>显式表面相交</h4><p><img src="image-20220112200529281-16419891329821.png" alt="image-20220112200529281"></p>
 <p>判断光线是否与显式表面上的三角形相交。简单的想法是针对每个像素发出的光线，场景中的每个三角形都要判断一次。</p>
 <p>如何判断光线与一个三角形相交？</p>
 <ul>
@@ -520,9 +520,9 @@ f(o+td)=0</script><p>求解出t。</p>
 <li>交点在三角形内（叉乘判断）</li>
 </ul>
 <p>判断光线与三角形所在平面相交：</p>
-<p><img src="/image-20220112202745985.png" alt="image-20220112202745985"></p>
+<p><img src="image-20220112202745985.png" alt="image-20220112202745985"></p>
 <p>表示一个平面，需要平面内一点p’，与平面的法向量$\overrightarrow{N}$。</p>
-<p><img src="/image-20220112203915933.png" alt="image-20220112203915933"></p>
+<p><img src="image-20220112203915933.png" alt="image-20220112203915933"></p>
 <p>对于平面内的所有点p都满足：</p>
 <script type="math/tex; mode=display">
 p:(p-p')\cdot N = 0</script><p>带入光线表达式：</p>
@@ -537,13 +537,13 @@ o+td=(1-b_1-b_2)\overrightarrow{P_0}+b_1\overrightarrow{P_1}+b_2\overrightarrow{
 <p>目标是求解$t,b_1,b_2$，坐标是三维的，可以列出三个方程求解三个未知数。</p>
 <p>结果满足t为正实数，$(1-b_1-b_2),b_1,b_2$ 大于0（重心坐标的性质）,则光线与三角形相交。</p>
 <h5 id="加速"><a href="#加速" class="headerlink" title="加速"></a>加速</h5><p>如果按照上述简单的算法，进行一次光线追踪计算需要： <strong>像素数量x场景三角形面数量x弹射次数</strong>这么多次。而一个场景可能有上千万个三角形，显然这种算法效率太差。</p>
-<h6 id="包围盒（Bounding-Volumes）"><a href="#包围盒（Bounding-Volumes）" class="headerlink" title="包围盒（Bounding Volumes）"></a>包围盒（Bounding Volumes）</h6><p><img src="/image-20220112212738197.png" alt="image-20220112212738197"></p>
+<h6 id="包围盒（Bounding-Volumes）"><a href="#包围盒（Bounding-Volumes）" class="headerlink" title="包围盒（Bounding Volumes）"></a>包围盒（Bounding Volumes）</h6><p><img src="image-20220112212738197.png" alt="image-20220112212738197"></p>
 <p>将物体放进包围盒中，如果光线没有与包围盒相交，那么肯定也不会与包围盒中物体中相交。因此我们可以先计算光线与包围盒相交的情况，确定光线进入了包围盒，再计算光线与包围盒中物体的相交情况。</p>
 <p><strong>包围盒的定义：</strong></p>
-<p><img src="/image-20220112213107279.png" alt="image-20220112213107279" style="zoom: 67%;"></p>
+<p><img src="image-20220112213107279.png" alt="image-20220112213107279" style="zoom: 67%;"></p>
 <p>由六个平面相交而成。为了方便计算，我们使用轴对齐包围盒（Axis-Aligned<br>Bounding Box (AABB)），围成包围盒的平面与x,y,z坐标轴平行，并没有在空间中进行旋转。</p>
 <p>考虑2D的情况</p>
-<p><img src="/image-20220113151459074.png" alt="image-20220113151459074"></p>
+<p><img src="image-20220113151459074.png" alt="image-20220113151459074"></p>
 <p>左图1 显示了光线穿过竖直的$x_0,x_1$面的时间，进入$x_0$面时间$t_{min}$，穿出$x_1$面时间$t_{max}$。</p>
 <p>左图2 显示了光线穿过水平的$y_0,y_1$面的时间，进入$y_0$面时间$t_{min}$（时间为负值），穿出$y_1$面时间$t_{max}$。</p>
 <p>左图三 显示了光线穿过长方体的时间结果，是左图1与左图2时间的交集。</p>
@@ -559,13 +559,13 @@ o+td=(1-b_1-b_2)\overrightarrow{P_0}+b_1\overrightarrow{P_1}+b_2\overrightarrow{
 <p>如果$t_{exit}&gt;=0,t_{enter}&lt;0$ ,光线在盒子内部，有交点。</p>
 <p>综上，光线与AABB有交点的条件，$t_{enter}<t_{exit}\&\&t_{exit}>=0$</t_{exit}\&\&t_{exit}></p>
 <h6 id="均匀空间划分Uniform-Spatial-Partitions-Grids"><a href="#均匀空间划分Uniform-Spatial-Partitions-Grids" class="headerlink" title="均匀空间划分Uniform Spatial Partitions (Grids)"></a>均匀空间划分Uniform Spatial Partitions (Grids)</h6><p>一个包围盒</p>
-<p><img src="/image-20220115203027172.png" alt="image-20220115203027172" style="zoom:50%;"></p>
+<p><img src="image-20220115203027172.png" alt="image-20220115203027172" style="zoom:50%;"></p>
 <p>将包围盒划分成更小的网格。</p>
-<p><img src="/image-20220115203115539.png" alt="image-20220115203115539" style="zoom:50%;"></p>
+<p><img src="image-20220115203115539.png" alt="image-20220115203115539" style="zoom:50%;"></p>
 <p>存储哪些网格中有物体。</p>
-<p><img src="/image-20220115203156500.png" alt="image-20220115203156500" style="zoom:50%;"></p>
+<p><img src="image-20220115203156500.png" alt="image-20220115203156500" style="zoom:50%;"></p>
 <p>以光线遍历顺序（有算法可以判断出光线与哪些格子相交，不用每个格子都计算）逐步穿过网格。如果网格中存储了物体，则与网格中的物体做相交判断。</p>
-<p><img src="/image-20220115203903093.png" alt="image-20220115203903093" style="zoom:50%;"></p>
+<p><img src="image-20220115203903093.png" alt="image-20220115203903093" style="zoom:50%;"></p>
 <p>网格的划分程度：</p>
 <ul>
 <li><h1 id="cells-C-objs"><a href="#cells-C-objs" class="headerlink" title="cells = C*#objs"></a>cells = C*#objs</h1></li>
@@ -573,39 +573,39 @@ o+td=(1-b_1-b_2)\overrightarrow{P_0}+b_1\overrightarrow{P_1}+b_2\overrightarrow{
 </ul>
 <p>网格适用于大小和空间均匀分布的大型对象集合。</p>
 <p>如果大空间中的物体很少则不适用。</p>
-<h6 id="KD-Tree空间划分"><a href="#KD-Tree空间划分" class="headerlink" title="KD-Tree空间划分"></a>KD-Tree空间划分</h6><p><img src="/image-20220115204503852.png" alt="image-20220115204503852" style="zoom:67%;"></p>
+<h6 id="KD-Tree空间划分"><a href="#KD-Tree空间划分" class="headerlink" title="KD-Tree空间划分"></a>KD-Tree空间划分</h6><p><img src="image-20220115204503852.png" alt="image-20220115204503852" style="zoom:67%;"></p>
 <p><strong>（上图画出了一部分划分，应该对每一部分都进行划分）</strong></p>
 <p>第一种Oct-Tree，也就是八叉树，每次将空间分为8个相等的部分，再递归的对子空间进行划分，因为图中是2维例子，所以只划分了4部分。当划分的子空间足够小或是空间中三角形面的数量很少的时候会停止划分。这种方法的显著缺点是，随着维度的上升划分的空间数量会呈指数级增长。</p>
 <p>第二种KD-Tree，也是本小节将要主要介绍的方法，其每次将空间划分为两部分，且划分依次沿着x-axis，y-axis，z-axis，即如图中所示，第一次横着将2维空间分为上下，第二次再竖着将上下两个子空间分别划分为左右部分，依次递归划分，终止条件与八叉树类似，细节问题之后按具体例子详解。</p>
 <p>第三种BSP-Tree，其与KD-Tree类似，唯一不同的是划分不再沿着固定一轴，可以任意方向划分，缺点自然是划分的空间没有规则性，求交困难。<br>接下来从一个例子具体介绍KD-Tree<br>第一步将空间分为两部分</p>
-<p><img src="/20200528115746152.png" alt="img" style="zoom:50%;"></p>
+<p><img src="20200528115746152.png" alt="img" style="zoom:50%;"></p>
 <p>第二步对左右两个子空间换个方向再分为两部分(这里只画出了右半部分，其实左边也是一样)</p>
-<p><img src="/20200528120022257.png" alt="img" style="zoom:50%;"></p>
+<p><img src="20200528120022257.png" alt="img" style="zoom:50%;"></p>
 <p>如此递归的划分下去，且在划分过程当中遵循这样几点：<br>1 依次沿着x-axis,y-axis,z-axis划分，使得空间被划分的更加平衡<br>2 划分的位置由空间中三角面的分布决定，具体细节不展开<br>3 叶子节点存储对应空间的所有物体或三角面信息，中间节点仅存储指针指向两个子空间<br>4 当划分空间太小或是子空间内只有少量三角形则停止划分</p>
-<p><img src="/image-20220115205923690.png" alt="image-20220115205923690" style="zoom:50%;"></p>
+<p><img src="image-20220115205923690.png" alt="image-20220115205923690" style="zoom:50%;"></p>
 <p>当KD-Tree建立完成之后，如何进行光线与物体求交判断呢？过程如下：<br>第一步判断光线是否与最外层的包围盒相交</p>
-<p><img src="/20200528122738136-16422515023224.png" alt="img" style="zoom:50%;"></p>
+<p><img src="20200528122738136-16422515023224.png" alt="img" style="zoom:50%;"></p>
 <p>如果相交进一步判断是否与对应的两个子空间相交</p>
-<p><img src="/20200528122935962.png" alt="img" style="zoom:50%;"></p>
+<p><img src="20200528122935962.png" alt="img" style="zoom:50%;"></p>
 <p>注意！因图中做了简化，最大包围盒的左半边并没继续进行划分(实际上应该要划分的)，所以左半部分对应的1号空间是叶子节点，如果光线与之相交，进一步判断与存储与叶子节点的物体信息求交。左半边判断完之后，接着判断右半部分</p>
 <p>同样如果对于有半部分存在相交情况，则对于右半部分的所有子空间，递归的执行这个步骤即可</p>
 <p>更加具体的过程不再展开。</p>
-<p><img src="/image-20220115210502645.png" alt="image-20220115210502645" style="zoom:50%;"></p>
+<p><img src="image-20220115210502645.png" alt="image-20220115210502645" style="zoom:50%;"></p>
 <p>优点：<br>利用KD-Tree的结构来构建AABB的好处是倘若光线与哪一部分空间不相交，那么则可以省略该部分空间所有子空间的判断过程，在原始的纯粹的AABB之上更进一步提升了加速效率。<br>缺点：<br>缺点是判断包围盒与三角面的是否相交较难，因此划分的过程不是那么想象的简单，其次同一个三角面可能被不同的包围盒同时占有，这两个不同包围盒内的叶节点会同时存储这一个三角形面</p>
 <h6 id="Bounding-Volume-Hierarchy-BVH"><a href="#Bounding-Volume-Hierarchy-BVH" class="headerlink" title="Bounding Volume Hierarchy (BVH)"></a>Bounding Volume Hierarchy (BVH)</h6><p>KD-Tree是按照空间划分的，BVH是按照三角形面进行划分的。</p>
 <p>所有三角形形成根节点。</p>
-<p><img src="/image-20220115210844099.png" alt="image-20220115210844099" style="zoom:67%;"></p>
+<p><img src="image-20220115210844099.png" alt="image-20220115210844099" style="zoom:67%;"></p>
 <p>按照一定规则划分为两部分，两部分可以有空间上的重叠。<strong>包围盒会重叠，但一个三角形面只会被存储在唯一的包围盒内，而这也就解决了KD-Tree的缺点！</strong></p>
-<p><img src="/image-20220115210915319.png" alt="image-20220115210915319" style="zoom:67%;"></p>
+<p><img src="image-20220115210915319.png" alt="image-20220115210915319" style="zoom:67%;"></p>
 <p>接下来与KD-Tree的建立类似，递归的对所有子空间重复该步骤</p>
-<p><img src="/2020052812483411.png" alt="img" style="zoom:67%;"></p>
+<p><img src="2020052812483411.png" alt="img" style="zoom:67%;"></p>
 <p>最终可以建立出如上图的所示的树形结构，同样为了画图方便，只进行了左半部分的划分，右半部分其实同理。</p>
 <p>ps：</p>
 <blockquote>
 <p>每次划分一般选择最长的那一轴划分，假设是x轴，那么划分点选择所有三角面的重心坐标在x坐标上的中位数进行划分，如此便能保证划分的三角形左右两边三角形数量尽可能差不多，当然也就使得树形结构建立的更加平衡，深度更小，平均搜索次数更少，提高了效率，这些都是数据结构的知识，相信大家掌握的都不错，就不多赘述了。<br>与KD-Tree一样，中间节点不存储物体三角面信息，只在叶节点中存储，终止条件可设定为当前包围盒内三角形数量足够少 （e.g. 5个）</p>
 </blockquote>
 <p>伪代码：</p>
-<p><img src="/image-20220115211207595.png" alt="image-20220115211207595"></p>
+<p><img src="image-20220115211207595.png" alt="image-20220115211207595"></p>
 <h2 id="辐射度量学"><a href="#辐射度量学" class="headerlink" title="辐射度量学"></a>辐射度量学</h2><ol>
 <li>whited-style光线追踪并没有对漫反射的光线进行追踪，而是直接返回当前着色点颜色。</li>
 <li>在计算光源直接照射的贡献时，使用了Blinn-Phong模型，而Blinn-Phong模型本身就是一个不准确的经验模型，使用的这种模型的whited-style光线追踪自身自然也是不正确的。</li>
@@ -616,39 +616,39 @@ o+td=(1-b_1-b_2)\overrightarrow{P_0}+b_1\overrightarrow{P_1}+b_2\overrightarrow{
 Q\left[ J = Joule \right]</script><h4 id="辐射通量-Radiant-flux"><a href="#辐射通量-Radiant-flux" class="headerlink" title="辐射通量(Radiant flux)"></a>辐射通量(Radiant flux)</h4><p>辐射通量（功率）是单位时间内发射、反射、传输或接收的能量。单位时间内流过传感器的光子数量。单位为瓦（W）或者流明（lm）</p>
 <script type="math/tex; mode=display">
 \Phi=\frac{dQ}{dt}[W=Watt][lm=lumen]</script><h4 id="辐射强度-Radiant-intensity"><a href="#辐射强度-Radiant-intensity" class="headerlink" title="辐射强度(Radiant intensity)"></a>辐射强度(Radiant intensity)</h4><p>三个模型：</p>
-<p><img src="/image-20220202175536590.png" alt="image-20220202175536590"></p>
+<p><img src="image-20220202175536590.png" alt="image-20220202175536590"></p>
 <p><strong>1. Radiant itensity其实就是指从一个光源出发某一方向上的亮度</strong><br><strong>2. Irradiance指某一微小平面所接受到的光线亮度</strong><br><strong>3. radiance衡量的是一条传播光线所具有的亮度(不受传播方向影响)</strong><br>（这里的亮度也可以理解为radiant flux(power)。）</p>
 <p>首先看Radiant intensity的数学定义：</p>
-<p><img src="/image-20220202180410237.png" alt="image-20220202180410237" style="zoom:50%;"></p>
+<p><img src="image-20220202180410237.png" alt="image-20220202180410237" style="zoom:50%;"></p>
 <p>辐射（发光）强度是点光源发出的每单位立体角（$\omega$）的功率：</p>
 <script type="math/tex; mode=display">
 I(\omega)=\frac{d\Phi}{d\omega}</script><p>单位坎德拉：</p>
 <script type="math/tex; mode=display">
 [\frac{W}{sr}][\frac{lm}{sr}=cd=candela]</script><h5 id="立体角"><a href="#立体角" class="headerlink" title="立体角"></a>立体角</h5><p>对比角度：</p>
-<p><img src="/image-20220202180518491.png" alt="image-20220202180518491" style="zoom: 67%;"></p>
+<p><img src="image-20220202180518491.png" alt="image-20220202180518491" style="zoom: 67%;"></p>
 <p>圆上的对向弧长与半径之比：</p>
 <script type="math/tex; mode=display">
 \theta = \frac{l}{r}</script><p>一圈有$2\pi$弧度。</p>
 <p>立体角：</p>
-<p><img src="/image-20220202180719607.png" alt="image-20220202180719607" style="zoom: 67%;"></p>
+<p><img src="image-20220202180719607.png" alt="image-20220202180719607" style="zoom: 67%;"></p>
 <p>球体对向面积与半径平方的比：</p>
 <script type="math/tex; mode=display">
 \Omega = \frac{A}{r^2}</script><p>一个球有$4\pi$立体角。</p>
 <p>立体角的计算，使用到了微分的思想：</p>
 <p>首先确定空间中一个方向(通过$\theta,\phi$)，在这两个角度上分别增加一个微分值，则可以计算出如图中所示的对应到球上的投影面积。其中$rd\theta$就是微分面积元的高，$rsin\theta d\phi$是微分面积元的宽，二者相乘，自然就是面积了，再根据立体角的定义除以$r^2$即可得到微分立体角了。可以看出微分立体角的大小不是简单的$d\theta,d\phi$的积，与$\theta$还有关系。</p>
-<p><img src="/image-20220202181114583.png" alt="image-20220202181114583" style="zoom:67%;"></p>
+<p><img src="image-20220202181114583.png" alt="image-20220202181114583" style="zoom:67%;"></p>
 <p>立体角的方向通过$\theta,\phi$确定。</p>
-<p><img src="/image-20220203152037817.png" alt="image-20220203152037817" style="zoom: 50%;"></p>
+<p><img src="image-20220203152037817.png" alt="image-20220203152037817" style="zoom: 50%;"></p>
 <p>对于点光源的辐射强度$I$</p>
-<p><img src="/image-20220203152232348.png" alt="image-20220203152232348" style="zoom:67%;"></p>
-<h4 id="辐照度（Irradiance）"><a href="#辐照度（Irradiance）" class="headerlink" title="辐照度（Irradiance）"></a>辐照度（Irradiance）</h4><p><img src="/image-20220204165620701.png" alt="image-20220204165620701" style="zoom:67%;"></p>
+<p><img src="image-20220203152232348.png" alt="image-20220203152232348" style="zoom:67%;"></p>
+<h4 id="辐照度（Irradiance）"><a href="#辐照度（Irradiance）" class="headerlink" title="辐照度（Irradiance）"></a>辐照度（Irradiance）</h4><p><img src="image-20220204165620701.png" alt="image-20220204165620701" style="zoom:67%;"></p>
 <p>每单位面积所接收到的功率：</p>
 <script type="math/tex; mode=display">
 E(x) = \frac{d\Phi(x)}{dA}\\
 [\frac{W}{m^2}][\frac{lm}{m^2}=lux]</script><p>Irradiance可以解释在blinn-phong模型中提到的兰伯特余弦定理：</p>
-<p><img src="/image-20220204170603545.png" alt="image-20220204170603545" style="zoom:67%;"></p>
+<p><img src="image-20220204170603545.png" alt="image-20220204170603545" style="zoom:67%;"></p>
 <p>blinn-phong模型中提到的光照强度也可以解释：</p>
-<p><img src="/image-20220204171623198.png" alt="image-20220204171623198" style="zoom:50%;"></p>
+<p><img src="image-20220204171623198.png" alt="image-20220204171623198" style="zoom:50%;"></p>
 <script type="math/tex; mode=display">
 I=\Phi \\
 E=\frac{\Phi}{4\pi r^2}</script><h4 id="辐射率（radiance）"><a href="#辐射率（radiance）" class="headerlink" title="辐射率（radiance）"></a>辐射率（radiance）</h4><p>辐射率是描述环境中光分布的基本场量</p>
@@ -656,7 +656,7 @@ E=\frac{\Phi}{4\pi r^2}</script><h4 id="辐射率（radiance）"><a href="#辐�
 <li>辐射率是与光线相关的数量</li>
 <li>渲染就是计算辐射率</li>
 </ul>
-<p><img src="/image-20220204172121924.png" alt="image-20220204172121924"></p>
+<p><img src="image-20220204172121924.png" alt="image-20220204172121924"></p>
 <p>辐射率（亮度）是表面在<strong>每单位立体角、每单位投影面积</strong>上发射、反射、透射或接收的<strong>功率</strong>。</p>
 <script type="math/tex; mode=display">
 L(p,w)=\frac{d^2\Phi(p,w)}{dwdAcos\theta}\\
@@ -667,24 +667,24 @@ L(p,w)=\frac{d^2\Phi(p,w)}{dwdAcos\theta}\\
 </li>
 </ul>
 <h5 id="观点"><a href="#观点" class="headerlink" title="观点"></a>观点</h5><p>入射观点：</p>
-<p><img src="/image-20220205111645386.png" alt="image-20220205111645386" style="zoom:67%;"></p>
+<p><img src="image-20220205111645386.png" alt="image-20220205111645386" style="zoom:67%;"></p>
 <p>$dA$单位面积会接受各个方向的能量，Radiance只关注某个方向单位立体角所发出的能量被$dA$单位面积所接受。</p>
 <p>辐射观点：</p>
-<p><img src="/image-20220205112433844.png" alt="image-20220205112433844" style="zoom:67%;"></p>
+<p><img src="image-20220205112433844.png" alt="image-20220205112433844" style="zoom:67%;"></p>
 <p>$dA$单位面积会向各个方向辐射能量，Radiance只关注某个方向单位立体角的能量。</p>
 <h3 id="双向反射分布函数（BRDF）"><a href="#双向反射分布函数（BRDF）" class="headerlink" title="双向反射分布函数（BRDF）"></a>双向反射分布函数（BRDF）</h3><p>irradiance： $dA$面积接受到的所有能量。</p>
 <p>radiance：从$dw$单位角所接受到的能量。</p>
-<p><img src="/image-20220206134022954.png" alt="image-20220206134022954" style="zoom: 80%;"></p>
+<p><img src="image-20220206134022954.png" alt="image-20220206134022954" style="zoom: 80%;"></p>
 <p>理想光滑表面会把入射光线完全反射到镜面反射方向，其它方向则完全没有。理想粗糙表面会把入射光线均匀的反射到所有方向。因此所谓BRDF就是描述这样一个从不同方向入射之后，反射光线分布情况的函数$f_r(w_i \rightarrow w_r)$。</p>
-<p><img src="/image-20220206152344543.png" alt="image-20220206152344543" style="zoom:67%;"></p>
-<p><img src="/image-20220206152648453.png" alt="image-20220206152648453" style="zoom:80%;"></p>
-<h4 id="反射方程"><a href="#反射方程" class="headerlink" title="反射方程"></a>反射方程</h4><p><img src="/image-20220206153310854.png" alt="image-20220206153310854" style="zoom: 67%;"></p>
+<p><img src="image-20220206152344543.png" alt="image-20220206152344543" style="zoom:67%;"></p>
+<p><img src="image-20220206152648453.png" alt="image-20220206152648453" style="zoom:80%;"></p>
+<h4 id="反射方程"><a href="#反射方程" class="headerlink" title="反射方程"></a>反射方程</h4><p><img src="image-20220206153310854.png" alt="image-20220206153310854" style="zoom: 67%;"></p>
 <p>摄像机所接受到的能量$L_r(x,w_r)$由所有不同方向的入射光线$L_i(p,w_i)cos\theta$决定，并且每个入射光线有不同的BRDF函数$f_r(p,w_i\rightarrow w_r)$，做相乘并积分。</p>
 <p>入射光线$L_i(p,w_i）$可能是其它物体的反射光线$L_r(p,w_r)$，因此反射方程是个递归的方程。</p>
 <h4 id="渲染方程"><a href="#渲染方程" class="headerlink" title="渲染方程"></a>渲染方程</h4><p>渲染方程在反射方程的基础之上添加了一个自发光项(Emission term)$L_e(p,w_o)$：</p>
 <script type="math/tex; mode=display">
 L_o(p,w_o) = L_e(p,w_o)+\int_{\Omega^+}L_i(p,w_i)f_r(p,w_i,w_o)(n\cdot w_i)dw_i</script><p>所有光线方向均指向外，因此积分域取半球。</p>
-<p><img src="/image-20220206161857058.png" alt="image-20220206161857058"></p>
+<p><img src="image-20220206161857058.png" alt="image-20220206161857058"></p>
 <p>令：</p>
 <script type="math/tex; mode=display">
 L=L_r(x,w)\\
@@ -696,18 +696,18 @@ L=E+KL</script><p>再根据一些数学原理，可以化简得到：</p>
 L=E+KE+K^2E+K^3E+......</script><p>E为自发光，KE则代表对光源反射一次的结果，即<strong>直接光照</strong>，那么前两项之和就是光栅化当中着色所考虑的结果，对于<strong>全局光照</strong>来说，还考虑了$K^2E$，一次弹射的间接照明，$K^3E$就是两次弹射的间接光照。</p>
 <p>效果：</p>
 <p>一次反射直接光照：</p>
-<p><img src="/20200602200341414.png" alt="img" style="zoom:33%;"></p>
+<p><img src="20200602200341414.png" alt="img" style="zoom:33%;"></p>
 <p>两次反射，考虑到一次弹射的间接光照：</p>
-<p><img src="/20200602200239736.png" alt="img" style="zoom:33%;"></p>
+<p><img src="20200602200239736.png" alt="img" style="zoom:33%;"></p>
 <p>3次反射，考虑到两次弹射的间接光照：</p>
-<p><img src="/20200602200259364.png" alt="img" style="zoom:33%;"></p>
+<p><img src="20200602200259364.png" alt="img" style="zoom:33%;"></p>
 <p>(考虑次数越多越接近真实图片效果,趋近收敛)</p>
 <h2 id="蒙特卡洛积分"><a href="#蒙特卡洛积分" class="headerlink" title="蒙特卡洛积分"></a>蒙特卡洛积分</h2><p> 对函数值进行多次采样求均值作为积分值的近似。</p>
 <p>积分值$F_N$:</p>
 <script type="math/tex; mode=display">
 F_N=\frac{1}{N}\sum_{i=1}^N\frac{f(X_i)}{p(X_i)}</script><p>求解的定积分$\int_a^b f(x)dx$，$X_i$为随机变量，服从概率密度函数$p(x)$。</p>
 <p>假设在积分域$[a,b]$均匀采样。</p>
-<p><img src="/image-20220208154156305.png" alt="image-20220208154156305" style="zoom:67%;"></p>
+<p><img src="image-20220208154156305.png" alt="image-20220208154156305" style="zoom:67%;"></p>
 <script type="math/tex; mode=display">
 X_i \sim p(x) = C (constant)\\
 \int_a^b p(x)dx = 1\\
@@ -725,7 +725,7 @@ F_N=\frac{b-a}{N}\sum_{i=1}^Nf(X_i)</script><p>备注：</p>
 <li>不考虑漫反射的弹射</li>
 </ul>
 <h3 id="直接光照"><a href="#直接光照" class="headerlink" title="直接光照"></a>直接光照</h3><p>假设我们要在以下场景中渲染一个像素（点），仅用于直接光照：</p>
-<p><img src="/image-20220209172832420.png" alt="image-20220209172832420" style="zoom:67%;"></p>
+<p><img src="image-20220209172832420.png" alt="image-20220209172832420" style="zoom:67%;"></p>
 <p>$w_0$方向指向摄像机。</p>
 <p>$w_i$方向是接受到的光线。</p>
 <p>渲染方程中暂时不考虑自发光：</p>
@@ -740,15 +740,15 @@ X_k\sim p(x)</script><p>被积函数：$f(x)=L_i(p,w_i)f_r(p,w_i,w_o)(n\cdot w_i
 <p>从$w_0$看向点p过程：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">shade(p,w_0):    </span><br><span class="line">    随机选取N个方向 w_i 从概率密度函数中</span><br><span class="line">    L_0 = 0.0</span><br><span class="line">    for each w_i :</span><br><span class="line">        追踪光线 r(p,w_i)</span><br><span class="line">        if 光线r打中了光源：</span><br><span class="line">            L_0+=(1/N)*L_i*f_r*cos / pdf(w_i)</span><br><span class="line">    retrun L_0</span><br></pre></td></tr></table></figure>
 <h3 id="全局光照"><a href="#全局光照" class="headerlink" title="全局光照"></a>全局光照</h3><p>考虑物体的一次反射，P点接受了Q点反射的光，相当于P是摄像机，Q是光源，对于QP这束光，要对Q进行蒙特卡洛积分。</p>
-<p><img src="/image-20220209174955111.png" alt="image-20220209174955111"></p>
+<p><img src="image-20220209174955111.png" alt="image-20220209174955111"></p>
 <p>从$w_0$看向点p过程：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">shade(p,w_0):        </span><br><span class="line">    随机选取N个方向 w_i 从概率密度函数中</span><br><span class="line">    L_0 = 0.0</span><br><span class="line">    for each w_i :</span><br><span class="line">        追踪光线 r(p,w_i)</span><br><span class="line">        if 光线r打中了光源：</span><br><span class="line">            L_0+=(1/N)*L_i*f_r*cos / pdf(w_i)</span><br><span class="line">        if 光线r打中了物体：</span><br><span class="line">        	L_0+=(1/N)*shade(q,-w_i)*f_r*cos / pdf(w_i) (递归 )</span><br><span class="line">    retrun L</span><br></pre></td></tr></table></figure>
 <p>产生的问题一：</p>
-<p><img src="/image-20220301174513450.png" alt="image-20220301174513450"></p>
+<p><img src="image-20220301174513450.png" alt="image-20220301174513450"></p>
 <p>我们通过每次对光线方向的采样从而解出方程，假设每次采样100条，那么从人眼出发的第一次采样就是100条，在进行第二次反射之后就是10000条，依次类推，反射越多次光线数量便会爆炸增长，计算量会无法负担，那么如何才能使得光线数量不爆炸增长呢？<strong>唯有每次只采样一个方向！N=1</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">shade(p,w_0):        </span><br><span class="line">    随机选取1个方向 w_i 从概率密度函数中</span><br><span class="line">    L_0 = 0.0</span><br><span class="line">    for each w_i :</span><br><span class="line">        追踪光线 r(p,w_i)</span><br><span class="line">        if 光线r打中了光源：</span><br><span class="line">            L_0+=(1/N)*L_i*f_r*cos / pdf(w_i)</span><br><span class="line">        if 光线r打中了物体：</span><br><span class="line">        	L_0+=(1/N)*shade(q,-w_i)*f_r*cos / pdf(w_i) (递归 )</span><br><span class="line">    retrun L</span><br></pre></td></tr></table></figure>
 <p>随之带来的问题是，采样的噪声很大，解决的方案是：每个像素渲染时要追踪多条路径。</p>
-<p><img src="/image-20220302105006742.png" alt="image-20220302105006742"></p>
+<p><img src="image-20220302105006742.png" alt="image-20220302105006742"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ray_generation(摄像机位置视点camPos,像素点poxel)</span><br><span class="line">	通过像素均匀采样N个点</span><br><span class="line">	pixel_radiance= 0</span><br><span class="line">	for each 采样点：</span><br><span class="line">		追踪光线r(camPos,cam_to_sample)</span><br><span class="line">		if r 打中了场景中的点p</span><br><span class="line">			pixel_radiance+= 1/N * shade(p,sample_to_cam)</span><br><span class="line">	return pixel_radiance</span><br></pre></td></tr></table></figure>
 <p> 问题2：shade函数会无限递归，如果粗暴的设置递归深度，会造成能量损失误差较大。</p>
 <p>解决方法：俄罗斯轮盘赌</p>
@@ -761,12 +761,12 @@ X_k\sim p(x)</script><p>被积函数：$f(x)=L_i(p,w_i)f_r(p,w_i,w_o)(n\cdot w_i
 E=P*(L_o/P)+(1-P)*0=L_o</script><p>修改shade函数：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">shade(p,w_0):</span><br><span class="line">	生成概率P_RR</span><br><span class="line">	在区间[0,1]之间生成随机数ksi</span><br><span class="line">	if(ksi&gt;P_RR) return 0.0;</span><br><span class="line"></span><br><span class="line">    随机选取1个方向 w_i 从概率密度函数中</span><br><span class="line">    L_0 = 0.0</span><br><span class="line">    for each w_i :</span><br><span class="line">        追踪光线 r(p,w_i)</span><br><span class="line">        if 光线r打中了光源：</span><br><span class="line">            L_0+=(1/N)*L_i*f_r*cos / pdf(w_i) /P_RR</span><br><span class="line">        if 光线r打中了物体：</span><br><span class="line">        	L_0+=(1/N)*shade(q,-w_i)*f_r*cos / pdf(w_i)/P_RR (递归 )</span><br><span class="line">    retrun L</span><br></pre></td></tr></table></figure>
 <p>问题三：在像素低采样光线的情况下效率很低。</p>
-<p><img src="/image-20220302161512786.png" alt="image-20220302161512786"></p>
+<p><img src="image-20220302161512786.png" alt="image-20220302161512786"></p>
 <p>产生的原因：</p>
-<p><img src="/image-20220302161625045.png" alt="image-20220302161625045"></p>
+<p><img src="image-20220302161625045.png" alt="image-20220302161625045"></p>
 <p>由于光源的面积不一样，在一个采样点发射光线，有可能发射5条光线就有一条打到光源，也有可能500,50000条光线才有一条能打到光源。因此，如果我们在着色点对半球进行均匀采样，就会“浪费”很多光线。</p>
 <p>改正方法：我们不再整个半球上发射光线，只在光源面积上发射光线。但是渲染方程是在$d\omega$上积分，因此我们要找到光源面积$dA$与$d\omega$的关系。</p>
-<p><img src="/image-20220302162333653.png" alt="image-20220302162333653"></p>
+<p><img src="image-20220302162333653.png" alt="image-20220302162333653"></p>
 <p>有上图几何关系和立体角的定义可知：</p>
 <script type="math/tex; mode=display">
 d\omega =\frac{dA cos\theta'}{||x'-x||^2}</script><p>$dA cos\theta’$相当于把光源面积指向着色点，$||x’-x||^2$相当于半径的平方。</p>
@@ -779,9 +779,9 @@ L_o(p,w_o) = \int_{\Omega^+}L_i(p,w_i)f_r(p,w_i,w_o)(n\cdot w_i)dw_i\\
 <li>直接光照，来自光源的部分，不用俄罗斯轮盘赌</li>
 <li>其它部分，间接部分，考虑俄罗斯轮盘赌</li>
 </ul>
-<p><img src="/image-20220302163856856.png" alt="image-20220302163856856"></p>
+<p><img src="image-20220302163856856.png" alt="image-20220302163856856"></p>
 <p>如果光源被挡住了，就说明没有直接光照部分。</p>
-<p><img src="/image-20220302164258949.png" alt="image-20220302164258949"></p>
+<p><img src="image-20220302164258949.png" alt="image-20220302164258949"></p>
 <p>综上，shade代码被修改为：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">shade(p,wo):</span><br><span class="line">	# 直接光源部分</span><br><span class="line">	对光源面积均匀采样x&apos; pdf_light=1/A</span><br><span class="line">	if 光线没有被阻挡：</span><br><span class="line">		L_dir = L_i * f_r * cos θ * cos θ’ / |x’ - p|^2 / pdf_light</span><br><span class="line">	</span><br><span class="line">	# 其它部分</span><br><span class="line">	L_indir = 0.0</span><br><span class="line">	生成概率P_RR</span><br><span class="line">	半球上均匀采样 wi (pdf_hemi=1/2pi)</span><br><span class="line">	追踪光线r(p,wi)</span><br><span class="line">	if r 打中非光源物体：</span><br><span class="line">		L_indir = shade(q, -wi) * f_r * cos θ / pdf_hemi / P_RR</span><br><span class="line">	Return L_dir + L_indir</span><br></pre></td></tr></table></figure>
 
