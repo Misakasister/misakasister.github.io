@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="C++,基础笔记," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="对象和类 类声明：以数据成员的方式描述数据部分，以成员函数（称为方法）的方式描述共有接口；放在头文件中 类方法定义：描述如何类成员函数。放在源代码中  12345678910111213141516171819#pragma once#include &amp;lt;string&amp;gt;class Stock  // class declaration&amp;#123;private:    std::stri">
+<meta name="keywords" content="C++,基础笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="c++面向对象">
+<meta property="og:url" content="http://yoursite.com/2022/03/09/c-面向对象/index.html">
+<meta property="og:site_name" content="rcos97的博客">
+<meta property="og:description" content="对象和类 类声明：以数据成员的方式描述数据部分，以成员函数（称为方法）的方式描述共有接口；放在头文件中 类方法定义：描述如何类成员函数。放在源代码中  12345678910111213141516171819#pragma once#include &amp;lt;string&amp;gt;class Stock  // class declaration&amp;#123;private:    std::stri">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2022/03/09/c-面向对象/image-20220301170125171.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/09/c-面向对象/image-20210812010658117.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/09/c-面向对象/image-20210812010824269.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/09/c-面向对象/image-20210812011654884.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/09/c-面向对象/image-20210812011808963.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/09/c-面向对象/image-20210812170316128.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/09/c-面向对象/image-20220304092454475.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/09/c-面向对象/image-20220304094740163.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/09/c-面向对象/image-20220304095033504.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/09/c-面向对象/image-20220304095421267.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/09/c-面向对象/image-20210815194347832.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/09/c-面向对象/image-20210815202112888.png">
+<meta property="og:image" content="http://yoursite.com/2022/03/09/c-面向对象/面向对象/image-20220306170052808.png">
+<meta property="og:updated_time" content="2022-03-09T02:35:08.644Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="c++面向对象">
+<meta name="twitter:description" content="对象和类 类声明：以数据成员的方式描述数据部分，以成员函数（称为方法）的方式描述共有接口；放在头文件中 类方法定义：描述如何类成员函数。放在源代码中  12345678910111213141516171819#pragma once#include &amp;lt;string&amp;gt;class Stock  // class declaration&amp;#123;private:    std::stri">
+<meta name="twitter:image" content="http://yoursite.com/2022/03/09/c-面向对象/image-20220301170125171.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2022/03/09/c-面向对象/"/>
+
+
+
+
+
+  <title>c++面向对象 | rcos97的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">rcos97的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2022/03/09/c-面向对象/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="rcos97">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/39228583?v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="rcos97的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">c++面向对象</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-03-09T10:26:27+08:00">
+                2022-03-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="对象和类"><a href="#对象和类" class="headerlink" title="对象和类"></a>对象和类</h2><ul>
+<li>类声明：以数据成员的方式描述数据部分，以成员函数（称为方法）的方式描述共有接口；放在头文件中</li>
+<li>类方法定义：描述如何类成员函数。放在源代码中</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> once</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stock</span>  // <span class="title">class</span> <span class="title">declaration</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">string</span> company;</span><br><span class="line">    <span class="keyword">long</span> shares;</span><br><span class="line">    <span class="keyword">double</span> share_val;</span><br><span class="line">    <span class="keyword">double</span> total_val;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">set_tot</span><span class="params">()</span> </span>&#123; total_val = shares * share_val; &#125;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">acquire</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span> &amp; co, <span class="keyword">long</span> n, <span class="keyword">double</span> pr)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">buy</span><span class="params">(<span class="keyword">long</span> num, <span class="keyword">double</span> price)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">sell</span><span class="params">(<span class="keyword">long</span> num, <span class="keyword">double</span> price)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">double</span> price)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;    <span class="comment">// note semicolon at the end</span></span><br></pre></td></tr></table></figure>
+<p>类对象默认访问控制为私有private。结构体默认为公有public。</p>
+<p>定义位于类声明中的函数自动成为内联函数。（set_tot()）</p>
+<p><strong>所创建的每个新对象都有自己的存储空间，用于存储其内部变量和 类成员；但同一个类的所有对象共享同一组类方法，即每种方法只有一 个副本</strong>。</p>
+<p><img src="image-20220301170125171.png" alt="image-20220301170125171"></p>
+<h3 id="使用类"><a href="#使用类" class="headerlink" title="使用类"></a>使用类</h3><p>使用类与使用基本的内置类型（如int和char）尽可能相同。要创建类对象，可以声明类变量，也可以使用 <code>new</code> 为类对象分配存储空间。可以将对象作为函数的参数和返回值，也可以将一个对象赋给另一个。</p>
+<p>C++提供了两种使用构造函数来初始化对象的方式。第一种方式是 显式地调用构造函数：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Stock food = Stock(<span class="string">"World Cabbage"</span>, <span class="number">250</span>, <span class="number">1.25</span>);</span><br></pre></td></tr></table></figure>
+<p>另一种方式是隐式地调用构造函数：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Stock <span class="title">garment</span><span class="params">(<span class="string">"Furry Mason"</span>, <span class="number">50</span>, <span class="number">2.5</span>)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>这种格式更紧凑，它与下面的显式调用等价。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Stock garment = Stock(<span class="string">"Furry Mason"</span>, <span class="number">50</span>, <span class="number">2.5</span>);</span><br></pre></td></tr></table></figure>
+<p>每次创建类对象（包括使用 <code>new</code> 动态分配内存）时，C++都使用类构造函数。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Stock *pstock = <span class="keyword">new</span> Stock(<span class="string">"Electrosgock Games"</span>, <span class="number">18.</span> <span class="number">19.0</span>);</span><br></pre></td></tr></table></figure>
+<p>这条语句创建一个Stock对象，将其初始化为参数提供的值，并将 该对象的地址赋给pstock指针。</p>
+<p><strong>还可以使用列表初始化。</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Stock jock&#123;<span class="string">"xxxx"</span>&#125;</span><br></pre></td></tr></table></figure>
+<p>默认构造函数是在未提供显式初始值时，用来创建对象的构造函数。如果没有提供任何构造函数，则C++将自动提供默认构造函数。它是默认构造函 数的隐式版本，不做任何工作。对于Stock类来说，默认构造函数可能 如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Stock::Stock() &#123;&#125;;</span><br></pre></td></tr></table></figure>
+<p>提供了构造函数，就没有默认构造函数了。</p>
+<h4 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Stock stock2 = Stock(<span class="string">"Boffo Objects"</span>, <span class="number">2</span>, <span class="number">2.0</span>);</span><br><span class="line">stock1 = Stock(<span class="string">"Nifty Foods"</span>, <span class="number">10</span>, <span class="number">50.0</span>);</span><br></pre></td></tr></table></figure>
+<p><strong>第一条语句是初始化，它创建有指定值的对象，可能会创建临时对象（也可能不会）；第二条语句是赋值。像这样在赋值语句中使用构造函数总会导致在赋值前创建一个临时对象</strong>。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stock2=stock1</span><br></pre></td></tr></table></figure>
+<p>源对象的每个数据成员的内容复制到目标成员中。</p>
+<h4 id="const-成员函数"><a href="#const-成员函数" class="headerlink" title="const 成员函数"></a>const 成员函数</h4><p><code>const</code> 成员函数</p>
+<p>请看下面的代码片段：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Stock land = Stock(<span class="string">"KP"</span>, <span class="number">0</span>, <span class="number">0.0</span>);</span><br><span class="line">land.show();</span><br></pre></td></tr></table></figure>
+<p>对于当前的C++来说，编译器将拒绝第二行。这是什么原因呢？因为 <code>show()</code> 的代码无法确保调用对象不被修改。</p>
+<p>我们以前通过将函数参数声明为 <code>const</code> 引用或指向 <code>const</code> 的指针来解决这种问题。但这里存在语法问题：<code>show()</code> 方法没有任何参数。相反，它所使用的对象是由方法调用隐式地提供。</p>
+<p>需要一种新的语法来保证函数不会修改调用对象。<strong>C++的解决方法是将 <code>const</code> 关键字放在函数的括号后面</strong>。也就是说，<code>show()</code> 声明应像这样：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">show</span><span class="params">()</span> <span class="keyword">const</span></span>;         <span class="comment">// promise not to change invoking object</span></span><br></pre></td></tr></table></figure>
+<p>同样，函数定义的开头应像这样：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> stock::show() <span class="keyword">const</span> &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>以这种方式声明和定义的类函数被称为 <code>const</code> 成员函数</strong>，从而确保函数内不会修改调用对象。</p>
+<h3 id="对象数组"><a href="#对象数组" class="headerlink" title="对象数组"></a>对象数组</h3><p>声明对象数组的方法与 声明标准类型数组相同。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Stock mystuff[<span class="number">4</span>];</span><br></pre></td></tr></table></figure>
+<p>可以用构造函数来初始化数组元素。在这种情况下，必须为每个元 素调用构造函数：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/ create an <span class="built_in">array</span> of initialized objects</span><br><span class="line">    Stock stocks[<span class="number">4</span>] = &#123;</span><br><span class="line">        Stock(<span class="string">"NanoSmart"</span>, <span class="number">12</span>, <span class="number">20.0</span>),</span><br><span class="line">        Stock(<span class="string">"Boffo Objects"</span>, <span class="number">200</span>, <span class="number">2.0</span>),</span><br><span class="line">        Stock(<span class="string">"Monolithic Obelisks"</span>, <span class="number">130</span>, <span class="number">3.25</span>),</span><br><span class="line">        Stock(<span class="string">"Fleep Enterprises"</span>, <span class="number">60</span>, <span class="number">6.5</span>)</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
+<p>这里的代码使用标准格式对数组进行初始化：用括号括起的、以逗 号分隔的值列表。其中，每次构造函数调用表示一个值。如果类包含多 个构造函数，则可以对不同的元素使用不同的构造函数。</p>
+<h2 id="运算符重载"><a href="#运算符重载" class="headerlink" title="运算符重载"></a>运算符重载</h2><p>c++根据操作数的数目和类型决定采用哪种操作。</p>
+<p><code>operator op (argument)</code></p>
+<p>限制：</p>
+<ul>
+<li>1．重载后的运算符<strong>必须至少有一个操作数是用户定义的类型</strong>，这将防止用户为标准类型重载运算符；</li>
+<li>2．使用运算符时不能违反运算符原来的句法规则。例如不要将 <code>-</code> 重载为加法运算。同样，不能修改运算符的优先级；</li>
+<li>3．不能创建新运算符。例如，不能定义 <code>operator **()</code> 函数来表示求幂；</li>
+<li>4．不能重载下面的运算符：</li>
+</ul>
+<p><img src="image-20210812010658117.png" alt="image-20210812010658117"></p>
+<ul>
+<li>5．表11.1中的大多数运算符都可以通过成员或非成员函数进行重 载，但下面的运算符只能通过成员函数进行重载。</li>
+</ul>
+<p><img src="image-20210812010824269.png" alt="image-20210812010824269"></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stu</span>&#123;</span> </span><br><span class="line">    Stu <span class="keyword">operator</span>+(<span class="keyword">const</span> Stu &amp;ss)<span class="keyword">const</span>       <span class="comment">//成员函数运算符重载</span></span><br><span class="line">        &#123;</span><br><span class="line">            Stu n;</span><br><span class="line">            n.age=<span class="keyword">this</span>-&gt;age+ss.age;   <span class="comment">//this可去掉</span></span><br><span class="line">            n.name=ss.name;</span><br><span class="line">            <span class="keyword">return</span> n;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">friend</span> <span class="keyword">int</span> <span class="keyword">operator</span>+(<span class="keyword">const</span> <span class="keyword">int</span> s1,<span class="keyword">const</span> Stu &amp;s2);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">int</span> <span class="keyword">operator</span>+(<span class="keyword">const</span> <span class="keyword">int</span> s1,<span class="keyword">const</span> Stu &amp;s2)    <span class="comment">//非成员函数运算符重载 无friend 和::限定作用域</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    n=s1*s2.age;</span><br><span class="line">    <span class="keyword">return</span> n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="友元"><a href="#友元" class="headerlink" title="友元"></a>友元</h3><ul>
+<li>友元函数；</li>
+<li>友元类；</li>
+<li>友元成员函数。</li>
+</ul>
+<p>通过让函数成为类的友元，可以赋予该函数与类的成员函数相同的访问权限。</p>
+<p><strong>类的友元函数是非成员函数，但访问权限与成员函数相同</strong></p>
+<p>需要友元的原因是为了解决这样一个问题：</p>
+<p><img src="image-20210812011654884.png" alt="image-20210812011654884"></p>
+<p><img src="image-20210812011808963.png" alt="image-20210812011808963"></p>
+<h3 id="重载-lt-lt"><a href="#重载-lt-lt" class="headerlink" title="重载&lt;&lt;"></a>重载&lt;&lt;</h3><p>使之与cout可以显示对象的内容</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ostream &amp; <span class="keyword">operator</span> &lt;&lt; (ostream &amp;os,<span class="keyword">const</span> c_name &amp; obj)&#123;</span><br><span class="line">    os&lt;&lt;....;</span><br><span class="line">    <span class="keyword">return</span> os;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="将对象转换成基本类型"><a href="#将对象转换成基本类型" class="headerlink" title="将对象转换成基本类型"></a>将对象转换成基本类型</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">operator typename()；</span><br><span class="line">    <span class="comment">//---//</span></span><br><span class="line"><span class="function"><span class="keyword">operator</span> <span class="title">int</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+<h2 id="动态内存分配"><a href="#动态内存分配" class="headerlink" title="动态内存分配"></a>动态内存分配</h2><h3 id="static"><a href="#static" class="headerlink" title="static"></a>static</h3><p><code>int StringBad::num_strings = 0;</code> 这条语句将静态成员 <code>num_strings</code> 的值初始化为零。注意：<strong>不能在类声明中初始化静态成员变量，这是因为类声明中只描述如何分配内存，但并不分配内存</strong>。如果是const整数类型或者枚举类型，可以在类声明中初始化。</p>
+<p>首先，不能通过对象调用静态成员函数；实际上，静态成员函数甚 至不能使用this指针。</p>
+<p>其次，由于静态成员函数不与特定的对象相关联，因此只能使用静态数据成员。</p>
+<p><img src="image-20210812170316128.png" alt="image-20210812170316128"></p>
+<h3 id="特殊成员函数"><a href="#特殊成员函数" class="headerlink" title="特殊成员函数"></a>特殊成员函数</h3><ul>
+<li>默认构造函数；</li>
+<li>默认析构函数；</li>
+<li>复制构造函数；</li>
+<li>赋值运算符；</li>
+<li>地址运算符。</li>
+</ul>
+<p>更准确地说，编译器将生成上述最后三个函数的定义——如果程序 使用对象的方式要求这样做。例如，如果您将一个对象赋给另一个对 象，编译器将提供赋值运算符的定义。</p>
+<h4 id="复制构造函数"><a href="#复制构造函数" class="headerlink" title="复制构造函数"></a>复制构造函数</h4><p>复制构造函数是构造函数的一种，也称拷贝构造函数，它只有一个参数，参数类型是本类的引用。</p>
+<p>复制构造函数用于将一个对象复制到新创建的对象中。也就是说，<strong>它用于初始化过程中（包括按值传递参数），而不是常规的赋值过程</strong>（那赋值的时候怎么办？赋值靠赋值运算符=）原型是：<code>Class_name(const Class_name &amp;)</code>。它接受一个指向类对象的常量引用作为参数。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Complex</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">double</span> real, imag;</span><br><span class="line">    Complex(<span class="keyword">double</span> r,<span class="keyword">double</span> i)&#123;</span><br><span class="line">        real = r; imag = i;</span><br><span class="line">    &#125;</span><br><span class="line">    Complex(<span class="keyword">const</span> Complex &amp; c)&#123;<span class="comment">//复制构造函数</span></span><br><span class="line">        real = c.real; imag = c.imag;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"Copy Constructor called"</span>&lt;&lt;<span class="built_in">endl</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h5 id="调用时机"><a href="#调用时机" class="headerlink" title="调用时机"></a>调用时机</h5><p>1) 当用一个对象去初始化同类的另一个对象时，会引发复制构造函数被调用。例如，下面的两条语句都会引发复制构造函数的调用，用以初始化 c2。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Complex c2(c1);</span><br><span class="line">Complex c2 = c1;</span><br></pre></td></tr></table></figure>
+<p>这两条语句是等价的。</p>
+<p>注意，第二条语句是初始化语句，不是赋值语句。赋值语句的等号左边是一个早已有定义的变量，赋值语句不会引发复制构造函数的调用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Complex c1, c2; </span><br><span class="line">c1=c2;</span><br></pre></td></tr></table></figure>
+<p>这条语句不会引发复制构造函数的调用，因为 c1 早已生成，已经初始化过了。</p>
+<p>2) 如果函数 F 的参数是类 A 的对象（<strong>不是引用</strong>），那么当 F 被调用时，类 A 的复制构造函数将被调用。换句话说，作为形参的对象，是用复制构造函数初始化的，而且调用复制构造函数时的参数，就是调用函数时所给的实参。<br>3) 如果函数的返冋值是类 A 的对象，则函数返冋时，类 A 的复制构造函数被调用。换言之，作为函数返回值的对象是用复制构造函数初始化 的，而调用复制构造函数时的实参，就是 return 语句所返回的对象。</p>
+<p><strong>每当程序生成了对象副本时，编译器都将使用复制构造函数</strong>。何时生成临时对象随编译器而异，但无论是哪种编译器，<strong>当按值传递和返回对象时，都将调用复制构造函数</strong>。</p>
+<h4 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h4><p>。C++允许类对象赋值，这是通过自动为类重载赋值运算符实现的。这种运算符 的原型如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Class_name &amp; Class_name::operator=(const Class_name &amp;);</span><br></pre></td></tr></table></figure>
+<p>它接受并返回一个指向类对象的引用。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// assign a String to a String</span></span><br><span class="line">String &amp; String::<span class="keyword">operator</span>=(<span class="keyword">const</span> String &amp; st)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span> == &amp;st)</span><br><span class="line">        <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">delete</span> [] str;</span><br><span class="line">    len = st.len;</span><br><span class="line">    str = <span class="keyword">new</span> <span class="keyword">char</span>[len + <span class="number">1</span>];</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">strcpy</span>(str, st.str);</span><br><span class="line">    <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="调用时机-1"><a href="#调用时机-1" class="headerlink" title="调用时机"></a>调用时机</h5><p>赋值运算符的功能以及何时使用它</p>
+<p>将已有的对象赋给另一个对象时，将使用重载的赋值运算符。初始化对象时，并不一定会使用赋值运算符，而更可能是调用复制构造函数。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">StringBad metoo = knot;</span><br></pre></td></tr></table></figure>
+<p>这里，<code>metoo</code> 是一个新创建的对象，被初始化为 <code>knot</code> 的值，因此使用复制构造函数。然而，正如前面指出的，实现时<strong>也可能分两步来处理这条语句：使用复制构造函数创建一个临时对象，然后通过赋值将临时 对象的值复制到新对象中</strong>。这就是说，初始化总是会调用复制构造函数，而使用 <code>=</code> 运算符时也可能调用赋值运算符。</p>
+<p>与复制构造函数相似，赋值运算符的隐式实现也对成员进行逐个复制，静态成员不受影响。</p>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">class RetedPlayer: public TableTennisPlayer &#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>使用公有派生，<strong>基类的公有成员将成为派生类 的公有成员；基类的私有部分也将成为派生类的一部分，但只能通过基 类的公有和保护方法访问</strong>。</p>
+<h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// RatedPlayer methods</span></span><br><span class="line">RatedPlayer::RatedPlayer(<span class="keyword">unsigned</span> <span class="keyword">int</span> r, <span class="keyword">const</span> <span class="built_in">string</span> &amp; fn,</span><br><span class="line">     <span class="keyword">const</span> <span class="built_in">string</span> &amp; ln, <span class="keyword">bool</span> ht) : TableTennisPlayer(fn, ln, ht)</span><br><span class="line">&#123;</span><br><span class="line">    rating = r;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中: <code>TableTennisPlayer(fn,ln,ht)</code> 是成员初始化列表。它是可执行的 代码，调用<code>TableTennisPlayer</code>构造函数。</p>
+<p>如果省略成员初始化列表，情况将如何呢？首先必须创建基类对象，如果不调用基类构造函数，程序将使用默 认的基类构造函数，因此上述代码与下面等效：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">RatedPlayer::RatedPlayer(<span class="keyword">unsigned</span> <span class="keyword">int</span> r, <span class="keyword">const</span> <span class="built_in">string</span> &amp; fn,</span><br><span class="line">     <span class="keyword">const</span> <span class="built_in">string</span> &amp; ln, <span class="keyword">bool</span> ht) : TableTennisPlayer() &#123;</span><br><span class="line">    rating = r;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>除非要使用默认构造函数，否则应显式调用正确的基类构造函数</strong>。</p>
+<p>如果愿意，也可以对派生类成员使用成员初始化列表语法。在这种 情况下，应在列表中使用成员名，而不是类名。所以，第二个构造函数 可以按照下述方式编写：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">RatedPlayer::RatedPlayer(<span class="keyword">unsigned</span> <span class="keyword">int</span> r, <span class="keyword">const</span> <span class="built_in">string</span> &amp; fn,</span><br><span class="line">     <span class="keyword">const</span> <span class="built_in">string</span> &amp; ln, <span class="keyword">bool</span> ht) : TableTennisPlayer(fn, ln, ht), rating(r) &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>有关派生类构造函数的要点如下：</p>
+<ul>
+<li>首先创建基类对象；</li>
+<li>派生类构造函数应通过成员初始化列表将基类信息传递给基类构造函数；</li>
+<li>派生类构造函数应初始化派生类新增的数据成员。</li>
+</ul>
+<p>派生类对象过期时，程序将首先调用派生类析构函数，然后再调用基类析构函数。</p>
+<h3 id="派生类和基类"><a href="#派生类和基类" class="headerlink" title="　派生类和基类"></a>　派生类和基类</h3><p>第一，派生类对象可以使用基类的方法，条件是方法不是私有的；<br>第二，基类指针可以在不进行显式类型转换的情况下指向派生类对象（基类指针可以直接指向派生类，神奇）；<br>第三，基类引用可以在不进行显式类型转换的情况下引用派生类对象（基类引用可以直接应用派生类，神奇）。</p>
+<p>不过，<strong>基类指针或引用只能用于调用基类方法</strong>。</p>
+<p><img src="image-20220304092454475.png" alt="image-20220304092454475"></p>
+<p><strong>将派生类引用或指针转换为基类引用或指针被称为向上强制转换 （upcasting），这使公有继承不需要进行显式类型转换</strong>。该规则是is-a 关系的一部分。</p>
+<p><strong>相反的过程——将基类指针或引用转换为派生类指针或引用——称为向下强制转换（downcasting），如果不使用显式类型转换，则向下强制转换是不允许的</strong>。原因是is-a关系通常是不可逆的。派生类可以新增 数据成员，因此使用这些数据成员的类成员函数不能应用于基类。</p>
+<p><img src="image-20220304094740163.png" alt="image-20220304094740163"></p>
+<h4 id="虚函数"><a href="#虚函数" class="headerlink" title="虚函数"></a>虚函数</h4><p>如果要在派生类中重新定义基类（重写override）的方法，则将它设置为虚方法。</p>
+<p>关键字virtual只用于方法声明中，不用于方法定义中。</p>
+<p>基类声明需要一个虚析构函数。如果子类中有属性开到了堆区，那么父类指针释放时无法调用子类的析构代码。</p>
+<p><img src="image-20220304095033504.png" alt="image-20220304095033504"></p>
+<p><img src="image-20220304095421267.png" alt="image-20220304095421267"></p>
+<h5 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h5><ul>
+<li>在基类方法的声明中使用关键字virtual可使该方法在基类以及所有 的派生类（包括从派生类派生出来的类）中是虚的；</li>
+<li>如果使用指向对象的引用或指针来调用虚方法，程序将使用为对象类型定义的方法，而不使用为引用或指针类型定义的方法。这称为 动态联编。这种行为非常重要，因为这样基类指针或引 用可以指向派生类对象；</li>
+<li>如果定义的类将被用作基类，则应将那些要在派生类中重新定义的 类方法声明为虚的；</li>
+<li>构造函数不能是虚函数；</li>
+<li>析构函数应当是虚函数，除非类不用做基类。这意味着，即使基类不需要显式析构函数提供服务，也不应依赖于默认构造函数，而应提供虚析构函数，即使它不执行任何操作；</li>
+</ul>
+<p><strong>给类定义一个虚析构函数并非错误，即使这个类不用做基类</strong>；这只是一个效率方面的问题。</p>
+<ul>
+<li>友元不能是虚函数，因为友元不是类成员，而只有成员才能是虚函 数。</li>
+<li>如果派生类没有重新定义函数，将使用该函数的基类版本。如果派 生类位于派生链中，则将使用最新的虚函数版本，例外的情况是基类版本是隐藏的。</li>
+</ul>
+<h4 id="抽象基类（ABC）"><a href="#抽象基类（ABC）" class="headerlink" title="抽象基类（ABC）"></a>抽象基类（ABC）</h4><p>C++通过使用纯虚函数（pure virtual function） 提供未实现的函数。纯虚函数声明的结尾处为=0。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">virtual</span> <span class="keyword">double</span> <span class="title">Area</span><span class="params">()</span>  </span>= <span class="number">0</span>; <span class="comment">// a pure virtual function</span></span><br></pre></td></tr></table></figure>
+<p>当类声明中包含纯虚函数时，则不能创建该类的对象。</p>
+<p>这里的理念 是，包含纯虚函数的类只用作基类。要成为真正的ABC，必须至少包含 一个纯虚函数。</p>
+<p>原型中的=0使虚函数成为纯虚函数。</p>
+<p>在原型中使用=0指出类是一个抽象基类，在类中可以不定义该函数。</p>
+<p>子类必须重写抽象类中的纯虚函数，否则也是抽象类。</p>
+<h3 id="继承方式"><a href="#继承方式" class="headerlink" title="继承方式"></a>继承方式</h3><p>假设类包含保 护成员（可以是数据成员，也可以是成员函数），则这样的成员在派生 类中是可用的，但在继承层次结构外是不可用的。</p>
+<p><img src="image-20210815194347832.png" alt="image-20210815194347832"></p>
+<h4 id="多继承"><a href="#多继承" class="headerlink" title="多继承"></a>多继承</h4><p><img src="image-20210815202112888.png" alt="image-20210815202112888"></p>
+<ul>
+<li>菱形继承带来的主要问题是子类继承两份相同的数据，导致资源浪费以及毫无意义</li>
+<li>利用虚继承可以解决菱形继承问题</li>
+</ul>
+<p>虚继承可以让Singer与Waiter继承Worker的一份数据（以虚函数表的方式指向Worker中的内容），SingingWaiter直接继承Worker中的数据。</p>
+<p><img src="面向对象/image-20220306170052808.png" alt="image-20220306170052808"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C/" rel="tag"># C++</a>
+          
+            <a href="/tags/基础笔记/" rel="tag"># 基础笔记</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2022/03/07/材质与外观/" rel="next" title="材质与外观">
+                <i class="fa fa-chevron-left"></i> 材质与外观
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zODE4MS8xNDcwOQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://avatars.githubusercontent.com/u/39228583?v=4"
+                alt="rcos97" />
+            
+              <p class="site-author-name" itemprop="name">rcos97</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#对象和类"><span class="nav-number">1.</span> <span class="nav-text">对象和类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用类"><span class="nav-number">1.1.</span> <span class="nav-text">使用类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#复制"><span class="nav-number">1.1.1.</span> <span class="nav-text">复制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#const-成员函数"><span class="nav-number">1.1.2.</span> <span class="nav-text">const 成员函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象数组"><span class="nav-number">1.2.</span> <span class="nav-text">对象数组</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运算符重载"><span class="nav-number">2.</span> <span class="nav-text">运算符重载</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#友元"><span class="nav-number">2.1.</span> <span class="nav-text">友元</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重载-lt-lt"><span class="nav-number">2.2.</span> <span class="nav-text">重载&lt;&lt;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将对象转换成基本类型"><span class="nav-number">2.3.</span> <span class="nav-text">将对象转换成基本类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态内存分配"><span class="nav-number">3.</span> <span class="nav-text">动态内存分配</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#static"><span class="nav-number">3.1.</span> <span class="nav-text">static</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特殊成员函数"><span class="nav-number">3.2.</span> <span class="nav-text">特殊成员函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#复制构造函数"><span class="nav-number">3.2.1.</span> <span class="nav-text">复制构造函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#调用时机"><span class="nav-number">3.2.1.1.</span> <span class="nav-text">调用时机</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#赋值运算符"><span class="nav-number">3.2.2.</span> <span class="nav-text">赋值运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#调用时机-1"><span class="nav-number">3.2.2.1.</span> <span class="nav-text">调用时机</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#继承"><span class="nav-number">4.</span> <span class="nav-text">继承</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#构造函数"><span class="nav-number">4.1.</span> <span class="nav-text">构造函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#派生类和基类"><span class="nav-number">4.2.</span> <span class="nav-text">　派生类和基类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#虚函数"><span class="nav-number">4.2.1.</span> <span class="nav-text">虚函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#注意事项"><span class="nav-number">4.2.1.1.</span> <span class="nav-text">注意事项</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#抽象基类（ABC）"><span class="nav-number">4.2.2.</span> <span class="nav-text">抽象基类（ABC）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#继承方式"><span class="nav-number">4.3.</span> <span class="nav-text">继承方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#多继承"><span class="nav-number">4.3.1.</span> <span class="nav-text">多继承</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rcos97</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>
