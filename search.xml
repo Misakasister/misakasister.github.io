@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[vue中使用阿里妈妈图标库]]></title>
+    <url>%2F2022%2F07%2F19%2Fvue%E4%B8%AD%E4%BD%BF%E7%94%A8%E9%98%BF%E9%87%8C%E5%A6%88%E5%A6%88%E5%9B%BE%E6%A0%87%E5%BA%93%2F</url>
+    <content type="text"><![CDATA[https://www.iconfont.cn/ 添加新项目 添加素材至项目 下载至本地 将除demo开头以外的文件拷贝至vue项目的asset文件夹下 在main.js引入文件 1import './assets/iconfont.css' (使用font方式)挑选相应图标并获取类名，应用于页面： 1&lt;span class="test testxxx"&gt;&lt;/span&gt; testa-ziyuan57 1&lt;span class="test testa-ziyuan57"&gt;&lt;/span&gt;]]></content>
+      <categories>
+        <category>编程</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+        <tag>基础笔记</tag>
+        <tag>vue</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[c++调用python]]></title>
     <url>%2F2022%2F05%2F20%2Fc-%E8%B0%83%E7%94%A8python%2F</url>
     <content type="text"><![CDATA[引入在vs中导入python的include 和 libs，导入python38.lib动态库。 Ｃ＋＋1234567891011121314151617181920212223242526#include &lt;Python.h&gt;void Chaos::show(vector&lt;double&gt; r)&#123; Py_Initialize(); if (Py_IsInitialized()) &#123; // 指定py文件目录 PyRun_SimpleString("import sys"); PyRun_SimpleString("sys.path.append('./')"); //指定一个元组 PyObject* tuple = PyTuple_New(r.size()); for (unsigned int i = 0; i &lt; r.size(); i++) &#123; PyTuple_SET_ITEM(tuple, i, Py_BuildValue("d", r.at(i))); &#125; //Python 模块(Module)，是一个 Python 文件，以 .py 结尾 //导入模块 PyObject* pModule = PyImport_ImportModule("draw"); //指定模块中的函数 PyObject* pFun = PyObject_GetAttrString(pModule, "test"); //函数参数 PyObject* args = PyTuple_New(1); PyTuple_SetItem(args, 0, tuple); //调用函数 PyObject* pReturnValue = PyObject_CallObject(pFun, args); &#125; Py_Finalize();&#125; 1234567import matplotlib.pyplot as pltimport numpy as npdef test(x): x = np.array(x); y = np.arange(1,len(x)+1) plt.scatter(y,x) plt.show() 可能遇到的问题Fatal Python error: init_fs_encoding: failed to get the Python codec of the filesystem encoding 把PYTHONHOME 和 PYTHONPATH改成conda的目录即可！ 在绘图的时候： 123This application failed to start because it could not find or load the Qt platform plugin "windows"Reinstalling the application may fix this problem. 查找 Anaconda 目录并将子目录Library\plugins（此处c:\ProgramData\Anaconda3\Library\plugins）设置为QT_PLUGIN_PATH控制面板/系统/高级系统设置/环境变量下的环境变量。]]></content>
